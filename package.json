@@ -1,0 +1,1 @@
+{"name":"html-knowledge-reader","version":"2.0.0","private":true,"description":"Build-time SVG math rendering; runtime is static HTML","scripts":{"build":"python tools/build.py"},"dependencies":{"mathjax-full":"^3.2.2"}}

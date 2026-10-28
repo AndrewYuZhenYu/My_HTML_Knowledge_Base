@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>$title · 知栈</title>
+<link rel="stylesheet" href="${root}assets/style.css">
+<script defer src="${root}assets/search-data.js"></script>
+<script defer src="${root}assets/app.js"></script>
+$preamble
+</head>
+<body data-current="$current">
+<header class="topbar">
+  <a class="brand" href="${root}index.html" aria-label="返回知识库首页"><span class="brand-mark">知</span><span>知栈 <small>Knowledge Library</small></span></a>
+  <button class="top-search" id="openSearch" aria-label="搜索知识库"><span class="search-icon">⌕</span><span>搜索知识、公式与章节...</span><kbd>⌘ K</kbd></button>
+  <div class="toolbar">
+    <button class="icon-tool panel-tool" id="navToggle" title="收起课程导航" aria-label="收起课程导航" aria-controls="sidebar" aria-expanded="true" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M5.5 9h1M5.5 13h1"/></svg></button>
+    <button class="icon-tool panel-tool" id="tocToggle" title="收起本页目录" aria-label="收起本页目录" aria-controls="tocSidebar" aria-expanded="true" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M15 4v16M17.5 9h1M17.5 13h1"/></svg></button>
+    <button class="plain-tool" id="openTypography" title="调整字体与行距" aria-label="阅读设置">Aa <span class="tool-arrow">⌄</span></button>
+    <button class="icon-tool focus-tool" id="focusToggle" title="进入全屏阅读" aria-label="进入全屏阅读" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg><span id="focusLabel">全屏</span></button>
+    <button class="icon-tool" id="themeToggle" title="切换深色模式" aria-label="切换主题"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 15.6A8.5 8.5 0 0 1 8.4 3.5 8.8 8.8 0 1 0 20.5 15.6Z"/></svg></button>
+  </div>
+</header>
+<div class="page-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-inner">
+      <div class="sidebar-heading"><div class="side-caption">知识空间</div><button class="side-collapse" id="sidebarClose" type="button" aria-label="收起课程导航" hidden>收起 ‹</button></div>
+      <a class="nav-link nav-home" href="${root}index.html"><span class="nav-icon">⌂</span> 总览</a>
+      <div class="side-caption second">我的课程</div>
+      $course_navigation
+      <div class="sidebar-note"><span>知识从原始 Markdown 导入，保留完整内容。阅读样式和知识正文分开维护。</span></div>
+    </div>
+  </aside>
+  <main class="page-main $article_class" id="mainContent">
+    $body
+    <footer class="site-footer">知栈 · 专注内容与阅读　<span>HTML 阅读优先 V3</span></footer>
+  </main>
+  <aside class="toc-sidebar" id="tocSidebar"><div class="toc-inner"><div class="toc-heading"><div class="toc-title">本页目录 <span>ON THIS PAGE</span></div><button class="side-collapse" id="tocClose" type="button" aria-label="收起本页目录" hidden>收起 ›</button></div><nav id="pageToc" aria-label="页内目录"></nav><div class="toc-foot">滚动正文，自动追踪所在章节</div></div>$right_panel</aside>
+</div>
+<div id="typePanel" class="type-panel" hidden>
+ <div class="popover-title">阅读排版 <button id="closeTypography" aria-label="关闭设置">×</button></div>
+ <label for="fontRange">正文字号 <output id="fontVal">19px</output></label>
+ <input id="fontRange" type="range" min="16" max="26" value="19" step="1">
+ <div class="small-scale"><span>A</span><span style="font-size:23px">A</span></div>
+ <label for="lineRange">行距 <output id="lineVal">1.85</output></label>
+ <input id="lineRange" type="range" min="1.5" max="2.15" value="1.85" step="0.05">
+ <div class="settings-row"><span>宽屏阅读</span><button id="wideToggle" class="switch-btn">开启</button></div>
+ <div class="settings-row"><span>夜间阅读</span><button id="themeSetting" class="switch-btn">切换</button></div>
+ <button id="restoreDefaults" class="reset-button">恢复默认排版</button>
+</div>
+<div id="searchOverlay" class="search-overlay" hidden>
+ <div class="search-dialog" role="dialog" aria-modal="true" aria-label="搜索知识库">
+  <div class="dialog-search"><span>⌕</span><input id="searchInput" type="search" autocomplete="off" placeholder="输入公式、章节名称、概念..." aria-label="搜索关键词"><kbd>Esc</kbd></div>
+  <div class="search-results" id="searchResults"><div class="search-empty">输入关键词后，可搜索整篇已导入的《气体动理论》正文。</div></div>
+  <div class="dialog-foot">支持中文关键词和章节定位 · 本地离线索引</div>
+ </div>
+</div>
+<div id="mobileShade" class="mobile-shade" hidden></div>
+<script type="application/json" id="tocData">$toc_json</script>
+</body></html>

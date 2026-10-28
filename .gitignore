@@ -1,0 +1,9 @@
+.venv/
+.build-deps/
+node_modules/
+netlify-upload/
+__pycache__/
+.DS_Store
+*.pyc
+tools/_math_input.json
+tools/_math_output.json
