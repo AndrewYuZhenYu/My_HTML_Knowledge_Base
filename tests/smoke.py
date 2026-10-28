@@ -43,13 +43,21 @@ assert physics_pages[0].select_one('article .inline-viz #maxwellPlot')
 assert sum(bool(page.select_one('script[src$="physics-widgets.js"]')) for page in physics_pages)==3
 assert len(physics_pages[2].select('article figure.concept-visual'))>=20
 learning=[]
+scientific=[]
+traces=[]
 for page in articles:
  doc=BeautifulSoup(page.read_text(encoding='utf8'),'html.parser')
  learning.extend(doc.select('article figure.learning-widget'))
+ scientific.extend(doc.select('article figure.scientific-widget'))
+ traces.extend(doc.select('article figure.trace-widget'))
 assert len(learning)==9
+assert len(scientific)==8
+assert len(traces)==18
+assert all(node.select_one('.scientific-controls input[type="range"]') for node in scientific)
+assert all(node.select_one('.trace-controls button[data-step="next"]') for node in traces)
 assert {node['data-kind'] for node in learning}=={'stepper','truth'}
 for node in learning:
  assert node.select_one('svg[role="img"]') and node.select_one('.learning-controls')
  if node['data-kind']=='stepper':assert len(json.loads(node['data-states']))>=3
  else:assert len(json.loads(node['data-rows'])) in (4,8)
-print('PASS: 12 articles / 12 linked maps / 20 figures each / 240 counted figures / 20 inline interactive components including Maxwell')
+print('PASS: 12 articles / 12 linked maps / 20 figures each / 240 counted figures / 46 inline interactive components including Maxwell')

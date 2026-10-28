@@ -8,6 +8,7 @@ from __future__ import annotations
 from html import escape
 from math import cos, exp, pi, sin, sqrt
 from unicodedata import east_asian_width
+from json import dumps
 
 
 def e(value):
@@ -33,7 +34,7 @@ def arrow(x1,y1,x2,y2,color='var(--viz-blue)'):
 def figure(spec,body,height=290):
  title=e(spec['title']);note=e(spec['note'])
  return (f'<figure class="concept-visual" data-visual="{e(spec["kind"])}">'
-         f'<figcaption><span>知识图解</span><strong>{title}</strong></figcaption>'
+         f'<figcaption><span>{e(spec.get("label","知识图解"))}</span><strong>{title}</strong></figcaption>'
          f'<svg viewBox="0 0 760 {height}" role="img" aria-label="{title}" xmlns="http://www.w3.org/2000/svg">{body}</svg>'
          f'<p class="concept-visual-note">{note}</p></figure>')
 
@@ -177,7 +178,12 @@ def trace(spec):
    body+=rect(round(x,1),y,round(cellw,1),44,'var(--viz-green-bg)' if highlight else 'var(--viz-blue-bg)','var(--viz-green)' if highlight else 'var(--viz-blue)',5)
    body+=text(round(x+cellw/2,1),y+29,value,15)
   if j<len(rows)-1:body+=arrow(742,y+19,742,y+58,'var(--viz-orange)')
- return figure(spec,body,45+len(rows)*61)
+ html=figure(spec,body,45+len(rows)*61)
+ if spec.get('static_only'):return html
+ payload=e(dumps(rows,ensure_ascii=False,separators=(',',':')))
+ html=html.replace('class="concept-visual"',f'class="concept-visual trace-widget" data-rows="{payload}"',1)
+ controls='<div class="trace-controls"><button type="button" data-step="prev">上一步</button><span class="trace-progress"></span><button type="button" data-step="next">下一步</button></div><p class="trace-explanation" aria-live="polite"></p>'
+ return html.replace('<p class="concept-visual-note">',controls+'<p class="concept-visual-note">',1)
 
 
 def matrix(spec):

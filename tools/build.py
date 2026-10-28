@@ -15,6 +15,8 @@ from visuals import ASSET_DIAGRAMS, SPECS, render as render_visual
 from physics_widgets import WIDGETS, render_widget
 from visual_catalog import EXTRA_SPECS
 from learning_widgets import STEPS, TRUTHS, render_widget as render_learning_widget
+from upgrade_diagrams import UPGRADES, INTERACTIVE_KINDS, render_upgrade
+from code_blocks import enhance as enhance_code_blocks
 
 ROOT=Path(__file__).resolve().parents[1]
 COURSE_CONFIG=json.loads((ROOT/'config/courses.json').read_text(encoding='utf-8'))
@@ -260,7 +262,9 @@ def transform(doc,batch,svg_map):
  for spec in SPECS.get(key,[])+EXTRA_SPECS.get(key,[]):
   matches=[h for h in soup.select('h1,h2,h3,h4,h5,h6') if spec['match'] in heading_label(h)]
   if len(matches)!=1:raise ValueError(f'{key}: visual heading {spec["match"]!r} matched {len(matches)} sections')
-  matches[0].insert_after(BeautifulSoup(render_visual(spec),'html.parser'))
+  upgraded=render_upgrade(key,spec)
+  if spec['match'] in UPGRADES.get(key,{}) and upgraded is None:raise ValueError(f'{key}: unimplemented upgrade {spec["match"]}')
+  matches[0].insert_after(BeautifulSoup(upgraded or render_visual(spec),'html.parser'))
   visual_count+=1
  for spec in WIDGETS.get(key,[]):
   matches=[h for h in soup.select('h1,h2,h3,h4,h5,h6') if spec['match'] in heading_label(h)]
@@ -285,6 +289,7 @@ def transform(doc,batch,svg_map):
     texs=' '.join(x.get('data-tex','') for x in next_el.select('[data-tex]'))
     parts.append(snippet+' '+texs)
   snippet_entries.append({'page':doc['title'],'title':heading_label(h),'url':global_url(doc['output'])+'#'+h['id'],'text':' '.join(parts)})
+ code_block_count=enhance_code_blocks(soup)
  root=depth_root(doc['output'])
  source_href=os.path.relpath(doc['source'],doc['output'].parent).replace(os.sep,'/')
  intro=f'<div class="eyebrow">{esc(doc["course"]["name"])} · 完整讲义</div><h1 class="page-title">{esc(doc["title"])}</h1><p class="page-deck">{esc(doc["description"] or "按照原始 Markdown 完整保留正文层次、公式和语义提示块。")}</p><div class="meta-line">完整迁移 · 可调字号与行距 · <a href="{esc(source_href)}">查看 Markdown 原文</a></div>'
@@ -292,9 +297,12 @@ def transform(doc,batch,svg_map):
  extra=f'<script defer src="{root}assets/lab.js"></script>' if key=='physics/12 气体动理论.md' else ''
  if key in WIDGETS:extra+=f'<script defer src="{root}assets/physics-widgets.js"></script>'
  if key in STEPS or key in TRUTHS:extra+=f'<script defer src="{root}assets/learning-widgets.js"></script>'
+ if any(s['kind']=='trace' for s in SPECS.get(key,[])+EXTRA_SPECS.get(key,[])):extra+=f'<script defer src="{root}assets/trace-widgets.js"></script>'
+ if any(config[0] in INTERACTIVE_KINDS for config in UPGRADES.get(key,{}).values()):extra+=f'<script defer src="{root}assets/concept-interactions.js"></script>'
+ if code_block_count:extra+=f'<script defer src="{root}assets/code-copy.js"></script>'
  doc['output'].parent.mkdir(parents=True,exist_ok=True)
  doc['output'].write_text(wrap(doc['title'],'完整 Markdown 转换',inner,doc['output'],ALL_DOCS,toc=heads,extra_script=extra),encoding='utf-8')
- return {'headings':heads,'source_headings':len(re.findall(r'^#{1,6} ',text,re.M)),'math_count':batch.math_counts.get(key,0),'svg_count':len(soup.select('.math-inline,.math-display')),'callout_count':callout_count,'source_callouts':len(re.findall(r'^>\s*(?:>\s*)*\[!\w+\]',text,re.M)),'tables':len(soup.select('table')),'visual_count':visual_count,'asset_visual_count':asset_visual_count,'search':snippet_entries}
+ return {'headings':heads,'source_headings':len(re.findall(r'^#{1,6} ',text,re.M)),'math_count':batch.math_counts.get(key,0),'svg_count':len(soup.select('.math-inline,.math-display')),'callout_count':callout_count,'source_callouts':len(re.findall(r'^>\s*(?:>\s*)*\[!\w+\]',text,re.M)),'tables':len(soup.select('table')),'code_blocks':code_block_count,'visual_count':visual_count,'asset_visual_count':asset_visual_count,'search':snippet_entries}
 
 def map_html(heads):
  def link(prefix):

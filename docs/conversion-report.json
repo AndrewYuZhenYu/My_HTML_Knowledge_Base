@@ -8,6 +8,7 @@
       "callout_count": 47,
       "source_callouts": 47,
       "tables": 2,
+      "code_blocks": 0,
       "visual_count": 20,
       "asset_visual_count": 0
     },
@@ -18,6 +19,7 @@
       "callout_count": 50,
       "source_callouts": 50,
       "tables": 12,
+      "code_blocks": 0,
       "visual_count": 20,
       "asset_visual_count": 0
     },
@@ -28,6 +30,7 @@
       "callout_count": 68,
       "source_callouts": 68,
       "tables": 12,
+      "code_blocks": 0,
       "visual_count": 20,
       "asset_visual_count": 8
     },
@@ -38,6 +41,7 @@
       "callout_count": 55,
       "source_callouts": 55,
       "tables": 15,
+      "code_blocks": 0,
       "visual_count": 20,
       "asset_visual_count": 0
     },
@@ -48,6 +52,7 @@
       "callout_count": 50,
       "source_callouts": 50,
       "tables": 19,
+      "code_blocks": 0,
       "visual_count": 20,
       "asset_visual_count": 0
     },
@@ -58,6 +63,7 @@
       "callout_count": 45,
       "source_callouts": 45,
       "tables": 7,
+      "code_blocks": 0,
       "visual_count": 20,
       "asset_visual_count": 0
     },
@@ -68,6 +74,7 @@
       "callout_count": 42,
       "source_callouts": 42,
       "tables": 7,
+      "code_blocks": 0,
       "visual_count": 20,
       "asset_visual_count": 0
     },
@@ -78,6 +85,7 @@
       "callout_count": 88,
       "source_callouts": 88,
       "tables": 12,
+      "code_blocks": 0,
       "visual_count": 20,
       "asset_visual_count": 0
     },
@@ -88,6 +96,7 @@
       "callout_count": 30,
       "source_callouts": 30,
       "tables": 9,
+      "code_blocks": 49,
       "visual_count": 20,
       "asset_visual_count": 0
     },
@@ -98,6 +107,7 @@
       "callout_count": 44,
       "source_callouts": 44,
       "tables": 12,
+      "code_blocks": 26,
       "visual_count": 20,
       "asset_visual_count": 0
     },
@@ -108,6 +118,7 @@
       "callout_count": 43,
       "source_callouts": 43,
       "tables": 31,
+      "code_blocks": 37,
       "visual_count": 20,
       "asset_visual_count": 0
     },
@@ -118,6 +129,7 @@
       "callout_count": 31,
       "source_callouts": 31,
       "tables": 17,
+      "code_blocks": 4,
       "visual_count": 20,
       "asset_visual_count": 0
     }

@@ -62,8 +62,8 @@ def _attributes(spec,kind):
 def render_widget(spec,kind):
  if kind=='stepper':
   if spec['mode']=='match':fallback=S('', 'bf_match',spec['title'],spec['note'])
-  elif spec['mode']=='triples':fallback=S('', 'trace',spec['title'],spec['note'],rows=[(s['label'],s['cells']) for s in spec['states']])
-  else:fallback=S('', 'trace',spec['title'],spec['note'],rows=[(s['label'],s['cells']) for s in (spec['states'][0],spec['states'][-1])])
+  elif spec['mode']=='triples':fallback=S('', 'trace',spec['title'],spec['note'],rows=[(s['label'],s['cells']) for s in spec['states']],static_only=True)
+  else:fallback=S('', 'trace',spec['title'],spec['note'],rows=[(s['label'],s['cells']) for s in (spec['states'][0],spec['states'][-1])],static_only=True)
  else:fallback=S('', 'truth_table',spec['title'],spec['note'],columns=spec['columns'],rows=spec['rows'])
  html=render(fallback)
  html=html.replace('class="concept-visual"',f'class="concept-visual learning-widget" data-kind="{kind}" {_attributes(spec,kind)}',1)
