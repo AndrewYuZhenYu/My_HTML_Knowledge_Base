@@ -28,6 +28,11 @@ COURSES=sorted(COURSE_CONFIG['courses'],key=lambda c:c.get('order',100))
 CONFIG_IDS={c['id'] for c in COURSES}
 OVERRIDES=COURSE_CONFIG.get('overrides',{})
 md=mistune.create_markdown(escape=True,plugins=['table','strikethrough','url'])
+ZIP_PHYSICS={f'physics/{name}.md' for name in ('12 气体动理论','13 热力学基础｜知识体系重构版','14 振动 扩充版','15 波动')}
+
+def visual_specs(key):
+ # These ZIP chapters already contain a complete, chapter-specific figure set.
+ return [] if key in ZIP_PHYSICS else SPECS.get(key,[])+EXTRA_SPECS.get(key,[])
 
 
 def safe_slug(s):
@@ -255,11 +260,12 @@ def transform(doc,batch,svg_map):
   first.insert_before(BeautifulSoup(f'<div class="chapter-links">{links}<span>导图与插图为辅助阅读内容</span></div>','html.parser'))
  if key=='physics/12 气体动理论.md':
   for h in soup.select('h2,h3'):
-   if '3.2.4 分布曲线的特点' in h.get_text(' ',strip=True):
+   if '12.4.5 温度和分子质量如何改变分布形状' in h.get_text(' ',strip=True):
     embed='''<div class="inline-viz"><div class="inline-viz-head"><div><b>交互插图 · 麦克斯韦速率分布</b><small>在知识点旁直接调节气体和温度</small></div><a href="12-lab.html">全屏查看 ↗</a></div><div class="inline-viz-controls"><label>气体 <select id="gasSelect"><option value="o2">氧气 O₂</option><option value="n2">氮气 N₂</option><option value="h2">氢气 H₂</option><option value="he">氦气 He</option></select></label><label>温度 <input type="range" id="tempSelect" min="200" max="900" step="25" value="300"><strong id="tempLabel">300 K</strong></label></div><svg id="maxwellPlot" viewBox="0 0 820 365" aria-label="随参数变化的麦克斯韦速率分布函数图"></svg><div class="plot-legend"><span><i style="background:#3675bd"></i><span id="legend1">300 K</span></span><span><i style="background:#d39959"></i><span id="legend2">510 K 对照</span></span></div><div class="inline-viz-stats"><span>最概然速率<b id="statVp">—</b></span><span>平均速率<b id="statMean">—</b></span><span>方均根速率<b id="statRms">—</b></span></div><p id="formulaSummary" class="inline-viz-tip">拖动滑块观察曲线变化。</p></div>'''
     h.insert_after(BeautifulSoup(embed,'html.parser'));break
- visual_count=asset_visual_count
- for spec in SPECS.get(key,[])+EXTRA_SPECS.get(key,[]):
+ source_image_count=len(soup.select('img[src]'))
+ visual_count=asset_visual_count+source_image_count
+ for spec in visual_specs(key):
   matches=[h for h in soup.select('h1,h2,h3,h4,h5,h6') if spec['match'] in heading_label(h)]
   if len(matches)!=1:raise ValueError(f'{key}: visual heading {spec["match"]!r} matched {len(matches)} sections')
   upgraded=render_upgrade(key,spec)
@@ -297,12 +303,12 @@ def transform(doc,batch,svg_map):
  extra=f'<script defer src="{root}assets/lab.js"></script>' if key=='physics/12 气体动理论.md' else ''
  if key in WIDGETS:extra+=f'<script defer src="{root}assets/physics-widgets.js"></script>'
  if key in STEPS or key in TRUTHS:extra+=f'<script defer src="{root}assets/learning-widgets.js"></script>'
- if any(s['kind']=='trace' for s in SPECS.get(key,[])+EXTRA_SPECS.get(key,[])):extra+=f'<script defer src="{root}assets/trace-widgets.js"></script>'
- if any(config[0] in INTERACTIVE_KINDS for config in UPGRADES.get(key,{}).values()):extra+=f'<script defer src="{root}assets/concept-interactions.js"></script>'
+ if any(s['kind']=='trace' for s in visual_specs(key)):extra+=f'<script defer src="{root}assets/trace-widgets.js"></script>'
+ if key not in ZIP_PHYSICS and any(config[0] in INTERACTIVE_KINDS for config in UPGRADES.get(key,{}).values()):extra+=f'<script defer src="{root}assets/concept-interactions.js"></script>'
  if code_block_count:extra+=f'<script defer src="{root}assets/code-copy.js"></script>'
  doc['output'].parent.mkdir(parents=True,exist_ok=True)
  doc['output'].write_text(wrap(doc['title'],'完整 Markdown 转换',inner,doc['output'],ALL_DOCS,toc=heads,extra_script=extra),encoding='utf-8')
- return {'headings':heads,'source_headings':len(re.findall(r'^#{1,6} ',text,re.M)),'math_count':batch.math_counts.get(key,0),'svg_count':len(soup.select('.math-inline,.math-display')),'callout_count':callout_count,'source_callouts':len(re.findall(r'^>\s*(?:>\s*)*\[!\w+\]',text,re.M)),'tables':len(soup.select('table')),'code_blocks':code_block_count,'visual_count':visual_count,'asset_visual_count':asset_visual_count,'search':snippet_entries}
+ return {'headings':heads,'source_headings':len(re.findall(r'^#{1,6} ',text,re.M)),'math_count':batch.math_counts.get(key,0),'svg_count':len(soup.select('.math-inline,.math-display')),'callout_count':callout_count,'source_callouts':len(re.findall(r'^>\s*(?:>\s*)*\[!\w+\]',text,re.M)),'tables':len(soup.select('table')),'code_blocks':code_block_count,'visual_count':visual_count,'asset_visual_count':asset_visual_count,'source_image_count':source_image_count,'search':snippet_entries}
 
 def map_html(heads):
  def link(prefix):
@@ -361,7 +367,7 @@ def special_pages(docs,meta):
 def make_maps(docs,meta):
  for doc in docs:
   output=map_output(doc);heads=meta[doc['source_rel']]['headings']
-  inner=map_html(heads) if doc['source_rel']=='physics/12 气体动理论.md' else outline_map_html(doc,heads)
+  inner=outline_map_html(doc,heads)
   output.write_text(wrap(doc['title']+' · 思维导图','可交互知识地图',inner,output,docs,current='map',article_class='map-page',extra_script=f'<script defer src="{depth_root(output)}assets/mindmap.js"></script>'),encoding='utf8')
 
 def make_course_pages(docs):
@@ -416,11 +422,10 @@ if __name__=='__main__':
    if r['source_headings']!=len(r['headings']):errors.append(d['source_rel']+': heading mismatch')
    if r['math_count']!=r['svg_count']:errors.append(d['source_rel']+': math mismatch')
    if r['callout_count']!=r['source_callouts']:errors.append(d['source_rel']+': callout mismatch')
-   if r['visual_count']!=len(SPECS.get(d['source_rel'],[]))+len(EXTRA_SPECS.get(d['source_rel'],[]))+len(WIDGETS.get(d['source_rel'],[]))+int(d['source_rel'] in STEPS)+int(d['source_rel'] in TRUTHS)+r['asset_visual_count']:errors.append(d['source_rel']+': visual mismatch')
+   if r['visual_count']!=len(visual_specs(d['source_rel']))+len(WIDGETS.get(d['source_rel'],[]))+int(d['source_rel'] in STEPS)+int(d['source_rel'] in TRUTHS)+r['asset_visual_count']+r['source_image_count']:errors.append(d['source_rel']+': visual mismatch')
    if r['visual_count']<15:errors.append(d['source_rel']+': fewer than 15 teaching figures')
-   if d['source_rel']=='physics/14 振动 扩充版.md' and r['asset_visual_count']!=len(ASSET_DIAGRAMS):errors.append(d['source_rel']+': redraw count mismatch')
    article=BeautifulSoup(d['output'].read_text(encoding='utf8'),'html.parser')
-   if len(article.select('article figure.concept-visual svg'))!=r['visual_count']:errors.append(d['source_rel']+': generated SVG diagram mismatch')
+   if len(article.select('article figure.concept-visual svg'))+len(article.select('article img[src]'))!=r['visual_count']:errors.append(d['source_rel']+': figure count mismatch')
    map_page=map_output(d)
    if not map_page.is_file() or not BeautifulSoup(map_page.read_text(encoding='utf8'),'html.parser').select('details.map-branch a.map-leaf[href]'):
     errors.append(d['source_rel']+': mind map missing or empty')

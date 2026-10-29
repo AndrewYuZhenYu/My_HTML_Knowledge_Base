@@ -36,6 +36,11 @@
       "title": "第14章 振动",
       "description": "简谐、阻尼、受迫振动与合成"
     },
+    "physics/15 波动.md": {
+      "output": "15-waves.html",
+      "title": "第15章 波动",
+      "description": "行波、能流、干涉、驻波与多普勒效应"
+    },
     "discrete-math/GPT01命题逻辑基础：命题、联结词、命题公式与真值表.md": {
       "output": "01-propositional-logic.html",
       "title": "第1讲 命题逻辑基础"

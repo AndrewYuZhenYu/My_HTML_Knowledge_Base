@@ -1,16 +1,16 @@
 # 知栈 V3｜HTML 阅读优先知识库
 
-> 已将大学物理、离散数学、数据结构共 12 篇 Markdown 笔记导入本地网页；原始文件保存在 `sources/`，阅读页由构建器生成。
+> 已将大学物理、离散数学、数据结构共 13 篇 Markdown 笔记导入本地网页；源文件保存在 `sources/`，阅读页由构建器生成。
 
 ## 当前收录
 
-- 大学物理：第 12 章气体动理论、第 13 章热力学基础、第 14 章振动。
+- 大学物理：第 12 章气体动理论、第 13 章热力学基础、第 14 章振动、第 15 章波动。四章正文和 145 张配图以对应 ZIP 为准。
 - 离散数学：命题逻辑第 1–5 讲。
 - 数据结构：第 2–5 章。
 
-每篇笔记都有双侧思维导图，节点可直接跳转到正文；第 12 章气体动理论保留人工编排的导图，其余导图根据原始标题层级生成。按统一的正文图解计数，12 篇笔记各有 20 个本地 SVG 图解或交互组件，共 240 个；原有麦克斯韦速率分布交互图另计。大学物理占 60 个，数据结构占 80 个，离散数学占 100 个。已将 33 个早期文字框图或简单表格替换为函数、概率、指针、搜索路径、真值格与证明结构图；18 个已有状态图可逐步操作，另有 8 个新参数交互图。图解是辅助阅读内容，原始 Markdown 仍是知识来源。
+每篇笔记都有双侧思维导图，节点可直接跳转到正文；导图根据当前 Markdown 标题层级生成。新版大学物理四章分别含 40、28、42、35 张 ZIP 原配图，并保留第 12～14 章已有的 10 个参数交互图与麦克斯韦速率分布实验室。其余课程的原有图解和交互组件继续保留。四个 ZIP 导入时只将图片引用改写为本地相对路径，并将 Obsidian `![[图片]]` 引用改为标准 Markdown 图片语法；正文文字与公式来自 ZIP。
 
-直接打开根目录的 `index.html`，即可从首页进入所有课程页面。第 14 章原笔记引用的 8 张 `振动_Obsidian_配图/*.png` 未随笔记提供；网页在原引用位置放入依据正文重绘的示意图，并注明不是原图。详情见 `docs/conversion-report.json`。
+直接打开根目录的 `index.html`，即可从首页进入所有课程页面。新版第 14 章的图片已随 ZIP 导入；详情见 `docs/conversion-report.json`。
 
 ## 直接体验（不需要安装依赖）
 
@@ -53,8 +53,9 @@ python tools/build.py --check
 将原始 Markdown 放在对应课程文件夹：
 
 ```text
-sources/physics/13 热力学基础.md
-sources/physics/14 振动.md
+sources/physics/13 热力学基础｜知识体系重构版.md
+sources/physics/14 振动 扩充版.md
+sources/physics/15 波动.md
 sources/discrete-math/01 命题逻辑.md
 sources/data-structures/02 线性表.md
 ```
@@ -66,6 +67,8 @@ python tools/build.py --check
 ```
 
 构建器会自动生成独立 HTML、分级课程导航、搜索索引、公式 SVG、Callout 语义色样式，并输出迁移报告到 `docs/conversion-report.json`。后续可重复执行；不会修改 `sources/` 原文，但会**覆盖自动生成的 HTML**。
+
+若需重新导入第 12～15 章的四个权威 ZIP，运行 `python tools/import_physics_zips.py "ZIP 所在文件夹"`，再重新构建。导入脚本会验证四个压缩包中的配图引用是否齐全。
 
 需要增加一个课程文件夹时，先在 `config/courses.json` 中添加该课程的 `id`、`name` 和 `order`。
 
@@ -87,7 +90,7 @@ python tools/prepare_netlify.py
 - `assets/app.js`：字号、行距、搜索、主题、页内目录。
 - `assets/mindmap.js`：导图增强；内容主体不依赖此脚本。
 - `assets/lab.js`：实时函数图绘制。
-- `assets/physics-widgets.js`：大学物理正文的 10 幅可调参数曲线。
+- `assets/physics-widgets.js`：大学物理第 12～14 章正文的 10 幅可调参数曲线。
 - `assets/learning-widgets.js`：数据结构的算法步骤演示和离散数学的赋值交互真值表。
 - `assets/trace-widgets.js`：将算法状态序列变为逐步操作图。
 - `assets/concept-interactions.js`：概率分布、复杂度、前缀函数、地址映射与真值格的参数交互。
@@ -106,7 +109,7 @@ python tools/prepare_netlify.py
 
 - 支持常见 Markdown 标题、正文、列表、表格、代码、`$...$` 和 `$$...$$`、标准 Obsidian Callout，以及普通相对图片/附件链接。
 - 不保证支持 Obsidian 所有插件私有语法，尤其是 `[[双链]]` 和 `![[附件]]`；建议批量迁移前检查。
-- 第12章气体动理论保留人工编排的双侧导图和麦克斯韦交互函数图。其余 11 篇的导图依据 Markdown 标题层级自动生成，忠实反映原有章节结构；正文 SVG 图解和物理交互图依据指定知识点绘制，新增笔记需分别在 `tools/visuals.py` 和 `tools/physics_widgets.py` 中配置。
+- 第 12 章保留麦克斯韦交互函数图；四章导图均依据新版 Markdown 标题层级生成。ZIP 配图为静态图片，参数交互图仍由 `tools/physics_widgets.py` 配置。其他课程的补充图解仍由 `tools/visuals.py` 等文件配置。
 - 直接双击 HTML 可以阅读和使用当前内置搜索。完整跨站部署或更复杂的浏览器接口可能需要本地 HTTP 服务。
 
 完整设计与限制见包外的《HTML知识库_V3_整体规范与技术说明.md》。

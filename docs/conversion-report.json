@@ -2,37 +2,52 @@
   "version": "3.1",
   "files": {
     "physics/12 气体动理论.md": {
-      "source_headings": 48,
-      "math_count": 341,
-      "svg_count": 341,
-      "callout_count": 47,
-      "source_callouts": 47,
-      "tables": 2,
+      "source_headings": 39,
+      "math_count": 335,
+      "svg_count": 335,
+      "callout_count": 19,
+      "source_callouts": 19,
+      "tables": 7,
       "code_blocks": 0,
-      "visual_count": 20,
-      "asset_visual_count": 0
+      "visual_count": 43,
+      "asset_visual_count": 0,
+      "source_image_count": 40
     },
     "physics/13 热力学基础｜知识体系重构版.md": {
-      "source_headings": 69,
-      "math_count": 858,
-      "svg_count": 858,
-      "callout_count": 50,
-      "source_callouts": 50,
-      "tables": 12,
+      "source_headings": 45,
+      "math_count": 434,
+      "svg_count": 434,
+      "callout_count": 32,
+      "source_callouts": 32,
+      "tables": 8,
       "code_blocks": 0,
-      "visual_count": 20,
-      "asset_visual_count": 0
+      "visual_count": 31,
+      "asset_visual_count": 0,
+      "source_image_count": 28
     },
     "physics/14 振动 扩充版.md": {
-      "source_headings": 91,
-      "math_count": 820,
-      "svg_count": 820,
-      "callout_count": 68,
-      "source_callouts": 68,
-      "tables": 12,
+      "source_headings": 54,
+      "math_count": 411,
+      "svg_count": 411,
+      "callout_count": 32,
+      "source_callouts": 32,
+      "tables": 5,
       "code_blocks": 0,
-      "visual_count": 20,
-      "asset_visual_count": 8
+      "visual_count": 46,
+      "asset_visual_count": 0,
+      "source_image_count": 42
+    },
+    "physics/15 波动.md": {
+      "source_headings": 62,
+      "math_count": 313,
+      "svg_count": 313,
+      "callout_count": 24,
+      "source_callouts": 24,
+      "tables": 8,
+      "code_blocks": 0,
+      "visual_count": 35,
+      "asset_visual_count": 0,
+      "source_image_count": 35
     },
     "discrete-math/GPT01命题逻辑基础：命题、联结词、命题公式与真值表.md": {
       "source_headings": 48,
@@ -43,7 +58,8 @@
       "tables": 15,
       "code_blocks": 0,
       "visual_count": 20,
-      "asset_visual_count": 0
+      "asset_visual_count": 0,
+      "source_image_count": 0
     },
     "discrete-math/GPT02命题逻辑命题公式、逻辑等值式与联结词完备集.md": {
       "source_headings": 56,
@@ -54,7 +70,8 @@
       "tables": 19,
       "code_blocks": 0,
       "visual_count": 20,
-      "asset_visual_count": 0
+      "asset_visual_count": 0,
+      "source_image_count": 0
     },
     "discrete-math/GPT03命题逻辑-范式：析取范式、合取范式与主范式.md": {
       "source_headings": 45,
@@ -65,7 +82,8 @@
       "tables": 7,
       "code_blocks": 0,
       "visual_count": 20,
-      "asset_visual_count": 0
+      "asset_visual_count": 0,
+      "source_image_count": 0
     },
     "discrete-math/GPT04命题逻辑：推理的形式结构与有效性判定.md": {
       "source_headings": 41,
@@ -76,7 +94,8 @@
       "tables": 7,
       "code_blocks": 0,
       "visual_count": 20,
-      "asset_visual_count": 0
+      "asset_visual_count": 0,
+      "source_image_count": 0
     },
     "discrete-math/GPT05命题逻辑：自然推理系统 P 与演绎证明.md": {
       "source_headings": 72,
@@ -87,7 +106,8 @@
       "tables": 12,
       "code_blocks": 0,
       "visual_count": 20,
-      "asset_visual_count": 0
+      "asset_visual_count": 0,
+      "source_image_count": 0
     },
     "data-structures/GPT02 数据结构第二章：线性表.md": {
       "source_headings": 75,
@@ -98,7 +118,8 @@
       "tables": 9,
       "code_blocks": 49,
       "visual_count": 20,
-      "asset_visual_count": 0
+      "asset_visual_count": 0,
+      "source_image_count": 0
     },
     "data-structures/GPT03数据结构第三章：栈和队列.md": {
       "source_headings": 69,
@@ -109,7 +130,8 @@
       "tables": 12,
       "code_blocks": 26,
       "visual_count": 20,
-      "asset_visual_count": 0
+      "asset_visual_count": 0,
+      "source_image_count": 0
     },
     "data-structures/GPT04 数据结构第四章：串.md": {
       "source_headings": 92,
@@ -120,7 +142,8 @@
       "tables": 31,
       "code_blocks": 37,
       "visual_count": 20,
-      "asset_visual_count": 0
+      "asset_visual_count": 0,
+      "source_image_count": 0
     },
     "data-structures/GPT05 数据结构第五章：数组和广义表.md": {
       "source_headings": 56,
@@ -131,20 +154,12 @@
       "tables": 17,
       "code_blocks": 4,
       "visual_count": 20,
-      "asset_visual_count": 0
+      "asset_visual_count": 0,
+      "source_image_count": 0
     }
   },
-  "total_documents": 12,
-  "total_search_entries": 739,
-  "warnings": [
-    "physics/14 振动 扩充版.md: original image missing; source-based diagram shown for 01_位移速度加速度.png",
-    "physics/14 振动 扩充版.md: original image missing; source-based diagram shown for 07_位移速度相轨迹.png",
-    "physics/14 振动 扩充版.md: original image missing; source-based diagram shown for 02_旋转矢量.png",
-    "physics/14 振动 扩充版.md: original image missing; source-based diagram shown for 03_能量转化.png",
-    "physics/14 振动 扩充版.md: original image missing; source-based diagram shown for 08_三种阻尼模式.png",
-    "physics/14 振动 扩充版.md: original image missing; source-based diagram shown for 04_共振曲线.png",
-    "physics/14 振动 扩充版.md: original image missing; source-based diagram shown for 05_拍现象.png",
-    "physics/14 振动 扩充版.md: original image missing; source-based diagram shown for 06_垂直同频合成.png"
-  ],
+  "total_documents": 13,
+  "total_search_entries": 737,
+  "warnings": [],
   "math_errors": []
 }

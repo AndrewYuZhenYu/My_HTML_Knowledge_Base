@@ -196,6 +196,9 @@ body[data-current="map"] .map-help{line-height:1.8}
 .outline-map .map-depth-2{border-left:3px solid var(--branch)}
 .outline-map .map-depth-3{border-left:3px dotted var(--branch)}
 .reading-content .concept-visual{margin:1.25em 0 1.8em;border:1px solid var(--border);border-radius:13px;background:var(--paper);overflow:hidden;box-shadow:0 7px 26px rgba(31,54,74,.05);font-size:16px;line-height:1.55}
+.reading-content img{display:block;max-width:100%;height:auto;margin:1.35em auto;border:1px solid var(--border);border-radius:10px;background:#fff;box-shadow:0 7px 24px rgba(31,54,74,.07)}
+.reading-content p:has(>img:only-child){margin:1.6em 0;text-align:center}
+.reading-content p:has(>img:only-child)+p:has(>em:only-child){margin:-.9em auto 1.8em;color:var(--soft);font-size:.85em;text-align:center}
 .concept-visual figcaption{display:flex;align-items:baseline;gap:12px;padding:16px 20px 11px;border-bottom:1px solid var(--border);background:color-mix(in srgb,var(--accent-bg) 35%,var(--paper))}
 .concept-visual figcaption span{font-size:11px;font-weight:750;letter-spacing:.06em;color:var(--accent);white-space:nowrap}
 .concept-visual figcaption strong{font-size:17px;color:var(--text);line-height:1.45}
