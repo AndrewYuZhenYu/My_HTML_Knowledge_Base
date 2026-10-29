@@ -17,6 +17,7 @@ from visual_catalog import EXTRA_SPECS
 from learning_widgets import STEPS, TRUTHS, render_widget as render_learning_widget
 from upgrade_diagrams import UPGRADES, INTERACTIVE_KINDS, render_upgrade
 from code_blocks import enhance as enhance_code_blocks
+from check_site_integrity import Checker
 
 ROOT=Path(__file__).resolve().parents[1]
 COURSE_CONFIG=json.loads((ROOT/'config/courses.json').read_text(encoding='utf-8'))
@@ -242,7 +243,9 @@ def transform(doc,batch,svg_map):
      fragment='#'+raw.split('#',1)[1] if '#' in raw else ''
      node[attr]=os.path.relpath(matching['output'],doc['output'].parent).replace(os.sep,'/')+fragment
     continue
-   dest=ROOT/'assets'/'imported'/safe_slug(doc['course']['id'])/(hashlib.sha1(str(source_candidate).encode()).hexdigest()[:10]+'-'+source_candidate.name)
+   # Hash a repository-relative path so builds on another machine keep identical URLs.
+   media_key=source_candidate.relative_to(SOURCES.resolve()).as_posix()
+   dest=ROOT/'assets'/'imported'/safe_slug(doc['course']['id'])/(hashlib.sha1(media_key.encode()).hexdigest()[:10]+'-'+source_candidate.name)
    dest.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(source_candidate,dest)
    node[attr]=os.path.relpath(dest,doc['output'].parent).replace(os.sep,'/')
  heads=[]
@@ -430,19 +433,10 @@ if __name__=='__main__':
    if not map_page.is_file() or not BeautifulSoup(map_page.read_text(encoding='utf8'),'html.parser').select('details.map-branch a.map-leaf[href]'):
     errors.append(d['source_rel']+': mind map missing or empty')
   errors.extend('math render failed: '+message for message in b.math_errors)
-  id_cache={}
-  for page in [ROOT/'index.html',*ROOT.glob('subjects/**/*.html')]:
-   soup=BeautifulSoup(page.read_text(encoding='utf8'),'html.parser')
-   for e in soup.select('[src],[href]'):
-    v=e.get('href') or e.get('src')
-    if not v or v.startswith(('http:','https:','data:','mailto:','#')):continue
-    file=(page.parent/unquote(v.split('#')[0].split('?')[0])).resolve()
-    if not file.exists():errors.append(f'{global_url(page)}: missing {v}')
-    elif '#' in v and file.suffix.lower() in ('.html','.htm'):
-     if file not in id_cache:
-      target=BeautifulSoup(file.read_text(encoding='utf8'),'html.parser')
-      id_cache[file]={n['id'] for n in target.select('[id]')}
-     if unquote(v.split('#',1)[1]) not in id_cache[file]:errors.append(f'{global_url(page)}: missing anchor {v}')
+  site_check=Checker(ROOT).run()
+  errors.extend(f"{issue['type']}: {issue['source']} → {issue['reference']} ({issue['suggestion']})"
+                for issue in site_check.issues)
+  errors.extend('conversion warning: '+warning for warning in b.warnings)
   if errors:print('\n'.join(errors),file=sys.stderr);sys.exit(1)
   print('PASS: heading/formula/callout counts and local assets/links')
   if b.warnings:print('Warnings (manual review required):',*b.warnings,sep='\n - ')

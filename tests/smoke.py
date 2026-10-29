@@ -2,6 +2,7 @@
 from pathlib import Path
 from bs4 import BeautifulSoup
 import json
+import hashlib
 
 root = Path(__file__).resolve().parents[1]
 report = json.loads((root / 'docs/conversion-report.json').read_text(encoding='utf8'))
@@ -40,7 +41,16 @@ for filename, image_count in expected.items():
     page = root / 'subjects' / 'physics' / filename
     assert page in articles
     doc = BeautifulSoup(page.read_text(encoding='utf8'), 'html.parser')
-    assert len(doc.select('article.reading-content img[src]')) == image_count, page
+    images = doc.select('article.reading-content img[src]')
+    assert len(images) == image_count, page
+    chapter = filename.split('-', 1)[0]
+    for image in images:
+        published = (page.parent / image['src']).resolve()
+        original_name = published.name[11:]  # 10-character path key plus a hyphen
+        source = root / 'sources' / 'physics' / '_assets' / f'zip{chapter}' / 'images' / original_name
+        key = f'physics/_assets/zip{chapter}/images/{original_name}'
+        assert published.name.startswith(hashlib.sha1(key.encode()).hexdigest()[:10] + '-')
+        assert source.read_bytes() == published.read_bytes(), image['src']
     assert len(doc.select('article.reading-content .math-inline, article.reading-content .math-display')) > 100, page
     assert len(doc.select('article.reading-content .callout')) >= 15, page
 

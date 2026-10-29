@@ -82,6 +82,24 @@ python tools/prepare_netlify.py
 
 这会生成 `netlify-upload/`，其中 `index.html` 位于根目录，课程页面及所需的样式、脚本、原始 Markdown 链接和预览页面都已包含。把 **`netlify-upload` 文件夹**拖到 [Netlify Drop](https://app.netlify.com/drop)。每次更新笔记后，先运行 `python tools/build.py --check`，再运行准备脚本并重新上传。准备脚本会检查发布目录内的本地链接。
 
+## GitHub Pages 发布前检查
+
+页面、图片、CSS 和脚本使用相对于当前 HTML 页面的路径；不要在站内资源前写 `/assets/`、`file://`、本机绝对路径或 `localhost`。这样既能直接打开本地 `index.html`，也适用于 GitHub Pages 的 `/My_HTML_Knowledge_Base/` 项目路径。构建器用源文件在仓库内的相对路径为导入图片命名，换电脑重建不会改变图片 URL。根目录的 `.nojekyll` 让原始 Markdown 附件所在的 `_assets` 目录也能作为静态文件发布；它不改变 Pages 的发布来源。
+
+每次增加或修改笔记后，在项目根目录执行：
+
+```bash
+python tools/build.py --check
+python tests/smoke.py
+python tests/test_site_integrity.py
+python tools/check_site_integrity.py --require-tracked
+git status -sb
+```
+
+`--check` 会运行资源与页面链接完整性检查；独立检查器还扫描 `srcset`、CSS `url(...)`、SVG 外部引用与搜索索引，报告来源页面、引用地址和错误类型。`--require-tracked` 要求所有生成页面和所引用的静态文件都已加入 Git 索引。新增图片和 HTML 必须与源码及生成的搜索索引一起提交，否则本地正常而 Pages 会 404。若需要对比当前工作区与最近一次获取的远程树，可运行 `python tools/check_site_integrity.py --git-ref origin/main`；该结果取决于本机的 `origin/main` 是否已刷新。
+
+`.github/workflows/validate-site.yml` 只验证构建、测试、链接和生成产物是否随提交同步，**不部署网站，也不更改 Pages 发布方式**。
+
 ## 技术结构
 
 - `sources/`：Markdown 权威源文件。
@@ -100,6 +118,7 @@ python tools/prepare_netlify.py
 - `tools/upgrade_diagrams.py`：以定量函数图与结构图替换早期文字框图。
 - `tools/build.py`：Python 批量构建。
 - `tools/prepare_netlify.py`：生成并检查轻量的手动上传目录。
+- `tools/check_site_integrity.py`：递归检查生成页面、静态资源和可选 Git 发布树。
 - `tools/render_math.js`：MathJax 构建阶段转换 LaTeX 为 SVG。
 - `config/courses.json`：课程导航配置。
 
