@@ -1,0 +1,829 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>第8讲 多态性与虚函数 · 知栈</title>
+<link rel="stylesheet" href="../../assets/style.css">
+<script defer src="../../assets/search-data.js"></script>
+<script defer src="../../assets/app.js"></script>
+<script defer src="../../assets/code-copy.js"></script>
+</head>
+<body data-current="note">
+<header class="topbar">
+  <a class="brand" href="../../index.html" aria-label="返回知识库首页"><span class="brand-mark">知</span><span>知栈 <small>Knowledge Library</small></span></a>
+  <button class="top-search" id="openSearch" aria-label="搜索知识库"><span class="search-icon">⌕</span><span>搜索知识、公式与章节...</span><kbd>⌘ K</kbd></button>
+  <div class="toolbar">
+    <button class="icon-tool panel-tool" id="navToggle" title="收起课程导航" aria-label="收起课程导航" aria-controls="sidebar" aria-expanded="true" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M5.5 9h1M5.5 13h1"/></svg></button>
+    <button class="icon-tool panel-tool" id="tocToggle" title="收起本页目录" aria-label="收起本页目录" aria-controls="tocSidebar" aria-expanded="true" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M15 4v16M17.5 9h1M17.5 13h1"/></svg></button>
+    <button class="plain-tool" id="openTypography" title="调整字体与行距" aria-label="阅读设置">Aa <span class="tool-arrow">⌄</span></button>
+    <button class="icon-tool focus-tool" id="focusToggle" title="进入全屏阅读" aria-label="进入全屏阅读" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg><span id="focusLabel">全屏</span></button>
+    <button class="icon-tool" id="themeToggle" title="切换深色模式" aria-label="切换主题"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 15.6A8.5 8.5 0 0 1 8.4 3.5 8.8 8.8 0 1 0 20.5 15.6Z"/></svg></button>
+  </div>
+</header>
+<div class="page-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-inner">
+      <div class="sidebar-heading"><div class="side-caption">知识空间</div><button class="side-collapse" id="sidebarClose" type="button" aria-label="收起课程导航" hidden>收起 ‹</button></div>
+      <a class="nav-link nav-home" href="../../index.html"><span class="nav-icon">⌂</span> 总览</a>
+      <div class="side-caption second">我的课程</div>
+      <details class="course-group" open><summary class="course-title"><span class="course-emoji">◉</span>大学物理<span class="course-expand">⌄</span></summary><div class="course-children"><a class="nav-sub nav-overview" href="../../subjects/physics/index.html"><span class="nav-dot"></span>课程总览</a><a class="nav-sub" href="../../subjects/physics/12-gas-theory.html"><span class="nav-dot"></span>第12章 气体动理论</a><a class="nav-sub nav-map" href="../../subjects/physics/12-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/physics/12-lab.html"><span class="nav-dot"></span>交互函数实验室</a><a class="nav-sub" href="../../subjects/physics/13-thermodynamics.html"><span class="nav-dot"></span>第13章 热力学基础</a><a class="nav-sub nav-map" href="../../subjects/physics/13-thermodynamics-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/physics/14-oscillations.html"><span class="nav-dot"></span>第14章 振动</a><a class="nav-sub nav-map" href="../../subjects/physics/14-oscillations-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/physics/15-waves.html"><span class="nav-dot"></span>第15章 波动</a><a class="nav-sub nav-map" href="../../subjects/physics/15-waves-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a></div></details>
+<details class="course-group" open><summary class="course-title"><span class="course-emoji">◇</span>离散数学<span class="course-expand">⌄</span></summary><div class="course-children"><a class="nav-sub nav-overview" href="../../subjects/discrete-math/index.html"><span class="nav-dot"></span>课程总览</a><a class="nav-sub" href="../../subjects/discrete-math/01-propositional-logic.html"><span class="nav-dot"></span>第1讲 命题逻辑基础</a><a class="nav-sub nav-map" href="../../subjects/discrete-math/01-propositional-logic-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/discrete-math/02-equivalence.html"><span class="nav-dot"></span>第2讲 逻辑等值式与完备集</a><a class="nav-sub nav-map" href="../../subjects/discrete-math/02-equivalence-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/discrete-math/03-normal-forms.html"><span class="nav-dot"></span>第3讲 范式</a><a class="nav-sub nav-map" href="../../subjects/discrete-math/03-normal-forms-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/discrete-math/04-inference.html"><span class="nav-dot"></span>第4讲 推理与有效性</a><a class="nav-sub nav-map" href="../../subjects/discrete-math/04-inference-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/discrete-math/05-natural-deduction.html"><span class="nav-dot"></span>第5讲 自然推理</a><a class="nav-sub nav-map" href="../../subjects/discrete-math/05-natural-deduction-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/discrete-math/04-05-inference-review.html"><span class="nav-dot"></span>推理与自然推理综合复习</a><a class="nav-sub nav-map" href="../../subjects/discrete-math/04-05-inference-review-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/discrete-math/06-first-order-logic.html"><span class="nav-dot"></span>一阶逻辑基础</a><a class="nav-sub nav-map" href="../../subjects/discrete-math/06-first-order-logic-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/discrete-math/07-first-order-equivalence.html"><span class="nav-dot"></span>一阶逻辑等值式</a><a class="nav-sub nav-map" href="../../subjects/discrete-math/07-first-order-equivalence-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/discrete-math/08-predicate-inference.html"><span class="nav-dot"></span>谓词逻辑推理</a><a class="nav-sub nav-map" href="../../subjects/discrete-math/08-predicate-inference-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/discrete-math/09-sets.html"><span class="nav-dot"></span>集合的基本概念</a><a class="nav-sub nav-map" href="../../subjects/discrete-math/09-sets-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/discrete-math/10-set-operations.html"><span class="nav-dot"></span>集合运算与计数</a><a class="nav-sub nav-map" href="../../subjects/discrete-math/10-set-operations-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/discrete-math/11-set-identities.html"><span class="nav-dot"></span>集合恒等式</a><a class="nav-sub nav-map" href="../../subjects/discrete-math/11-set-identities-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a></div></details>
+<details class="course-group" open><summary class="course-title"><span class="course-emoji">▦</span>数据结构<span class="course-expand">⌄</span></summary><div class="course-children"><a class="nav-sub nav-overview" href="../../subjects/data-structures/index.html"><span class="nav-dot"></span>课程总览</a><a class="nav-sub" href="../../subjects/data-structures/02-linear-lists.html"><span class="nav-dot"></span>第2章 线性表</a><a class="nav-sub nav-map" href="../../subjects/data-structures/02-linear-lists-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/data-structures/03-stacks-queues.html"><span class="nav-dot"></span>第3章 栈和队列</a><a class="nav-sub nav-map" href="../../subjects/data-structures/03-stacks-queues-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/data-structures/04-strings.html"><span class="nav-dot"></span>第4章 串</a><a class="nav-sub nav-map" href="../../subjects/data-structures/04-strings-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/data-structures/05-arrays-generalized-lists.html"><span class="nav-dot"></span>第5章 数组和广义表</a><a class="nav-sub nav-map" href="../../subjects/data-structures/05-arrays-generalized-lists-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/data-structures/06-trees.html"><span class="nav-dot"></span>第6章 树和二叉树</a><a class="nav-sub nav-map" href="../../subjects/data-structures/06-trees-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/data-structures/07-graphs.html"><span class="nav-dot"></span>第7章 图</a><a class="nav-sub nav-map" href="../../subjects/data-structures/07-graphs-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/data-structures/09-search.html"><span class="nav-dot"></span>第9章 查找</a><a class="nav-sub nav-map" href="../../subjects/data-structures/09-search-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a></div></details>
+<details class="course-group" open><summary class="course-title"><span class="course-emoji">⌘</span>面向对象 C++<span class="course-expand">⌄</span></summary><div class="course-children"><a class="nav-sub nav-overview" href="../../subjects/cpp-oop/index.html"><span class="nav-dot"></span>课程总览</a><a class="nav-sub" href="../../subjects/cpp-oop/05-friends-organization.html"><span class="nav-dot"></span>第5讲 友元与程序组织</a><a class="nav-sub nav-map" href="../../subjects/cpp-oop/05-friends-organization-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/cpp-oop/06-overloading-conversion.html"><span class="nav-dot"></span>第6讲 重载与类型转换</a><a class="nav-sub nav-map" href="../../subjects/cpp-oop/06-overloading-conversion-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/cpp-oop/07-inheritance.html"><span class="nav-dot"></span>第7讲 继承与派生类</a><a class="nav-sub nav-map" href="../../subjects/cpp-oop/07-inheritance-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub active" href="../../subjects/cpp-oop/08-polymorphism.html"><span class="nav-dot"></span>第8讲 多态性与虚函数</a><a class="nav-sub nav-map" href="../../subjects/cpp-oop/08-polymorphism-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a></div></details>
+      <div class="sidebar-note"><span>知识从原始 Markdown 导入，保留完整内容。阅读样式和知识正文分开维护。</span></div>
+    </div>
+  </aside>
+  <main class="page-main article-surface" id="mainContent">
+    <div class="reading-head"><div class="eyebrow">面向对象 C++ · 完整讲义</div><h1 class="page-title">第8讲 多态性与虚函数</h1><p class="page-deck">按照原始 Markdown 完整保留正文层次、公式和语义提示块。</p><div class="meta-line">完整迁移 · 可调字号与行距 · <a href="../../sources/cpp-oop/08 多态性与虚函数.md">查看 Markdown 原文</a></div></div><article class="reading-content" data-pagefind-body><div class="chapter-links"><a href="08-polymorphism-mindmap.html">◈ 本章思维导图</a><span>导图与插图为辅助阅读内容</span></div><h1 id="第八讲-多态性与虚函数图解系统笔记"><span aria-hidden="true" class="anchor-alias" id="sec-01"></span>第八讲 多态性与虚函数（图解系统笔记）</h1>
+<aside class="callout callout-info" data-callout="info"><div class="callout-title" data-icon="i">资料依据与阅读说明 主要依据 ：《面向对象程序设计与 C++》第八讲《多态性与虚函数》（57 页 PPT，翟高寿）。课件的核心章节为 8.1～8.5 ；第 50～54 页的学生管理程序是附加讲解，整理于本文附录。课程概念、Animal / Bird / Beast / Bat 案例及主要执行结果以 PPT 为依据。文中的 override 、 final 、 std::string 、 dynamic_cast 及部分安全性说明属于 必要的现代 C++ 补充或校订 ，不能当作 PPT 原文。</div><div class="callout-content">
+<p><strong>主要依据</strong>：《面向对象程序设计与 C++》第八讲《多态性与虚函数》（57 页 PPT，翟高寿）。课件的核心章节为 <strong>8.1～8.5</strong>；第 50～54 页的学生管理程序是附加讲解，整理于本文附录。课程概念、Animal / Bird / Beast / Bat 案例及主要执行结果以 PPT 为依据。文中的 <code>override</code>、<code>final</code>、<code>std::string</code>、<code>dynamic_cast</code> 及部分安全性说明属于<strong>必要的现代 C++ 补充或校订</strong>，不能当作 PPT 原文。</p>
+<ul>
+<li>适合 Obsidian，数学公式使用 <code>$...$</code> 或 <code>$$...$$</code>；图中的颜色通常表示 <strong>蓝色：基类/静态接口；青色：派生对象；金色：运行时目标；红色：陷阱或需特别辨析的行为</strong>。</li>
+<li>原创插图均有 <code>.png</code> 阅读文件及 <code>.svg</code> 编辑文件。每幅图都对应一个具体机制，图注紧随其后。</li>
+</ul>
+</div></aside>
+<h2 id="学习路线"><span aria-hidden="true" class="anchor-alias" id="sec-02"></span>学习路线</h2>
+<ol>
+<li><strong>8.1 多态性概念与分类</strong>：同一消息、静态联编、动态联编，区分静态类型和动态类型。</li>
+<li><strong>8.2 为什么引入虚函数</strong>：赋值兼容、基类指针/引用、非虚函数的局限、对象切片。</li>
+<li><strong>8.3 虚函数定义及使用</strong>：<code>virtual</code>、<code>override</code>、动态分派、虚表、调用阶段、虚析构。</li>
+<li><strong>8.4 多重继承与虚函数</strong>：菱形继承、虚继承、不同指针视角下的调用。</li>
+<li><strong>8.5 纯虚函数与抽象类</strong>：<code>= 0</code>、抽象接口、派生类实现与多态应用。</li>
+<li><strong>补充附录</strong>：学生管理程序、典型图形作业、校订说明与判断速查。</li>
+</ol>
+<hr/>
+<h2 id="一81-多态性概念及分类课件第-3-页"><span aria-hidden="true" class="anchor-alias" id="sec-03"></span>一、8.1 多态性概念及分类（课件第 3 页）</h2>
+<h3 id="11-多态性究竟是什么"><span aria-hidden="true" class="anchor-alias" id="sec-04"></span>1.1 多态性究竟是什么</h3>
+<p><strong>多态性（polymorphism）</strong>：不同对象收到相同消息时，可以产生不同的反应与行为。对象可以同样提供 <code>Who()</code>、<code>Area()</code> 等接口，但执行行为各不相同。这使调用者能够<strong>围绕统一接口编程</strong>，降低与具体类型的耦合。</p>
+<p><img alt="cpp08_same_message_2b98121c-d962-4d65-89d0-4b9b5a0736b0" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_same_message_2b98121c-d962-4d65-89d0-4b9b5a0736b0.png"/></p>
+<p>图：<code>CAnimal</code>、<code>CBeast</code>、<code>CBird</code> 都响应 <code>Who()</code>；“表现不同”是多态的直观现象，是否为<strong>运行时多态</strong>还需要进一步判断。</p>
+<h3 id="12-静态多态编译时联编"><span aria-hidden="true" class="anchor-alias" id="sec-05"></span>1.2 静态多态：编译时联编</h3>
+<p>**联编（binding）**是把某个函数调用表达式与具体函数实现联系起来的过程。<strong>静态联编</strong>在编译期能够确定调用目标，最典型的是函数重载及运算符重载。</p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-type">void</span> <span class="tok-function">Print</span>(<span class="tok-type">int</span> x) {                <span class="tok-comment">// int 版本</span>
+    <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> x <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">'\n'</span>;       <span class="tok-comment">// 输出整数</span>
+}
+<span class="tok-type">void</span> <span class="tok-function">Print</span>(<span class="tok-type">double</span> x) {             <span class="tok-comment">// double 版本</span>
+    <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> x <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">'\n'</span>;       <span class="tok-comment">// 输出浮点数</span>
+}
+
+<span class="tok-function">Print</span>(<span class="tok-number">3</span>);                          <span class="tok-comment">// 编译期选择 Print(int)</span>
+<span class="tok-function">Print</span>(<span class="tok-number">2.5</span>);                        <span class="tok-comment">// 编译期选择 Print(double)</span>
+</code></pre></div>
+<p>以上片段假定程序已包含 <code>&lt;iostream&gt;</code>，并处于允许调用 <code>Print</code> 的函数体内。参数类型是编译期选择重载函数的主要依据之一。</p>
+<p><img alt="cpp08_overload_compile_987d33b3-cda3-4b12-ad2b-84accc6af8ff" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_overload_compile_987d33b3-cda3-4b12-ad2b-84accc6af8ff.png"/></p>
+<p>图：<code>Print(3)</code> 从实参类型到最终重载版本的编译期匹配过程。</p>
+<h3 id="13-动态多态运行时联编"><span aria-hidden="true" class="anchor-alias" id="sec-06"></span>1.3 动态多态：运行时联编</h3>
+<p><strong>动态联编</strong>指特定虚函数调用的执行版本，要依据运行时对象的实际类型确定。核心构造是：<strong>继承关系 + 基类虚函数 + 派生类重写 + 经合适的基类指针或引用调用</strong>。</p>
+<p><img alt="cpp08_late_binding_135316ce-983b-434c-9ce0-6806a6d78e06" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_late_binding_135316ce-983b-434c-9ce0-6806a6d78e06.png"/></p>
+<p>图：<code>CAnimal*</code> 的静态类型保持不变，<code>p-&gt;Who()</code> 却可以在运行时选中 <code>CBird::Who()</code>。</p>
+<h3 id="14-最容易混淆静态类型和动态类型"><span aria-hidden="true" class="anchor-alias" id="sec-07"></span>1.4 最容易混淆：静态类型和动态类型</h3>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp">CBird bird;                         <span class="tok-comment">// 创建 CBird 对象</span>
+CAnimal<span class="tok-operator">*</span> p <span class="tok-operator">=</span> <span class="tok-operator">&amp;</span>bird;                 <span class="tok-comment">// p 的静态类型是 CAnimal*</span>
+p<span class="tok-operator">-&gt;</span><span class="tok-function">Who</span>();                           <span class="tok-comment">// 是否动态分派，取决于 CAnimal::Who 是否为虚函数</span>
+</code></pre></div>
+<ul>
+<li><strong>静态类型（static type）</strong>：由表达式、声明在编译期确定。<code>p</code> 的类型是 <code>CAnimal*</code>；通过 <code>p</code> 调用成员时以 <code>CAnimal</code> 视角进行名称查找和访问检查。</li>
+<li><strong>动态类型（dynamic type）</strong>：对象在运行时的实际类型，此处为 <code>CBird</code>。</li>
+<li><strong>声明为虚函数</strong>：使符合要求的成员调用能够按动态类型选择最终覆盖者（final overrider）。</li>
+</ul>
+<p><img alt="cpp08_static_dynamic_035329c4-48f8-4e75-aecf-5ec66b943c31" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_static_dynamic_035329c4-48f8-4e75-aecf-5ec66b943c31.png"/></p>
+<p>图：指针变量的声明类型与所指对象实际类型并不是同一件事。</p>
+<aside class="callout callout-important" data-callout="important"><div class="callout-title" data-icon="!">三个判断顺序</div><div class="callout-content">
+<p></p>
+<ol>
+<li><strong>表达式的静态类型是什么？</strong></li>
+<li>在这个静态类型下，当前调用的函数<strong>是否具有虚特性</strong>？调用是否有显式类名限定？</li>
+<li>若是正常虚调用，<strong>当前对象动态类型</strong>是什么、对应最终覆盖者是谁？</li>
+</ol>
+</div></aside>
+<p><img alt="cpp08_binding_choice_6ab4b91c-2a47-42f2-a6a4-c969923b44c3" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_binding_choice_6ab4b91c-2a47-42f2-a6a4-c969923b44c3.png"/></p>
+<p>图：先判断调用是否具有虚特性，再判断实际对象；不能只看到派生对象就认定会调用派生版本。</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>静态多态</th>
+<th>动态多态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>典型机制</td>
+<td>函数重载、运算符重载</td>
+<td>虚函数重写</td>
+</tr>
+<tr>
+<td>决定调用的时间</td>
+<td>编译期</td>
+<td>运行期（语义上）</td>
+</tr>
+<tr>
+<td>主要依据</td>
+<td>实参类型、可见重载及转换规则</td>
+<td>虚声明、实际对象和最终覆盖者</td>
+</tr>
+<tr>
+<td>是否必需继承</td>
+<td>不必</td>
+<td>本课典型场景需要继承</td>
+</tr>
+<tr>
+<td>优势</td>
+<td>简洁、可提前检查与优化</td>
+<td>统一接口下灵活扩展派生类型</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="二82-虚函数为什么有必要课件第-513-页"><span aria-hidden="true" class="anchor-alias" id="sec-08"></span>二、8.2 虚函数为什么有必要（课件第 5～13 页）</h2>
+<h3 id="21-赋值兼容原则与向上类型转换"><span aria-hidden="true" class="anchor-alias" id="sec-09"></span>2.1 赋值兼容原则与向上类型转换</h3>
+<p>公有继承（<code>public</code>）表达一种可替代关系：在适当场景中，派生类对象可以当作基类对象使用。但要分清三种操作：</p>
+<ul>
+<li><strong>基类指针指向派生对象</strong>：<code>CAnimal* p = &amp;bird;</code>，对象本身没有被复制。</li>
+<li><strong>基类引用绑定派生对象</strong>：<code>CAnimal&amp; r = bird;</code>，同样不创建新对象。</li>
+<li><strong>用派生对象初始化基类对象</strong>：<code>CAnimal a = bird;</code>，会构造一个新的基类对象，发生<strong>对象切片（slicing）</strong>。</li>
+</ul>
+<p><img alt="cpp08_upcast_pointer_1c68b561-b46c-443e-907d-7f486bdf2108" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_upcast_pointer_1c68b561-b46c-443e-907d-7f486bdf2108.png"/></p>
+<p>图：向上转换是改变访问视角，不会把派生对象本身变成基类对象。</p>
+<p><img alt="cpp08_upcast_reference_dbd5fca0-2c2c-4868-bb5e-5afb515e997a" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_upcast_reference_dbd5fca0-2c2c-4868-bb5e-5afb515e997a.png"/></p>
+<p>图：引用同样保持原有对象身份，后续是否调用派生函数由虚特性决定。</p>
+<h3 id="22-没有-virtual-的森林动物案例"><span aria-hidden="true" class="anchor-alias" id="sec-10"></span>2.2 没有 virtual 的森林动物案例</h3>
+<p>课件第 8～12 页设计了 <code>CAnimal</code>、<code>CBeast</code> 和 <code>CBird</code>。在没有虚函数时，三个类各有同名无参 <code>Who()</code>，并分别输出以下信息：</p>
+<ul>
+<li><code>CAnimal::Who()</code>：我不是飞禽就是走兽！</li>
+<li><code>CBeast::Who()</code>：我是森林之王！</li>
+<li><code>CBird::Who()</code>：我是一只小小鸟！</li>
+</ul>
+<p>以下是整理后的核心 C++ 示例（与 PPT 逻辑一致，更新为标准头文件和入口）：</p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-directive">#include</span> <span class="tok-string">&lt;iostream&gt;</span>                <span class="tok-comment">// 标准输入输出库</span>
+
+<span class="tok-keyword">class</span> CAnimal {                     <span class="tok-comment">// 动物基类</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-type">void</span> <span class="tok-function">Who</span>() {                     <span class="tok-comment">// 非虚函数</span>
+        <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">"动物版本\n"</span>;   <span class="tok-comment">// 基类输出</span>
+    }
+};
+
+<span class="tok-keyword">class</span> CBeast <span class="tok-operator">:</span> <span class="tok-keyword">public</span> CAnimal {     <span class="tok-comment">// 兽类公有继承动物</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-type">void</span> <span class="tok-function">Who</span>() {                     <span class="tok-comment">// 同名函数，但并非虚重写</span>
+        <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">"兽类版本\n"</span>;   <span class="tok-comment">// 派生类输出</span>
+    }
+};
+
+<span class="tok-type">int</span> <span class="tok-function">main</span>() {
+    CBeast tiger;                    <span class="tok-comment">// 创建兽类对象</span>
+    CAnimal<span class="tok-operator">*</span> p <span class="tok-operator">=</span> <span class="tok-operator">&amp;</span>tiger;             <span class="tok-comment">// 基类指针指向兽类对象</span>
+    p<span class="tok-operator">-&gt;</span><span class="tok-function">Who</span>();                        <span class="tok-comment">// 输出“动物版本”</span>
+    tiger.<span class="tok-function">Who</span>();                     <span class="tok-comment">// 输出“兽类版本”</span>
+    <span class="tok-keyword">return</span> <span class="tok-number">0</span>;                        <span class="tok-comment">// 程序正常结束</span>
+}
+</code></pre></div>
+<p>这里 <code>p-&gt;Who()</code> 的静态类型视角是 <code>CAnimal</code>，而 <code>CAnimal::Who()</code> <strong>不是虚函数</strong>，所以编译期绑定基类版本。</p>
+<p><img alt="cpp08_nonvirtual_three_7a809bbb-0ed8-447f-90a7-1efb46132430" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_nonvirtual_three_7a809bbb-0ed8-447f-90a7-1efb46132430.png"/></p>
+<p>图：即使 <code>p</code> 先后指向动物、老虎、鸟，非虚 <code>p-&gt;Who()</code> 的最终函数始终是基类版本。</p>
+<p><img alt="cpp08_nonvirtual_direct_f7f48982-6aa9-4019-9e41-748822bb043a" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_nonvirtual_direct_f7f48982-6aa9-4019-9e41-748822bb043a.png"/></p>
+<p>图：两个表达式访问同一个兽对象，因表达式静态类型不同而输出不同内容。</p>
+<h3 id="23-基类引用作为参数时仍会遇到同样的问题"><span aria-hidden="true" class="anchor-alias" id="sec-11"></span>2.3 基类引用作为参数时仍会遇到同样的问题</h3>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-type">void</span> <span class="tok-function">Show</span>(CAnimal<span class="tok-operator">&amp;</span> animal) {         <span class="tok-comment">// 引用形参的静态类型是 CAnimal</span>
+    animal.<span class="tok-function">Who</span>();                    <span class="tok-comment">// 若非虚，调用 CAnimal::Who()</span>
+}
+
+<span class="tok-comment">// Show(tiger);                      // 向上转换合法，但不会自动动态分派</span>
+</code></pre></div>
+<p><strong>函数参数是引用</strong>可以避免切片，但<strong>并不自动保证虚函数多态</strong>。这也是课件第 11 页基于引用参数的三次 <code>Show</code> 均输出基类消息的原因。</p>
+<p><img alt="cpp08_nonvirtual_reference_92bb21f8-0b85-4940-8338-5e750c2a3f70" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_nonvirtual_reference_92bb21f8-0b85-4940-8338-5e750c2a3f70.png"/></p>
+<p>图：参数的实际对象不同，但 <code>Show(CAnimal&amp;)</code> 中的非虚函数绑定结果不变。</p>
+<h3 id="24-强制类型转换不是通用解决方案"><span aria-hidden="true" class="anchor-alias" id="sec-12"></span>2.4 强制类型转换不是通用解决方案</h3>
+<p>课件第 13 页示意通过把基类指针强转为某个派生类指针，再调用派生函数。这依赖你能确信所指对象的真实类型；假如判断错了，可能出现未定义行为。</p>
+<p><img alt="cpp08_unsafe_downcast_250e6ea1-ffd2-4934-a67e-c00b27e16ba4" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_unsafe_downcast_250e6ea1-ffd2-4934-a67e-c00b27e16ba4.png"/></p>
+<p>图：向下转型必须确认真实类型；不要把未经检查的 C 风格强制类型转换当作多态机制。</p>
+<p><strong>必要补充</strong>：对于具有至少一个虚函数的多态基类，可在适用场景使用 <code>dynamic_cast&lt;CBird*&gt;(p)</code> 检查转换；若不需要知道具体派生类型，优先直接设计虚接口。</p>
+<h3 id="25-对象切片与指针引用多态的边界"><span aria-hidden="true" class="anchor-alias" id="sec-13"></span>2.5 对象切片与指针/引用多态的边界</h3>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp">CBird bird;                          <span class="tok-comment">// 创建派生对象</span>
+CAnimal animal <span class="tok-operator">=</span> bird;              <span class="tok-comment">// 只把 CAnimal 子对象复制出来</span>
+CAnimal<span class="tok-operator">&amp;</span> ref <span class="tok-operator">=</span> bird;                <span class="tok-comment">// 引用仍绑定完整的 CBird 对象</span>
+</code></pre></div>
+<p>对象切片后，<code>animal</code> 是独立的 <code>CAnimal</code> 对象，即使 <code>Who()</code> 是虚函数，<code>animal.Who()</code> 也只对应 <code>CAnimal</code> 动态类型；对 <code>ref.Who()</code> 的虚调用则仍能选择 <code>CBird</code> 的重写版本。</p>
+<p><img alt="cpp08_object_slicing_d3aec9c9-9b79-4238-b893-a49f63101fba" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_object_slicing_d3aec9c9-9b79-4238-b893-a49f63101fba.png"/></p>
+<p>图：<strong>按值复制</strong>让派生部分丢失；<strong>指针或引用绑定</strong>不切片。</p>
+<aside class="callout callout-warning" data-callout="warning"><div class="callout-title" data-icon="!">小心“派生类可当基类使用”的过度理解</div><div class="callout-content">
+<p>赋值兼容不等于“派生类所有成员都能通过基类指针直接访问”；也不等于“任何调用都会自动选中派生版本”；更不等于“按值接收派生对象可以保留其派生身份”。</p>
+</div></aside>
+<hr/>
+<h2 id="三83-虚函数的定义覆盖与使用课件第-1532-页"><span aria-hidden="true" class="anchor-alias" id="sec-14"></span>三、8.3 虚函数的定义、覆盖与使用（课件第 15～32 页）</h2>
+<h3 id="31-virtual-的基本语法"><span aria-hidden="true" class="anchor-alias" id="sec-15"></span>3.1 virtual 的基本语法</h3>
+<p>在基类声明中用 <code>virtual</code> 修饰非静态成员函数：</p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-keyword">class</span> CAnimal {                     <span class="tok-comment">// 基类</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-keyword">virtual</span> <span class="tok-type">void</span> <span class="tok-function">Who</span>();             <span class="tok-comment">// 声明虚函数</span>
+    <span class="tok-keyword">virtual</span> <span class="tok-operator">~</span><span class="tok-function">CAnimal</span>() <span class="tok-operator">=</span> <span class="tok-keyword">default</span>;   <span class="tok-comment">// 支持通过基类指针安全删除对象</span>
+};
+
+<span class="tok-keyword">class</span> CBird <span class="tok-operator">:</span> <span class="tok-keyword">public</span> CAnimal {      <span class="tok-comment">// 派生类</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-type">void</span> <span class="tok-function">Who</span>() override;            <span class="tok-comment">// 表示必须正确覆盖基类虚函数</span>
+};
+</code></pre></div>
+<p><code>override</code> 是 C++11 起的明确检查标记；PPT 旧例中没有它，但<strong>建议所有重写虚函数的派生类都加</strong>。基类 <code>virtual</code> 一旦建立虚特性，沿相应覆盖链继续传递；派生类即使省略 <code>virtual</code>，对应重写仍为虚函数。</p>
+<p><img alt="cpp08_virtual_inherited_cfb9fd60-8954-4146-856a-a12a4aa341de" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_virtual_inherited_cfb9fd60-8954-4146-856a-a12a4aa341de.png"/></p>
+<p>图：虚特性从基类继承，派生类的 <code>override</code> 使重写关系更明确。</p>
+<h3 id="32-加-virtual-后的实际结果"><span aria-hidden="true" class="anchor-alias" id="sec-16"></span>3.2 加 virtual 后的实际结果</h3>
+<p>只要在原先动物例程的 <code>CAnimal::Who()</code> 声明前加 <code>virtual</code>，而保留 <code>CBeast::Who()</code>、<code>CBird::Who()</code> 对应实现，基类指针调用结果就发生改变。</p>
+<p><img alt="cpp08_virtual_three_f8b8e2b8-9dac-46ae-b068-09b7a6a84feb" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_virtual_three_f8b8e2b8-9dac-46ae-b068-09b7a6a84feb.png"/></p>
+<p>图：同一 <code>CAnimal*</code>，依次指向动物、兽、鸟，按对象动态类型选择不同函数版本（课件第 19 页）。</p>
+<p><strong>原因分三层：</strong></p>
+<ol>
+<li>编译期确认调用的是 <code>CAnimal::Who()</code> 所代表的<strong>虚函数接口</strong>。</li>
+<li>运行时指针实际指向 <code>CAnimal</code>、<code>CBeast</code> 或 <code>CBird</code> 的完整对象。</li>
+<li>调用最终覆盖者：基类对象调用基类版本，兽对象调用兽版本，鸟对象调用鸟版本。</li>
+</ol>
+<h3 id="33-引用与指针形参只写一次-show"><span aria-hidden="true" class="anchor-alias" id="sec-17"></span>3.3 引用与指针形参：只写一次 Show</h3>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-type">void</span> <span class="tok-function">Show</span>(CAnimal<span class="tok-operator">&amp;</span> animal) {         <span class="tok-comment">// 基类引用参数</span>
+    animal.<span class="tok-function">Who</span>();                    <span class="tok-comment">// 经引用发起虚调用</span>
+}
+
+<span class="tok-type">void</span> <span class="tok-function">Show</span>(CAnimal<span class="tok-operator">*</span> animal) {         <span class="tok-comment">// 基类指针参数</span>
+    <span class="tok-keyword">if</span> (animal <span class="tok-operator">!=</span> <span class="tok-keyword">nullptr</span>) {         <span class="tok-comment">// 先判断指针非空</span>
+        animal<span class="tok-operator">-&gt;</span><span class="tok-function">Who</span>();               <span class="tok-comment">// 经指针发起虚调用</span>
+    }
+}
+</code></pre></div>
+<p>这两个 <code>Show</code> 函数在同一代码作用域下构成函数重载，选择哪一个 <code>Show</code> 是静态的；<strong>进入所选 <code>Show</code> 后的 <code>Who()</code> 虚分派则是动态的</strong>。这说明一次程序中静态重载与动态多态可以同时存在。</p>
+<p><img alt="cpp08_virtual_reference_4b8608bb-a1fb-480c-a40a-46117412eac9" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_virtual_reference_4b8608bb-a1fb-480c-a40a-46117412eac9.png"/></p>
+<p>图：课件第 20 页——同一个引用形参函数按实际对象执行各自的 <code>Who()</code>。</p>
+<p><img alt="cpp08_virtual_pointer_param_bf254547-de02-4c1d-8920-3b889599bf7d" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_virtual_pointer_param_bf254547-de02-4c1d-8920-3b889599bf7d.png"/></p>
+<p>图：课件第 21 页——指针形参也能形成同样的动态分派，且允许统一传参。</p>
+<h3 id="34-非虚成员函数可以在内部调用虚函数"><span aria-hidden="true" class="anchor-alias" id="sec-18"></span>3.4 非虚成员函数可以在内部调用虚函数</h3>
+<p>课件第 22、31～32 页把 <code>Show()</code> 放在基类中，<code>Show()</code> 本身不声明为虚函数，但它在内部调用虚函数 <code>Who()</code>：</p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-keyword">class</span> CAnimal {                     <span class="tok-comment">// 定义动物基类</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-type">void</span> <span class="tok-function">Show</span>() {                    <span class="tok-comment">// 普通非虚成员函数</span>
+        <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">"开始介绍\n"</span>; <span class="tok-comment">// 统一输出前缀</span>
+        <span class="tok-function">Who</span>();                       <span class="tok-comment">// 仍会发起虚调用</span>
+    }
+    <span class="tok-keyword">virtual</span> <span class="tok-type">void</span> <span class="tok-function">Who</span>() {            <span class="tok-comment">// 虚成员函数</span>
+        <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">"动物版本\n"</span>;   <span class="tok-comment">// 默认实现</span>
+    }
+    <span class="tok-keyword">virtual</span> <span class="tok-operator">~</span><span class="tok-function">CAnimal</span>() <span class="tok-operator">=</span> <span class="tok-keyword">default</span>;   <span class="tok-comment">// 安全的多态析构接口</span>
+};
+</code></pre></div>
+<p>如果 <code>p</code> 的静态类型为 <code>CAnimal*</code>、实际指向 <code>CBird</code>，那么 <code>p-&gt;Show()</code> 在非虚成员函数 <code>CAnimal::Show()</code> 中执行，但其中的 <code>Who()</code> 仍会动态分派到 <code>CBird::Who()</code>（前提是对象已经完整构造、且不是构造/析构期间的特殊情形）。</p>
+<p><img alt="cpp08_show_calls_who_07134d11-4946-4ea9-85dd-468d33d326d4" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_show_calls_who_07134d11-4946-4ea9-85dd-468d33d326d4.png"/></p>
+<p>图：固定进入基类 <code>Show()</code> 与内部虚调用动态进入派生 <code>Who()</code>，是两次不同的函数选择。</p>
+<p><img alt="cpp08_member_dispatch_d009fec9-a97d-4750-8216-2c85eb080d4e" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_member_dispatch_d009fec9-a97d-4750-8216-2c85eb080d4e.png"/></p>
+<p>图：完整对象存活期间，<code>this</code> 保持实际对象身份，普通成员函数内部可调用派生重写版本。</p>
+<aside class="callout callout-important" data-callout="important"><div class="callout-title" data-icon="!">对课件的一处表述做明确校订</div><div class="callout-content">
+<p>课件第 26 页“普通成员函数中调用虚函数，原则上调用成员函数所在类中的函数版本”容易引起误解。<strong>对于完整对象上的正常虚调用，实际上仍按动态类型分派</strong>；课件第 22 页和第 32 页的实际运行结果正好证明这一点。不能把它与“构造/析构函数期间的虚调用”混为一谈。</p>
+</div></aside>
+<h3 id="35-重写override重载overload和同名隐藏hiding"><span aria-hidden="true" class="anchor-alias" id="sec-19"></span>3.5 重写（override）、重载（overload）和同名隐藏（hiding）</h3>
+<p><strong>重写</strong>要求匹配同一个虚函数的函数名、参数类型与必要的 <code>const</code> / 引用限定符；返回类型通常匹配，存在特定协变返回例外。<strong>重载</strong>主要是同一作用域中同名但参数列表不同。<strong>同名隐藏</strong>则是派生类声明某个名字，使基类同名函数在普通名称查找时被隐藏，并不等于重写。</p>
+<p><img alt="cpp08_override_match_9c26966f-b95a-43cb-a954-92489fda80d2" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_override_match_9c26966f-b95a-43cb-a954-92489fda80d2.png"/></p>
+<p>图：只有签名符合虚函数覆盖规则，派生版本才能真正 <code>override</code>。</p>
+<p><img alt="cpp08_const_mismatch_25835f74-c4d9-47c6-b698-ac198dbcfbd3" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_const_mismatch_25835f74-c4d9-47c6-b698-ac198dbcfbd3.png"/></p>
+<p>图：<code>void F()</code> 和 <code>void F() const</code> 是不同成员函数，不能误以为只要同名就是重写。</p>
+<p><img alt="cpp08_name_hiding_c1ed6e78-7652-4559-b4ef-1566a1d43aa3" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_name_hiding_c1ed6e78-7652-4559-b4ef-1566a1d43aa3.png"/></p>
+<p>图：<code>Derived::Who(int)</code> 会隐藏基类的同名成员；是否重写还取决于是否存在匹配的虚函数。</p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-keyword">class</span> Base {                        <span class="tok-comment">// 基类</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-keyword">virtual</span> <span class="tok-type">void</span> <span class="tok-function">F</span>() <span class="tok-type">const</span> {}       <span class="tok-comment">// const 虚函数</span>
+};
+
+<span class="tok-keyword">class</span> Derived <span class="tok-operator">:</span> <span class="tok-keyword">public</span> Base {      <span class="tok-comment">// 派生类</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-type">void</span> <span class="tok-function">F</span>() <span class="tok-type">const</span> override {}      <span class="tok-comment">// 匹配并覆盖基类虚函数</span>
+};
+</code></pre></div>
+<p>如果把 <code>Derived::F() const</code> 错写成 <code>Derived::F()</code>，<code>override</code> 会让编译器报错，防止“看起来重写了，实际没有重写”的错误。</p>
+<p><strong>补充：协变返回类型</strong>允许特定的指针/引用返回：</p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-keyword">class</span> Base {                        <span class="tok-comment">// 基类</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-keyword">virtual</span> Base<span class="tok-operator">*</span> <span class="tok-function">Clone</span>() <span class="tok-type">const</span>;    <span class="tok-comment">// 返回指向基类的指针</span>
+};
+
+<span class="tok-keyword">class</span> Derived <span class="tok-operator">:</span> <span class="tok-keyword">public</span> Base {      <span class="tok-comment">// 派生类</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    Derived<span class="tok-operator">*</span> <span class="tok-function">Clone</span>() <span class="tok-type">const</span> override;<span class="tok-comment">// 合法的协变指针返回类型</span>
+};
+</code></pre></div>
+<p>该例展示合法的<strong>声明关系</strong>，不是一个已实现的可独立链接程序。</p>
+<p><img alt="cpp08_covariant_return_f7206c1c-c190-4e16-bf93-1e16505abfd6" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_covariant_return_f7206c1c-c190-4e16-bf93-1e16505abfd6.png"/></p>
+<p>图：协变返回类型的实质是：派生重写函数可返回更具体的派生类型指针或引用，且必须满足标准规定的条件。</p>
+<h3 id="36-有时即使是虚函数也可以明确调用基类版本"><span aria-hidden="true" class="anchor-alias" id="sec-20"></span>3.6 有时即使是虚函数，也可以明确调用基类版本</h3>
+<p>使用限定名 <code>p-&gt;CAnimal::Who()</code>，是<strong>明确要求调用该基类实现</strong>，不走普通的虚分派。和此不同，<code>p-&gt;Who()</code> 正常按虚函数机制工作。</p>
+<p><img alt="cpp08_qualified_suppression_4958e8d6-f603-4814-9a67-469b843ea188" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_qualified_suppression_4958e8d6-f603-4814-9a67-469b843ea188.png"/></p>
+<p>图：显式 <code>CAnimal::</code> 限定是对调用方式的改变，不是对实际对象类型的改变。</p>
+<h3 id="37-虚函数的运行原理理解-vptr-与-vtable但不要把它当作标准规定的内存格式"><span aria-hidden="true" class="anchor-alias" id="sec-21"></span>3.7 虚函数的运行原理：理解 vptr 与 vtable，但不要把它当作标准规定的内存格式</h3>
+<p>C++ 标准规定<strong>运行时虚调用的行为</strong>，不强制所有编译器使用某种固定的对象布局。在常见实现模型中：</p>
+<ul>
+<li>带有虚函数的对象会保存某种虚调度相关信息（常用示意名为 <code>vptr</code>）。</li>
+<li><code>vptr</code> 可关联一张虚函数表 <code>vtable</code>，表的条目对应特定虚函数槽位。</li>
+<li>派生类覆盖虚函数时，对应表项可指向派生版本。</li>
+<li>同一个动态类型的不同对象可能共享一张表；<strong>不要据此假定表的固定顺序、字节数或对象中偏移</strong>。</li>
+</ul>
+<p><img alt="cpp08_virtual_dispatch_steps_37716bc1-fdd6-4a36-ae78-530611abddf8" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_virtual_dispatch_steps_37716bc1-fdd6-4a36-ae78-530611abddf8.png"/></p>
+<p>图：由基类指针开始，识别对象实际类型并选定最终覆盖者。</p>
+<p><img alt="cpp08_vtable_base_a2d1d3dd-39e5-4d8c-b691-364dae1bea2f" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_vtable_base_a2d1d3dd-39e5-4d8c-b691-364dae1bea2f.png"/></p>
+<p>图：基类对象在典型 <code>vptr</code> / <code>vtable</code> 模型下的示意布局。</p>
+<p><img alt="cpp08_vtable_derived_3f614f52-c7c7-4968-9b69-4f5f598a7ad4" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_vtable_derived_3f614f52-c7c7-4968-9b69-4f5f598a7ad4.png"/></p>
+<p>图：派生对象将 <code>Who</code> 对应的常见虚表条目指向派生版本。</p>
+<p><img alt="cpp08_vtable_shared_eb947e96-c33d-4cf2-a980-d23f7d63238a" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_vtable_shared_eb947e96-c33d-4cf2-a980-d23f7d63238a.png"/></p>
+<p>图：两个相同派生类型对象可有各自的 <code>vptr</code>，但共用虚表信息。</p>
+<p><img alt="cpp08_virtual_table_trace_7ea6da2d-a970-41fd-b099-22166f22496d" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_virtual_table_trace_7ea6da2d-a970-41fd-b099-22166f22496d.png"/></p>
+<p>图：典型实现中“基类指针 → 对象 → 虚表槽位 → 派生函数”的调用链。</p>
+<aside class="callout callout-note" data-callout="note"><div class="callout-title" data-icon="i">vptr 不是标准语法</div><div class="callout-content">
+<p>你无法在普通 C++ 源程序中直接写 <code>obj.vptr</code> 去访问编译器内部实现。图中的 <code>vptr</code>、<code>vtable</code> 是<strong>解释常见 ABI 实现机制的教学模型</strong>，不是标准库公开成员或需要手写的字段。</p>
+</div></aside>
+<h3 id="38-构造函数与析构函数中的虚调用非常重要的例外"><span aria-hidden="true" class="anchor-alias" id="sec-22"></span>3.8 构造函数与析构函数中的虚调用：非常重要的例外</h3>
+<p>课件第 27～29 页的基类构造函数调用 <code>Who()</code>，即使该函数是虚函数，在<strong>基类构造阶段</strong>也只调用基类版本。原因是派生类部分尚未完成构造，不可像完整派生对象那样分派。</p>
+<p><img alt="cpp08_constructor_dispatch_0ce5d536-bfce-452f-862a-bdaab4aa5cb3" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_constructor_dispatch_0ce5d536-bfce-452f-862a-bdaab4aa5cb3.png"/></p>
+<p>图：基类构造阶段、派生构造阶段和完整对象阶段的虚调用目标不同。</p>
+<p>类似地，析构时先执行派生类析构函数，再执行基类析构函数；进入基类析构阶段时，已经不能动态分派到被销毁的派生部分。</p>
+<p><img alt="cpp08_destructor_dispatch_49a03620-9704-43d5-a9dc-3525659d6879" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_destructor_dispatch_49a03620-9704-43d5-a9dc-3525659d6879.png"/></p>
+<p>图：析构阶段由最派生类逐层退回基类，虚函数调用遵守当前析构阶段的类身份。</p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-directive">#include</span> <span class="tok-string">&lt;iostream&gt;</span>                <span class="tok-comment">// 输入输出</span>
+
+<span class="tok-keyword">class</span> Base {                        <span class="tok-comment">// 基类</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-function">Base</span>() { <span class="tok-function">F</span>(); }                 <span class="tok-comment">// Base 构造阶段调用 Base::F</span>
+    <span class="tok-keyword">virtual</span> <span class="tok-type">void</span> <span class="tok-function">F</span>() {              <span class="tok-comment">// 基类虚函数</span>
+        <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">"Base\n"</span>;    <span class="tok-comment">// 构造阶段输出 Base</span>
+    }
+    <span class="tok-keyword">virtual</span> <span class="tok-operator">~</span><span class="tok-function">Base</span>() <span class="tok-operator">=</span> <span class="tok-keyword">default</span>;      <span class="tok-comment">// 多态基类虚析构</span>
+};
+
+<span class="tok-keyword">class</span> Derived <span class="tok-operator">:</span> <span class="tok-keyword">public</span> Base {      <span class="tok-comment">// 派生类</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-type">void</span> <span class="tok-function">F</span>() override {             <span class="tok-comment">// 覆盖 F</span>
+        <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">"Derived\n"</span>; <span class="tok-comment">// 正常虚调用选中此版本</span>
+    }
+};
+
+<span class="tok-type">int</span> <span class="tok-function">main</span>() {                        <span class="tok-comment">// 程序入口</span>
+    Derived d;                      <span class="tok-comment">// 构造 Base 时输出 Base</span>
+    Base<span class="tok-operator">&amp;</span> ref <span class="tok-operator">=</span> d;                  <span class="tok-comment">// 基类引用绑定完整派生对象</span>
+    ref.<span class="tok-function">F</span>();                        <span class="tok-comment">// 输出 Derived</span>
+    <span class="tok-keyword">return</span> <span class="tok-number">0</span>;                       <span class="tok-comment">// 正常结束</span>
+}
+</code></pre></div>
+<aside class="callout callout-warning" data-callout="warning"><div class="callout-title" data-icon="!">重要警惕</div><div class="callout-content">
+<p>不要在基类构造或析构函数中依靠虚函数“寻找尚未构造或已经析构的派生行为”。如果必须执行这种行为，应该设计为构造完成后明确调用的普通成员流程。</p>
+</div></aside>
+<h3 id="39-虚析构函数是多态基类的重要设计要求"><span aria-hidden="true" class="anchor-alias" id="sec-23"></span>3.9 虚析构函数是多态基类的重要设计要求</h3>
+<p>如果经 <code>Base*</code> 删除由 <code>new Derived</code> 创建的对象，通常要求 <code>Base</code> 有虚析构函数，否则会出现<strong>未定义行为</strong>（不是简单地、必然地“只执行基类析构”）。</p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-keyword">class</span> Base {                        <span class="tok-comment">// 多态基类</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-keyword">virtual</span> <span class="tok-operator">~</span><span class="tok-function">Base</span>() <span class="tok-operator">=</span> <span class="tok-keyword">default</span>;      <span class="tok-comment">// 允许安全的基类指针删除</span>
+};
+
+<span class="tok-keyword">class</span> Derived <span class="tok-operator">:</span> <span class="tok-keyword">public</span> Base {      <span class="tok-comment">// 派生类</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-operator">~</span><span class="tok-function">Derived</span>() override <span class="tok-operator">=</span> <span class="tok-keyword">default</span>;  <span class="tok-comment">// 参与正确的虚析构链</span>
+};
+
+Base<span class="tok-operator">*</span> p <span class="tok-operator">=</span> <span class="tok-keyword">new</span> <span class="tok-function">Derived</span>();           <span class="tok-comment">// 基类指针指向堆上的派生对象</span>
+<span class="tok-keyword">delete</span> p;                           <span class="tok-comment">// 先析构派生部分，再析构基类部分</span>
+</code></pre></div>
+<p>以上 <code>new</code> / <code>delete</code> 片段需放在函数体内。</p>
+<p><img alt="cpp08_virtual_destructor_cac5d717-9b6f-4144-996c-bc93f3dffa8b" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_virtual_destructor_cac5d717-9b6f-4144-996c-bc93f3dffa8b.png"/></p>
+<p>图：虚析构把通过基类指针的删除分派到完整派生对象的析构链。</p>
+<p><img alt="cpp08_nonvirtual_delete_41892e22-42a8-41c6-bb16-8e6cd2eecfe3" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_nonvirtual_delete_41892e22-42a8-41c6-bb16-8e6cd2eecfe3.png"/></p>
+<p>图：不具有合适虚析构机制时，通过基类指针删除派生对象可能是未定义行为。</p>
+<h3 id="310-哪些函数不能声明为虚函数"><span aria-hidden="true" class="anchor-alias" id="sec-24"></span>3.10 哪些函数不能声明为虚函数？</h3>
+<ul>
+<li><strong>构造函数</strong>：不能声明 <code>virtual</code>，对象的动态类型构建本身依赖构造过程。</li>
+<li><strong>静态成员函数</strong>：没有隐式的对象 <code>this</code>，不能声明为虚函数。</li>
+<li><strong>普通非静态成员函数</strong>：可以是虚函数。</li>
+<li><strong>析构函数</strong>：可以、而且多态基类通常应将其声明为虚函数。</li>
+<li><strong>类内定义的成员函数 / <code>inline</code> 函数</strong>：<strong>可以同时是虚函数</strong>，不能笼统说“内联函数不能虚”。是否真正内联展开是编译器优化问题。</li>
+</ul>
+<p><img alt="cpp08_virtual_restrictions_a8b06be7-3fbb-4fea-af3b-86635bbe504c" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_virtual_restrictions_a8b06be7-3fbb-4fea-af3b-86635bbe504c.png"/></p>
+<p>图：判断函数能否声明为 <code>virtual</code>，关键是它是不是可动态分派的非静态成员（析构函数允许）。</p>
+<p><img alt="cpp08_inline_virtual_3fb5471a-60ee-4105-b864-626c86a6277d" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_inline_virtual_3fb5471a-60ee-4105-b864-626c86a6277d.png"/></p>
+<p>图：<code>inline</code> 与 <code>virtual</code> 作用不同，二者不是互斥概念。</p>
+<h3 id="311-现代-c-的-override-与-final"><span aria-hidden="true" class="anchor-alias" id="sec-25"></span>3.11 现代 C++ 的 override 与 final</h3>
+<p><code>override</code> 表示“这个函数必须覆盖某个基类虚函数”，不匹配时立即产生编译错误。<code>final</code> 可以禁止派生类继续覆盖特定虚函数，或禁止类继续被继承。</p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-keyword">class</span> Base {                        <span class="tok-comment">// 基类</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-keyword">virtual</span> <span class="tok-type">void</span> <span class="tok-function">F</span>() {}            <span class="tok-comment">// 可覆盖的虚函数</span>
+};
+<span class="tok-keyword">class</span> Middle <span class="tok-operator">:</span> <span class="tok-keyword">public</span> Base {       <span class="tok-comment">// 中间派生类</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-type">void</span> <span class="tok-function">F</span>() override final {}     <span class="tok-comment">// 合法覆盖且禁止后续覆盖</span>
+};
+</code></pre></div>
+<p><img alt="cpp08_override_final_8dbde0e0-25f2-4c2e-86c5-52e7f562ae0a" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_override_final_8dbde0e0-25f2-4c2e-86c5-52e7f562ae0a.png"/></p>
+<p>图：<code>Middle::F</code> 可以覆盖 <code>Base::F</code>，但下一层的同名重写将被 <code>final</code> 禁止。</p>
+<hr/>
+<h2 id="四84-多重继承与虚函数课件第-3340-页"><span aria-hidden="true" class="anchor-alias" id="sec-26"></span>四、8.4 多重继承与虚函数（课件第 33～40 页）</h2>
+<h3 id="41-为什么会出现菱形继承问题"><span aria-hidden="true" class="anchor-alias" id="sec-27"></span>4.1 为什么会出现菱形继承问题</h3>
+<p>课件第 35～39 页新增蝙蝠类 <code>CBat</code>：蝙蝠同时具有兽类与鸟类两条继承链。若两条链都普通继承同一祖先类，最派生对象内可能有<strong>两份祖先基类子对象</strong>，导致重复状态与成员访问歧义。</p>
+<p><img alt="cpp08_diamond_duplicate_4137a63e-0346-4bcb-95d8-ebd58c68d339" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_diamond_duplicate_4137a63e-0346-4bcb-95d8-ebd58c68d339.png"/></p>
+<p>图：<strong>普通菱形继承</strong>，从 <code>CBat</code> 到 <code>CAnimal</code> 有两条子对象路径。</p>
+<p><img alt="cpp08_diamond_layout_91162ee0-7067-4bfc-9397-3550deeac502" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_diamond_layout_91162ee0-7067-4bfc-9397-3550deeac502.png"/></p>
+<p>图：对象内部示意——普通继承情形可以包含独立的两份 <code>CAnimal</code> 子对象。</p>
+<h3 id="42-虚继承解决共享基类子对象的问题"><span aria-hidden="true" class="anchor-alias" id="sec-28"></span>4.2 虚继承解决共享基类子对象的问题</h3>
+<p>课件中采用：</p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-keyword">class</span> CAnimal {                     <span class="tok-comment">// 共同祖先类</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-type">void</span> <span class="tok-function">Who</span>();                     <span class="tok-comment">// 本例此时是非虚函数</span>
+};
+
+<span class="tok-keyword">class</span> CBeast <span class="tok-operator">:</span> <span class="tok-keyword">virtual</span> <span class="tok-keyword">public</span> CAnimal { <span class="tok-comment">// 虚继承共同祖先</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-type">void</span> <span class="tok-function">Who</span>();                     <span class="tok-comment">// 兽类版本（非虚）</span>
+};
+
+<span class="tok-keyword">class</span> CBird <span class="tok-operator">:</span> <span class="tok-keyword">virtual</span> <span class="tok-keyword">public</span> CAnimal {  <span class="tok-comment">// 与兽类共享同一祖先</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-keyword">virtual</span> <span class="tok-type">void</span> <span class="tok-function">Who</span>();             <span class="tok-comment">// 鸟类在此引入虚特性</span>
+};
+
+<span class="tok-keyword">class</span> CBat <span class="tok-operator">:</span> <span class="tok-keyword">public</span> CBeast, <span class="tok-keyword">public</span> CBird { <span class="tok-comment">// 同时继承兽类和鸟类</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-type">void</span> <span class="tok-function">Who</span>() override;            <span class="tok-comment">// 覆盖 CBird::Who</span>
+};
+</code></pre></div>
+<p><code>virtual public CAnimal</code> 与 <code>virtual void Who()</code> 虽都包含关键字 <code>virtual</code>，意义完全不同：</p>
+<ul>
+<li><strong>虚继承</strong>：在这种菱形体系下，让最派生类共享一份共同基类子对象。</li>
+<li><strong>虚函数</strong>：让特定函数调用可以按对象动态类型分派。</li>
+</ul>
+<p><img alt="cpp08_diamond_shared_5dd91b58-a7ee-4547-8df2-bd3955463d07" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_diamond_shared_5dd91b58-a7ee-4547-8df2-bd3955463d07.png"/></p>
+<p>图：<code>CBeast</code> 与 <code>CBird</code> 虚继承 <code>CAnimal</code> 后，<code>CBat</code> 中只共享一个祖先子对象。</p>
+<p><img alt="cpp08_diamond_shared_layout_48d2dffa-a1a3-49b3-b559-5a6e91a3d82f" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_diamond_shared_layout_48d2dffa-a1a3-49b3-b559-5a6e91a3d82f.png"/></p>
+<p>图：共享的基类状态不需要复制为两份；虚继承负责对象结构，而非 <code>Who()</code> 分派。</p>
+<p><img alt="cpp08_two_virtual_meanings_365dc91b-1fb7-46e2-8946-fb1302e731e7" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_two_virtual_meanings_365dc91b-1fb7-46e2-8946-fb1302e731e7.png"/></p>
+<p>图：一边是函数分派，一边是继承结构，必须分别分析。</p>
+<h3 id="43-ppt-第-40-页的蝙蝠题三个基类指针为什么输出不一样"><span aria-hidden="true" class="anchor-alias" id="sec-29"></span>4.3 PPT 第 40 页的蝙蝠题：三个基类指针为什么输出不一样？</h3>
+<p>课件设置：<code>CAnimal::Who()</code> <strong>非虚</strong>，<code>CBeast::Who()</code> <strong>非虚</strong>，<code>CBird::Who()</code> <strong>虚</strong>，<code>CBat::Who()</code> 覆盖鸟类的那个虚函数。</p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp">CBat bat;                           <span class="tok-comment">// 创建完整 CBat 对象</span>
+CAnimal<span class="tok-operator">*</span> pa <span class="tok-operator">=</span> <span class="tok-operator">&amp;</span>bat;                 <span class="tok-comment">// 共享的祖先基类指针</span>
+CBeast<span class="tok-operator">*</span> pb <span class="tok-operator">=</span> <span class="tok-operator">&amp;</span>bat;                  <span class="tok-comment">// 兽类基类指针</span>
+CBird<span class="tok-operator">*</span> pc <span class="tok-operator">=</span> <span class="tok-operator">&amp;</span>bat;                   <span class="tok-comment">// 鸟类基类指针</span>
+
+pa<span class="tok-operator">-&gt;</span><span class="tok-function">Who</span>();                          <span class="tok-comment">// CAnimal::Who，非虚静态绑定</span>
+pb<span class="tok-operator">-&gt;</span><span class="tok-function">Who</span>();                          <span class="tok-comment">// CBeast::Who，非虚静态绑定</span>
+pc<span class="tok-operator">-&gt;</span><span class="tok-function">Who</span>();                          <span class="tok-comment">// CBat::Who，虚函数动态分派</span>
+</code></pre></div>
+<p>这三个调用<strong>所指对象都是同一个 <code>CBat</code></strong>。输出不同的真正原因是：经不同静态类型发起的函数调用，其虚特性不同。</p>
+<p><img alt="cpp08_mi_animal_pointer_1e902bec-235b-4e6d-ac2f-e04d7a6abec9" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_mi_animal_pointer_1e902bec-235b-4e6d-ac2f-e04d7a6abec9.png"/></p>
+<p>图：经 <code>CAnimal*</code> 调用，祖先 <code>Who</code> 非虚，因此执行祖先版本。</p>
+<p><img alt="cpp08_mi_beast_pointer_4f82fe7d-d44b-429c-a0f2-1f420a43c0dd" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_mi_beast_pointer_4f82fe7d-d44b-429c-a0f2-1f420a43c0dd.png"/></p>
+<p>图：经 <code>CBeast*</code> 调用，兽类 <code>Who</code> 非虚，因此执行兽类版本。</p>
+<p><img alt="cpp08_mi_bird_pointer_34ab31a7-0de3-4b7e-a8bf-d154af77cf64" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_mi_bird_pointer_34ab31a7-0de3-4b7e-a8bf-d154af77cf64.png"/></p>
+<p>图：经 <code>CBird*</code> 调用，鸟类虚函数被 <code>CBat</code> 重写，执行蝙蝠版本。</p>
+<p><img alt="cpp08_mi_static_virtualness_0e1a10d4-f1e7-400e-b61c-f7c43e01e0b5" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_mi_static_virtualness_0e1a10d4-f1e7-400e-b61c-f7c43e01e0b5.png"/></p>
+<p>图：<strong>同一实际对象 + 不同指针静态类型 + 不同虚声明</strong>产生三种调用路径。</p>
+<aside class="callout callout-important" data-callout="important"><div class="callout-title" data-icon="!">第 40 页第一问结论</div><div class="callout-content">
+<p>输出次序依次为：<strong>“我不是飞禽就是走兽！” → “我是森林之王！” → “我是蝙蝠大侠！”</strong>。</p>
+</div></aside>
+<h3 id="44-如果-canimalwho-也改为虚函数会怎样"><span aria-hidden="true" class="anchor-alias" id="sec-30"></span>4.4 如果 CAnimal::Who 也改为虚函数，会怎样？</h3>
+<p>当最顶层 <code>CAnimal::Who()</code> 声明为虚函数时，这条虚特性传递到其派生链。<code>CBeast::Who()</code>、<code>CBird::Who()</code> 以及 <code>CBat::Who()</code> 都在相应继承关系下参与覆盖；最终对象是 <code>CBat</code>，其 <code>Who()</code> 是最终覆盖者。</p>
+<p><img alt="cpp08_mi_all_virtual_91f98b02-8d72-4733-9029-72e056af65f7" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_mi_all_virtual_91f98b02-8d72-4733-9029-72e056af65f7.png"/></p>
+<p>图：经 <code>CAnimal*</code>、<code>CBeast*</code>、<code>CBird*</code> 的虚调用全部执行 <code>CBat::Who()</code>。</p>
+<aside class="callout callout-important" data-callout="important"><div class="callout-title" data-icon="!">第 40 页第二问结论</div><div class="callout-content">
+<p>若将 <code>CAnimal::Who()</code> 改为虚函数，三次均输出：<strong>“我是蝙蝠大侠！”</strong>。</p>
+</div></aside>
+<h3 id="45-多重继承对象地址与转换的细节"><span aria-hidden="true" class="anchor-alias" id="sec-31"></span>4.5 多重继承对象地址与转换的细节</h3>
+<p>多重继承时，<code>CBat*</code> 转换为某个基类指针后，其数值地址<strong>可能发生调整</strong>，因为不同基类子对象可能位于完整对象的不同位置。不要凭 <code>pa == pb</code> 的表面写法来推断物理结构；不同基类指针甚至无法在未经转换时直接作常规比较。</p>
+<p><img alt="cpp08_mi_pointer_adjust_6295e1c8-5027-4a85-ac6e-d77b4c675136" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_mi_pointer_adjust_6295e1c8-5027-4a85-ac6e-d77b4c675136.png"/></p>
+<p>图：基类指针定位相应的子对象视图，不意味着每种指针都保存相同起始地址。</p>
+<h3 id="46-虚基类的初始化顺序"><span aria-hidden="true" class="anchor-alias" id="sec-32"></span>4.6 虚基类的初始化顺序</h3>
+<p>含虚继承时，最派生类负责初始化共享的<strong>虚基类</strong>。典型构造顺序是：先虚基类，再非虚直接基类，再非静态数据成员，最后执行最派生类构造函数体；具体基类和成员之间的先后顺序由标准规则与声明顺序决定。</p>
+<p><img alt="cpp08_mi_virtual_base_order_4d46d0f7-6065-4e5c-a8c4-796c883dae9d" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_mi_virtual_base_order_4d46d0f7-6065-4e5c-a8c4-796c883dae9d.png"/></p>
+<p>图：在蝙蝠类体系中，共享祖先 <code>CAnimal</code> 的构造仅发生一次。</p>
+<h3 id="47-同名成员与二义性"><span aria-hidden="true" class="anchor-alias" id="sec-33"></span>4.7 同名成员与二义性</h3>
+<p>若两个基类分别提供相同名字的成员，而最派生类没有作出明确统一处理，那么直接 <code>bat.F()</code> 可能发生名称查找二义性。可以在最派生类重新定义合适接口，或通过 <code>Base1::F()</code> / <code>Base2::F()</code> 限定访问。</p>
+<p><img alt="cpp08_mi_ambiguity_21b573ef-887b-49df-a380-95df77511e3c" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_mi_ambiguity_21b573ef-887b-49df-a380-95df77511e3c.png"/></p>
+<p>图：二义性不是虚函数分派本身；它首先属于<strong>成员名称查找与继承结构</strong>的问题。</p>
+<aside class="callout callout-warning" data-callout="warning"><div class="callout-title" data-icon="!">多重继承题目必分开两件事 第一步 ：判断菱形里有多少个基类子对象（普通继承 vs 虚继承）。 第二步 ：判断当前指针静态类型下 Who() 是否是虚函数、谁是最终覆盖者。把两个 virtual 的作用混在一起，是本节最常见错误。</div><div class="callout-content">
+<p><strong>第一步</strong>：判断菱形里有多少个基类子对象（普通继承 vs 虚继承）。<strong>第二步</strong>：判断当前指针静态类型下 <code>Who()</code> 是否是虚函数、谁是最终覆盖者。把两个 <code>virtual</code> 的作用混在一起，是本节最常见错误。</p>
+</div></aside>
+<hr/>
+<h2 id="五85-纯虚函数与抽象类课件第-4246-页"><span aria-hidden="true" class="anchor-alias" id="sec-34"></span>五、8.5 纯虚函数与抽象类（课件第 42～46 页）</h2>
+<h3 id="51-纯虚函数与抽象类的定义"><span aria-hidden="true" class="anchor-alias" id="sec-35"></span>5.1 纯虚函数与抽象类的定义</h3>
+<p><strong>纯虚函数（pure virtual function）</strong>：声明时使用 <code>= 0</code> 标记的虚函数，例如：</p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-keyword">class</span> CAnimal {                     <span class="tok-comment">// 抽象动物类</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-keyword">virtual</span> <span class="tok-type">void</span> <span class="tok-function">Who</span>() <span class="tok-operator">=</span> <span class="tok-number">0</span>;         <span class="tok-comment">// 纯虚函数：定义统一接口</span>
+    <span class="tok-keyword">virtual</span> <span class="tok-operator">~</span><span class="tok-function">CAnimal</span>() <span class="tok-operator">=</span> <span class="tok-keyword">default</span>;   <span class="tok-comment">// 保证多态基类正确析构</span>
+};
+</code></pre></div>
+<p><strong>抽象类（abstract class）</strong>：具有至少一个最终纯虚函数的类，不能直接实例化。它可以为派生类定义统一的访问接口。不能用 <code>CAnimal a;</code> 创建抽象对象，但可以定义 <code>CAnimal*</code>、<code>CAnimal&amp;</code>，指向或绑定合适的具体派生对象。</p>
+<p><img alt="cpp08_pure_interface_cb796f15-91da-47e3-b218-eb44ee49fe60" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_pure_interface_cb796f15-91da-47e3-b218-eb44ee49fe60.png"/></p>
+<p>图：<code>CAnimal</code> 规定 <code>Who()</code> 接口；派生类各自实现，调用者不必直接依赖派生类型。</p>
+<h3 id="52-为什么不能定义抽象基类对象"><span aria-hidden="true" class="anchor-alias" id="sec-36"></span>5.2 为什么不能定义抽象基类对象</h3>
+<p>课件第 45 页把 <code>CAnimal::Who()</code> 改为 <code>virtual void Who() = 0;</code>，第 46 页仍在例程里尝试定义 <code>CAnimal zA</code>，并追问“问题何在”。</p>
+<p><strong>问题所在</strong>：<code>CAnimal</code> 已经是抽象类，不能实例化；编译会失败。必须删除该对象定义，或者改为实际构造一个已实现所有纯虚函数的具体派生类对象，并通过基类指针/引用访问。</p>
+<p><img alt="cpp08_abstract_instantiation_18b50c24-a868-4910-8946-07b4276577c5" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_abstract_instantiation_18b50c24-a868-4910-8946-07b4276577c5.png"/></p>
+<p>图：抽象类对象实例化是编译错误；抽象类型的指针与引用仍然有意义。</p>
+<h3 id="53-派生类没有全部实现纯虚函数时会怎样"><span aria-hidden="true" class="anchor-alias" id="sec-37"></span>5.3 派生类没有全部实现纯虚函数时会怎样？</h3>
+<p>若派生类仍保留未实现的最终纯虚函数，它也仍然是抽象类。直到某个后续派生类给出了完整覆盖，才可以创建这种具体类的对象。</p>
+<p><img alt="cpp08_abstract_derived_24346f37-b48f-459d-a3e1-7a96f39cc785" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_abstract_derived_24346f37-b48f-459d-a3e1-7a96f39cc785.png"/></p>
+<p>图：一个中间派生类可以仍是抽象类，而下一层类完成纯虚函数实现后才变成可实例化类型。</p>
+<aside class="callout callout-important" data-callout="important"><div class="callout-title" data-icon="!">抽象类的使用要点</div><div class="callout-content">
+<p></p>
+<ul>
+<li>抽象类本身不能作为<strong>按值</strong>创建的对象、函数形参类型或返回对象类型；但可以用其<strong>引用和指针</strong>作形参或返回类型。</li>
+<li>派生类只有完成所有最终纯虚函数的要求，才是具体类。</li>
+<li>抽象基类尤其适合描述共同接口，而非表示“一个有意义的普通实例”。</li>
+</ul>
+</div></aside>
+<h3 id="54-纯虚函数不等于没有函数定义也不等于空函数"><span aria-hidden="true" class="anchor-alias" id="sec-38"></span>5.4 纯虚函数不等于没有函数定义，也不等于空函数</h3>
+<p>课件第 42 页用“没有实现体的函数”解释纯虚函数，是有助于初学者理解的直观说法，但需要补充：<strong>纯虚函数在 C++ 中也可以在类外提供定义，类仍然保持抽象</strong>。相反，<code>virtual void F() {}</code> 是一个有空函数体的普通虚函数，不会因为函数体为空就变成纯虚函数。</p>
+<p><img alt="cpp08_pure_not_empty_3ab36845-7f2c-4ffc-89ae-b5cb86343331" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_pure_not_empty_3ab36845-7f2c-4ffc-89ae-b5cb86343331.png"/></p>
+<p>图：<code>= 0</code> 是纯虚声明的标志；空函数体 <code>{} </code> 与“纯虚”是不同的概念。</p>
+<h3 id="55-典型应用抽象平面图形与面积计算"><span aria-hidden="true" class="anchor-alias" id="sec-39"></span>5.5 典型应用：抽象平面图形与面积计算</h3>
+<p>以下是围绕课件第 49 页“实现典型平面图形的处理”布置的<strong>理解性示例</strong>，并非 PPT 提供的详细原题：</p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-directive">#include</span> <span class="tok-string">&lt;iostream&gt;</span>                <span class="tok-comment">// 标准输出</span>
+
+<span class="tok-keyword">class</span> Shape {                       <span class="tok-comment">// 抽象图形基类</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-keyword">virtual</span> <span class="tok-type">double</span> <span class="tok-function">Area</span>() <span class="tok-type">const</span> <span class="tok-operator">=</span> <span class="tok-number">0</span>;<span class="tok-comment">// 各图形必须定义面积计算</span>
+    <span class="tok-keyword">virtual</span> <span class="tok-operator">~</span><span class="tok-function">Shape</span>() <span class="tok-operator">=</span> <span class="tok-keyword">default</span>;     <span class="tok-comment">// 正确析构多态对象</span>
+};
+
+<span class="tok-keyword">class</span> Circle <span class="tok-operator">:</span> <span class="tok-keyword">public</span> Shape {      <span class="tok-comment">// 圆形派生类</span>
+    <span class="tok-type">double</span> radius;                  <span class="tok-comment">// 保存半径</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-keyword">explicit</span> <span class="tok-function">Circle</span>(<span class="tok-type">double</span> r) <span class="tok-operator">:</span> <span class="tok-function">radius</span>(r) {} <span class="tok-comment">// 初始化半径</span>
+    <span class="tok-type">double</span> <span class="tok-function">Area</span>() <span class="tok-type">const</span> override {  <span class="tok-comment">// 计算圆形面积</span>
+        <span class="tok-keyword">return</span> <span class="tok-number">3.141592653589793</span> <span class="tok-operator">*</span> radius <span class="tok-operator">*</span> radius;
+    }
+};
+
+<span class="tok-keyword">class</span> Rectangle <span class="tok-operator">:</span> <span class="tok-keyword">public</span> Shape {   <span class="tok-comment">// 矩形派生类</span>
+    <span class="tok-type">double</span> width, height;           <span class="tok-comment">// 长和宽</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-function">Rectangle</span>(<span class="tok-type">double</span> w, <span class="tok-type">double</span> h) <span class="tok-operator">:</span> <span class="tok-function">width</span>(w), <span class="tok-function">height</span>(h) {}
+    <span class="tok-type">double</span> <span class="tok-function">Area</span>() <span class="tok-type">const</span> override {  <span class="tok-comment">// 计算矩形面积</span>
+        <span class="tok-keyword">return</span> width <span class="tok-operator">*</span> height;
+    }
+};
+
+<span class="tok-type">int</span> <span class="tok-function">main</span>() {                        <span class="tok-comment">// 程序入口</span>
+    Circle <span class="tok-function">circle</span>(<span class="tok-number">2.0</span>);             <span class="tok-comment">// 半径为 2 的圆</span>
+    Rectangle <span class="tok-function">rectangle</span>(<span class="tok-number">3.0</span>, <span class="tok-number">4.0</span>);  <span class="tok-comment">// 宽 3、高 4 的矩形</span>
+    <span class="tok-type">const</span> Shape<span class="tok-operator">*</span> shapes[] <span class="tok-operator">=</span> {<span class="tok-operator">&amp;</span>circle, <span class="tok-operator">&amp;</span>rectangle}; <span class="tok-comment">// 统一接口数组</span>
+    <span class="tok-keyword">for</span> (<span class="tok-type">const</span> Shape<span class="tok-operator">*</span> p <span class="tok-operator">:</span> shapes) {  <span class="tok-comment">// 逐个访问图形对象</span>
+        <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> p<span class="tok-operator">-&gt;</span><span class="tok-function">Area</span>() <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">'\n'</span>; <span class="tok-comment">// 虚调用各自的面积函数</span>
+    }
+    <span class="tok-keyword">return</span> <span class="tok-number">0</span>;                       <span class="tok-comment">// 正常结束</span>
+}
+</code></pre></div>
+<p>运行结果第一行约为 <code>12.5664</code>，第二行是 <code>12</code>（默认输出精度下）。注意 <code>const Shape*</code> 对应 <code>Area() const</code>；实现函数也必须保持 <code>const</code>，否则不能正确 <code>override</code>。</p>
+<p><img alt="cpp08_shapes_concrete_b2c06021-91d6-4753-bfcb-4ba8cba6a677" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_shapes_concrete_b2c06021-91d6-4753-bfcb-4ba8cba6a677.png"/></p>
+<p>图：新增圆形、矩形、三角形时，都只需遵守 <code>Shape::Area()</code> 的统一接口。</p>
+<p><img alt="cpp08_shapes_area_8c3e9655-e036-44b1-adf2-ec0347119bfd" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_shapes_area_8c3e9655-e036-44b1-adf2-ec0347119bfd.png"/></p>
+<p>图：三种具体几何形状及计算结果（圆半径 2、矩形 3×4、三角形底 6 高 3）。</p>
+<h3 id="56-纯虚析构函数是特别的情况必要补充"><span aria-hidden="true" class="anchor-alias" id="sec-40"></span>5.6 纯虚析构函数是特别的情况（必要补充）</h3>
+<p>纯虚析构函数本身也能使类成为抽象类，但基类析构函数在派生对象销毁时始终需要执行，因此<strong>纯虚析构函数必须提供定义</strong>。</p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-keyword">class</span> Base {                        <span class="tok-comment">// 抽象基类</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-keyword">virtual</span> <span class="tok-operator">~</span><span class="tok-function">Base</span>() <span class="tok-operator">=</span> <span class="tok-number">0</span>;           <span class="tok-comment">// 纯虚析构声明</span>
+};
+
+Base<span class="tok-operator">::</span><span class="tok-operator">~</span><span class="tok-function">Base</span>() {}                    <span class="tok-comment">// 纯虚析构必须有函数定义</span>
+</code></pre></div>
+<p><img alt="cpp08_pure_virtual_destructor_5eb7965f-3faf-484e-9b77-442b28e6d44f" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_pure_virtual_destructor_5eb7965f-3faf-484e-9b77-442b28e6d44f.png"/></p>
+<p>图：即使声明为纯虚析构，实际析构链仍需执行 <code>Base::~Base()</code> 的定义。</p>
+<hr/>
+<h2 id="六ppt-附加内容学生管理程序第-5054-页"><span aria-hidden="true" class="anchor-alias" id="sec-41"></span>六、PPT 附加内容：学生管理程序（第 50～54 页）</h2>
+<p>这一部分不是“多态性与虚函数”的主线，而是对之前知识的回顾和综合应用，<strong>作为附录保留</strong>，避免整套课件后半部分被忽略。</p>
+<h3 id="61-cstudent-的结构与静态重载"><span aria-hidden="true" class="anchor-alias" id="sec-42"></span>6.1 CStudent 的结构与静态重载</h3>
+<p>课件中的学生类包括：<code>char mNo[9]</code>（学号）、<code>char* mpName</code>（动态姓名）和 <code>int mScore[5]</code>（5 门成绩）；接口还包括默认构造、复制构造、析构、输入/显示、两种 <code>Compare</code>、友元比较函数与流操作符重载。</p>
+<p><strong>要分清</strong>：这里两个 <code>Compare</code> 成员函数的参数分别是 <code>const CStudent&amp;</code> 与 <code>const CStudent*</code>，属于<strong>静态重载</strong>；<code>operator&gt;&gt;</code> / <code>operator&lt;&lt;</code> 属于运算符重载，<strong>不是虚函数覆盖</strong>。</p>
+<p><img alt="cpp08_student_overload_cfeeb29d-5268-4692-a8e6-3c37ef8ac170" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_student_overload_cfeeb29d-5268-4692-a8e6-3c37ef8ac170.png"/></p>
+<p>图：<code>Compare(zS2)</code> 和 <code>Compare(&amp;zS2)</code> 的参数形式不同，由编译期选择重载。</p>
+<p><img alt="cpp08_student_stream_58fe8bce-4bc0-4846-b85e-54ea23194763" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_student_stream_58fe8bce-4bc0-4846-b85e-54ea23194763.png"/></p>
+<p>图：友元流操作符承担对象输入与格式化输出，并不具有运行时虚分派含义。</p>
+<h3 id="62-原始指针管理姓名时为什么必须深拷贝"><span aria-hidden="true" class="anchor-alias" id="sec-43"></span>6.2 原始指针管理姓名时，为什么必须深拷贝？</h3>
+<p>若对象拥有自己分配的动态数组，默认成员逐一复制只会复制指针地址。两个对象随后若都析构，会尝试释放同一块内存，可能导致重复释放、悬空指针等严重问题。</p>
+<p><img alt="cpp08_student_shallow_293bf53b-fa28-4cb2-9750-fa459016106a" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_student_shallow_293bf53b-fa28-4cb2-9750-fa459016106a.png"/></p>
+<p>图：两个 <code>mpName</code> 指向同一堆字符数组，是不正确的资源共享方式。</p>
+<p>复制构造函数必须为副本单独分配存储空间，并复制实际字符内容。</p>
+<p><img alt="cpp08_student_deep_601210cc-9acc-44b6-a350-e27c8907ffc0" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_student_deep_601210cc-9acc-44b6-a350-e27c8907ffc0.png"/></p>
+<p>图：深拷贝后的两个对象拥有独立的姓名数组，任何一方释放内存都不会破坏另一方。</p>
+<p>课件第 53 页的核心意图是对姓名指针执行深拷贝。但应注意：默认构造将 <code>mpName</code> 设为 <code>NULL</code> 后，复制构造若直接写 <code>strlen(zS.mpName)</code>，当原对象未输入姓名时会对空指针调用 <code>strlen</code>，产生未定义行为。应先判断源指针是否为空。</p>
+<p><img alt="cpp08_student_copy_null_3a314a89-1fc4-40f7-a0f2-3b74ee5c9fa5" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_student_copy_null_3a314a89-1fc4-40f7-a0f2-3b74ee5c9fa5.png"/></p>
+<p>图：复制构造时先分支判断源指针状态，再决定是否分配并复制字符数组。</p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp">CStudent<span class="tok-operator">::</span><span class="tok-function">CStudent</span>(<span class="tok-type">const</span> CStudent<span class="tok-operator">&amp;</span> other) <span class="tok-operator">:</span> <span class="tok-function">mpName</span>(<span class="tok-keyword">nullptr</span>) { <span class="tok-comment">// 初始化空指针</span>
+    <span class="tok-keyword">for</span> (<span class="tok-type">int</span> i <span class="tok-operator">=</span> <span class="tok-number">0</span>; i <span class="tok-operator">&lt;</span> <span class="tok-number">5</span>; <span class="tok-operator">+</span><span class="tok-operator">+</span>i) {   <span class="tok-comment">// 复制五门课程成绩</span>
+        mScore[i] <span class="tok-operator">=</span> other.mScore[i];<span class="tok-comment">// 按元素复制数组</span>
+    }
+    <span class="tok-namespace">std</span><span class="tok-operator">::</span><span class="tok-function">strcpy</span>(mNo, other.mNo);   <span class="tok-comment">// 复制学号字符数组</span>
+    <span class="tok-keyword">if</span> (other.mpName <span class="tok-operator">!=</span> <span class="tok-keyword">nullptr</span>) { <span class="tok-comment">// 先检查姓名指针有效</span>
+        <span class="tok-type">int</span> size <span class="tok-operator">=</span> <span class="tok-keyword">static_cast</span>&lt;int&gt;(<span class="tok-namespace">std</span><span class="tok-operator">::</span><span class="tok-function">strlen</span>(other.mpName)) <span class="tok-operator">+</span> <span class="tok-number">1</span>; <span class="tok-comment">// 含终止符</span>
+        mpName <span class="tok-operator">=</span> <span class="tok-keyword">new</span> <span class="tok-type">char</span>[size];   <span class="tok-comment">// 副本独立分配空间</span>
+        <span class="tok-namespace">std</span><span class="tok-operator">::</span><span class="tok-function">strcpy</span>(mpName, other.mpName); <span class="tok-comment">// 复制姓名字符</span>
+    }
+}
+</code></pre></div>
+<p>此片段是<strong>在已存在 <code>mNo[9]</code>、<code>mpName</code>、<code>mScore[5]</code> 成员的 CStudent 类环境下的定义</strong>，需要 <code>&lt;cstring&gt;</code> 头文件，且要求源对象成员已正确初始化、姓名满足以 <code>\0</code> 结尾的字符串契约。为了处理异常和赋值，实际现代程序更推荐 <code>std::string</code>。</p>
+<aside class="callout callout-warning" data-callout="warning"><div class="callout-title" data-icon="!">课件学生类还缺少一个关键复制控制 有自定义析构与复制构造、又自己管理动态内存的类，通常还必须正确实现复制赋值运算符 operator= （传统 Rule of Three）。否则 a = b; 仍可能复制裸指针，引发重复释放。课堂第 51～54 页的实现应视为教学阶段示例，而不是健壮完整的资源管理方案。</div><div class="callout-content">
+<p><strong>有自定义析构与复制构造、又自己管理动态内存的类，通常还必须正确实现复制赋值运算符 <code>operator=</code></strong>（传统 Rule of Three）。否则 <code>a = b;</code> 仍可能复制裸指针，引发重复释放。课堂第 51～54 页的实现应视为教学阶段示例，而不是健壮完整的资源管理方案。</p>
+</div></aside>
+<h3 id="63-输入与数组越界风险"><span aria-hidden="true" class="anchor-alias" id="sec-44"></span>6.3 输入与数组越界风险</h3>
+<p>课件用 <code>char mNo[9]</code> 存 8 位学号加字符串结束符；若直接 <code>std::cin &gt;&gt; mNo</code>，不限制输入长度，存在溢出风险。更推荐使用 <code>std::string</code> 作为学号、姓名存储；若必须保持数组，则需要显式限制输入大小并处理无效输入。</p>
+<p><img alt="cpp08_student_input_safety_168d64a7-a488-4518-a10e-df5f3aa6b8e8" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_student_input_safety_168d64a7-a488-4518-a10e-df5f3aa6b8e8.png"/></p>
+<p>图：定长缓冲区无界输入有风险，使用 <code>std::string</code> 可简化安全管理。</p>
+<h3 id="64-构造复制析构全过程"><span aria-hidden="true" class="anchor-alias" id="sec-45"></span>6.4 构造、复制、析构全过程</h3>
+<p><img alt="cpp08_student_lifetime_6d03dadf-72f6-4147-a007-e035e7f81cb7" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_student_lifetime_6d03dadf-72f6-4147-a007-e035e7f81cb7.png"/></p>
+<p>图：从默认空指针、输入姓名、深拷贝到释放动态数组，梳理资源生命周期。</p>
+<aside class="callout callout-tip" data-callout="tip"><div class="callout-title" data-icon="✦">关于这部分代码的学习顺序</div><div class="callout-content">
+<p>先掌握“复制构造与析构为什么要配对思考”；再学习 <code>operator=</code>、异常安全与 Rule of Three；最后对照现代 <code>std::string</code> 和标准库容器如何自动管理存储。这些是对课件示例的必要理解性补充。</p>
+</div></aside>
+<hr/>
+<h2 id="七课程作业与巩固第-49-页"><span aria-hidden="true" class="anchor-alias" id="sec-46"></span>七、课程作业与巩固（第 49 页）</h2>
+<p>课件给出的作业主题是：<strong>实现典型平面图形的处理</strong>，没有展开完整评分标准。下述是便于学习的建议方案，不冒充老师给出的完整题目。</p>
+<h3 id="71-建议的类与接口设计"><span aria-hidden="true" class="anchor-alias" id="sec-47"></span>7.1 建议的类与接口设计</h3>
+<ul>
+<li>抽象基类 <code>Shape</code>：声明 <code>virtual double Area() const = 0;</code> 并提供虚析构。</li>
+<li><code>Circle</code>：保存半径并覆盖 <code>Area()</code>；<code>Rectangle</code>：保存宽高并覆盖 <code>Area()</code>。</li>
+<li>用 <code>Shape*</code> 或 <code>Shape&amp;</code> 写一个统一的计算/打印函数，要求无需判断具体类型即可调用。</li>
+<li>进一步扩展：新增 <code>Triangle</code>，观察调用接口是否需要改动。</li>
+</ul>
+<p><img alt="cpp08_exercise_geometry_7f1bbf98-33cf-43ff-a1ad-d1e577a20e75" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_exercise_geometry_7f1bbf98-33cf-43ff-a1ad-d1e577a20e75.png"/></p>
+<p>图：一份合理的抽象接口与两个具体图形类的继承方案。</p>
+<p><img alt="cpp08_exercise_loop_33d52553-d26a-454e-85c6-933d8432ca79" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_exercise_loop_33d52553-d26a-454e-85c6-933d8432ca79.png"/></p>
+<p>图：基类指针数组如何统一处理多种图形并调用派生类面积计算。</p>
+<h3 id="72-四组关键自测"><span aria-hidden="true" class="anchor-alias" id="sec-48"></span>7.2 四组关键自测</h3>
+<aside class="callout callout-question" data-callout="question"><div class="callout-title" data-icon="?">自测 1：基类函数不是虚函数 Base* p = &amp;derived; p-&gt;F(); 其中 Base::F 是普通成员函数、 Derived 有同名同参 F 。执行哪个？</div><div class="callout-content">
+<p><code>Base* p = &amp;derived; p-&gt;F();</code> 其中 <code>Base::F</code> 是普通成员函数、<code>Derived</code> 有同名同参 <code>F</code>。执行哪个？</p>
+<p><strong>答案：</strong> <code>Base::F</code>。这里是按静态类型绑定的非虚调用。</p>
+</div></aside>
+<aside class="callout callout-question" data-callout="question"><div class="callout-title" data-icon="?">自测 2：构造函数内部 Base 构造函数内部调用其虚 F() ，随后构造 Derived 对象。构造 Base 的这一阶段执行哪个？</div><div class="callout-content">
+<p><code>Base</code> 构造函数内部调用其虚 <code>F()</code>，随后构造 <code>Derived</code> 对象。构造 <code>Base</code> 的这一阶段执行哪个？</p>
+<p><strong>答案：</strong> <code>Base::F</code>，不会跳过构造阶段调用尚未完成构造的 <code>Derived::F</code>。</p>
+</div></aside>
+<aside class="callout callout-question" data-callout="question"><div class="callout-title" data-icon="?">自测 3：抽象类 Base 定义了 virtual void F() = 0; ， Derived 继承它但不实现 F() 。可否创建 Derived d; ？</div><div class="callout-content">
+<p><code>Base</code> 定义了 <code>virtual void F() = 0;</code>，<code>Derived</code> 继承它但不实现 <code>F()</code>。可否创建 <code>Derived d;</code>？</p>
+<p><strong>答案：</strong> 不可以，<code>Derived</code> 仍是抽象类。</p>
+</div></aside>
+<aside class="callout callout-question" data-callout="question"><div class="callout-title" data-icon="?">自测 4：蝙蝠多继承 Animal::Who 非虚、 Beast::Who 非虚、 Bird::Who 虚、 Bat::Who 正确覆盖；同一 Bat 经三个指针分别调用时的函数版本？</div><div class="callout-content">
+<p><code>Animal::Who</code> 非虚、<code>Beast::Who</code> 非虚、<code>Bird::Who</code> 虚、<code>Bat::Who</code> 正确覆盖；同一 <code>Bat</code> 经三个指针分别调用时的函数版本？</p>
+<p><strong>答案：</strong> 分别为 <code>Animal::Who</code>、<code>Beast::Who</code>、<code>Bat::Who</code>，与课件第 40 页一致。</p>
+</div></aside>
+<hr/>
+<h2 id="八易错点统一辨析与课程资料校订"><span aria-hidden="true" class="anchor-alias" id="sec-49"></span>八、易错点统一辨析与课程资料校订</h2>
+<h3 id="81-判断虚函数调用的四步法"><span aria-hidden="true" class="anchor-alias" id="sec-50"></span>8.1 判断虚函数调用的四步法</h3>
+<p><img alt="cpp08_checklist_d0d93f7a-0732-4c98-b65b-e50c8d7d6913" src="../../sources/cpp-oop/_assets/d0344ab0a2/cpp08_checklist_d0d93f7a-0732-4c98-b65b-e50c8d7d6913.png"/></p>
+<p>图：从表达式静态类型出发，逐步核实虚特性、动态对象和最终覆盖者。</p>
+<table>
+<thead>
+<tr>
+<th>容易误判的说法</th>
+<th>正确理解</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“指向派生对象，所以必调用派生函数”</td>
+<td>非虚函数仍按静态类型决定；必须先看调用是否为虚调用。</td>
+</tr>
+<tr>
+<td>“用引用参数就自动多态”</td>
+<td>引用避免切片，但被调用函数必须符合虚分派条件。</td>
+</tr>
+<tr>
+<td>“同名同参函数都算重写”</td>
+<td>必须匹配相应<strong>基类虚函数</strong>的覆盖规则，<code>const</code> 等限定符也要匹配。</td>
+</tr>
+<tr>
+<td>“普通成员函数内部调用虚函数一定调用本类版本”</td>
+<td>完整对象的正常虚调用仍可选派生最终覆盖者。</td>
+</tr>
+<tr>
+<td>“构造期一定调用最派生类虚函数”</td>
+<td>构造/析构期的虚调用遵循当前阶段的类。</td>
+</tr>
+<tr>
+<td>“菱形共享基类意味着所有函数都自动成为虚函数”</td>
+<td>虚继承仅影响共享子对象，函数虚特性需分别声明。</td>
+</tr>
+<tr>
+<td>“纯虚函数就是函数体为空”</td>
+<td><code>= 0</code> 才是纯虚声明；纯虚函数有时也有类外定义。</td>
+</tr>
+<tr>
+<td>“基类析构非虚也只是少调用一个析构函数”</td>
+<td>经基类指针删除动态派生对象，可能是未定义行为。</td>
+</tr>
+<tr>
+<td>“虚函数表是 C++ 强制的固定内存结构”</td>
+<td><code>vptr</code> / <code>vtable</code> 是常见实现模型，并非标准固定布局。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="82-课件与现代标准-c-的差异清单"><span aria-hidden="true" class="anchor-alias" id="sec-51"></span>8.2 课件与现代标准 C++ 的差异清单</h3>
+<ol>
+<li><strong>标准头文件</strong>：课件多次使用 <code>#include &lt;iostream.h&gt;</code>；现代 C++ 使用 <code>#include &lt;iostream&gt;</code>，并通过 <code>std::cout</code> / <code>std::endl</code> 等命名空间成员输出。</li>
+<li><strong>程序入口</strong>：课件使用 <code>void main()</code>；标准 C++ 应使用 <code>int main()</code>，并可返回 <code>0</code>。</li>
+<li><strong>内联虚函数</strong>：课件第 15 页“静态/内联成员函数及构造函数不能是虚函数”的合并表述不准确。<strong>静态成员函数与构造函数不能是虚函数，但内联成员函数可以是虚函数</strong>。</li>
+<li><strong>普通函数内的虚调用</strong>：课件第 26 页“普通成员函数中调用虚函数”的简述不应解读为静态绑定；第 22、32 页的例程证明动态虚调用仍然有效。</li>
+<li><strong>重写与同名隐藏</strong>：第 15 页把不匹配情形概括为普通重载不够严谨，应区分覆盖失败、名称隐藏与确实的重载集；现代 C++ 用 <code>override</code> 检查最可靠。</li>
+<li><strong>纯虚函数</strong>：第 42 页的“没有实现体”是便于理解的简化说法，标准 C++ 允许纯虚函数提供类外定义；纯虚析构函数还要求提供定义。</li>
+<li><strong>虚表布局</strong>：第 25 页的示意有教学价值，但不能据此推断某个编译器必然存在固定 <code>vptr</code> 字段或表结构。</li>
+<li><strong>学生类复制</strong>：第 53 页 <code>strlen(zS.mpName)</code> 需要先检查空指针，动态资源拥有者还需处理复制赋值，且默认构造后的成绩数组也应初始化；第 54 页定长字符数组输入存在边界问题。</li>
+<li><strong>强制转换</strong>：第 13 页的 C 风格派生指针转换不能替代动态多态，实际项目避免未经验证地向下转换。</li>
+<li><strong>本文现代补充</strong>：<code>override</code>、<code>final</code>、<code>std::string</code>、<code>dynamic_cast</code>、虚析构及修订代码均为兼顾标准规范和可学习性的补充，未将其伪称为 PPT 原文。</li>
+</ol>
+<h3 id="83-最终速查表"><span aria-hidden="true" class="anchor-alias" id="sec-52"></span>8.3 最终速查表</h3>
+<table>
+<thead>
+<tr>
+<th>情形</th>
+<th>选择规则</th>
+<th>关键结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Base*</code> 访问非虚 <code>F()</code></td>
+<td>按静态类型</td>
+<td>一般执行 <code>Base::F</code></td>
+</tr>
+<tr>
+<td><code>Base*</code> 访问虚 <code>F()</code></td>
+<td>按实际对象的最终覆盖者</td>
+<td>可执行 <code>Derived::F</code></td>
+</tr>
+<tr>
+<td><code>Base&amp;</code> 访问虚 <code>F()</code></td>
+<td>同上</td>
+<td>引用也能动态分派</td>
+</tr>
+<tr>
+<td><code>Base b = derived</code></td>
+<td>对象切片</td>
+<td><code>b</code> 的动态类型为 <code>Base</code></td>
+</tr>
+<tr>
+<td><code>p-&gt;Base::F()</code></td>
+<td>显式限定调用</td>
+<td>抑制常规虚分派</td>
+</tr>
+<tr>
+<td><code>Base</code> 构造函数内调用虚 <code>F()</code></td>
+<td>按当前构造阶段</td>
+<td>不调用尚未构造的派生覆盖版本</td>
+</tr>
+<tr>
+<td><code>Base</code> 析构函数内调用虚 <code>F()</code></td>
+<td>按当前析构阶段</td>
+<td>不调用已析构的派生覆盖版本</td>
+</tr>
+<tr>
+<td>虚继承共同祖先</td>
+<td>共享基类子对象</td>
+<td>不自动决定 <code>F()</code> 是否为虚</td>
+</tr>
+<tr>
+<td><code>virtual F() = 0</code></td>
+<td>定义纯虚函数</td>
+<td>含未实现最终纯虚函数的类为抽象类</td>
+</tr>
+<tr>
+<td><code>delete Base*</code> 指向动态派生对象</td>
+<td>通常要求基类虚析构</td>
+<td>不满足相应规则可能发生未定义行为</td>
+</tr>
+</tbody>
+</table>
+<aside class="callout callout-summary" data-callout="summary"><div class="callout-title" data-icon="≡">本讲最重要的一句话 多态题首先判断调用表达式是否构成虚调用，然后才看运行时对象到底是什么；不要把同名函数、继承路径和动态对象类型混成一个判断。</div><div class="callout-content">
+<p><strong>多态题首先判断调用表达式是否构成虚调用，然后才看运行时对象到底是什么；不要把同名函数、继承路径和动态对象类型混成一个判断。</strong></p>
+</div></aside>
+<hr/>
+<h2 id="附可运行示例与图件使用说明"><span aria-hidden="true" class="anchor-alias" id="sec-53"></span>附：可运行示例与图件使用说明</h2>
+<p>附件目录内 <code>code/</code> 提供多组可编译的 C++17 小程序（非虚调用、虚函数与引用、菱形继承、纯虚图形、构造阶段、学生对象复制），用于独立验证本文主要结论；它们不替代正文中的分章节解释。</p>
+<p><strong>编译形式</strong>：在对应项目目录运行 <code>g++ -std=c++17 -Wall -Wextra ... -o demo</code>，具体命令写在 <code>code/README.md</code>。</p>
+<p><strong>插图路径策略</strong>：采用 Obsidian 仓库完整路径 Wiki 嵌入。将 ZIP 顶层唯一的 <code>CppOOP_..._assets</code> 文件夹移动到当前 Vault 的 <code>Assets/</code> 文件夹下；正文 <code>.md</code> 可放入任意课程目录。最终资源路径为 <code>Assets/CppOOP_..._assets/images/...png</code>。SVG 供编辑，PNG 供稳定阅读，不把两种格式重复计为两幅图。</p>
+<p><strong>内容范围声明</strong>：第 55 页的“第九讲模板与类属机制”是下一讲预习安排，第 56～57 页为课堂答疑与结束页，不属于本讲需展开的核心知识，因此本文只作范围记录，不无边界扩写模板内容。</p>
+</article>
+    <footer class="site-footer">知栈 · 专注内容与阅读　<span>HTML 阅读优先 V3</span></footer>
+  </main>
+  <aside class="toc-sidebar" id="tocSidebar"><div class="toc-inner"><div class="toc-heading"><div class="toc-title">本页目录 <span>ON THIS PAGE</span></div><button class="side-collapse" id="tocClose" type="button" aria-label="收起本页目录" hidden>收起 ›</button></div><nav id="pageToc" aria-label="页内目录"></nav><div class="toc-foot">滚动正文，自动追踪所在章节</div></div></aside>
+</div>
+<div id="typePanel" class="type-panel" hidden>
+ <div class="popover-title">阅读排版 <button id="closeTypography" aria-label="关闭设置">×</button></div>
+ <label for="fontRange">正文字号 <output id="fontVal">19px</output></label>
+ <input id="fontRange" type="range" min="16" max="26" value="19" step="1">
+ <div class="small-scale"><span>A</span><span style="font-size:23px">A</span></div>
+ <label for="lineRange">行距 <output id="lineVal">1.85</output></label>
+ <input id="lineRange" type="range" min="1.5" max="2.15" value="1.85" step="0.05">
+ <div class="settings-row"><span>宽屏阅读</span><button id="wideToggle" class="switch-btn">开启</button></div>
+ <div class="settings-row"><span>夜间阅读</span><button id="themeSetting" class="switch-btn">切换</button></div>
+ <button id="restoreDefaults" class="reset-button">恢复默认排版</button>
+</div>
+<div id="searchOverlay" class="search-overlay" hidden>
+ <div class="search-dialog" role="dialog" aria-modal="true" aria-label="搜索知识库">
+  <div class="dialog-search"><span>⌕</span><input id="searchInput" type="search" autocomplete="off" placeholder="输入公式、章节名称、概念..." aria-label="搜索关键词"><kbd>Esc</kbd></div>
+  <div class="search-results" id="searchResults"><div class="search-empty">输入关键词后，可搜索整篇已导入的《气体动理论》正文。</div></div>
+  <div class="dialog-foot">支持中文关键词和章节定位 · 本地离线索引</div>
+ </div>
+</div>
+<div id="mobileShade" class="mobile-shade" hidden></div>
+<script type="application/json" id="tocData">[{"id": "第八讲-多态性与虚函数图解系统笔记", "level": 1, "title": "第八讲 多态性与虚函数（图解系统笔记）"}, {"id": "学习路线", "level": 2, "title": "学习路线"}, {"id": "一81-多态性概念及分类课件第-3-页", "level": 2, "title": "一、8.1 多态性概念及分类（课件第 3 页）"}, {"id": "11-多态性究竟是什么", "level": 3, "title": "1.1 多态性究竟是什么"}, {"id": "12-静态多态编译时联编", "level": 3, "title": "1.2 静态多态：编译时联编"}, {"id": "13-动态多态运行时联编", "level": 3, "title": "1.3 动态多态：运行时联编"}, {"id": "14-最容易混淆静态类型和动态类型", "level": 3, "title": "1.4 最容易混淆：静态类型和动态类型"}, {"id": "二82-虚函数为什么有必要课件第-513-页", "level": 2, "title": "二、8.2 虚函数为什么有必要（课件第 5～13 页）"}, {"id": "21-赋值兼容原则与向上类型转换", "level": 3, "title": "2.1 赋值兼容原则与向上类型转换"}, {"id": "22-没有-virtual-的森林动物案例", "level": 3, "title": "2.2 没有 virtual 的森林动物案例"}, {"id": "23-基类引用作为参数时仍会遇到同样的问题", "level": 3, "title": "2.3 基类引用作为参数时仍会遇到同样的问题"}, {"id": "24-强制类型转换不是通用解决方案", "level": 3, "title": "2.4 强制类型转换不是通用解决方案"}, {"id": "25-对象切片与指针引用多态的边界", "level": 3, "title": "2.5 对象切片与指针/引用多态的边界"}, {"id": "三83-虚函数的定义覆盖与使用课件第-1532-页", "level": 2, "title": "三、8.3 虚函数的定义、覆盖与使用（课件第 15～32 页）"}, {"id": "31-virtual-的基本语法", "level": 3, "title": "3.1 virtual 的基本语法"}, {"id": "32-加-virtual-后的实际结果", "level": 3, "title": "3.2 加 virtual 后的实际结果"}, {"id": "33-引用与指针形参只写一次-show", "level": 3, "title": "3.3 引用与指针形参：只写一次 Show"}, {"id": "34-非虚成员函数可以在内部调用虚函数", "level": 3, "title": "3.4 非虚成员函数可以在内部调用虚函数"}, {"id": "35-重写override重载overload和同名隐藏hiding", "level": 3, "title": "3.5 重写（override）、重载（overload）和同名隐藏（hiding）"}, {"id": "36-有时即使是虚函数也可以明确调用基类版本", "level": 3, "title": "3.6 有时即使是虚函数，也可以明确调用基类版本"}, {"id": "37-虚函数的运行原理理解-vptr-与-vtable但不要把它当作标准规定的内存格式", "level": 3, "title": "3.7 虚函数的运行原理：理解 vptr 与 vtable，但不要把它当作标准规定的内存格式"}, {"id": "38-构造函数与析构函数中的虚调用非常重要的例外", "level": 3, "title": "3.8 构造函数与析构函数中的虚调用：非常重要的例外"}, {"id": "39-虚析构函数是多态基类的重要设计要求", "level": 3, "title": "3.9 虚析构函数是多态基类的重要设计要求"}, {"id": "310-哪些函数不能声明为虚函数", "level": 3, "title": "3.10 哪些函数不能声明为虚函数？"}, {"id": "311-现代-c-的-override-与-final", "level": 3, "title": "3.11 现代 C++ 的 override 与 final"}, {"id": "四84-多重继承与虚函数课件第-3340-页", "level": 2, "title": "四、8.4 多重继承与虚函数（课件第 33～40 页）"}, {"id": "41-为什么会出现菱形继承问题", "level": 3, "title": "4.1 为什么会出现菱形继承问题"}, {"id": "42-虚继承解决共享基类子对象的问题", "level": 3, "title": "4.2 虚继承解决共享基类子对象的问题"}, {"id": "43-ppt-第-40-页的蝙蝠题三个基类指针为什么输出不一样", "level": 3, "title": "4.3 PPT 第 40 页的蝙蝠题：三个基类指针为什么输出不一样？"}, {"id": "44-如果-canimalwho-也改为虚函数会怎样", "level": 3, "title": "4.4 如果 CAnimal::Who 也改为虚函数，会怎样？"}, {"id": "45-多重继承对象地址与转换的细节", "level": 3, "title": "4.5 多重继承对象地址与转换的细节"}, {"id": "46-虚基类的初始化顺序", "level": 3, "title": "4.6 虚基类的初始化顺序"}, {"id": "47-同名成员与二义性", "level": 3, "title": "4.7 同名成员与二义性"}, {"id": "五85-纯虚函数与抽象类课件第-4246-页", "level": 2, "title": "五、8.5 纯虚函数与抽象类（课件第 42～46 页）"}, {"id": "51-纯虚函数与抽象类的定义", "level": 3, "title": "5.1 纯虚函数与抽象类的定义"}, {"id": "52-为什么不能定义抽象基类对象", "level": 3, "title": "5.2 为什么不能定义抽象基类对象"}, {"id": "53-派生类没有全部实现纯虚函数时会怎样", "level": 3, "title": "5.3 派生类没有全部实现纯虚函数时会怎样？"}, {"id": "54-纯虚函数不等于没有函数定义也不等于空函数", "level": 3, "title": "5.4 纯虚函数不等于没有函数定义，也不等于空函数"}, {"id": "55-典型应用抽象平面图形与面积计算", "level": 3, "title": "5.5 典型应用：抽象平面图形与面积计算"}, {"id": "56-纯虚析构函数是特别的情况必要补充", "level": 3, "title": "5.6 纯虚析构函数是特别的情况（必要补充）"}, {"id": "六ppt-附加内容学生管理程序第-5054-页", "level": 2, "title": "六、PPT 附加内容：学生管理程序（第 50～54 页）"}, {"id": "61-cstudent-的结构与静态重载", "level": 3, "title": "6.1 CStudent 的结构与静态重载"}, {"id": "62-原始指针管理姓名时为什么必须深拷贝", "level": 3, "title": "6.2 原始指针管理姓名时，为什么必须深拷贝？"}, {"id": "63-输入与数组越界风险", "level": 3, "title": "6.3 输入与数组越界风险"}, {"id": "64-构造复制析构全过程", "level": 3, "title": "6.4 构造、复制、析构全过程"}, {"id": "七课程作业与巩固第-49-页", "level": 2, "title": "七、课程作业与巩固（第 49 页）"}, {"id": "71-建议的类与接口设计", "level": 3, "title": "7.1 建议的类与接口设计"}, {"id": "72-四组关键自测", "level": 3, "title": "7.2 四组关键自测"}, {"id": "八易错点统一辨析与课程资料校订", "level": 2, "title": "八、易错点统一辨析与课程资料校订"}, {"id": "81-判断虚函数调用的四步法", "level": 3, "title": "8.1 判断虚函数调用的四步法"}, {"id": "82-课件与现代标准-c-的差异清单", "level": 3, "title": "8.2 课件与现代标准 C++ 的差异清单"}, {"id": "83-最终速查表", "level": 3, "title": "8.3 最终速查表"}, {"id": "附可运行示例与图件使用说明", "level": 2, "title": "附：可运行示例与图件使用说明"}]</script>
+</body></html>

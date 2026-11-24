@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="630" viewBox="0 0 1240 630">
+<defs><marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7Z" fill="#2575ba"/></marker><marker id="arrR" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7Z" fill="#cf4264"/></marker><marker id="arrT" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7Z" fill="#07957b"/></marker></defs>
+<rect width="100%" height="100%" fill="#f9fbfe"/>
+<rect x="32" y="24" width="1176" height="96" rx="22" fill="#eaf3fc"/>
+<text x="62" y="62" fill="#16334b" font-size="31" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="start">静态链表：数组下标充当指针（cur）</text>
+<text x="63" y="99" fill="#61758a" font-size="19" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="start">过程帧 05 · 0 号元为表头，空闲分量由备用链表管理</text>
+<text x="114" y="170" fill="#61758a" font-size="20" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">0</text>
+<rect x="68" y="182" width="101" height="101" rx="5" fill="#d7f5e9" stroke="#07957b" stroke-width="2"/>
+<line x1="68" y1="236" x2="169" y2="236" stroke="#b9c9d8" stroke-width="2" stroke-linecap="round"  />
+<text x="117" y="221" fill="#16334b" font-size="24" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">HEAD</text>
+<text x="117" y="268" fill="#2575ba" font-size="23" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">2</text>
+<text x="119" y="305" fill="#61758a" font-size="13" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">data/cur</text>
+<text x="230" y="170" fill="#61758a" font-size="20" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">1</text>
+<rect x="184" y="182" width="101" height="101" rx="5" fill="#fff" stroke="#b9c9d8" stroke-width="2"/>
+<line x1="184" y1="236" x2="285" y2="236" stroke="#b9c9d8" stroke-width="2" stroke-linecap="round"  />
+<text x="233" y="221" fill="#16334b" font-size="24" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">空</text>
+<text x="233" y="268" fill="#2575ba" font-size="23" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">5</text>
+<text x="235" y="305" fill="#61758a" font-size="13" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">data/cur</text>
+<text x="346" y="170" fill="#61758a" font-size="20" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">2</text>
+<rect x="300" y="182" width="101" height="101" rx="5" fill="#d7f5e9" stroke="#07957b" stroke-width="2"/>
+<line x1="300" y1="236" x2="401" y2="236" stroke="#b9c9d8" stroke-width="2" stroke-linecap="round"  />
+<text x="349" y="221" fill="#16334b" font-size="24" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">12</text>
+<text x="349" y="268" fill="#2575ba" font-size="23" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">6</text>
+<text x="351" y="305" fill="#61758a" font-size="13" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">data/cur</text>
+<text x="462" y="170" fill="#61758a" font-size="20" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">3</text>
+<rect x="416" y="182" width="101" height="101" rx="5" fill="#fff" stroke="#b9c9d8" stroke-width="2"/>
+<line x1="416" y1="236" x2="517" y2="236" stroke="#b9c9d8" stroke-width="2" stroke-linecap="round"  />
+<text x="465" y="221" fill="#16334b" font-size="24" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">空</text>
+<text x="465" y="268" fill="#2575ba" font-size="23" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">7</text>
+<text x="467" y="305" fill="#61758a" font-size="13" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">data/cur</text>
+<text x="578" y="170" fill="#61758a" font-size="20" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">4</text>
+<rect x="532" y="182" width="101" height="101" rx="5" fill="#d7f5e9" stroke="#07957b" stroke-width="2"/>
+<line x1="532" y1="236" x2="633" y2="236" stroke="#b9c9d8" stroke-width="2" stroke-linecap="round"  />
+<text x="581" y="221" fill="#16334b" font-size="24" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">30</text>
+<text x="581" y="268" fill="#2575ba" font-size="23" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">0</text>
+<text x="583" y="305" fill="#61758a" font-size="13" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">data/cur</text>
+<text x="694" y="170" fill="#61758a" font-size="20" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">5</text>
+<rect x="648" y="182" width="101" height="101" rx="5" fill="#fff" stroke="#b9c9d8" stroke-width="2"/>
+<line x1="648" y1="236" x2="749" y2="236" stroke="#b9c9d8" stroke-width="2" stroke-linecap="round"  />
+<text x="697" y="221" fill="#16334b" font-size="24" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">空</text>
+<text x="697" y="268" fill="#2575ba" font-size="23" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">3</text>
+<text x="699" y="305" fill="#61758a" font-size="13" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">data/cur</text>
+<text x="810" y="170" fill="#61758a" font-size="20" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">6</text>
+<rect x="764" y="182" width="101" height="101" rx="5" fill="#d7f5e9" stroke="#07957b" stroke-width="2"/>
+<line x1="764" y1="236" x2="865" y2="236" stroke="#b9c9d8" stroke-width="2" stroke-linecap="round"  />
+<text x="813" y="221" fill="#16334b" font-size="24" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">20</text>
+<text x="813" y="268" fill="#2575ba" font-size="23" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">4</text>
+<text x="815" y="305" fill="#61758a" font-size="13" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">data/cur</text>
+<text x="926" y="170" fill="#61758a" font-size="20" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">7</text>
+<rect x="880" y="182" width="101" height="101" rx="5" fill="#fff" stroke="#b9c9d8" stroke-width="2"/>
+<line x1="880" y1="236" x2="981" y2="236" stroke="#b9c9d8" stroke-width="2" stroke-linecap="round"  />
+<text x="929" y="221" fill="#16334b" font-size="24" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">空</text>
+<text x="929" y="268" fill="#2575ba" font-size="23" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">8</text>
+<text x="931" y="305" fill="#61758a" font-size="13" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">data/cur</text>
+<text x="1042" y="170" fill="#61758a" font-size="20" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">8</text>
+<rect x="996" y="182" width="101" height="101" rx="5" fill="#fff" stroke="#b9c9d8" stroke-width="2"/>
+<line x1="996" y1="236" x2="1097" y2="236" stroke="#b9c9d8" stroke-width="2" stroke-linecap="round"  />
+<text x="1045" y="221" fill="#16334b" font-size="24" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">空</text>
+<text x="1045" y="268" fill="#2575ba" font-size="23" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">0</text>
+<text x="1047" y="305" fill="#61758a" font-size="13" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">data/cur</text>
+<rect x="65" y="350" width="225" height="35" rx="16" fill="#ffffff" stroke="#2575ba" stroke-width="1.5"/>
+<text x="177.5" y="375" fill="#2575ba" font-size="17" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">S[0].cur=2</text>
+<rect x="323" y="350" width="170" height="35" rx="16" fill="#ffffff" stroke="#ed8e31" stroke-width="1.5"/>
+<text x="408.0" y="375" fill="#ed8e31" font-size="17" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">free=1</text>
+<text x="70" y="442" fill="#16334b" font-size="22" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="start">实际访问顺序沿 cur 跳转，而不是沿数组下标 +1</text>
+<rect x="38" y="534" width="1164" height="68" rx="15" fill="white" stroke="#cbd9e6" stroke-width="1.5"/>
+<text x="62" y="562" fill="#2575ba" font-size="21" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="start">操作完成：槽复用而非数组搬移</text>
+<text x="62" y="588" fill="#61758a" font-size="17" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="start">静态链表仍须预先分配容量，使用整数 cur 代替机器指针</text>
+</svg>

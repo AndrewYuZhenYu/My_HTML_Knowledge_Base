@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="630" viewBox="0 0 1240 630">
+<defs><marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7Z" fill="#2575ba"/></marker><marker id="arrR" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7Z" fill="#cf4264"/></marker><marker id="arrT" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7Z" fill="#07957b"/></marker></defs>
+<rect width="100%" height="100%" fill="#f9fbfe"/>
+<rect x="32" y="24" width="1176" height="96" rx="22" fill="#eaf3fc"/>
+<text x="62" y="62" fill="#16334b" font-size="31" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="start">双向链表：每一条 next / prior 修改都对应一条真实指针</text>
+<text x="63" y="99" fill="#61758a" font-size="19" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="start">过程帧 04 · 蓝色 next；橙色 prior；灰虚线表示旧连接已失效</text>
+<rect x="118" y="270" width="117" height="60" rx="8" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="177" y="309" fill="#16334b" font-size="25" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">H</text>
+<rect x="325" y="270" width="117" height="60" rx="8" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="384" y="309" fill="#16334b" font-size="25" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">10</text>
+<rect x="532" y="270" width="117" height="60" rx="8" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="591" y="309" fill="#16334b" font-size="25" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">20</text>
+<rect x="947" y="270" width="117" height="60" rx="8" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="1006" y="309" fill="#16334b" font-size="25" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">40</text>
+<rect x="742" y="270" width="117" height="60" rx="8" fill="#d7f5e9" stroke="#07957b" stroke-width="2"/>
+<text x="801" y="309" fill="#16334b" font-size="25" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">30</text>
+<line x1="228" y1="286" x2="330" y2="287" stroke="#2575ba" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arr)" />
+<line x1="435" y1="286" x2="537" y2="287" stroke="#2575ba" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arr)" />
+<line x1="642" y1="286" x2="747" y2="287" stroke="#2575ba" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arr)" />
+<line x1="852" y1="286" x2="952" y2="287" stroke="#2575ba" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arr)" />
+<line x1="330" y1="318" x2="229" y2="318" stroke="#ed8e31" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arr)" />
+<line x1="537" y1="318" x2="436" y2="318" stroke="#ed8e31" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arr)" />
+<line x1="952" y1="318" x2="643" y2="318" stroke="#ed8e31" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arr)" />
+<line x1="747" y1="318" x2="643" y2="318" stroke="#ed8e31" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arr)" />
+<text x="74" y="190" fill="#61758a" font-size="20" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="start">上侧箭头追踪 next，下侧箭头追踪 prior；两侧连接都调整完才可释放结点。</text>
+<rect x="38" y="534" width="1164" height="68" rx="15" fill="white" stroke="#cbd9e6" stroke-width="1.5"/>
+<text x="62" y="562" fill="#2575ba" font-size="21" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="start">s.next = p</text>
+<text x="62" y="588" fill="#61758a" font-size="17" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="start">新结点 s 的后继指向 40</text>
+</svg>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="630" viewBox="0 0 1240 630">
+<defs><marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7Z" fill="#2575ba"/></marker><marker id="arrR" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7Z" fill="#cf4264"/></marker><marker id="arrT" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7Z" fill="#07957b"/></marker></defs>
+<rect width="100%" height="100%" fill="#f9fbfe"/>
+<rect x="32" y="24" width="1176" height="96" rx="22" fill="#eaf3fc"/>
+<text x="62" y="62" fill="#16334b" font-size="31" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="start">有序链表归并：复用结点逐项接到结果尾部</text>
+<text x="63" y="99" fill="#61758a" font-size="19" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="start">过程帧 05 · 双指针扫描，pa / pb 分别指向尚未处理的项</text>
+<text x="64" y="203" fill="#16334b" font-size="22" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="start">A 表</text>
+<rect x="210" y="172" width="74" height="52" rx="7" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="247" y="206" fill="#16334b" font-size="25" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">3</text>
+<rect x="293" y="172" width="74" height="52" rx="7" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="330" y="206" fill="#16334b" font-size="25" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">5</text>
+<rect x="376" y="172" width="74" height="52" rx="7" fill="#d7f5e9" stroke="#07957b" stroke-width="2"/>
+<text x="413" y="206" fill="#16334b" font-size="25" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">8</text>
+<rect x="459" y="172" width="74" height="52" rx="7" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="496" y="206" fill="#16334b" font-size="25" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">11</text>
+<text x="413" y="158" fill="#cf4264" font-size="22" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">▼</text>
+<text x="64" y="323" fill="#16334b" font-size="22" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="start">B 表</text>
+<rect x="210" y="292" width="74" height="52" rx="7" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="247" y="326" fill="#16334b" font-size="25" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">2</text>
+<rect x="293" y="292" width="74" height="52" rx="7" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="330" y="326" fill="#16334b" font-size="25" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">6</text>
+<rect x="376" y="292" width="74" height="52" rx="7" fill="#d7f5e9" stroke="#07957b" stroke-width="2"/>
+<text x="413" y="326" fill="#16334b" font-size="25" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">8</text>
+<rect x="459" y="292" width="74" height="52" rx="7" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="496" y="326" fill="#16334b" font-size="25" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">9</text>
+<rect x="542" y="292" width="74" height="52" rx="7" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="579" y="326" fill="#16334b" font-size="25" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">11</text>
+<rect x="625" y="292" width="74" height="52" rx="7" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="662" y="326" fill="#16334b" font-size="25" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">15</text>
+<rect x="708" y="292" width="74" height="52" rx="7" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="745" y="326" fill="#16334b" font-size="25" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">20</text>
+<text x="413" y="278" fill="#cf4264" font-size="22" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">▼</text>
+<text x="64" y="444" fill="#16334b" font-size="22" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="start">C 表</text>
+<rect x="210" y="413" width="74" height="52" rx="7" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="247" y="447" fill="#16334b" font-size="25" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">2</text>
+<rect x="293" y="413" width="74" height="52" rx="7" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="330" y="447" fill="#16334b" font-size="25" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">3</text>
+<rect x="376" y="413" width="74" height="52" rx="7" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="413" y="447" fill="#16334b" font-size="25" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">5</text>
+<rect x="459" y="413" width="74" height="52" rx="7" fill="#d7f5e9" stroke="#07957b" stroke-width="2"/>
+<text x="496" y="447" fill="#16334b" font-size="25" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">6</text>
+<text x="496" y="399" fill="#cf4264" font-size="22" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">▼</text>
+<rect x="38" y="534" width="1164" height="68" rx="15" fill="white" stroke="#cbd9e6" stroke-width="1.5"/>
+<text x="62" y="562" fill="#2575ba" font-size="21" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="start">选择 6，更新相应输入指针</text>
+<text x="62" y="588" fill="#61758a" font-size="17" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="start">输出前缀 [2, 3, 5, 6]；仅移动指针即可连接结点</text>
+</svg>

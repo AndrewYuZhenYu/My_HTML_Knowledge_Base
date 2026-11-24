@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="630" viewBox="0 0 1240 630">
+<defs><marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7Z" fill="#2575ba"/></marker><marker id="arrR" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7Z" fill="#cf4264"/></marker><marker id="arrT" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7Z" fill="#07957b"/></marker></defs>
+<rect width="100%" height="100%" fill="#f9fbfe"/>
+<rect x="32" y="24" width="1176" height="96" rx="22" fill="#eaf3fc"/>
+<text x="62" y="62" fill="#16334b" font-size="31" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="start">顺序表与链表：同一个操作的物理成本并不相同</text>
+<text x="63" y="99" fill="#61758a" font-size="19" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="start">对照帧 04 · 链表插入</text>
+<text x="65" y="229" fill="#16334b" font-size="20" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="start">顺序表</text>
+<rect x="174" y="186" width="137" height="62" rx="8" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="242.5" y="225" fill="#16334b" font-size="26" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">10</text>
+<text x="242.5" y="270" fill="#61758a" font-size="17" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">0</text>
+<rect x="316" y="186" width="137" height="62" rx="8" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="384.5" y="225" fill="#16334b" font-size="26" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">20</text>
+<text x="384.5" y="270" fill="#61758a" font-size="17" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">1</text>
+<rect x="458" y="186" width="137" height="62" rx="8" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="526.5" y="225" fill="#16334b" font-size="26" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">30</text>
+<text x="526.5" y="270" fill="#61758a" font-size="17" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">2</text>
+<rect x="600" y="186" width="137" height="62" rx="8" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="668.5" y="225" fill="#16334b" font-size="26" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">40</text>
+<text x="668.5" y="270" fill="#61758a" font-size="17" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">3</text>
+<rect x="742" y="186" width="137" height="62" rx="8" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="810.5" y="225" fill="#16334b" font-size="26" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">50</text>
+<text x="810.5" y="270" fill="#61758a" font-size="17" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">4</text>
+<rect x="174.0" y="367" width="125.0" height="66.0" rx="7" fill="#e9eff7" stroke="#b9c9d8" stroke-width="2"/>
+<line x1="257.75" y1="367" x2="257.75" y2="433.0" stroke="#b9c9d8" stroke-width="1.5" stroke-linecap="round"  />
+<text x="216.5" y="407.26" fill="#16334b" font-size="24.0" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">H</text>
+<text x="278.375" y="406.6" fill="#2575ba" font-size="21.0" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">•</text>
+<rect x="357.0" y="367" width="125.0" height="66.0" rx="7" fill="#fff" stroke="#b9c9d8" stroke-width="2"/>
+<line x1="440.75" y1="367" x2="440.75" y2="433.0" stroke="#b9c9d8" stroke-width="1.5" stroke-linecap="round"  />
+<text x="399.5" y="407.26" fill="#16334b" font-size="24.0" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">10</text>
+<text x="461.375" y="406.6" fill="#2575ba" font-size="21.0" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">•</text>
+<rect x="540.0" y="367" width="125.0" height="66.0" rx="7" fill="#d7f5e9" stroke="#07957b" stroke-width="2"/>
+<line x1="623.75" y1="367" x2="623.75" y2="433.0" stroke="#b9c9d8" stroke-width="1.5" stroke-linecap="round"  />
+<text x="582.5" y="407.26" fill="#16334b" font-size="24.0" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">20</text>
+<text x="644.375" y="406.6" fill="#2575ba" font-size="21.0" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">•</text>
+<rect x="723.0" y="367" width="125.0" height="66.0" rx="7" fill="#fff" stroke="#b9c9d8" stroke-width="2"/>
+<line x1="806.75" y1="367" x2="806.75" y2="433.0" stroke="#b9c9d8" stroke-width="1.5" stroke-linecap="round"  />
+<text x="765.5" y="407.26" fill="#16334b" font-size="24.0" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">30</text>
+<text x="827.375" y="406.6" fill="#2575ba" font-size="21.0" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">•</text>
+<rect x="906.0" y="367" width="125.0" height="66.0" rx="7" fill="#fff" stroke="#b9c9d8" stroke-width="2"/>
+<line x1="989.75" y1="367" x2="989.75" y2="433.0" stroke="#b9c9d8" stroke-width="1.5" stroke-linecap="round"  />
+<text x="948.5" y="407.26" fill="#16334b" font-size="24.0" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">40</text>
+<text x="1010.375" y="406.6" fill="#2575ba" font-size="21.0" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">•</text>
+<line x1="295.0" y1="401.32" x2="350.0" y2="401.32" stroke="#2575ba" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arr)" />
+<line x1="478.0" y1="401.32" x2="533.0" y2="401.32" stroke="#2575ba" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arr)" />
+<line x1="661.0" y1="401.32" x2="716.0" y2="401.32" stroke="#2575ba" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arr)" />
+<line x1="844.0" y1="401.32" x2="899.0" y2="401.32" stroke="#2575ba" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arr)" />
+<line x1="1027.0" y1="401.32" x2="1076.0" y2="401.32" stroke="#61758a" stroke-width="2.2" stroke-linecap="round"  />
+<text x="1082.0" y="407.92" fill="#61758a" font-size="16" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="start">NULL</text>
+<text x="602.5" y="314" fill="#cf4264" font-size="22" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">p</text>
+<line x1="602.5" y1="324" x2="602.5" y2="359" stroke="#cf4264" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrR)" />
+<rect x="38" y="534" width="1164" height="68" rx="15" fill="white" stroke="#cbd9e6" stroke-width="1.5"/>
+<text x="62" y="562" fill="#2575ba" font-size="21" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="start">先定位前驱，然后仅修改两条 next</text>
+<text x="62" y="588" fill="#61758a" font-size="17" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="start">已知前驱时接入新结点 O(1)，按位定位仍 O(n)</text>
+</svg>

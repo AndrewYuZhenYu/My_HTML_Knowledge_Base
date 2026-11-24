@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="630" viewBox="0 0 1240 630">
+<defs><marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7Z" fill="#2575ba"/></marker><marker id="arrR" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7Z" fill="#cf4264"/></marker><marker id="arrT" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7Z" fill="#07957b"/></marker></defs>
+<rect width="100%" height="100%" fill="#f9fbfe"/>
+<rect x="32" y="24" width="1176" height="96" rx="22" fill="#eaf3fc"/>
+<text x="62" y="62" fill="#16334b" font-size="31" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="start">稀疏一元多项式相加：比较指数并合并同类项</text>
+<text x="63" y="99" fill="#61758a" font-size="19" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="start">过程帧 01 · A、B 的非零项均按指数升序排列</text>
+<text x="70" y="205" fill="#16334b" font-size="24" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="start">A(x)</text>
+<rect x="158" y="168" width="145" height="63" rx="7" fill="#d7f5e9" stroke="#07957b" stroke-width="2"/>
+<text x="229" y="208" fill="#16334b" font-size="21" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">2</text>
+<text x="229" y="156" fill="#cf4264" font-size="17" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">▼ 当前</text>
+<rect x="314" y="168" width="145" height="63" rx="7" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="385" y="208" fill="#16334b" font-size="21" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">3x^2</text>
+<rect x="470" y="168" width="145" height="63" rx="7" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="541" y="208" fill="#16334b" font-size="21" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">4x^5</text>
+<text x="70" y="329" fill="#16334b" font-size="24" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="start">B(x)</text>
+<rect x="158" y="292" width="145" height="63" rx="7" fill="#d7f5e9" stroke="#07957b" stroke-width="2"/>
+<text x="229" y="332" fill="#16334b" font-size="21" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">5x^1</text>
+<text x="229" y="280" fill="#cf4264" font-size="17" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">▼ 当前</text>
+<rect x="314" y="292" width="145" height="63" rx="7" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="385" y="332" fill="#16334b" font-size="21" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">-3x^2</text>
+<rect x="470" y="292" width="145" height="63" rx="7" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="541" y="332" fill="#16334b" font-size="21" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">1x^4</text>
+<rect x="626" y="292" width="145" height="63" rx="7" fill="white" stroke="#b9c9d8" stroke-width="2"/>
+<text x="697" y="332" fill="#16334b" font-size="21" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">8x^6</text>
+<text x="70" y="453" fill="#16334b" font-size="24" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="start">C(x)</text>
+<rect x="38" y="534" width="1164" height="68" rx="15" fill="white" stroke="#cbd9e6" stroke-width="1.5"/>
+<text x="62" y="562" fill="#2575ba" font-size="21" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="start">比较指数 0 与 1</text>
+<text x="62" y="588" fill="#61758a" font-size="17" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="start">指数较小者直接加入结果，无需改变其系数</text>
+</svg>

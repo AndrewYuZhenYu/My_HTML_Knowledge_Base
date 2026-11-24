@@ -1,0 +1,130 @@
+{
+  "selected": [
+    {
+      "archive": "数据结构/GPT02 数据结构线性表.zip",
+      "source": "sources/data-structures/GPT02 数据结构第二章：线性表.md",
+      "sha256": "bc408f26eccf67404d60abd3efaf8b44f25a0391812d82f37a63fbe48de9aa59",
+      "referenced_images": 126
+    },
+    {
+      "archive": "数据结构/GPT03 数据结构栈和队列.zip",
+      "source": "sources/data-structures/GPT03数据结构第三章：栈和队列.md",
+      "sha256": "35e3a769ad16faa86e277be8add42125945c2664c751f03d669c7b1dd5a81c0a",
+      "referenced_images": 157
+    },
+    {
+      "archive": "数据结构/GPT04数据结构串.zip",
+      "source": "sources/data-structures/GPT04 数据结构第四章：串.md",
+      "sha256": "4e1dc99f51e9bf8b8319321e06194ad70b07f8b45278b608c1aef22056a0727a",
+      "referenced_images": 120
+    },
+    {
+      "archive": "数据结构/GPT05 数据结构数组和广义表.zip",
+      "source": "sources/data-structures/GPT05 数据结构第五章：数组和广义表.md",
+      "sha256": "a7c954ff55b8c3ea2176d09ff00b08dc8a0f66cbe09875cb3a9962df6e554ae0",
+      "referenced_images": 83
+    },
+    {
+      "archive": "数据结构/GPT06数据结构树和二叉树.zip",
+      "source": "sources/data-structures/06 树和二叉树.md",
+      "sha256": "c5c3c666fba53c2fea89cfe90d10f9f0ce95fb9c4f9d3b74d08cab393ba20759",
+      "referenced_images": 77
+    },
+    {
+      "archive": "数据结构/GPT07数据结构图.zip",
+      "source": "sources/data-structures/07 图.md",
+      "sha256": "f084cb3dc1c60e79e930e5276a0ab03e45ec7e81b0665ea3c78327b92dd27dff",
+      "referenced_images": 118
+    },
+    {
+      "archive": "数据结构/GPT08数据结构扣.zip",
+      "source": "sources/data-structures/09 查找.md",
+      "sha256": "db6ec2de33b5cc5e4a11be5e10b75f191c8e128efe048248610f49177f0e5307",
+      "referenced_images": 69
+    },
+    {
+      "archive": "离散数学/GPT01离散数学.zip",
+      "source": "sources/discrete-math/GPT01命题逻辑基础：命题、联结词、命题公式与真值表.md",
+      "sha256": "ae12df84afa2afddf31663710729fec0bbba097bcdb401e3dd34b025be33c392",
+      "referenced_images": 30
+    },
+    {
+      "archive": "离散数学/GPT02 离散数学.zip",
+      "source": "sources/discrete-math/GPT02命题逻辑命题公式、逻辑等值式与联结词完备集.md",
+      "sha256": "1b741f282b796f4caaa2ee3b0f12560bc99f5cd59e3628353dc8411be8b36c7b",
+      "referenced_images": 26
+    },
+    {
+      "archive": "离散数学/GPT03 离散数学.zip",
+      "source": "sources/discrete-math/GPT03命题逻辑-范式：析取范式、合取范式与主范式.md",
+      "sha256": "720c5d9e7570b1075c025f9c0e6de489ba4fc318676a2fcdf6833d23c7e6d8fd",
+      "referenced_images": 22
+    },
+    {
+      "archive": "离散数学/GPT4.5离散数学.zip",
+      "source": "sources/discrete-math/04-05 推理与自然推理综合.md",
+      "sha256": "1133e844952bfb9e1b5058cfac9a699200781a635bd98dcc1a38d5fbe95aae9c",
+      "referenced_images": 53
+    },
+    {
+      "archive": "离散数学/GPT06离散数学.zip",
+      "source": "sources/discrete-math/06 一阶逻辑基础.md",
+      "sha256": "76558983ebafe9261a31d6f488a47aa34dab2962c0288f85ff2df6b464ef485d",
+      "referenced_images": 14
+    },
+    {
+      "archive": "离散数学/GPT07离散数学.zip",
+      "source": "sources/discrete-math/07 一阶逻辑等值式.md",
+      "sha256": "7f8258c6001a24b5982d2bbf00769673da477ebaed53bf3fdea79fe3c5aeb6e5",
+      "referenced_images": 7
+    },
+    {
+      "archive": "离散数学/GPT08离散数学.zip",
+      "source": "sources/discrete-math/08 谓词逻辑推理.md",
+      "sha256": "5a05697242a0e183d2b679730354858a4c5c08d6701f36068fbef2e1b6c152b5",
+      "referenced_images": 6
+    },
+    {
+      "archive": "离散数学/GPT09离散数学.zip",
+      "source": "sources/discrete-math/09 集合的基本概念.md",
+      "sha256": "3b43f19f691fc1759117db87f758466f10b365ec6e6c5799d5586d4cef236e4e",
+      "referenced_images": 36
+    },
+    {
+      "archive": "离散数学/GPT10离散数学.zip",
+      "source": "sources/discrete-math/10 集合运算与计数.md",
+      "sha256": "0f114a81a81f9f4d4d9a65527b46744daf8356bd957d6f352da0685fc656df50",
+      "referenced_images": 40
+    },
+    {
+      "archive": "离散数学/GPT11离散数学.zip",
+      "source": "sources/discrete-math/11 集合恒等式.md",
+      "sha256": "b10f6a9e64a8ef1fb5050f548cb79794eeb59d68d9e2748b155fbc3537fd1beb",
+      "referenced_images": 32
+    },
+    {
+      "archive": "面向对象 CPP/C++第五讲_友元与程序组织_65幅原创插图_第五版终修防截断.zip",
+      "source": "sources/cpp-oop/05 友元与程序组织.md",
+      "sha256": "b09699fe4a458eef72a5320a65393a0dad122997bf88204dc6cf236493f7266b",
+      "referenced_images": 65
+    },
+    {
+      "archive": "面向对象 CPP/GPT06CPP.zip",
+      "source": "sources/cpp-oop/06 重载与类型转换.md",
+      "sha256": "53f58288bdaa97587d252217cfb4035ffae091fcd24f60cbab3a8afb339b658c",
+      "referenced_images": 46
+    },
+    {
+      "archive": "面向对象 CPP/GPT07CPP.zip",
+      "source": "sources/cpp-oop/07 继承与派生类.md",
+      "sha256": "1dc2ce81d1e8d61dda20c76f614ea93076010063c2a776d8c6ff1439bf66737d",
+      "referenced_images": 129
+    },
+    {
+      "archive": "面向对象 CPP/GPT08CPP.zip",
+      "source": "sources/cpp-oop/08 多态性与虚函数.md",
+      "sha256": "b7e709fb0a7f22a12450b4b38f93ec1c436114a252bd62c9f819693976d4744b",
+      "referenced_images": 65
+    }
+  ]
+}

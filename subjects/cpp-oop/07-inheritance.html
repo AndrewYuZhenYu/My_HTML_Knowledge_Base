@@ -1,0 +1,969 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>第7讲 继承与派生类 · 知栈</title>
+<link rel="stylesheet" href="../../assets/style.css">
+<script defer src="../../assets/search-data.js"></script>
+<script defer src="../../assets/app.js"></script>
+<script defer src="../../assets/code-copy.js"></script>
+</head>
+<body data-current="note">
+<header class="topbar">
+  <a class="brand" href="../../index.html" aria-label="返回知识库首页"><span class="brand-mark">知</span><span>知栈 <small>Knowledge Library</small></span></a>
+  <button class="top-search" id="openSearch" aria-label="搜索知识库"><span class="search-icon">⌕</span><span>搜索知识、公式与章节...</span><kbd>⌘ K</kbd></button>
+  <div class="toolbar">
+    <button class="icon-tool panel-tool" id="navToggle" title="收起课程导航" aria-label="收起课程导航" aria-controls="sidebar" aria-expanded="true" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M5.5 9h1M5.5 13h1"/></svg></button>
+    <button class="icon-tool panel-tool" id="tocToggle" title="收起本页目录" aria-label="收起本页目录" aria-controls="tocSidebar" aria-expanded="true" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M15 4v16M17.5 9h1M17.5 13h1"/></svg></button>
+    <button class="plain-tool" id="openTypography" title="调整字体与行距" aria-label="阅读设置">Aa <span class="tool-arrow">⌄</span></button>
+    <button class="icon-tool focus-tool" id="focusToggle" title="进入全屏阅读" aria-label="进入全屏阅读" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg><span id="focusLabel">全屏</span></button>
+    <button class="icon-tool" id="themeToggle" title="切换深色模式" aria-label="切换主题"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 15.6A8.5 8.5 0 0 1 8.4 3.5 8.8 8.8 0 1 0 20.5 15.6Z"/></svg></button>
+  </div>
+</header>
+<div class="page-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-inner">
+      <div class="sidebar-heading"><div class="side-caption">知识空间</div><button class="side-collapse" id="sidebarClose" type="button" aria-label="收起课程导航" hidden>收起 ‹</button></div>
+      <a class="nav-link nav-home" href="../../index.html"><span class="nav-icon">⌂</span> 总览</a>
+      <div class="side-caption second">我的课程</div>
+      <details class="course-group" open><summary class="course-title"><span class="course-emoji">◉</span>大学物理<span class="course-expand">⌄</span></summary><div class="course-children"><a class="nav-sub nav-overview" href="../../subjects/physics/index.html"><span class="nav-dot"></span>课程总览</a><a class="nav-sub" href="../../subjects/physics/12-gas-theory.html"><span class="nav-dot"></span>第12章 气体动理论</a><a class="nav-sub nav-map" href="../../subjects/physics/12-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/physics/12-lab.html"><span class="nav-dot"></span>交互函数实验室</a><a class="nav-sub" href="../../subjects/physics/13-thermodynamics.html"><span class="nav-dot"></span>第13章 热力学基础</a><a class="nav-sub nav-map" href="../../subjects/physics/13-thermodynamics-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/physics/14-oscillations.html"><span class="nav-dot"></span>第14章 振动</a><a class="nav-sub nav-map" href="../../subjects/physics/14-oscillations-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/physics/15-waves.html"><span class="nav-dot"></span>第15章 波动</a><a class="nav-sub nav-map" href="../../subjects/physics/15-waves-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a></div></details>
+<details class="course-group" open><summary class="course-title"><span class="course-emoji">◇</span>离散数学<span class="course-expand">⌄</span></summary><div class="course-children"><a class="nav-sub nav-overview" href="../../subjects/discrete-math/index.html"><span class="nav-dot"></span>课程总览</a><a class="nav-sub" href="../../subjects/discrete-math/01-propositional-logic.html"><span class="nav-dot"></span>第1讲 命题逻辑基础</a><a class="nav-sub nav-map" href="../../subjects/discrete-math/01-propositional-logic-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/discrete-math/02-equivalence.html"><span class="nav-dot"></span>第2讲 逻辑等值式与完备集</a><a class="nav-sub nav-map" href="../../subjects/discrete-math/02-equivalence-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/discrete-math/03-normal-forms.html"><span class="nav-dot"></span>第3讲 范式</a><a class="nav-sub nav-map" href="../../subjects/discrete-math/03-normal-forms-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/discrete-math/04-inference.html"><span class="nav-dot"></span>第4讲 推理与有效性</a><a class="nav-sub nav-map" href="../../subjects/discrete-math/04-inference-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/discrete-math/05-natural-deduction.html"><span class="nav-dot"></span>第5讲 自然推理</a><a class="nav-sub nav-map" href="../../subjects/discrete-math/05-natural-deduction-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/discrete-math/04-05-inference-review.html"><span class="nav-dot"></span>推理与自然推理综合复习</a><a class="nav-sub nav-map" href="../../subjects/discrete-math/04-05-inference-review-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/discrete-math/06-first-order-logic.html"><span class="nav-dot"></span>一阶逻辑基础</a><a class="nav-sub nav-map" href="../../subjects/discrete-math/06-first-order-logic-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/discrete-math/07-first-order-equivalence.html"><span class="nav-dot"></span>一阶逻辑等值式</a><a class="nav-sub nav-map" href="../../subjects/discrete-math/07-first-order-equivalence-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/discrete-math/08-predicate-inference.html"><span class="nav-dot"></span>谓词逻辑推理</a><a class="nav-sub nav-map" href="../../subjects/discrete-math/08-predicate-inference-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/discrete-math/09-sets.html"><span class="nav-dot"></span>集合的基本概念</a><a class="nav-sub nav-map" href="../../subjects/discrete-math/09-sets-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/discrete-math/10-set-operations.html"><span class="nav-dot"></span>集合运算与计数</a><a class="nav-sub nav-map" href="../../subjects/discrete-math/10-set-operations-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/discrete-math/11-set-identities.html"><span class="nav-dot"></span>集合恒等式</a><a class="nav-sub nav-map" href="../../subjects/discrete-math/11-set-identities-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a></div></details>
+<details class="course-group" open><summary class="course-title"><span class="course-emoji">▦</span>数据结构<span class="course-expand">⌄</span></summary><div class="course-children"><a class="nav-sub nav-overview" href="../../subjects/data-structures/index.html"><span class="nav-dot"></span>课程总览</a><a class="nav-sub" href="../../subjects/data-structures/02-linear-lists.html"><span class="nav-dot"></span>第2章 线性表</a><a class="nav-sub nav-map" href="../../subjects/data-structures/02-linear-lists-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/data-structures/03-stacks-queues.html"><span class="nav-dot"></span>第3章 栈和队列</a><a class="nav-sub nav-map" href="../../subjects/data-structures/03-stacks-queues-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/data-structures/04-strings.html"><span class="nav-dot"></span>第4章 串</a><a class="nav-sub nav-map" href="../../subjects/data-structures/04-strings-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/data-structures/05-arrays-generalized-lists.html"><span class="nav-dot"></span>第5章 数组和广义表</a><a class="nav-sub nav-map" href="../../subjects/data-structures/05-arrays-generalized-lists-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/data-structures/06-trees.html"><span class="nav-dot"></span>第6章 树和二叉树</a><a class="nav-sub nav-map" href="../../subjects/data-structures/06-trees-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/data-structures/07-graphs.html"><span class="nav-dot"></span>第7章 图</a><a class="nav-sub nav-map" href="../../subjects/data-structures/07-graphs-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/data-structures/09-search.html"><span class="nav-dot"></span>第9章 查找</a><a class="nav-sub nav-map" href="../../subjects/data-structures/09-search-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a></div></details>
+<details class="course-group" open><summary class="course-title"><span class="course-emoji">⌘</span>面向对象 C++<span class="course-expand">⌄</span></summary><div class="course-children"><a class="nav-sub nav-overview" href="../../subjects/cpp-oop/index.html"><span class="nav-dot"></span>课程总览</a><a class="nav-sub" href="../../subjects/cpp-oop/05-friends-organization.html"><span class="nav-dot"></span>第5讲 友元与程序组织</a><a class="nav-sub nav-map" href="../../subjects/cpp-oop/05-friends-organization-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/cpp-oop/06-overloading-conversion.html"><span class="nav-dot"></span>第6讲 重载与类型转换</a><a class="nav-sub nav-map" href="../../subjects/cpp-oop/06-overloading-conversion-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub active" href="../../subjects/cpp-oop/07-inheritance.html"><span class="nav-dot"></span>第7讲 继承与派生类</a><a class="nav-sub nav-map" href="../../subjects/cpp-oop/07-inheritance-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a><a class="nav-sub" href="../../subjects/cpp-oop/08-polymorphism.html"><span class="nav-dot"></span>第8讲 多态性与虚函数</a><a class="nav-sub nav-map" href="../../subjects/cpp-oop/08-polymorphism-mindmap.html"><span class="nav-dot"></span>↳ 思维导图</a></div></details>
+      <div class="sidebar-note"><span>知识从原始 Markdown 导入，保留完整内容。阅读样式和知识正文分开维护。</span></div>
+    </div>
+  </aside>
+  <main class="page-main article-surface" id="mainContent">
+    <div class="reading-head"><div class="eyebrow">面向对象 C++ · 完整讲义</div><h1 class="page-title">第7讲 继承与派生类</h1><p class="page-deck">按照原始 Markdown 完整保留正文层次、公式和语义提示块。</p><div class="meta-line">完整迁移 · 可调字号与行距 · <a href="../../sources/cpp-oop/07 继承与派生类.md">查看 Markdown 原文</a></div></div><article class="reading-content" data-pagefind-body><div class="chapter-links"><a href="07-inheritance-mindmap.html">◈ 本章思维导图</a><span>导图与插图为辅助阅读内容</span></div><h1 id="gpt7-c-第七讲继承与派生类图解系统笔记"><span aria-hidden="true" class="anchor-alias" id="sec-01"></span>GPT7 C++ 第七讲｜继承与派生类（图解系统笔记）</h1>
+<aside class="callout callout-info" data-callout="info"><div class="callout-title" data-icon="i">来源与整理说明</div><div class="callout-content">
+<p>主体依据所附《07_C++ZGS第七讲继承与派生类.pptx》72 页课件，保留课程的 <strong>7.1—7.6</strong> 组织及 CPoint/CCircle、CComplex/CNamedComplex、CPerson/CDate/CChiefExecutive、CBird/CBeast/CBat/CAnimal 四组代表性例程。已按《知识整理 Skills 4.3》重组解释和增加原创图解。</p>
+<p><strong>原课件内容</strong>与<strong>现代标准 C++ 的必要校订</strong>分别说明；旧代码中不规范的 <code>void main()</code>、手动字符数组管理和虚基类构造限制，不能直接照抄为现代 C++ 规范。</p>
+</div></aside>
+<p><strong>本讲主线：</strong> 为什么要继承 → 派生类如何定义 → 哪些成员可访问 → 派生对象能否当基类使用 → 构造析构执行顺序 → 多重继承歧义与虚基类共享。</p>
+<table>
+<thead>
+<tr>
+<th>本讲知识</th>
+<th>最值得掌握的具体问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7.1 继承机制</td>
+<td><code>CCircle</code> 中究竟包含哪些 <code>CPoint</code> 成员？</td>
+</tr>
+<tr>
+<td>7.2 派生类定义</td>
+<td><code>public CPoint</code>、成员对象和同名成员函数是什么关系？</td>
+</tr>
+<tr>
+<td>7.3 访问权限</td>
+<td><code>public</code> / <code>protected</code> / <code>private</code> 继承如何改变访问？</td>
+</tr>
+<tr>
+<td>7.4 赋值兼容</td>
+<td><code>CPoint&amp; = CCircle</code> 与 <code>CPoint = CCircle</code> 为什么不同？</td>
+</tr>
+<tr>
+<td>7.5 生命周期</td>
+<td>基类、成员对象、派生类谁先构造、谁先析构？</td>
+</tr>
+<tr>
+<td>7.6 多重继承</td>
+<td>菱形里有几份 <code>CAnimal</code>？谁构造虚基类？</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h1 id="71-继承机制及引入理由"><span aria-hidden="true" class="anchor-alias" id="sec-02"></span>7.1 继承机制及引入理由</h1>
+<h2 id="711-继承的意义及类别"><span aria-hidden="true" class="anchor-alias" id="sec-03"></span>7.1.1 继承的意义及类别</h2>
+<p><strong>继承（inheritance）</strong> 是一种类之间的机制：新类（派生类/子类）在已有类（基类/父类）的基础上复用其功能，并添加或修改自己的数据和行为。继承结构通常体现一种 <strong>is-a</strong>（“属于某一类”）关系，而不是“拥有某物”的 <strong>has-a</strong> 关系。</p>
+<p>从课件角度看，它的设计动机有两条：<strong>共享公共特性</strong>与<strong>保留派生类自身差异</strong>。把所有共性都写在不同类中会造成代码重复；抽取一个基类能形成清晰的层次。继承类型分为单一继承（一个直接基类）与多重继承（多个直接基类）。</p>
+<aside class="callout callout-warning" data-callout="warning"><div class="callout-title" data-icon="!">不要用“想复用代码”作为继承的唯一理由 is-a 不成立时，成员对象（组合）、函数复用等机制通常更合适。课程里的“圆继承点”是一种便于演示 C++ 语法的设计，真实几何建模中“圆拥有圆心”也可以自然地使用组合。</div><div class="callout-content">
+<p><code>is-a</code> 不成立时，成员对象（组合）、函数复用等机制通常更合适。课程里的“圆继承点”是一种便于演示 C++ 语法的设计，真实几何建模中“圆拥有圆心”也可以自然地使用组合。</p>
+</div></aside>
+<p><strong>图组：继承层级、单继承与多重继承</strong></p>
+<p><img alt="cpp_inherit_hierarchy_01_94b263e0-457d-424c-8390-4a5b445a612c" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_hierarchy_01_94b263e0-457d-424c-8390-4a5b445a612c.png"/></p>
+<p><em>圆是具有额外半径属性的点类派生对象（课件例程）</em></p>
+<p><img alt="cpp_inherit_hierarchy_02_20045144-df6f-45d5-bdb5-8bf826b917e9" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_hierarchy_02_20045144-df6f-45d5-bdb5-8bf826b917e9.png"/></p>
+<p><em>不同派生类共享坐标结构</em></p>
+<p><img alt="cpp_inherit_hierarchy_03_564a430b-edfa-4506-b663-5b56527f8fff" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_hierarchy_03_564a430b-edfa-4506-b663-5b56527f8fff.png"/></p>
+<p><em>一条继承链可以有多个层级</em></p>
+<p><img alt="cpp_inherit_hierarchy_04_39a84bcf-a9b5-472c-b514-61b73a9259d2" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_hierarchy_04_39a84bcf-a9b5-472c-b514-61b73a9259d2.png"/></p>
+<p><em>CBat 同时具有两个直接基类</em></p>
+<h2 id="712-点类圆类与派生对象的组成"><span aria-hidden="true" class="anchor-alias" id="sec-04"></span>7.1.2 点类、圆类与派生对象的组成</h2>
+<p>课件使用 <code>CPoint</code> 保存二维坐标，<code>CCircle</code> 公有继承 <code>CPoint</code> 并增加半径 <code>mR</code>。<strong>CCircle 对象内部有一个 CPoint 基类子对象</strong>；继承不意味着派生类重新“声明了一遍”基类成员。</p>
+<ul>
+<li><code>CPoint</code>：<code>mX</code>、<code>mY</code>，构造函数、析构函数、<code>Show()</code>。</li>
+<li><code>CCircle</code>：通过基类子对象保存圆心坐标，新增 <code>mR</code>，可定义自己的 <code>Show()</code>。</li>
+<li>从 <code>CCircle</code> 访问 <code>mX</code>、<code>mY</code> 的前提是它们是 <code>protected</code>（或公开成员），若它们是 <code>private</code>，派生类不能直接读写。</li>
+</ul>
+<aside class="callout callout-important" data-callout="important"><div class="callout-title" data-icon="!">对象子结构</div><div class="callout-content">
+<p>“继承来的成员”在对象内部属于基类子对象。继承类型主要改变 <strong>可访问性与转换性质</strong>，不意味着被禁止访问的基类私有数据会从对象中消失。</p>
+</div></aside>
+<p><strong>图组：同一个圆对象从基类与派生类视角观察</strong></p>
+<p><img alt="cpp_inherit_circle_layout_00_ba85eee0-9cb0-4deb-95cc-f67c6f250d4e" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_circle_layout_00_ba85eee0-9cb0-4deb-95cc-f67c6f250d4e.png"/></p>
+<p><em>派生类对象含有完整的基类子对象</em></p>
+<p><img alt="cpp_inherit_circle_layout_01_0eafc7e6-259f-46c5-a58d-c4a6ddf13b0d" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_circle_layout_01_0eafc7e6-259f-46c5-a58d-c4a6ddf13b0d.png"/></p>
+<p><em>基类成员属于派生对象中的基类子对象</em></p>
+<p><img alt="cpp_inherit_circle_layout_02_4bc21efb-652a-4128-aecd-194c75f44bc8" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_circle_layout_02_4bc21efb-652a-4128-aecd-194c75f44bc8.png"/></p>
+<p><em>派生类新增成员不会丢失基类数据</em></p>
+<p><img alt="cpp_inherit_circle_layout_03_db7fe366-802f-43ee-af00-3a09427c127b" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_circle_layout_03_db7fe366-802f-43ee-af00-3a09427c127b.png"/></p>
+<p><em>构造函数初始化整个对象的不同部分</em></p>
+<h2 id="713-成员函数隐藏与显式调用"><span aria-hidden="true" class="anchor-alias" id="sec-05"></span>7.1.3 成员函数隐藏与显式调用</h2>
+<p>若两个类都声明了 <code>void Show() const</code>，<code>CCircle</code> 中这个同名声明会<strong>隐藏</strong>基类的同名成员；可显式写 <code>zCircle.CPoint::Show()</code> 调用基类版本。<strong>隐藏（name hiding）</strong> 是名称查找规则，而<strong>重写（override）</strong> 必须讨论虚函数，本讲 <code>Show()</code> 不是 <code>virtual</code>。</p>
+<p>在课件的 <code>main</code> 调用顺序中：<code>zPoint.Show()</code> 调用 <code>CPoint::Show()</code>；<code>zCircle.Show()</code> 调用 <code>CCircle::Show()</code>；<code>zCircle.CPoint::Show()</code> 调用基类版本。</p>
+<p><strong>图组：同名 Show 的静态查找与显式限定</strong></p>
+<p><img alt="cpp_inherit_show_lookup_0_3f13d4fc-6749-4a3e-8d3b-9a374059990b" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_show_lookup_0_3f13d4fc-6749-4a3e-8d3b-9a374059990b.png"/></p>
+<p><em>CCircle::Show() 的选择（例程使用非 virtual 函数）</em></p>
+<p><img alt="cpp_inherit_show_lookup_1_f85283ae-2913-49ba-9f1b-bec814142a92" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_show_lookup_1_f85283ae-2913-49ba-9f1b-bec814142a92.png"/></p>
+<p><em>CPoint::Show() 的选择（例程使用非 virtual 函数）</em></p>
+<p><img alt="cpp_inherit_show_lookup_2_85861b86-1277-4c2e-b69a-748aa1916403" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_show_lookup_2_85861b86-1277-4c2e-b69a-748aa1916403.png"/></p>
+<p><em>CPoint::Show() 的选择（例程使用非 virtual 函数）</em></p>
+<p><img alt="cpp_inherit_show_lookup_3_3cc755ff-d7a5-4413-8aec-b96ff25d0cba" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_show_lookup_3_3cc755ff-d7a5-4413-8aec-b96ff25d0cba.png"/></p>
+<p><em>CPoint::Show() 的选择（例程使用非 virtual 函数）</em></p>
+<h1 id="72-继承实现机制派生类定义"><span aria-hidden="true" class="anchor-alias" id="sec-06"></span>7.2 继承实现机制：派生类定义</h1>
+<h2 id="721-派生类语法与基类列表"><span aria-hidden="true" class="anchor-alias" id="sec-07"></span>7.2.1 派生类语法与基类列表</h2>
+<p>C++ 用冒号后的<strong>基类说明列表</strong>定义继承。基本格式：</p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-keyword">class</span> Derived <span class="tok-operator">:</span> <span class="tok-keyword">public</span> Base {  <span class="tok-comment">// 公有继承 Base</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-function">Derived</span>(<span class="tok-type">int</span> x);              <span class="tok-comment">// 声明派生类构造函数</span>
+};
+</code></pre></div>
+<p><strong>语法中的 <code>public</code> 属于继承方式，不是后面类体内的 <code>public:</code> 成员访问区段。</strong> C++ 的 <code>class</code> 默认继承方式是 <code>private</code>，<code>struct</code> 默认是 <code>public</code>，最好显式写出避免误解。</p>
+<p>在一个类中也可以指定两个直接基类：</p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-keyword">class</span> CBat <span class="tok-operator">:</span> <span class="tok-keyword">public</span> CBird, <span class="tok-keyword">public</span> CBeast {  <span class="tok-comment">// 按先 Bird 后 Beast 的次序声明</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-function">CBat</span>();                                   <span class="tok-comment">// 声明构造函数</span>
+};
+</code></pre></div>
+<p>这里 <code>CBat</code> 的<strong>直接非虚基类</strong>构造按 <code>CBird</code>、<code>CBeast</code> 的声明顺序进行；与构造函数初始化列表中的书写先后无关。</p>
+<p><img alt="cpp_inherit_syntax_public_f8babdaa-d323-4c0a-9088-0260b5d61979" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_syntax_public_f8babdaa-d323-4c0a-9088-0260b5d61979.png"/></p>
+<p><em>公开继承，表达 is-a</em></p>
+<p><img alt="cpp_inherit_syntax_protected_dca90c19-4f0c-4a6e-9935-169acb6fcfc3" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_syntax_protected_dca90c19-4f0c-4a6e-9935-169acb6fcfc3.png"/></p>
+<p><em>保护继承，接口访问被收紧</em></p>
+<p><img alt="cpp_inherit_syntax_private_f5abfb1e-250a-411e-a286-a76a36119702" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_syntax_private_f5abfb1e-250a-411e-a286-a76a36119702.png"/></p>
+<p><em>私有继承，不向普通使用者暴露转换</em></p>
+<p><strong>图组：拆解继承声明与初始化列表语法</strong></p>
+<p><img alt="cpp_inherit_syntax_part_0_a1c41bca-f880-4d08-83e3-4d9ab8852421" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_syntax_part_0_a1c41bca-f880-4d08-83e3-4d9ab8852421.png"/></p>
+<p><em>示例仅突出语法结构，实际程序见笔记代码</em></p>
+<p><img alt="cpp_inherit_syntax_part_1_dda4612e-1004-4470-8c5d-4de2e222ce3a" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_syntax_part_1_dda4612e-1004-4470-8c5d-4de2e222ce3a.png"/></p>
+<p><em>示例仅突出语法结构，实际程序见笔记代码</em></p>
+<p><img alt="cpp_inherit_syntax_part_2_1a239265-eb5c-4274-988e-511e9ec26076" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_syntax_part_2_1a239265-eb5c-4274-988e-511e9ec26076.png"/></p>
+<p><em>示例仅突出语法结构，实际程序见笔记代码</em></p>
+<h2 id="722-完整的单继承例程现代标准写法"><span aria-hidden="true" class="anchor-alias" id="sec-08"></span>7.2.2 完整的单继承例程（现代标准写法）</h2>
+<p>下面保留课件中“点—圆”的类名与行为，但把 <code>void main()</code> 修正为标准的 <code>int main()</code>，并使用<strong>成员初始化列表</strong>。可以直接在 C++17 环境编译执行。</p>
+<p><strong>Point.h</strong></p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-directive">#ifndef</span> CPOINT_H
+<span class="tok-directive">#define</span> CPOINT_H
+
+<span class="tok-directive">#include</span> <span class="tok-string">&lt;iostream&gt;</span>                         <span class="tok-comment">// 使用 std::cout</span>
+
+<span class="tok-keyword">class</span> CPoint {
+<span class="tok-keyword">protected</span><span class="tok-operator">:</span>
+    <span class="tok-type">int</span> mX, mY;                             <span class="tok-comment">// 派生类可以访问的坐标</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-function">CPoint</span>(<span class="tok-type">int</span> x <span class="tok-operator">=</span> <span class="tok-number">0</span>, <span class="tok-type">int</span> y <span class="tok-operator">=</span> <span class="tok-number">0</span>);           <span class="tok-comment">// 声明有默认参数的构造函数</span>
+    <span class="tok-type">void</span> <span class="tok-function">Show</span>() <span class="tok-type">const</span>;                      <span class="tok-comment">// 不改变对象的成员函数</span>
+    <span class="tok-operator">~</span><span class="tok-function">CPoint</span>();                              <span class="tok-comment">// 基类析构函数，课件示例为非虚</span>
+};
+
+<span class="tok-directive">#endif</span>
+</code></pre></div>
+<p><strong>Point.cpp</strong></p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-directive">#include</span> <span class="tok-string">"Point.h"</span>                         <span class="tok-comment">// 引入 CPoint 声明</span>
+
+CPoint<span class="tok-operator">::</span><span class="tok-function">CPoint</span>(<span class="tok-type">int</span> x, <span class="tok-type">int</span> y) <span class="tok-operator">:</span> <span class="tok-function">mX</span>(x), <span class="tok-function">mY</span>(y) {  <span class="tok-comment">// 初始化坐标</span>
+    <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">"Point...\n"</span>;              <span class="tok-comment">// 输出构造提示</span>
+}
+
+<span class="tok-type">void</span> CPoint<span class="tok-operator">::</span><span class="tok-function">Show</span>() <span class="tok-type">const</span> {
+    <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">"X = "</span> <span class="tok-operator">&lt;&lt;</span> mX <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">", Y = "</span> <span class="tok-operator">&lt;&lt;</span> mY <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">'\n'</span>; <span class="tok-comment">// 输出坐标</span>
+}
+
+CPoint<span class="tok-operator">::</span><span class="tok-operator">~</span><span class="tok-function">CPoint</span>() {
+    <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">"Delete Point!\n"</span>;         <span class="tok-comment">// 输出析构提示</span>
+}
+</code></pre></div>
+<p><strong>Circle.h</strong></p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-directive">#ifndef</span> CCIRCLE_H
+<span class="tok-directive">#define</span> CCIRCLE_H
+
+<span class="tok-directive">#include</span> <span class="tok-string">"Point.h"</span>                         <span class="tok-comment">// 定义基类时必须可见完整类型</span>
+
+<span class="tok-keyword">class</span> CCircle <span class="tok-operator">:</span> <span class="tok-keyword">public</span> CPoint {             <span class="tok-comment">// CCircle 公有继承 CPoint</span>
+    <span class="tok-type">int</span> mR;                                 <span class="tok-comment">// 新增半径</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-function">CCircle</span>(<span class="tok-type">int</span> x, <span class="tok-type">int</span> y, <span class="tok-type">int</span> r);           <span class="tok-comment">// 声明派生类构造函数</span>
+    <span class="tok-type">void</span> <span class="tok-function">Show</span>() <span class="tok-type">const</span>;                      <span class="tok-comment">// 隐藏基类同名 Show</span>
+    <span class="tok-operator">~</span><span class="tok-function">CCircle</span>();                             <span class="tok-comment">// 声明析构函数</span>
+};
+
+<span class="tok-directive">#endif</span>
+</code></pre></div>
+<p><strong>Circle.cpp</strong></p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-directive">#include</span> <span class="tok-string">"Circle.h"</span>                        <span class="tok-comment">// 获得派生类声明</span>
+
+CCircle<span class="tok-operator">::</span><span class="tok-function">CCircle</span>(<span class="tok-type">int</span> x, <span class="tok-type">int</span> y, <span class="tok-type">int</span> r)
+    <span class="tok-operator">:</span> <span class="tok-function">CPoint</span>(x, y), <span class="tok-function">mR</span>(r) {                 <span class="tok-comment">// 先初始化基类，再初始化半径</span>
+    <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">"Circle...\n"</span>;            <span class="tok-comment">// 输出构造提示</span>
+}
+
+<span class="tok-type">void</span> CCircle<span class="tok-operator">::</span><span class="tok-function">Show</span>() <span class="tok-type">const</span> {
+    <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">"圆心为点("</span> <span class="tok-operator">&lt;&lt;</span> mX <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">", "</span> <span class="tok-operator">&lt;&lt;</span> mY <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">")\n"</span>; <span class="tok-comment">// 访问保护坐标</span>
+    <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">"半径为 "</span> <span class="tok-operator">&lt;&lt;</span> mR <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">'\n'</span>;   <span class="tok-comment">// 输出新增数据</span>
+}
+
+CCircle<span class="tok-operator">::</span><span class="tok-operator">~</span><span class="tok-function">CCircle</span>() {
+    <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">"Delete Circle!\n"</span>;       <span class="tok-comment">// 先输出本类析构提示</span>
+}
+</code></pre></div>
+<p><strong>main.cpp</strong></p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-directive">#include</span> <span class="tok-string">"Circle.h"</span>                       <span class="tok-comment">// 包含完整的派生类声明</span>
+
+<span class="tok-type">int</span> <span class="tok-function">main</span>() {
+    CPoint <span class="tok-function">point</span>(<span class="tok-number">7</span>, <span class="tok-number">1</span>);                    <span class="tok-comment">// 创建基类对象</span>
+    CCircle <span class="tok-function">circle</span>(<span class="tok-number">9</span>, <span class="tok-number">9</span>, <span class="tok-number">9</span>);               <span class="tok-comment">// 创建派生类对象，先构造基类</span>
+    point.<span class="tok-function">Show</span>();                          <span class="tok-comment">// 调用基类 Show</span>
+    circle.<span class="tok-function">Show</span>();                         <span class="tok-comment">// 调用派生类 Show</span>
+    circle.CPoint<span class="tok-operator">::</span><span class="tok-function">Show</span>();                 <span class="tok-comment">// 显式调用基类 Show</span>
+    <span class="tok-keyword">return</span> <span class="tok-number">0</span>;                              <span class="tok-comment">// 标准 main 函数返回值</span>
+}
+</code></pre></div>
+<p><strong>编译方式：</strong> <code>g++ -std=c++17 Point.cpp Circle.cpp main.cpp -o demo &amp;&amp; ./demo</code>。</p>
+<p><strong>输出：</strong></p>
+<div class="code-panel" data-language="text"><div class="code-panel-toolbar"><span class="code-panel-language">文本</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-text">Point...
+Point...
+Circle...
+X = 7, Y = 1
+圆心为点(9, 9)
+半径为 9
+X = 9, Y = 9
+Delete Circle!
+Delete Point!
+Delete Point!
+</code></pre></div>
+<p>构造和析构的关键机制将在 7.5 单独展开。这里的非虚析构函数只用于示范局部对象；<strong>不要通过 <code>CPoint*</code> 删除动态创建的 <code>CCircle</code> 对象</strong>，那需要基类虚析构函数。</p>
+<p><strong>图组：Point/Circle 三文件组织与依赖</strong></p>
+<p><img alt="cpp_inherit_file_dep_00_153ee3d0-3437-4246-adbc-7cf5ed8a96dc" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_file_dep_00_153ee3d0-3437-4246-adbc-7cf5ed8a96dc.png"/></p>
+<p><em>头文件负责声明、cpp 实现功能、main.cpp 组织调用</em></p>
+<p><img alt="cpp_inherit_file_dep_01_7992a58c-a192-462e-80b1-84a9fa5550c4" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_file_dep_01_7992a58c-a192-462e-80b1-84a9fa5550c4.png"/></p>
+<p><em>头文件负责声明、cpp 实现功能、main.cpp 组织调用</em></p>
+<p><img alt="cpp_inherit_file_dep_02_fb82d4be-583c-4d65-a987-75a232167c31" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_file_dep_02_fb82d4be-583c-4d65-a987-75a232167c31.png"/></p>
+<p><em>头文件负责声明、cpp 实现功能、main.cpp 组织调用</em></p>
+<h2 id="723-复数类与有名复数类"><span aria-hidden="true" class="anchor-alias" id="sec-09"></span>7.2.3 复数类与有名复数类</h2>
+<p>课件的第二个案例是 <code>CComplex</code>（保存实部、虚部）与 <code>CNamedComplex</code>（额外保存名称）。此例用来说明：</p>
+<ol>
+<li><strong>继承只处理共性部分。</strong> 实部、虚部、复数运算由基类承担。</li>
+<li><strong>派生类拥有自己的数据。</strong> <code>mpName</code> 指向名称字符数组（课件写法）。</li>
+<li>派生类构造先初始化基类，再管理自己的名称资源。</li>
+<li>派生类对基类重名 <code>SetValues</code> 需注意名称隐藏，可使用 <code>CComplex::SetValues(r, i)</code>。</li>
+</ol>
+<aside class="callout callout-warning" data-callout="warning"><div class="callout-title" data-icon="!">课件手动管理 char* 的安全问题</div><div class="callout-content">
+<p><code>char*</code> 的安全问题
+课件通过 <code>new char[]</code> 和 <code>delete[]</code> 管理名字。这需要仔细处理<strong>复制构造、复制赋值</strong>和异常情况，否则编译器默认浅拷贝可能导致重复释放；<code>SetValues</code> 若传入指向旧内部数组的指针，还可能产生悬空读取。现代 C++ 通常优先 <code>std::string</code>，而不是照抄旧代码。</p>
+</div></aside>
+<p><strong>图组：名字指针的分配、替换、释放全过程</strong></p>
+<aside class="callout callout-example" data-callout="example"><div class="callout-title" data-icon="◇">展开连续插图（5 幅）</div><div class="callout-content">
+<p>这些图从不同时间或访问视角展示同一机制，请依次对照。</p>
+<p><img alt="cpp_inherit_named_complex_00_8dc3cd81-951d-42fe-a92b-f8918149d667" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_named_complex_00_8dc3cd81-951d-42fe-a92b-f8918149d667.png"/>
+<em>构造前指针需有明确初始状态</em></p>
+<p><img alt="cpp_inherit_named_complex_01_6cdd7edb-0928-48c6-8f8e-ee1ebc4c8ae2" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_named_complex_01_6cdd7edb-0928-48c6-8f8e-ee1ebc4c8ae2.png"/>
+<em>new[] 创建动态字符串数组</em></p>
+<p><img alt="cpp_inherit_named_complex_02_a9e6a7e5-7a71-4d79-89e4-5143a89c3ad7" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_named_complex_02_a9e6a7e5-7a71-4d79-89e4-5143a89c3ad7.png"/>
+<em>先释放旧数组，再分配新内存</em></p>
+<p><img alt="cpp_inherit_named_complex_03_23dba368-87f9-4426-b777-6892f73f6e44" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_named_complex_03_23dba368-87f9-4426-b777-6892f73f6e44.png"/>
+<em>更新指针后对象表示新的名字</em></p>
+<p><img alt="cpp_inherit_named_complex_04_515b02d4-afe6-4c8b-a15b-718a3d49b6fc" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_named_complex_04_515b02d4-afe6-4c8b-a15b-718a3d49b6fc.png"/>
+<em>析构时配对 delete[] 释放资源</em></p>
+</div></aside>
+<p><strong>适合学习阶段的安全改写：</strong></p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-directive">#include</span> <span class="tok-string">&lt;string&gt;</span>                          <span class="tok-comment">// 使用标准字符串</span>
+
+<span class="tok-keyword">class</span> CComplex {
+<span class="tok-keyword">protected</span><span class="tok-operator">:</span>
+    <span class="tok-type">double</span> mR, mI;                         <span class="tok-comment">// 复数实部、虚部</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-function">CComplex</span>(<span class="tok-type">double</span> r, <span class="tok-type">double</span> i) <span class="tok-operator">:</span> <span class="tok-function">mR</span>(r), <span class="tok-function">mI</span>(i) {} <span class="tok-comment">// 初始化复数值</span>
+    <span class="tok-type">void</span> <span class="tok-function">SetValues</span>(<span class="tok-type">double</span> r, <span class="tok-type">double</span> i) { mR <span class="tok-operator">=</span> r; mI <span class="tok-operator">=</span> i; } <span class="tok-comment">// 修改复数值</span>
+};
+
+<span class="tok-keyword">class</span> CNamedComplex <span class="tok-operator">:</span> <span class="tok-keyword">public</span> CComplex {   <span class="tok-comment">// 通过继承复用实部、虚部</span>
+    <span class="tok-namespace">std</span><span class="tok-operator">::</span><span class="tok-type">string</span> mName;                    <span class="tok-comment">// 自动管理字符内存</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-function">CNamedComplex</span>(<span class="tok-type">const</span> <span class="tok-namespace">std</span><span class="tok-operator">::</span><span class="tok-type">string</span><span class="tok-operator">&amp;</span> name, <span class="tok-type">double</span> r, <span class="tok-type">double</span> i)
+        <span class="tok-operator">:</span> <span class="tok-function">CComplex</span>(r, i), <span class="tok-function">mName</span>(name) {}  <span class="tok-comment">// 基类先于成员初始化</span>
+    <span class="tok-type">void</span> <span class="tok-function">SetValues</span>(<span class="tok-type">const</span> <span class="tok-namespace">std</span><span class="tok-operator">::</span><span class="tok-type">string</span><span class="tok-operator">&amp;</span> name, <span class="tok-type">double</span> r, <span class="tok-type">double</span> i) {
+        mName <span class="tok-operator">=</span> name;                      <span class="tok-comment">// 安全更新字符串</span>
+        CComplex<span class="tok-operator">::</span><span class="tok-function">SetValues</span>(r, i);        <span class="tok-comment">// 明确调用基类版本</span>
+    }
+};
+</code></pre></div>
+<h2 id="724-继承与组合不能混淆"><span aria-hidden="true" class="anchor-alias" id="sec-10"></span>7.2.4 继承与组合不能混淆</h2>
+<p><code>class Circle : public Point</code> 是继承；<code>class ChiefExecutive { Date date; };</code> 中的 <code>Date</code> 是<strong>成员对象（组合）</strong>。成员对象和基类对象都会参与构造过程，但<strong>不会</strong>因此变成同一种类型关系。</p>
+<p><strong>图组：继承关系、组合关系与层次变化</strong></p>
+<p><img alt="cpp_inherit_is_a_00_cae71e80-56a0-409a-af21-17d99d576e9f" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_is_a_00_cae71e80-56a0-409a-af21-17d99d576e9f.png"/></p>
+<p><em>命名复数是复数的一种专门化</em></p>
+<p><img alt="cpp_inherit_is_a_01_90ae67ce-4cef-4a57-8f55-f2af64aeaa55" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_is_a_01_90ae67ce-4cef-4a57-8f55-f2af64aeaa55.png"/></p>
+<p><em>特首对象拥有一个任职日期成员对象</em></p>
+<p><img alt="cpp_inherit_is_a_02_4d2f9ab1-cfdf-43c2-bcde-a8564cf23f45" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_is_a_02_4d2f9ab1-cfdf-43c2-bcde-a8564cf23f45.png"/></p>
+<p><em>更改基类共享实现会影响派生类可见行为</em></p>
+<h2 id="725-同名函数与查找规则"><span aria-hidden="true" class="anchor-alias" id="sec-11"></span>7.2.5 同名函数与查找规则</h2>
+<p>派生类声明一个 <code>SetValues(std::string, double, double)</code>，并不自动与基类的 <code>SetValues(double, double)</code> 组成一个跨类重载集。<strong>名称查找先看派生类作用域</strong>；找到同名成员后通常隐藏基类同名声明。需要基类成员时可显式限定 <code>Base::SetValues(...)</code>；也可以在适用情况下使用 <code>using Base::SetValues;</code> 引入重载候选，但本讲以<strong>显式限定</strong>为主。</p>
+<p><strong>图组：名称隐藏与指定调用目标</strong></p>
+<aside class="callout callout-example" data-callout="example"><div class="callout-title" data-icon="◇">展开连续插图（4 幅）</div><div class="callout-content">
+<p>这些图从不同时间或访问视角展示同一机制，请依次对照。</p>
+<p><img alt="cpp_inherit_method_0_c9748fd3-110c-4fd2-a77b-03e20a17200b" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_method_0_c9748fd3-110c-4fd2-a77b-03e20a17200b.png"/>
+<em>Show 在基类中定义</em></p>
+<p><img alt="cpp_inherit_method_1_6142f367-4097-4676-8a85-9321c16a5bca" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_method_1_6142f367-4097-4676-8a85-9321c16a5bca.png"/>
+<em>派生类自己的 Show 隐藏基类同名函数</em></p>
+<p><img alt="cpp_inherit_method_2_4fe04e51-ecc6-4415-b1b9-40b52054663c" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_method_2_4fe04e51-ecc6-4415-b1b9-40b52054663c.png"/>
+<em>可使用 object.CPoint::Show() 指定基类函数</em></p>
+<p><img alt="cpp_inherit_method_3_e23d375e-3c60-497f-a966-321d874a41d1" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_method_3_e23d375e-3c60-497f-a966-321d874a41d1.png"/>
+<em>派生类定义同名函数后，基类重载集通常被隐藏</em></p>
+</div></aside>
+<h1 id="73-派生类对基类成员的访问权"><span aria-hidden="true" class="anchor-alias" id="sec-12"></span>7.3 派生类对基类成员的访问权</h1>
+<h2 id="731-两套权限必须同时看"><span aria-hidden="true" class="anchor-alias" id="sec-13"></span>7.3.1 两套权限必须同时看</h2>
+<p><strong>判断某个成员能否访问，要区分两件事：</strong></p>
+<ol>
+<li>成员在<strong>基类中原来是</strong> <code>public</code> / <code>protected</code> / <code>private</code> 哪一种。</li>
+<li>派生时指定的是 <strong><code>public</code> / <code>protected</code> / <code>private</code> 继承</strong>哪一种；这还关系到最终从派生类外部观察的可访问级别。</li>
+</ol>
+<p><strong>直接派生类中，继承后的访问级别（课件核心表）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>基类原成员</th>
+<th><code>public</code> 继承后</th>
+<th><code>protected</code> 继承后</th>
+<th><code>private</code> 继承后</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public</code></td>
+<td><code>public</code></td>
+<td><code>protected</code></td>
+<td><code>private</code></td>
+</tr>
+<tr>
+<td><code>protected</code></td>
+<td><code>protected</code></td>
+<td><code>protected</code></td>
+<td><code>private</code></td>
+</tr>
+<tr>
+<td><code>private</code></td>
+<td>不可直接访问</td>
+<td>不可直接访问</td>
+<td>不可直接访问</td>
+</tr>
+</tbody>
+</table>
+<p><strong>“不可直接访问”不表示该数据已被删除。</strong> 基类自己的成员函数仍然可以按其权限操作自己的私有数据。派生类可以调用适当公开或保护的基类接口来间接完成操作。</p>
+<p><strong>图组：公有继承时三类基类成员</strong></p>
+<aside class="callout callout-example" data-callout="example"><div class="callout-title" data-icon="◇">展开连续插图（3 幅）</div><div class="callout-content">
+<p>这些图从不同时间或访问视角展示同一机制，请依次对照。</p>
+<p><img alt="cpp_inherit_access_public_public_baefed14-9df4-492b-b877-be6becdded8f" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_access_public_public_baefed14-9df4-492b-b877-be6becdded8f.png"/>
+<em>基类 public 成员在 public 继承下：public</em></p>
+<p><img alt="cpp_inherit_access_public_protected_cf588005-fc2b-4c30-9364-40c42be61a23" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_access_public_protected_cf588005-fc2b-4c30-9364-40c42be61a23.png"/>
+<em>基类 protected 成员在 public 继承下：protected</em></p>
+<p><img alt="cpp_inherit_access_public_private_065c796e-d138-4f55-95a5-5a749ac5b309" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_access_public_private_065c796e-d138-4f55-95a5-5a749ac5b309.png"/>
+<em>基类 private 成员在 public 继承下：private</em></p>
+</div></aside>
+<p><strong>图组：保护继承时三类基类成员</strong></p>
+<aside class="callout callout-example" data-callout="example"><div class="callout-title" data-icon="◇">展开连续插图（3 幅）</div><div class="callout-content">
+<p>这些图从不同时间或访问视角展示同一机制，请依次对照。</p>
+<p><img alt="cpp_inherit_access_protected_public_25b1e9b1-fde5-4d09-8339-f0147f4df3a5" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_access_protected_public_25b1e9b1-fde5-4d09-8339-f0147f4df3a5.png"/>
+<em>基类 public 成员在 protected 继承下：protected</em></p>
+<p><img alt="cpp_inherit_access_protected_protected_2794b76a-4032-420b-bb8f-18aeffc1ca17" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_access_protected_protected_2794b76a-4032-420b-bb8f-18aeffc1ca17.png"/>
+<em>基类 protected 成员在 protected 继承下：protected</em></p>
+<p><img alt="cpp_inherit_access_protected_private_4150a2c9-a071-4d5a-bdc6-66e4c5f48b19" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_access_protected_private_4150a2c9-a071-4d5a-bdc6-66e4c5f48b19.png"/>
+<em>基类 private 成员在 protected 继承下：不可直接访问</em></p>
+</div></aside>
+<p><strong>图组：私有继承时三类基类成员</strong></p>
+<aside class="callout callout-example" data-callout="example"><div class="callout-title" data-icon="◇">展开连续插图（3 幅）</div><div class="callout-content">
+<p>这些图从不同时间或访问视角展示同一机制，请依次对照。</p>
+<p><img alt="cpp_inherit_access_private_public_e258d553-cc1c-417d-926d-d27e3f261dbf" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_access_private_public_e258d553-cc1c-417d-926d-d27e3f261dbf.png"/>
+<em>基类 public 成员在 private 继承下：private</em></p>
+<p><img alt="cpp_inherit_access_private_protected_83e30180-e7b8-4db5-892a-95a9fe2665d8" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_access_private_protected_83e30180-e7b8-4db5-892a-95a9fe2665d8.png"/>
+<em>基类 protected 成员在 private 继承下：private</em></p>
+<p><img alt="cpp_inherit_access_private_private_fd63a197-07d5-450e-bc29-aab8ad7de89b" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_access_private_private_fd63a197-07d5-450e-bc29-aab8ad7de89b.png"/>
+<em>基类 private 成员在 private 继承下：不可直接访问</em></p>
+</div></aside>
+<h2 id="732-各类访问者的区别"><span aria-hidden="true" class="anchor-alias" id="sec-14"></span>7.3.2 各类访问者的区别</h2>
+<ul>
+<li><strong>基类自己的成员函数</strong>可访问基类全部成员。</li>
+<li><strong>派生类成员函数</strong>可访问合法继承路径下的 <code>public</code>、<code>protected</code> 基类成员，但不能直接访问基类 <code>private</code>。</li>
+<li><strong>普通使用者</strong>只能访问对象对外可见的 <code>public</code> 接口；通过 <code>Derived</code> 对象访问时还受继承方式的限制。</li>
+<li><strong>友元</strong>关系必须明确授予，并非继承获得：<code>Derived</code> 的友元不会自动成为 <code>Base</code> 的友元；<code>Base</code> 的友元可以访问适当的 <code>Base</code> 私有成员。</li>
+</ul>
+<aside class="callout callout-note" data-callout="note"><div class="callout-title" data-icon="i">进阶但直接相关的限制</div><div class="callout-content">
+<p>派生类成员并不一定可以经由<strong>任意 Base 对象</strong>访问其保护成员；受保护成员还有对象表达式的限制。初学时先掌握 <code>Derived</code> 自身对象内访问继承来的保护数据，避免误以为“从任何 Base 对象都可以随意读 protected”。</p>
+</div></aside>
+<p><strong>图组：派生类、外部使用者、友元以及更深层派生的访问差异</strong></p>
+<aside class="callout callout-example" data-callout="example"><div class="callout-title" data-icon="◇">展开连续插图（9 幅）</div><div class="callout-content">
+<p>这些图从不同时间或访问视角展示同一机制，请依次对照。</p>
+<p><img alt="cpp_inherit_access_case_00_18c21419-d3fb-4970-966f-07a69585bb12" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_access_case_00_18c21419-d3fb-4970-966f-07a69585bb12.png"/>
+<em>保护成员允许派生类成员函数访问</em></p>
+<p><img alt="cpp_inherit_access_case_01_3d9008d9-01a8-4e22-8ec8-0410acc8b311" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_access_case_01_3d9008d9-01a8-4e22-8ec8-0410acc8b311.png"/>
+<em>保护成员不属于公共接口</em></p>
+<p><img alt="cpp_inherit_access_case_02_66430568-e051-43cc-86dc-007ca5a64f24" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_access_case_02_66430568-e051-43cc-86dc-007ca5a64f24.png"/>
+<em>数据仍存在，但只能借助基类允许的接口</em></p>
+<p><img alt="cpp_inherit_access_case_03_49a2b5b3-e353-426f-b06b-327a08228ea9" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_access_case_03_49a2b5b3-e353-426f-b06b-327a08228ea9.png"/>
+<em>继承方式无法提升基类私有数据权限</em></p>
+<p><img alt="cpp_inherit_access_case_04_5448b495-64e7-415f-9012-e0a9752f4ae5" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_access_case_04_5448b495-64e7-415f-9012-e0a9752f4ae5.png"/>
+<em>外部不能再把它作为公开访问接口</em></p>
+<p><img alt="cpp_inherit_access_case_05_fc975f46-402d-478e-812c-1ec82893ab17" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_access_case_05_fc975f46-402d-478e-812c-1ec82893ab17.png"/>
+<em>公共接口在派生类内被收紧</em></p>
+<p><img alt="cpp_inherit_access_case_06_8117b69f-d975-4648-ba15-cd0034cad754" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_access_case_06_8117b69f-d975-4648-ba15-cd0034cad754.png"/>
+<em>友元拥有授予它的基类访问权限</em></p>
+<p><img alt="cpp_inherit_access_case_07_445add05-f335-4a5c-98cd-210f1984ed51" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_access_case_07_445add05-f335-4a5c-98cd-210f1984ed51.png"/>
+<em>友元权限不会自动传递到基类私有成员</em></p>
+<p><img alt="cpp_inherit_access_case_08_86c17964-26ca-4211-a980-abe2dcd23b24" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_access_case_08_86c17964-26ca-4211-a980-abe2dcd23b24.png"/>
+<em>中间层的私有继承会限制后续派生类</em></p>
+</div></aside>
+<p><strong>简短、可编译的权限示例：</strong></p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-keyword">class</span> Base {
+<span class="tok-keyword">private</span><span class="tok-operator">:</span>
+    <span class="tok-type">int</span> a <span class="tok-operator">=</span> <span class="tok-number">1</span>;                             <span class="tok-comment">// 仅 Base 及其友元可直接访问</span>
+<span class="tok-keyword">protected</span><span class="tok-operator">:</span>
+    <span class="tok-type">int</span> b <span class="tok-operator">=</span> <span class="tok-number">2</span>;                             <span class="tok-comment">// 派生类可在合法上下文中访问</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-type">int</span> c <span class="tok-operator">=</span> <span class="tok-number">3</span>;                             <span class="tok-comment">// 公有接口</span>
+};
+
+<span class="tok-keyword">class</span> Derived <span class="tok-operator">:</span> <span class="tok-keyword">public</span> Base {             <span class="tok-comment">// 公有继承 Base</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-type">void</span> <span class="tok-function">Change</span>() {
+        b <span class="tok-operator">=</span> <span class="tok-number">20</span>;                            <span class="tok-comment">// 合法：访问保护成员</span>
+        c <span class="tok-operator">=</span> <span class="tok-number">30</span>;                            <span class="tok-comment">// 合法：访问公有成员</span>
+        <span class="tok-comment">// a = 10;                         // 非法：基类私有成员不可直接访问</span>
+    }
+};
+</code></pre></div>
+<h1 id="74-定义惯例及赋值兼容原则"><span aria-hidden="true" class="anchor-alias" id="sec-15"></span>7.4 定义惯例及赋值兼容原则</h1>
+<h2 id="741-公有继承允许向上转换"><span aria-hidden="true" class="anchor-alias" id="sec-16"></span>7.4.1 公有继承允许向上转换</h2>
+<p>课程给出的<strong>赋值兼容原则</strong>：<code>public</code> 派生类对象可以在需要基类对象、基类引用或基类指针的场合使用。这里的三种使用方式行为不完全相同：</p>
+<ul>
+<li><code>Base&amp; r = derived;</code>：<strong>引用绑定</strong>已有派生对象的基类子对象，<strong>不复制</strong>。</li>
+<li><code>Base* p = &amp;derived;</code>：指向该基类子对象，<strong>不复制</strong>。</li>
+<li><code>Base b = derived;</code> 或 <code>b = derived;</code>：<strong>按值复制基类部分</strong>，派生类新增的数据没有进入 <code>b</code>，称为<strong>对象切片</strong>（slicing）。</li>
+</ul>
+<aside class="callout callout-important" data-callout="important"><div class="callout-title" data-icon="!">关键分界</div><div class="callout-content">
+<p>“可以当成 Base 使用”不等于“一个 Base 对象能完整保存 Derived 的所有数据”。指针和引用保存原对象身份；<strong>按值复制会切片</strong>。</p>
+</div></aside>
+<p><strong>图组：赋值兼容与通过不同类型表达式调用 Show</strong></p>
+<aside class="callout callout-example" data-callout="example"><div class="callout-title" data-icon="◇">展开连续插图（7 幅）</div><div class="callout-content">
+<p>这些图从不同时间或访问视角展示同一机制，请依次对照。</p>
+<p><img alt="cpp_inherit_conversion_00_f9593c4e-acbb-4ccc-b1d3-26ba597372de" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_conversion_00_f9593c4e-acbb-4ccc-b1d3-26ba597372de.png"/>
+<em>发生基类部分复制（对象切片）</em></p>
+<p><img alt="cpp_inherit_conversion_01_a30fd624-3316-4de3-8505-48e099970ae5" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_conversion_01_a30fd624-3316-4de3-8505-48e099970ae5.png"/>
+<em>不复制，引用绑定派生对象的基类子对象</em></p>
+<p><img alt="cpp_inherit_conversion_02_6ad2dc09-c08c-4bc4-918e-ec255abec2b5" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_conversion_02_6ad2dc09-c08c-4bc4-918e-ec255abec2b5.png"/>
+<em>指针指向基类子对象，不截断对象</em></p>
+<p><img alt="cpp_inherit_conversion_03_dcb2cf96-dd63-422b-a5fe-270c5884f207" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_conversion_03_dcb2cf96-dd63-422b-a5fe-270c5884f207.png"/>
+<em>可通过派生类接口访问 mR / Show</em></p>
+<p><img alt="cpp_inherit_conversion_04_70a7f446-8ad6-4bfd-bfda-bb8a35848e1a" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_conversion_04_70a7f446-8ad6-4bfd-bfda-bb8a35848e1a.png"/>
+<em>显式 CPoint::Show 读取坐标</em></p>
+<p><img alt="cpp_inherit_conversion_05_d23c1d4e-5eb1-4e07-8e3a-64c59046e0c3" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_conversion_05_d23c1d4e-5eb1-4e07-8e3a-64c59046e0c3.png"/>
+<em>课件 Show 非虚，取静态类型所见版本</em></p>
+<p><img alt="cpp_inherit_conversion_06_3354767e-a879-47a2-9c3d-5bc5c5bb2a3e" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_conversion_06_3354767e-a879-47a2-9c3d-5bc5c5bb2a3e.png"/>
+<em>CCircle::Show 隐藏基类同名函数</em></p>
+</div></aside>
+<p><strong>图组：复制切片前后与指针/引用所指位置</strong></p>
+<p><img alt="cpp_inherit_slice_0_bd6f0e9b-2a2d-4c70-b877-8924c3e0ecbb" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_slice_0_bd6f0e9b-2a2d-4c70-b877-8924c3e0ecbb.png"/></p>
+<p><em>源对象仍含有半径</em></p>
+<p><img alt="cpp_inherit_slice_1_75a994cf-b66d-46b1-88de-0d6845e87ef1" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_slice_1_75a994cf-b66d-46b1-88de-0d6845e87ef1.png"/></p>
+<p><em>zPoint = zCircle 不会把 mR 复制到 zPoint</em></p>
+<p><img alt="cpp_inherit_slice_2_ee290455-934d-4257-9dd8-8a784c8032ec" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_slice_2_ee290455-934d-4257-9dd8-8a784c8032ec.png"/></p>
+<p><em>向上转换没有销毁派生部分</em></p>
+<p><img alt="cpp_inherit_slice_3_293bb3bf-7e74-407c-8647-1df8183aca1c" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_slice_3_293bb3bf-7e74-407c-8647-1df8183aca1c.png"/></p>
+<p><em>静态类型限定可见接口</em></p>
+<p><strong>例题：课件 <code>zPoint = zCircle</code> 与 <code>rPoint.Show()</code> 的结果</strong></p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp">CCircle <span class="tok-function">circle</span>(<span class="tok-number">9</span>, <span class="tok-number">9</span>, <span class="tok-number">9</span>);                <span class="tok-comment">// 派生对象：圆心(9,9)、半径9</span>
+CPoint <span class="tok-function">point</span>(<span class="tok-number">7</span>, <span class="tok-number">1</span>);                       <span class="tok-comment">// 独立基类对象</span>
+CPoint<span class="tok-operator">&amp;</span> rPoint <span class="tok-operator">=</span> circle;                  <span class="tok-comment">// 引用绑定基类子对象，无复制</span>
+CPoint<span class="tok-operator">*</span> pPoint <span class="tok-operator">=</span> <span class="tok-operator">&amp;</span>circle;                 <span class="tok-comment">// 指针指向基类子对象，无复制</span>
+point <span class="tok-operator">=</span> circle;                           <span class="tok-comment">// 只复制 CPoint 基类部分</span>
+rPoint.<span class="tok-function">Show</span>();                            <span class="tok-comment">// 调用非虚 CPoint::Show</span>
+pPoint<span class="tok-operator">-&gt;</span><span class="tok-function">Show</span>();                           <span class="tok-comment">// 调用非虚 CPoint::Show</span>
+point.<span class="tok-function">Show</span>();                             <span class="tok-comment">// 坐标已变为(9,9)</span>
+</code></pre></div>
+<p>这段是依赖前面 <code>CPoint/CCircle</code> 声明的代码片段，不独立定义 <code>main</code>。<code>Show()</code> <strong>非虚函数</strong>，故通过基类类型的引用/指针调用时依然选择 <code>CPoint::Show()</code>。如果换成满足动态绑定条件的虚函数，才会出现不同结果；那是第八讲内容。</p>
+<h2 id="742-不能把反向转换看成理所当然"><span aria-hidden="true" class="anchor-alias" id="sec-17"></span>7.4.2 不能把反向转换看成理所当然</h2>
+<p>从 <code>Derived</code> 到公开且无歧义的 <code>Base</code> 可以自动转换；反过来从普通 <code>Base</code> 到 <code>Derived</code> <strong>不能自动进行</strong>，因为基类对象不一定包含派生类额外部分。<code>private</code>/<code>protected</code> 继承也会影响在普通外部代码中能否发生此类隐式转换；普通非虚菱形继承甚至可能使通往共同基类的转换产生歧义。</p>
+<p><strong>图组：不合法、受限或不安全的转换</strong></p>
+<aside class="callout callout-example" data-callout="example"><div class="callout-title" data-icon="◇">展开连续插图（5 幅）</div><div class="callout-content">
+<p>这些图从不同时间或访问视角展示同一机制，请依次对照。</p>
+<p><img alt="cpp_inherit_convert_danger_00_fc6147b6-a34f-48b7-8f83-0cbd8fa31b4a" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_convert_danger_00_fc6147b6-a34f-48b7-8f83-0cbd8fa31b4a.png"/>
+<em>Base 不保证具备 Derived 需要的额外信息</em></p>
+<p><img alt="cpp_inherit_convert_danger_01_f1a8550e-1959-48a3-84f4-8319e124eb11" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_convert_danger_01_f1a8550e-1959-48a3-84f4-8319e124eb11.png"/>
+<em>普通代码不可执行 private 继承向上转换</em></p>
+<p><img alt="cpp_inherit_convert_danger_02_d890afb8-92c7-4b66-8a86-58f8bb9d29fe" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_convert_danger_02_d890afb8-92c7-4b66-8a86-58f8bb9d29fe.png"/>
+<em>通过基类指针不能直接访问派生特有接口</em></p>
+<p><img alt="cpp_inherit_convert_danger_03_d4303da8-0c29-4035-b48f-68516c1ac5d1" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_convert_danger_03_d4303da8-0c29-4035-b48f-68516c1ac5d1.png"/>
+<em>绑定引用保留实际的 CCircle 对象</em></p>
+<p><img alt="cpp_inherit_convert_danger_04_9c98fcc7-505a-47ae-af88-2205a4897779" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_convert_danger_04_9c98fcc7-505a-47ae-af88-2205a4897779.png"/>
+<em>对象实际不是 CCircle 时不可随意当作它</em></p>
+</div></aside>
+<h1 id="75-构造函数定义及执行准则"><span aria-hidden="true" class="anchor-alias" id="sec-18"></span>7.5 构造函数定义及执行准则</h1>
+<h2 id="751-最重要的顺序规则"><span aria-hidden="true" class="anchor-alias" id="sec-19"></span>7.5.1 最重要的顺序规则</h2>
+<p><strong>一个派生类完整对象的构造顺序：</strong></p>
+<ol>
+<li>**虚基类（如有）**按语言规定的虚基类次序初始化（详见 7.6）；</li>
+<li><strong>直接非虚基类子对象</strong>按基类说明列表中的声明次序；</li>
+<li><strong>非静态成员对象</strong>按其在类内的声明次序；</li>
+<li><strong>派生类构造函数体</strong>最后执行。</li>
+</ol>
+<p>析构顺序完全相反（先执行派生类析构函数体，再销毁成员对象及基类子对象）。<strong>构造函数初始化列表的排列顺序，不会改变上述真正执行顺序</strong>。</p>
+<aside class="callout callout-warning" data-callout="warning"><div class="callout-title" data-icon="!">细节：类成员的默认成员初始化与初始化列表</div><div class="callout-content">
+<p>有 <code>const</code>、引用或无默认构造函数的成员时，必须确保这些成员被正确初始化。不能指望进入构造函数体后再给引用成员“绑定对象”。</p>
+</div></aside>
+<p>课件中的 <code>CCircle(int x,int y,int r) : CPoint(x,y)</code>，意味着 <strong>调用基类构造函数准备好圆心</strong>，然后才执行派生类构造函数体并处理半径。</p>
+<p><strong>图组：圆对象构造的三步执行</strong></p>
+<p><img alt="cpp_inherit_circle_construct_00_f448133c-8a2a-4503-9aea-840fcf1f551d" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_circle_construct_00_f448133c-8a2a-4503-9aea-840fcf1f551d.png"/></p>
+<p><em>基类子对象必须先初始化</em></p>
+<p><img alt="cpp_inherit_circle_construct_01_57c13296-59df-449d-9d4f-27671f9e195e" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_circle_construct_01_57c13296-59df-449d-9d4f-27671f9e195e.png"/></p>
+<p><em>基类子对象必须先初始化</em></p>
+<p><img alt="cpp_inherit_circle_construct_02_eb464e78-2b06-435c-bb23-218ae49d8779" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_circle_construct_02_eb464e78-2b06-435c-bb23-218ae49d8779.png"/></p>
+<p><em>基类子对象必须先初始化</em></p>
+<p><strong>图组：圆对象析构的三步执行</strong></p>
+<p><img alt="cpp_inherit_circle_destruct_00_633843b8-f2ff-4804-80b1-f1ba7ad5dc91" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_circle_destruct_00_633843b8-f2ff-4804-80b1-f1ba7ad5dc91.png"/></p>
+<p><em>对象的销毁次序与构造相反</em></p>
+<p><img alt="cpp_inherit_circle_destruct_01_e88ca18f-baf0-45d8-86ee-838b58ebc939" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_circle_destruct_01_e88ca18f-baf0-45d8-86ee-838b58ebc939.png"/></p>
+<p><em>对象的销毁次序与构造相反</em></p>
+<p><img alt="cpp_inherit_circle_destruct_02_8dd55552-4830-4103-bea8-c3abd7f7c3aa" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_circle_destruct_02_8dd55552-4830-4103-bea8-c3abd7f7c3aa.png"/></p>
+<p><em>对象的销毁次序与构造相反</em></p>
+<h2 id="752-人日期与特首例程"><span aria-hidden="true" class="anchor-alias" id="sec-20"></span>7.5.2 人、日期与特首例程</h2>
+<p>课件的三个类可以用下列逻辑关系理解：</p>
+<ul>
+<li><code>CPerson</code> 是<strong>基类</strong>，保存姓名。</li>
+<li><code>CDate</code> 是<strong>成员对象的类</strong>，保存年、月、日。</li>
+<li><code>CChiefExecutive : public CPerson</code> 是派生类，<strong>包含</strong>一个 <code>CDate mWorkDate</code>。</li>
+</ul>
+<p>定义 <code>CChiefExecutive(name, y, m, d)</code> 时，构造次序 <strong>Person → Date → ChiefExecutive</strong>；对象离开作用域时逆序 <strong>ChiefExecutive → Date → Person</strong>。这并非代码“先显示了哪句话就先构造了谁”，而是语言规定了子对象建立的顺序。</p>
+<p><strong>可运行的精简例程：</strong></p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-directive">#include</span> <span class="tok-string">&lt;iostream&gt;</span>                         <span class="tok-comment">// 使用控制台输出</span>
+<span class="tok-directive">#include</span> <span class="tok-string">&lt;string&gt;</span>                           <span class="tok-comment">// 安全存储姓名</span>
+
+<span class="tok-keyword">class</span> CPerson {
+    <span class="tok-namespace">std</span><span class="tok-operator">::</span><span class="tok-type">string</span> mName;                     <span class="tok-comment">// 使用自动管理内存的字符串</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-keyword">explicit</span> <span class="tok-function">CPerson</span>(<span class="tok-type">const</span> <span class="tok-namespace">std</span><span class="tok-operator">::</span><span class="tok-type">string</span><span class="tok-operator">&amp;</span> name) <span class="tok-operator">:</span> <span class="tok-function">mName</span>(name) {
+        <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">"Person...\n"</span>;       <span class="tok-comment">// 先构造基类</span>
+    }
+    <span class="tok-operator">~</span><span class="tok-function">CPerson</span>() { <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">"Delete Person!\n"</span>; } <span class="tok-comment">// 最后析构基类</span>
+};
+
+<span class="tok-keyword">class</span> CDate {
+    <span class="tok-type">int</span> mYear, mMonth, mDay;               <span class="tok-comment">// 保存日期各部分</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-function">CDate</span>(<span class="tok-type">int</span> y, <span class="tok-type">int</span> m, <span class="tok-type">int</span> d) <span class="tok-operator">:</span> <span class="tok-function">mYear</span>(y), <span class="tok-function">mMonth</span>(m), <span class="tok-function">mDay</span>(d) {
+        <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">"Date...\n"</span>;         <span class="tok-comment">// 先于派生类自身构造函数体</span>
+    }
+    <span class="tok-operator">~</span><span class="tok-function">CDate</span>() { <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">"Delete Date!\n"</span>; } <span class="tok-comment">// 晚于派生类自身析构</span>
+};
+
+<span class="tok-keyword">class</span> CChiefExecutive <span class="tok-operator">:</span> <span class="tok-keyword">public</span> CPerson {  <span class="tok-comment">// CPerson 是基类</span>
+    CDate mWorkDate;                       <span class="tok-comment">// CDate 是成员对象</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-function">CChiefExecutive</span>(<span class="tok-type">const</span> <span class="tok-namespace">std</span><span class="tok-operator">::</span><span class="tok-type">string</span><span class="tok-operator">&amp;</span> name, <span class="tok-type">int</span> y, <span class="tok-type">int</span> m, <span class="tok-type">int</span> d)
+        <span class="tok-operator">:</span> <span class="tok-function">CPerson</span>(name), <span class="tok-function">mWorkDate</span>(y, m, d) { <span class="tok-comment">// 初始化基类和成员</span>
+        <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">"ChiefExecutive...\n"</span>; <span class="tok-comment">// 最后执行派生类函数体</span>
+    }
+    <span class="tok-operator">~</span><span class="tok-function">CChiefExecutive</span>() {
+        <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">"Delete ChiefExecutive!\n"</span>; <span class="tok-comment">// 最先执行析构函数体</span>
+    }
+};
+
+<span class="tok-type">int</span> <span class="tok-function">main</span>() {
+    CChiefExecutive <span class="tok-function">ce</span>(<span class="tok-string">"DJH"</span>, <span class="tok-number">1997</span>, <span class="tok-number">7</span>, <span class="tok-number">1</span>); <span class="tok-comment">// 创建完整派生类对象</span>
+    <span class="tok-keyword">return</span> <span class="tok-number">0</span>;                              <span class="tok-comment">// 离开作用域后自动销毁</span>
+}
+</code></pre></div>
+<p><strong>核对输出：</strong> <code>Person...</code> → <code>Date...</code> → <code>ChiefExecutive...</code> → <code>Delete ChiefExecutive!</code> → <code>Delete Date!</code> → <code>Delete Person!</code>。</p>
+<p><strong>图组：构造过程中哪些对象部分已存在</strong></p>
+<p><img alt="cpp_inherit_chief_construct_00_ef764c6d-bcfa-49d2-bd58-4c979ff2a178" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_chief_construct_00_ef764c6d-bcfa-49d2-bd58-4c979ff2a178.png"/></p>
+<p><em>成员对象总在派生类构造函数体之前初始化</em></p>
+<p><img alt="cpp_inherit_chief_construct_01_46a35e38-479f-485b-8a4c-e0d11783ee41" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_chief_construct_01_46a35e38-479f-485b-8a4c-e0d11783ee41.png"/></p>
+<p><em>成员对象总在派生类构造函数体之前初始化</em></p>
+<p><img alt="cpp_inherit_chief_construct_02_501b6478-139d-424a-a0ed-59491b0b34d0" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_chief_construct_02_501b6478-139d-424a-a0ed-59491b0b34d0.png"/></p>
+<p><em>成员对象总在派生类构造函数体之前初始化</em></p>
+<p><strong>图组：析构过程中哪些对象部分正在销毁</strong></p>
+<p><img alt="cpp_inherit_chief_destruct_00_3c99394c-86d0-4604-bf27-0e077f473633" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_chief_destruct_00_3c99394c-86d0-4604-bf27-0e077f473633.png"/></p>
+<p><em>成员和基类的析构由语言自动完成</em></p>
+<p><img alt="cpp_inherit_chief_destruct_01_ce3e92b6-8ceb-400c-8eed-96750b4852bd" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_chief_destruct_01_ce3e92b6-8ceb-400c-8eed-96750b4852bd.png"/></p>
+<p><em>成员和基类的析构由语言自动完成</em></p>
+<p><img alt="cpp_inherit_chief_destruct_02_f2dcb637-1f4e-4c28-9daf-9499284e828d" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_chief_destruct_02_f2dcb637-1f4e-4c28-9daf-9499284e828d.png"/></p>
+<p><em>成员和基类的析构由语言自动完成</em></p>
+<h2 id="753-初始化列表次序不是构造次序"><span aria-hidden="true" class="anchor-alias" id="sec-21"></span>7.5.3 初始化列表次序不是构造次序</h2>
+<p>如下代码中，虽然初始化列表先写 <code>b(v)</code> 后写 <code>a(v)</code>，只要类体内的数据成员声明顺序是 <code>a</code>、<code>b</code>，<strong>仍然先初始化 a，再初始化 b</strong>。若 b 的初始化表达式依赖 a，必须考虑此实际顺序；建议让初始化列表顺序与声明顺序一致，提高可读性。</p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-keyword">class</span> Pair {
+    <span class="tok-type">int</span> a;                                 <span class="tok-comment">// 成员 a 先声明</span>
+    <span class="tok-type">int</span> b;                                 <span class="tok-comment">// 成员 b 后声明</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-keyword">explicit</span> <span class="tok-function">Pair</span>(<span class="tok-type">int</span> v) <span class="tok-operator">:</span> <span class="tok-function">b</span>(v <span class="tok-operator">+</span> <span class="tok-number">1</span>), <span class="tok-function">a</span>(v) {} <span class="tok-comment">// 实际先初始化 a，再初始化 b</span>
+};
+</code></pre></div>
+<p><strong>图组：初始化列表顺序的误区</strong></p>
+<aside class="callout callout-example" data-callout="example"><div class="callout-title" data-icon="◇">展开连续插图（2 幅）</div><div class="callout-content">
+<p>这些图从不同时间或访问视角展示同一机制，请依次对照。</p>
+<p><img alt="cpp_inherit_initlist_order_0_c8dbd368-30bb-480a-bf49-e568614a0d1a" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_initlist_order_0_c8dbd368-30bb-480a-bf49-e568614a0d1a.png"/>
+<em>构造顺序由继承列表和成员声明顺序决定</em></p>
+<p><img alt="cpp_inherit_initlist_order_1_ccd3fb8a-ad5c-4c08-b5ab-5371ba622cd8" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_initlist_order_1_ccd3fb8a-ad5c-4c08-b5ab-5371ba622cd8.png"/>
+<em>构造顺序由继承列表和成员声明顺序决定</em></p>
+</div></aside>
+<p><strong>图组：基类与成员的真实初始化顺序、特殊成员要求</strong></p>
+<aside class="callout callout-example" data-callout="example"><div class="callout-title" data-icon="◇">展开连续插图（5 幅）</div><div class="callout-content">
+<p>这些图从不同时间或访问视角展示同一机制，请依次对照。</p>
+<p><img alt="cpp_inherit_order_case_00_0409350c-aeff-457e-a4f3-e435768b0815" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_order_case_00_0409350c-aeff-457e-a4f3-e435768b0815.png"/>
+<em>不能根据初始化列表的文字先后猜测执行顺序</em></p>
+<p><img alt="cpp_inherit_order_case_01_8dc5fd7d-f06b-4c81-9793-bfc8b12e6a3c" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_order_case_01_8dc5fd7d-f06b-4c81-9793-bfc8b12e6a3c.png"/>
+<em>不能根据初始化列表的文字先后猜测执行顺序</em></p>
+<p><img alt="cpp_inherit_order_case_02_c013049e-985f-4b6a-add1-76d7906469c8" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_order_case_02_c013049e-985f-4b6a-add1-76d7906469c8.png"/>
+<em>不能根据初始化列表的文字先后猜测执行顺序</em></p>
+<p><img alt="cpp_inherit_order_case_03_7c40e624-5028-46a6-a8e0-99f0f215947d" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_order_case_03_7c40e624-5028-46a6-a8e0-99f0f215947d.png"/>
+<em>不能根据初始化列表的文字先后猜测执行顺序</em></p>
+<p><img alt="cpp_inherit_order_case_04_064d31cc-4cf1-4ff6-adf1-6316466652f5" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_order_case_04_064d31cc-4cf1-4ff6-adf1-6316466652f5.png"/>
+<em>不能根据初始化列表的文字先后猜测执行顺序</em></p>
+</div></aside>
+<p><strong>图组：把完整构造和析构过程串成时间线</strong></p>
+<aside class="callout callout-example" data-callout="example"><div class="callout-title" data-icon="◇">展开连续插图（6 幅）</div><div class="callout-content">
+<p>这些图从不同时间或访问视角展示同一机制，请依次对照。</p>
+<p><img alt="cpp_inherit_life_trace_00_79f586f6-965e-4ca9-a36a-b73c02357ddb" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_life_trace_00_79f586f6-965e-4ca9-a36a-b73c02357ddb.png"/>
+<em>完整生命周期的第 1 阶段：构造 CPerson</em></p>
+<p><img alt="cpp_inherit_life_trace_01_9aa2e40c-351e-49a1-a390-18c42ba6c25a" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_life_trace_01_9aa2e40c-351e-49a1-a390-18c42ba6c25a.png"/>
+<em>完整生命周期的第 2 阶段：构造 CDate</em></p>
+<p><img alt="cpp_inherit_life_trace_02_674073a1-45c8-4b12-89e7-83d589001d8f" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_life_trace_02_674073a1-45c8-4b12-89e7-83d589001d8f.png"/>
+<em>完整生命周期的第 3 阶段：构造自身</em></p>
+<p><img alt="cpp_inherit_life_trace_03_efa29644-0b8d-4383-b1de-59994945d689" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_life_trace_03_efa29644-0b8d-4383-b1de-59994945d689.png"/>
+<em>完整生命周期的第 4 阶段：析构自身</em></p>
+<p><img alt="cpp_inherit_life_trace_04_d8a4bdfa-9d76-431e-88a8-fd35cf96d4d8" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_life_trace_04_d8a4bdfa-9d76-431e-88a8-fd35cf96d4d8.png"/>
+<em>完整生命周期的第 5 阶段：析构 CDate</em></p>
+<p><img alt="cpp_inherit_life_trace_05_dcc46e4f-9653-4778-b62d-f4f6b55fd3d7" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_life_trace_05_dcc46e4f-9653-4778-b62d-f4f6b55fd3d7.png"/>
+<em>完整生命周期的第 6 阶段：析构 CPerson</em></p>
+</div></aside>
+<h1 id="76-多重继承与虚基类"><span aria-hidden="true" class="anchor-alias" id="sec-22"></span>7.6 多重继承与虚基类</h1>
+<h2 id="761-多重继承的两个不同问题"><span aria-hidden="true" class="anchor-alias" id="sec-23"></span>7.6.1 多重继承的两个不同问题</h2>
+<p><strong>多重继承：</strong> 一个类可以同时从多个基类继承，例如 <code>CBat : public CBird, public CBeast</code>。本讲最重要的是区分：</p>
+<ul>
+<li><strong>成员名称歧义</strong>：<code>CBird</code> 和 <code>CBeast</code> 都有 <code>ShowBodyFeature()</code>，<code>CBat</code> 若不自己给出明确接口，直接写 <code>bat.ShowBodyFeature()</code> 可能歧义。</li>
+<li><strong>重复祖先子对象</strong>：如果 <code>CBird</code>、<code>CBeast</code> 又都继承同一个 <code>CAnimal</code>，最派生 <code>CBat</code> 里可能有<strong>两份</strong> <code>CAnimal</code> 基类子对象，导致重复与转换歧义。</li>
+</ul>
+<p>前者可以通过 <code>bat.CBird::ShowBodyFeature()</code> 或 <code>bat.CBeast::ShowBodyFeature()</code> 明确指定；<strong>后者</strong>需要了解虚继承来共享公共祖先。<strong>虚继承不会自动解决两个兄弟基类中同名成员函数的名称查找歧义。</strong></p>
+<p><strong>图组：同名函数、共同基类转换与消歧</strong></p>
+<aside class="callout callout-example" data-callout="example"><div class="callout-title" data-icon="◇">展开连续插图（6 幅）</div><div class="callout-content">
+<p>这些图从不同时间或访问视角展示同一机制，请依次对照。</p>
+<p><img alt="cpp_inherit_ambiguity_0_58854283-a3da-4e57-83d7-cbfced1362ad" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_ambiguity_0_58854283-a3da-4e57-83d7-cbfced1362ad.png"/>
+<em>CBat 无法仅凭同名确定选哪个基类</em></p>
+<p><img alt="cpp_inherit_ambiguity_1_a4dd7c1e-159f-4eab-8e3a-1e94458d66e5" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_ambiguity_1_a4dd7c1e-159f-4eab-8e3a-1e94458d66e5.png"/>
+<em>使用作用域限定名解决同名成员歧义</em></p>
+<p><img alt="cpp_inherit_ambiguity_2_0ae3dc24-7b80-449f-8dfb-a74731b80060" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_ambiguity_2_0ae3dc24-7b80-449f-8dfb-a74731b80060.png"/>
+<em>也可以明确选择另一支的成员</em></p>
+<p><img alt="cpp_inherit_ambiguity_3_e148373d-00c2-4afa-ab94-ff61fd304df0" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_ambiguity_3_e148373d-00c2-4afa-ab94-ff61fd304df0.png"/>
+<em>未虚继承时同一 CAnimal 类型出现两次</em></p>
+<p><img alt="cpp_inherit_ambiguity_4_81b458a6-f73c-483f-b023-3851cde307f5" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_ambiguity_4_81b458a6-f73c-483f-b023-3851cde307f5.png"/>
+<em>虚继承时共享一份 CAnimal 子对象</em></p>
+<p><img alt="cpp_inherit_ambiguity_5_d9eafff0-134f-4813-ba90-f1fbfc7557a5" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_ambiguity_5_d9eafff0-134f-4813-ba90-f1fbfc7557a5.png"/>
+<em>虚继承不会自动消除两个不同基类同名函数的歧义</em></p>
+</div></aside>
+<p><strong>同名成员消歧的最小示例：</strong></p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-directive">#include</span> <span class="tok-string">&lt;iostream&gt;</span>                         <span class="tok-comment">// 输出演示结果</span>
+
+<span class="tok-keyword">class</span> CBird {
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-type">void</span> <span class="tok-function">ShowBodyFeature</span>() <span class="tok-type">const</span> { <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">"Bird\n"</span>; } <span class="tok-comment">// 鸟的特征</span>
+};
+
+<span class="tok-keyword">class</span> CBeast {
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-type">void</span> <span class="tok-function">ShowBodyFeature</span>() <span class="tok-type">const</span> { <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">"Beast\n"</span>; } <span class="tok-comment">// 兽的特征</span>
+};
+
+<span class="tok-keyword">class</span> CBat <span class="tok-operator">:</span> <span class="tok-keyword">public</span> CBird, <span class="tok-keyword">public</span> CBeast { <span class="tok-comment">// 多重继承</span>
+};
+
+<span class="tok-type">int</span> <span class="tok-function">main</span>() {
+    CBat bat;                               <span class="tok-comment">// 创建多重派生对象</span>
+    bat.CBird<span class="tok-operator">::</span><span class="tok-function">ShowBodyFeature</span>();          <span class="tok-comment">// 显式选择 CBird 的函数</span>
+    bat.CBeast<span class="tok-operator">::</span><span class="tok-function">ShowBodyFeature</span>();         <span class="tok-comment">// 显式选择 CBeast 的函数</span>
+    <span class="tok-keyword">return</span> <span class="tok-number">0</span>;                               <span class="tok-comment">// 输出 Bird 与 Beast</span>
+}
+</code></pre></div>
+<h2 id="762-菱形继承为何会重复-canimal"><span aria-hidden="true" class="anchor-alias" id="sec-24"></span>7.6.2 菱形继承：为何会重复 CAnimal</h2>
+<p>普通菱形结构：</p>
+<p><code>CAnimal → CBird → CBat</code> 与 <code>CAnimal → CBeast → CBat</code>。如果中间两条边只是普通继承，则两条路径带来<strong>两个不同的 <code>CAnimal</code> 基类子对象</strong>。这些子对象虽然类型相同，却位于不同继承路径，并不会因为名字相同自动合并。</p>
+<p><strong>图组：普通菱形中两条不同的继承路径</strong></p>
+<aside class="callout callout-example" data-callout="example"><div class="callout-title" data-icon="◇">展开连续插图（4 幅）</div><div class="callout-content">
+<p>这些图从不同时间或访问视角展示同一机制，请依次对照。</p>
+<p><img alt="cpp_inherit_diamond_plain_00_ee3d10ef-e166-4c3d-84e4-cdcaa2ac4bfd" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_diamond_plain_00_ee3d10ef-e166-4c3d-84e4-cdcaa2ac4bfd.png"/>
+<em>普通菱形结构可能出现两份 CAnimal 基类子对象</em></p>
+<p><img alt="cpp_inherit_diamond_plain_01_e948e920-1618-471c-8fa7-a5155f86e401" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_diamond_plain_01_e948e920-1618-471c-8fa7-a5155f86e401.png"/>
+<em>普通菱形结构可能出现两份 CAnimal 基类子对象</em></p>
+<p><img alt="cpp_inherit_diamond_plain_02_6f9993c2-41bd-4f06-b6f1-ed7fe94f0131" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_diamond_plain_02_6f9993c2-41bd-4f06-b6f1-ed7fe94f0131.png"/>
+<em>普通菱形结构可能出现两份 CAnimal 基类子对象</em></p>
+<p><img alt="cpp_inherit_diamond_plain_03_7664a79a-4812-4f7f-b9cd-2c7e95c7b3c5" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_diamond_plain_03_7664a79a-4812-4f7f-b9cd-2c7e95c7b3c5.png"/>
+<em>普通菱形结构可能出现两份 CAnimal 基类子对象</em></p>
+</div></aside>
+<p><strong>图：普通菱形在完整对象中的重复基类子对象</strong></p>
+<p><img alt="cpp_inherit_diamond_memory_0_b2021ac7-3d54-4887-9537-d882ab557f3e" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_diamond_memory_0_b2021ac7-3d54-4887-9537-d882ab557f3e.png"/></p>
+<p><em>虚继承解决重复基类子对象问题</em></p>
+<h2 id="763-虚继承共享一个虚基类子对象"><span aria-hidden="true" class="anchor-alias" id="sec-25"></span>7.6.3 虚继承：共享一个虚基类子对象</h2>
+<p>在 <code>CBird</code>、<code>CBeast</code> 的<strong>直接继承声明</strong>中写 <code>virtual public CAnimal</code>：</p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-keyword">class</span> CAnimal {};                          <span class="tok-comment">// 公共祖先</span>
+<span class="tok-keyword">class</span> CBird <span class="tok-operator">:</span> <span class="tok-keyword">virtual</span> <span class="tok-keyword">public</span> CAnimal {};   <span class="tok-comment">// 虚继承 CAnimal</span>
+<span class="tok-keyword">class</span> CBeast <span class="tok-operator">:</span> <span class="tok-keyword">virtual</span> <span class="tok-keyword">public</span> CAnimal {};  <span class="tok-comment">// 也虚继承 CAnimal</span>
+<span class="tok-keyword">class</span> CBat <span class="tok-operator">:</span> <span class="tok-keyword">public</span> CBird, <span class="tok-keyword">public</span> CBeast {}; <span class="tok-comment">// 最派生类仅含一份共享 CAnimal</span>
+</code></pre></div>
+<aside class="callout callout-important" data-callout="important"><div class="callout-title" data-icon="!">为什么叫“虚基类”？</div><div class="callout-content">
+<p>它改变了<strong>子对象共享方式以及构造责任</strong>，并不要求基类中必须有虚函数。<code>virtual</code> 用在继承列表和用在 <code>virtual void f()</code>，作用完全不同。</p>
+</div></aside>
+<p><strong>图组：引入虚基类后，同一个 Animal 被多个路径共享</strong></p>
+<aside class="callout callout-example" data-callout="example"><div class="callout-title" data-icon="◇">展开连续插图（5 幅）</div><div class="callout-content">
+<p>这些图从不同时间或访问视角展示同一机制，请依次对照。</p>
+<p><img alt="cpp_inherit_diamond_virtual_00_96f19060-e570-4fe3-9e5e-f2720e5ff477" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_diamond_virtual_00_96f19060-e570-4fe3-9e5e-f2720e5ff477.png"/>
+<em>最派生对象仅包含一份共享 CAnimal 虚基类子对象</em></p>
+<p><img alt="cpp_inherit_diamond_virtual_01_d7265e4e-0d60-439f-82e4-881096f341c1" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_diamond_virtual_01_d7265e4e-0d60-439f-82e4-881096f341c1.png"/>
+<em>最派生对象仅包含一份共享 CAnimal 虚基类子对象</em></p>
+<p><img alt="cpp_inherit_diamond_virtual_02_b9603547-08ef-476b-a057-552b3b81d1eb" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_diamond_virtual_02_b9603547-08ef-476b-a057-552b3b81d1eb.png"/>
+<em>最派生对象仅包含一份共享 CAnimal 虚基类子对象</em></p>
+<p><img alt="cpp_inherit_diamond_virtual_03_1bb3fecf-eeda-4b52-a76f-b59c1b240dcc" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_diamond_virtual_03_1bb3fecf-eeda-4b52-a76f-b59c1b240dcc.png"/>
+<em>最派生对象仅包含一份共享 CAnimal 虚基类子对象</em></p>
+<p><img alt="cpp_inherit_diamond_virtual_04_a3eca2c5-cf77-4d3d-8158-608db19b8ecb" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_diamond_virtual_04_a3eca2c5-cf77-4d3d-8158-608db19b8ecb.png"/>
+<em>最派生对象仅包含一份共享 CAnimal 虚基类子对象</em></p>
+</div></aside>
+<p><strong>图：虚基类让最终对象只保留一份共享祖先</strong></p>
+<p><img alt="cpp_inherit_diamond_memory_1_3720a960-02e7-406f-bb42-d6a0830afe01" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_diamond_memory_1_3720a960-02e7-406f-bb42-d6a0830afe01.png"/></p>
+<p><em>虚继承解决重复基类子对象问题</em></p>
+<h2 id="764-虚基类构造由最派生类负责"><span aria-hidden="true" class="anchor-alias" id="sec-26"></span>7.6.4 虚基类构造：由最派生类负责</h2>
+<p><strong>普通规则升级：最派生类负责初始化它的虚基类。</strong> 即使中间层 <code>CBird()</code>、<code>CBeast()</code> 的初始化列表也写了 <code>CAnimal(...)</code>，当你正在构造的是完整的 <code>CBat</code> 对象时，它们对共享虚基类的初始化说明会被忽略，统一由最派生类 <code>CBat</code> 初始化。</p>
+<p>课件中的 <code>CBat : public CBird, public CBeast</code>，实际构造先后是：</p>
+<p><strong>CAnimal（虚）→ CBird → CBeast → CBat</strong>。</p>
+<p>其析构反向：<strong>CBat → CBeast → CBird → CAnimal</strong>。课件第 55—58 页的示例故意在初始化列表中写出 <code>CBeast()</code> 和 <code>CBird()</code> 的不同顺序，目的正是提醒：<strong>不能根据初始化列表的书写顺序判断实际构造次序。</strong></p>
+<aside class="callout callout-warning" data-callout="warning"><div class="callout-title" data-icon="!">校订课件关于“虚基类一般只允许无参/全默认参数构造”的表述</div><div class="callout-content">
+<p>这<strong>不是 C++ 语法限制</strong>。虚基类完全可以定义必须传实参的构造函数。关键在于：<strong>最派生类负责向该虚基类传递参数</strong>。若最派生类不能提供可用的初始化方式，才会产生构造失败。</p>
+</div></aside>
+<p><strong>图组：共享虚基类构造的四步状态</strong></p>
+<p><img alt="cpp_inherit_virtual_init_00_66ee2e33-ea95-49fa-a541-942ca4f6de0a" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_virtual_init_00_66ee2e33-ea95-49fa-a541-942ca4f6de0a.png"/></p>
+<p><em>构造先后：CAnimal → CBird → CBeast → CBat</em></p>
+<p><img alt="cpp_inherit_virtual_init_01_0da3b1bb-ebcf-4ed0-92ed-0289ae75fd09" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_virtual_init_01_0da3b1bb-ebcf-4ed0-92ed-0289ae75fd09.png"/></p>
+<p><em>构造先后：CAnimal → CBird → CBeast → CBat</em></p>
+<p><img alt="cpp_inherit_virtual_init_02_71e5728d-47d9-4fe1-a344-ea736458b25c" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_virtual_init_02_71e5728d-47d9-4fe1-a344-ea736458b25c.png"/></p>
+<p><em>构造先后：CAnimal → CBird → CBeast → CBat</em></p>
+<p><img alt="cpp_inherit_virtual_init_03_38a23362-ca30-4370-a683-4199813f0efa" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_virtual_init_03_38a23362-ca30-4370-a683-4199813f0efa.png"/></p>
+<p><em>构造先后：CAnimal → CBird → CBeast → CBat</em></p>
+<p><strong>图组：共享虚基类析构的四步状态</strong></p>
+<p><img alt="cpp_inherit_virtual_destroy_00_8b65ad50-e5e7-4c8d-bb5b-31c65d30d7a4" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_virtual_destroy_00_8b65ad50-e5e7-4c8d-bb5b-31c65d30d7a4.png"/></p>
+<p><em>析构先后：CBat → CBeast → CBird → CAnimal</em></p>
+<p><img alt="cpp_inherit_virtual_destroy_01_920323b1-f248-4222-835c-50532bf7492f" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_virtual_destroy_01_920323b1-f248-4222-835c-50532bf7492f.png"/></p>
+<p><em>析构先后：CBat → CBeast → CBird → CAnimal</em></p>
+<p><img alt="cpp_inherit_virtual_destroy_02_34492cfc-1c72-4eee-aa3e-5a1d8ec7a864" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_virtual_destroy_02_34492cfc-1c72-4eee-aa3e-5a1d8ec7a864.png"/></p>
+<p><em>析构先后：CBat → CBeast → CBird → CAnimal</em></p>
+<p><img alt="cpp_inherit_virtual_destroy_03_ad4be5f1-cd2b-4f5d-a66d-6f7a49952c97" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_virtual_destroy_03_ad4be5f1-cd2b-4f5d-a66d-6f7a49952c97.png"/></p>
+<p><em>析构先后：CBat → CBeast → CBird → CAnimal</em></p>
+<p><strong>标准 C++17：虚基类带参构造的可编译例子</strong></p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-directive">#include</span> <span class="tok-string">&lt;iostream&gt;</span>                         <span class="tok-comment">// 观察构造先后</span>
+
+<span class="tok-keyword">class</span> CAnimal {
+    <span class="tok-type">int</span> mTag;                               <span class="tok-comment">// 虚基类保存共同数据</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-keyword">explicit</span> <span class="tok-function">CAnimal</span>(<span class="tok-type">int</span> tag) <span class="tok-operator">:</span> <span class="tok-function">mTag</span>(tag) {
+        <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">"Animal("</span> <span class="tok-operator">&lt;&lt;</span> mTag <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">")\n"</span>; <span class="tok-comment">// 输出被选中的实参</span>
+    }
+    <span class="tok-type">int</span> <span class="tok-function">GetTag</span>() <span class="tok-type">const</span> { <span class="tok-keyword">return</span> mTag; }     <span class="tok-comment">// 提供读取接口</span>
+};
+
+<span class="tok-keyword">class</span> CBird <span class="tok-operator">:</span> <span class="tok-keyword">virtual</span> <span class="tok-keyword">public</span> CAnimal {     <span class="tok-comment">// 声明共享虚基类</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-function">CBird</span>() <span class="tok-operator">:</span> <span class="tok-function">CAnimal</span>(<span class="tok-number">1</span>) { <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">"Bird\n"</span>; } <span class="tok-comment">// 单独构造 Bird 时用 1</span>
+};
+
+<span class="tok-keyword">class</span> CBeast <span class="tok-operator">:</span> <span class="tok-keyword">virtual</span> <span class="tok-keyword">public</span> CAnimal {    <span class="tok-comment">// 同样共享虚基类</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-function">CBeast</span>() <span class="tok-operator">:</span> <span class="tok-function">CAnimal</span>(<span class="tok-number">2</span>) { <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">"Beast\n"</span>; } <span class="tok-comment">// 单独构造 Beast 时用 2</span>
+};
+
+<span class="tok-keyword">class</span> CBat <span class="tok-operator">:</span> <span class="tok-keyword">public</span> CBird, <span class="tok-keyword">public</span> CBeast { <span class="tok-comment">// Bird 在继承列表中排在 Beast 前</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-function">CBat</span>() <span class="tok-operator">:</span> <span class="tok-function">CAnimal</span>(<span class="tok-number">99</span>), <span class="tok-function">CBeast</span>(), <span class="tok-function">CBird</span>() { <span class="tok-comment">// 实际顺序不由这里排列决定</span>
+        <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">"Bat\n"</span>;              <span class="tok-comment">// 在全部基类初始化后执行</span>
+    }
+};
+
+<span class="tok-type">int</span> <span class="tok-function">main</span>() {
+    CBat bat;                               <span class="tok-comment">// 创建最派生对象</span>
+    <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> bat.<span class="tok-function">GetTag</span>() <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">'\n'</span>;      <span class="tok-comment">// 从共享的 Animal 读取标签 99</span>
+    <span class="tok-keyword">return</span> <span class="tok-number">0</span>;                               <span class="tok-comment">// 对象自动销毁</span>
+}
+</code></pre></div>
+<p><strong>预期输出：</strong> <code>Animal(99)</code> → <code>Bird</code> → <code>Beast</code> → <code>Bat</code> → <code>99</code>。<code>CAnimal(1)</code> 与 <code>CAnimal(2)</code> 在构造 <code>CBat</code> 时<strong>不负责</strong>初始化共享的 <code>CAnimal</code>。</p>
+<h2 id="765-多层次多虚基类时怎么看顺序"><span aria-hidden="true" class="anchor-alias" id="sec-27"></span>7.6.5 多层次、多虚基类时怎么看顺序</h2>
+<p>更复杂的类层次需要分清虚基类和非虚基类：</p>
+<ol>
+<li><strong>先处理完整对象中的全部虚基类</strong>：按标准规定的<strong>深度优先、从左至右的首次遇见顺序</strong>；同一虚基类只初始化一次。</li>
+<li>再初始化<strong>直接非虚基类</strong>，按最派生类基类说明列表顺序。</li>
+<li>再初始化成员对象，按声明次序。</li>
+<li>最后执行最派生类构造函数体。</li>
+</ol>
+<p>课件第 60—65 页给出连续的类层次图，比较虚基类与普通基类的不同组合。这里通过图示拆解原则；实际复杂题应先画出类层次，再按虚基类首次出现顺序排出清单，最后排非虚基类和成员。</p>
+<p><strong>图组：一般多继承、声明顺序、最派生类角色</strong></p>
+<aside class="callout callout-example" data-callout="example"><div class="callout-title" data-icon="◇">展开连续插图（4 幅）</div><div class="callout-content">
+<p>这些图从不同时间或访问视角展示同一机制，请依次对照。</p>
+<p><img alt="cpp_inherit_multi_detail_0_3c43f466-05e9-4c08-96e3-92c36279ce6e" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_multi_detail_0_3c43f466-05e9-4c08-96e3-92c36279ce6e.png"/>
+<em>不涉及重复祖先</em></p>
+<p><img alt="cpp_inherit_multi_detail_1_54ed7f72-81df-4722-b739-861f5b2a48e5" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_multi_detail_1_54ed7f72-81df-4722-b739-861f5b2a48e5.png"/>
+<em>在 class Derived : public B, public A 中先 B 后 A</em></p>
+<p><img alt="cpp_inherit_multi_detail_2_ae719905-3e28-4647-a107-e772bc85f7ea" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_multi_detail_2_ae719905-3e28-4647-a107-e772bc85f7ea.png"/>
+<em>virtual 写在直接继承关系上</em></p>
+<p><img alt="cpp_inherit_multi_detail_3_e879f2c4-a9e3-4c9e-9ac8-1ea130f251b5" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_multi_detail_3_e879f2c4-a9e3-4c9e-9ac8-1ea130f251b5.png"/>
+<em>CAnimal 构造实参由最派生类决定</em></p>
+</div></aside>
+<p><strong>图组：不同多重继承关系的初始化／销毁顺序</strong></p>
+<aside class="callout callout-example" data-callout="example"><div class="callout-title" data-icon="◇">展开连续插图（5 幅）</div><div class="callout-content">
+<p>这些图从不同时间或访问视角展示同一机制，请依次对照。</p>
+<p><img alt="cpp_inherit_multi_trace_0_68aba198-2f00-4301-b282-4056f28e21cc" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_multi_trace_0_68aba198-2f00-4301-b282-4056f28e21cc.png"/>
+<em>完整对象里共享 VBase</em></p>
+<p><img alt="cpp_inherit_multi_trace_1_a61d3f3c-999b-4cc4-ba79-29fdfe6fa949" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_multi_trace_1_a61d3f3c-999b-4cc4-ba79-29fdfe6fa949.png"/>
+<em>中间类对同一虚基类的指定会被忽略</em></p>
+<p><img alt="cpp_inherit_multi_trace_2_0069348b-af45-488b-a1b4-664fe19887bf" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_multi_trace_2_0069348b-af45-488b-a1b4-664fe19887bf.png"/>
+<em>深度优先、从左到右的首次遇见顺序</em></p>
+<p><img alt="cpp_inherit_multi_trace_3_6ac5326f-768a-4617-b803-82e41e94fc79" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_multi_trace_3_6ac5326f-768a-4617-b803-82e41e94fc79.png"/>
+<em>虚基类最后才析构</em></p>
+<p><img alt="cpp_inherit_multi_trace_4_a9d2cafc-52ff-4841-b495-aa3a58057491" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_multi_trace_4_a9d2cafc-52ff-4841-b495-aa3a58057491.png"/>
+<em>两条路径分别构造 Animal，随后构造 Most</em></p>
+</div></aside>
+<p><strong>图组：多重继承三类高频误区</strong></p>
+<aside class="callout callout-example" data-callout="example"><div class="callout-title" data-icon="◇">展开连续插图（3 幅）</div><div class="callout-content">
+<p>这些图从不同时间或访问视角展示同一机制，请依次对照。</p>
+<p><img alt="cpp_inherit_multi_warning_0_f2aad90b-512d-4c23-ba96-83bbd849c610" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_multi_warning_0_f2aad90b-512d-4c23-ba96-83bbd849c610.png"/>
+<em>ShowBodyFeature() 不应直接等同于 选择 CBird 或 CBeast</em></p>
+<p><img alt="cpp_inherit_multi_warning_1_b1f0fcde-06a6-4bef-825e-750b208821d7" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_multi_warning_1_b1f0fcde-06a6-4bef-825e-750b208821d7.png"/>
+<em>初始化列表 不应直接等同于 遵循声明顺序</em></p>
+<p><img alt="cpp_inherit_multi_warning_2_1127989a-e38c-41fd-a78d-b7ca8e3897f1" src="../../sources/cpp-oop/_assets/1349eb75f5/cpp_inherit_multi_warning_2_1127989a-e38c-41fd-a78d-b7ca8e3897f1.png"/>
+<em>派生类 不应直接等同于 只复用合法可见基类接口</em></p>
+</div></aside>
+<hr/>
+<h1 id="课程小结与练习ppt-第-6770-页"><span aria-hidden="true" class="anchor-alias" id="sec-28"></span>课程小结与练习（PPT 第 67—70 页）</h1>
+<h2 id="核心区分速查"><span aria-hidden="true" class="anchor-alias" id="sec-29"></span>核心区分速查</h2>
+<table>
+<thead>
+<tr>
+<th>容易混淆的两者</th>
+<th>关键区别</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>继承</strong> / <strong>组合</strong></td>
+<td>is-a 类间接口关系 / has-a 成员对象关系</td>
+</tr>
+<tr>
+<td><code>private</code> 成员 / <code>private</code> 继承</td>
+<td>前者是成员级权限，后者是继承方式</td>
+</tr>
+<tr>
+<td>函数隐藏 / 虚函数重写</td>
+<td>同名查找与可见性 / 必须依靠 <code>virtual</code> 语义与匹配的函数声明</td>
+</tr>
+<tr>
+<td>基类引用 / 基类对象复制</td>
+<td>引用不复制；按值复制会对象切片</td>
+</tr>
+<tr>
+<td>构造列表顺序 / 构造执行顺序</td>
+<td>真实顺序由虚基类、基类列表、成员声明决定</td>
+</tr>
+<tr>
+<td>普通菱形 / 虚菱形</td>
+<td>共同祖先两份 / 共享一份虚基类子对象</td>
+</tr>
+<tr>
+<td>虚基类 / 虚函数</td>
+<td>继承子对象共享与初始化 / 动态绑定（下讲重点）</td>
+</tr>
+</tbody>
+</table>
+<aside class="callout callout-warning" data-callout="warning"><div class="callout-title" data-icon="!">课件中的“继承与封装均属于代码共享手段”</div><div class="callout-content">
+<p>课件第 68 页把它们并列比较：<strong>继承</strong>确实是类间代码复用的直接机制；<strong>封装</strong>的主要职责是隐藏表示细节、约束接口与维护不变量，不能简单把它等同为继承那样的代码共享机制。学习时分清两者的设计职责。</p>
+</div></aside>
+<h2 id="练习-1追踪完整对象的构造与析构"><span aria-hidden="true" class="anchor-alias" id="sec-30"></span>练习 1：追踪完整对象的构造与析构</h2>
+<p><code>Derived : public Base</code> 同时拥有成员 <code>Member date</code>，假设无虚基类，声明顺序为 <code>Base</code> 后 <code>date</code>，输出先后应为：</p>
+<p><code>Base()</code> → <code>Member()</code> → <code>Derived()</code> → <code>~Derived()</code> → <code>~Member()</code> → <code>~Base()</code>。</p>
+<p><strong>检查点：</strong> 无论初始化列表写成 <code>date(...), Base(...)</code> 还是 <code>Base(...), date(...)</code>，真实子对象执行顺序不变。</p>
+<h2 id="练习-2判断-show-的调用目标"><span aria-hidden="true" class="anchor-alias" id="sec-31"></span>练习 2：判断 Show() 的调用目标</h2>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp">CPoint<span class="tok-operator">&amp;</span> r <span class="tok-operator">=</span> circle;                         <span class="tok-comment">// 引用静态类型为 CPoint</span>
+r.<span class="tok-function">Show</span>();                                  <span class="tok-comment">// 本讲例程调用 CPoint::Show</span>
+circle.<span class="tok-function">Show</span>();                             <span class="tok-comment">// 调用 CCircle::Show</span>
+circle.CPoint<span class="tok-operator">::</span><span class="tok-function">Show</span>();                     <span class="tok-comment">// 明确选择 CPoint::Show</span>
+</code></pre></div>
+<p><strong>结论：</strong> 本讲的 <code>Show()</code> 是非虚函数，不能根据实际对象是 <code>CCircle</code> 就认定 <code>r.Show()</code> 会动态调用派生类版本。</p>
+<h2 id="练习-3圆与圆柱体的面积体积课件第-69-页作业"><span aria-hidden="true" class="anchor-alias" id="sec-32"></span>练习 3：圆与圆柱体的面积、体积（课件第 69 页作业）</h2>
+<p>设计 <code>Circle</code> 与 <code>Cylinder</code>：</p>
+<ul>
+<li><code>Circle</code> 保存半径 <code>radius</code>，提供 <code>Area()</code> 计算 <span class="math-inline" data-tex="\pi r^2"><mjx-container class="MathJax" jax="SVG"><svg focusable="false" height="1.912ex" role="img" style="vertical-align: -0.025ex;" viewbox="0 -833.9 1457.6 844.9" width="3.298ex" xmlns="http://www.w3.org/2000/svg"><g fill="currentColor" stroke="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path d="M132 -11Q98 -11 98 22V33L111 61Q186 219 220 334L228 358H196Q158 358 142 355T103 336Q92 329 81 318T62 297T53 285Q51 284 38 284Q19 284 19 294Q19 300 38 329T93 391T164 429Q171 431 389 431Q549 431 553 430Q573 423 573 402Q573 371 541 360Q535 358 472 358H408L405 341Q393 269 393 222Q393 170 402 129T421 65T431 37Q431 20 417 5T381 -10Q370 -10 363 -7T347 17T331 77Q330 86 330 121Q330 170 339 226T357 318T367 358H269L268 354Q268 351 249 275T206 114T175 17Q164 -11 132 -11Z" data-c="1D70B"></path></g><g data-mml-node="msup" transform="translate(570,0)"><g data-mml-node="mi"><path d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z" data-c="1D45F"></path></g><g data-mml-node="mn" transform="translate(484,363) scale(0.707)"><path d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z" data-c="32"></path></g></g></g></g></svg></mjx-container></span>。</li>
+<li><code>Cylinder : public Circle</code> 增加 <code>height</code>，提供 <code>Volume()</code> 计算 <span class="math-inline" data-tex="\pi r^2 h"><mjx-container class="MathJax" jax="SVG"><svg focusable="false" height="1.912ex" role="img" style="vertical-align: -0.025ex;" viewbox="0 -833.9 2033.6 844.9" width="4.601ex" xmlns="http://www.w3.org/2000/svg"><g fill="currentColor" stroke="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path d="M132 -11Q98 -11 98 22V33L111 61Q186 219 220 334L228 358H196Q158 358 142 355T103 336Q92 329 81 318T62 297T53 285Q51 284 38 284Q19 284 19 294Q19 300 38 329T93 391T164 429Q171 431 389 431Q549 431 553 430Q573 423 573 402Q573 371 541 360Q535 358 472 358H408L405 341Q393 269 393 222Q393 170 402 129T421 65T431 37Q431 20 417 5T381 -10Q370 -10 363 -7T347 17T331 77Q330 86 330 121Q330 170 339 226T357 318T367 358H269L268 354Q268 351 249 275T206 114T175 17Q164 -11 132 -11Z" data-c="1D70B"></path></g><g data-mml-node="msup" transform="translate(570,0)"><g data-mml-node="mi"><path d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z" data-c="1D45F"></path></g><g data-mml-node="mn" transform="translate(484,363) scale(0.707)"><path d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z" data-c="32"></path></g></g><g data-mml-node="mi" transform="translate(1457.6,0)"><path d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z" data-c="210E"></path></g></g></g></svg></mjx-container></span>，也可提供总表面积 <span class="math-inline" data-tex="2\pi r(r+h)"><mjx-container class="MathJax" jax="SVG"><svg focusable="false" height="2.262ex" role="img" style="vertical-align: -0.566ex;" viewbox="0 -750 4548.4 1000" width="10.291ex" xmlns="http://www.w3.org/2000/svg"><g fill="currentColor" stroke="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><path d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z" data-c="32"></path></g><g data-mml-node="mi" transform="translate(500,0)"><path d="M132 -11Q98 -11 98 22V33L111 61Q186 219 220 334L228 358H196Q158 358 142 355T103 336Q92 329 81 318T62 297T53 285Q51 284 38 284Q19 284 19 294Q19 300 38 329T93 391T164 429Q171 431 389 431Q549 431 553 430Q573 423 573 402Q573 371 541 360Q535 358 472 358H408L405 341Q393 269 393 222Q393 170 402 129T421 65T431 37Q431 20 417 5T381 -10Q370 -10 363 -7T347 17T331 77Q330 86 330 121Q330 170 339 226T357 318T367 358H269L268 354Q268 351 249 275T206 114T175 17Q164 -11 132 -11Z" data-c="1D70B"></path></g><g data-mml-node="mi" transform="translate(1070,0)"><path d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z" data-c="1D45F"></path></g><g data-mml-node="mo" transform="translate(1521,0)"><path d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z" data-c="28"></path></g><g data-mml-node="mi" transform="translate(1910,0)"><path d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z" data-c="1D45F"></path></g><g data-mml-node="mo" transform="translate(2583.2,0)"><path d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z" data-c="2B"></path></g><g data-mml-node="mi" transform="translate(3583.4,0)"><path d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z" data-c="210E"></path></g><g data-mml-node="mo" transform="translate(4159.4,0)"><path d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z" data-c="29"></path></g></g></g></svg></mjx-container></span>。</li>
+<li>通过构造函数初始化列表让 <code>Cylinder</code> 调用 <code>Circle</code> 构造函数，检验继承结构与计算结果。</li>
+</ul>
+<aside class="callout callout-example" data-callout="example"><div class="callout-title" data-icon="◇">参考实现（独立可编译）</div><div class="callout-content">
+<p></p>
+<div class="code-panel" data-language="cpp"><div class="code-panel-toolbar"><span class="code-panel-language">C++</span><button aria-label="复制代码" class="code-copy" data-copy-code="" title="复制代码" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="12" rx="2" width="11" x="8" y="8"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"></path></svg><span class="code-copy-label">复制代码</span></button></div><pre><code class="language-cpp"><span class="tok-directive">#include</span> <span class="tok-string">&lt;iostream&gt;</span>                        <span class="tok-comment">// 标准输出</span>
+<span class="tok-keyword">class</span> Circle {
+    <span class="tok-type">double</span> radius;                         <span class="tok-comment">// 圆半径</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-keyword">explicit</span> <span class="tok-function">Circle</span>(<span class="tok-type">double</span> r) <span class="tok-operator">:</span> <span class="tok-function">radius</span>(r) {} <span class="tok-comment">// 初始化圆半径</span>
+    <span class="tok-type">double</span> <span class="tok-function">Area</span>() <span class="tok-type">const</span> { <span class="tok-keyword">return</span> <span class="tok-number">3.141592653589793</span> <span class="tok-operator">*</span> radius <span class="tok-operator">*</span> radius; } <span class="tok-comment">// 圆面积</span>
+};
+<span class="tok-keyword">class</span> Cylinder <span class="tok-operator">:</span> <span class="tok-keyword">public</span> Circle {          <span class="tok-comment">// 圆柱公有继承 Circle</span>
+    <span class="tok-type">double</span> height;                         <span class="tok-comment">// 圆柱高度</span>
+<span class="tok-keyword">public</span><span class="tok-operator">:</span>
+    <span class="tok-function">Cylinder</span>(<span class="tok-type">double</span> r, <span class="tok-type">double</span> h) <span class="tok-operator">:</span> <span class="tok-function">Circle</span>(r), <span class="tok-function">height</span>(h) {} <span class="tok-comment">// 先构造圆</span>
+    <span class="tok-type">double</span> <span class="tok-function">Volume</span>() <span class="tok-type">const</span> { <span class="tok-keyword">return</span> <span class="tok-function">Area</span>() <span class="tok-operator">*</span> height; } <span class="tok-comment">// 体积=底面积×高</span>
+};
+<span class="tok-type">int</span> <span class="tok-function">main</span>() {
+    Cylinder <span class="tok-function">c</span>(<span class="tok-number">2.0</span>, <span class="tok-number">3.0</span>);                  <span class="tok-comment">// 半径2，高3</span>
+    <span class="tok-namespace">std</span><span class="tok-operator">::</span>cout <span class="tok-operator">&lt;&lt;</span> c.<span class="tok-function">Area</span>() <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">' '</span> <span class="tok-operator">&lt;&lt;</span> c.<span class="tok-function">Volume</span>() <span class="tok-operator">&lt;&lt;</span> <span class="tok-string">'\n'</span>; <span class="tok-comment">// 输出面积和体积</span>
+    <span class="tok-keyword">return</span> <span class="tok-number">0</span>;
+}
+</code></pre></div>
+<p><strong>核验：</strong> 面积 <span class="math-inline" data-tex="4\pi"><mjx-container class="MathJax" jax="SVG"><svg focusable="false" height="1.557ex" role="img" style="vertical-align: -0.025ex;" viewbox="0 -677 1070 688" width="2.421ex" xmlns="http://www.w3.org/2000/svg"><g fill="currentColor" stroke="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><path d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z" data-c="34"></path></g><g data-mml-node="mi" transform="translate(500,0)"><path d="M132 -11Q98 -11 98 22V33L111 61Q186 219 220 334L228 358H196Q158 358 142 355T103 336Q92 329 81 318T62 297T53 285Q51 284 38 284Q19 284 19 294Q19 300 38 329T93 391T164 429Q171 431 389 431Q549 431 553 430Q573 423 573 402Q573 371 541 360Q535 358 472 358H408L405 341Q393 269 393 222Q393 170 402 129T421 65T431 37Q431 20 417 5T381 -10Q370 -10 363 -7T347 17T331 77Q330 86 330 121Q330 170 339 226T357 318T367 358H269L268 354Q268 351 249 275T206 114T175 17Q164 -11 132 -11Z" data-c="1D70B"></path></g></g></g></svg></mjx-container></span>，体积 <span class="math-inline" data-tex="12\pi"><mjx-container class="MathJax" jax="SVG"><svg focusable="false" height="1.532ex" role="img" style="vertical-align: -0.025ex;" viewbox="0 -666 1570 677" width="3.552ex" xmlns="http://www.w3.org/2000/svg"><g fill="currentColor" stroke="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><path d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z" data-c="31"></path><path d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z" data-c="32" transform="translate(500,0)"></path></g><g data-mml-node="mi" transform="translate(1000,0)"><path d="M132 -11Q98 -11 98 22V33L111 61Q186 219 220 334L228 358H196Q158 358 142 355T103 336Q92 329 81 318T62 297T53 285Q51 284 38 284Q19 284 19 294Q19 300 38 329T93 391T164 429Q171 431 389 431Q549 431 553 430Q573 423 573 402Q573 371 541 360Q535 358 472 358H408L405 341Q393 269 393 222Q393 170 402 129T421 65T431 37Q431 20 417 5T381 -10Q370 -10 363 -7T347 17T331 77Q330 86 330 121Q330 170 339 226T357 318T367 358H269L268 354Q268 351 249 275T206 114T175 17Q164 -11 132 -11Z" data-c="1D70B"></path></g></g></g></svg></mjx-container></span>。</p>
+</div></aside>
+<h2 id="阅读课件与实践时的五项校订"><span aria-hidden="true" class="anchor-alias" id="sec-33"></span>阅读课件与实践时的五项校订</h2>
+<ol>
+<li><strong>标准入口：</strong> <code>int main()</code>，不是旧课件的 <code>void main()</code>。</li>
+<li><strong>保护数据：</strong> 课件倾向基类数据 <code>protected</code>，实际工程常优先 <code>private</code> 加受控接口；不是一律必须 <code>protected</code>。</li>
+<li><strong>动态内存：</strong> 原始 <code>char*</code> 不等于安全的现代复制语义，优先 <code>std::string</code> 和资源自动管理。</li>
+<li><strong>虚基类：</strong> 不禁止带参数构造；关键是由最派生类初始化。</li>
+<li><strong>析构安全：</strong> 若未来要通过基类指针删除派生对象，基类析构函数通常应当为 <code>virtual</code>；本讲直接局部对象不涉及这类删除。</li>
+</ol>
+<aside class="callout callout-summary" data-callout="summary"><div class="callout-title" data-icon="≡">考前六句话 继承看 is-a，组合看 has-a；访问看成员权限与继承方式；向上转换分引用指针与对象切片；构造看虚基类→基类→成员→自身；析构反向；普通菱形会重复祖先，虚继承共享祖先。</div><div class="callout-content">
+<p><strong>继承看 is-a，组合看 has-a；访问看成员权限与继承方式；向上转换分引用指针与对象切片；构造看虚基类→基类→成员→自身；析构反向；普通菱形会重复祖先，虚继承共享祖先。</strong></p>
+</div></aside>
+<p><em>整理基于所上传 72 页课件；图解均为本次重新绘制，没有直接截取 PPT 图像。编译验证的 C++17 测试源码与检查记录随 ZIP 附带。</em></p>
+</article>
+    <footer class="site-footer">知栈 · 专注内容与阅读　<span>HTML 阅读优先 V3</span></footer>
+  </main>
+  <aside class="toc-sidebar" id="tocSidebar"><div class="toc-inner"><div class="toc-heading"><div class="toc-title">本页目录 <span>ON THIS PAGE</span></div><button class="side-collapse" id="tocClose" type="button" aria-label="收起本页目录" hidden>收起 ›</button></div><nav id="pageToc" aria-label="页内目录"></nav><div class="toc-foot">滚动正文，自动追踪所在章节</div></div></aside>
+</div>
+<div id="typePanel" class="type-panel" hidden>
+ <div class="popover-title">阅读排版 <button id="closeTypography" aria-label="关闭设置">×</button></div>
+ <label for="fontRange">正文字号 <output id="fontVal">19px</output></label>
+ <input id="fontRange" type="range" min="16" max="26" value="19" step="1">
+ <div class="small-scale"><span>A</span><span style="font-size:23px">A</span></div>
+ <label for="lineRange">行距 <output id="lineVal">1.85</output></label>
+ <input id="lineRange" type="range" min="1.5" max="2.15" value="1.85" step="0.05">
+ <div class="settings-row"><span>宽屏阅读</span><button id="wideToggle" class="switch-btn">开启</button></div>
+ <div class="settings-row"><span>夜间阅读</span><button id="themeSetting" class="switch-btn">切换</button></div>
+ <button id="restoreDefaults" class="reset-button">恢复默认排版</button>
+</div>
+<div id="searchOverlay" class="search-overlay" hidden>
+ <div class="search-dialog" role="dialog" aria-modal="true" aria-label="搜索知识库">
+  <div class="dialog-search"><span>⌕</span><input id="searchInput" type="search" autocomplete="off" placeholder="输入公式、章节名称、概念..." aria-label="搜索关键词"><kbd>Esc</kbd></div>
+  <div class="search-results" id="searchResults"><div class="search-empty">输入关键词后，可搜索整篇已导入的《气体动理论》正文。</div></div>
+  <div class="dialog-foot">支持中文关键词和章节定位 · 本地离线索引</div>
+ </div>
+</div>
+<div id="mobileShade" class="mobile-shade" hidden></div>
+<script type="application/json" id="tocData">[{"id": "gpt7-c-第七讲继承与派生类图解系统笔记", "level": 1, "title": "GPT7 C++ 第七讲｜继承与派生类（图解系统笔记）"}, {"id": "71-继承机制及引入理由", "level": 1, "title": "7.1 继承机制及引入理由"}, {"id": "711-继承的意义及类别", "level": 2, "title": "7.1.1 继承的意义及类别"}, {"id": "712-点类圆类与派生对象的组成", "level": 2, "title": "7.1.2 点类、圆类与派生对象的组成"}, {"id": "713-成员函数隐藏与显式调用", "level": 2, "title": "7.1.3 成员函数隐藏与显式调用"}, {"id": "72-继承实现机制派生类定义", "level": 1, "title": "7.2 继承实现机制：派生类定义"}, {"id": "721-派生类语法与基类列表", "level": 2, "title": "7.2.1 派生类语法与基类列表"}, {"id": "722-完整的单继承例程现代标准写法", "level": 2, "title": "7.2.2 完整的单继承例程（现代标准写法）"}, {"id": "723-复数类与有名复数类", "level": 2, "title": "7.2.3 复数类与有名复数类"}, {"id": "724-继承与组合不能混淆", "level": 2, "title": "7.2.4 继承与组合不能混淆"}, {"id": "725-同名函数与查找规则", "level": 2, "title": "7.2.5 同名函数与查找规则"}, {"id": "73-派生类对基类成员的访问权", "level": 1, "title": "7.3 派生类对基类成员的访问权"}, {"id": "731-两套权限必须同时看", "level": 2, "title": "7.3.1 两套权限必须同时看"}, {"id": "732-各类访问者的区别", "level": 2, "title": "7.3.2 各类访问者的区别"}, {"id": "74-定义惯例及赋值兼容原则", "level": 1, "title": "7.4 定义惯例及赋值兼容原则"}, {"id": "741-公有继承允许向上转换", "level": 2, "title": "7.4.1 公有继承允许向上转换"}, {"id": "742-不能把反向转换看成理所当然", "level": 2, "title": "7.4.2 不能把反向转换看成理所当然"}, {"id": "75-构造函数定义及执行准则", "level": 1, "title": "7.5 构造函数定义及执行准则"}, {"id": "751-最重要的顺序规则", "level": 2, "title": "7.5.1 最重要的顺序规则"}, {"id": "752-人日期与特首例程", "level": 2, "title": "7.5.2 人、日期与特首例程"}, {"id": "753-初始化列表次序不是构造次序", "level": 2, "title": "7.5.3 初始化列表次序不是构造次序"}, {"id": "76-多重继承与虚基类", "level": 1, "title": "7.6 多重继承与虚基类"}, {"id": "761-多重继承的两个不同问题", "level": 2, "title": "7.6.1 多重继承的两个不同问题"}, {"id": "762-菱形继承为何会重复-canimal", "level": 2, "title": "7.6.2 菱形继承：为何会重复 CAnimal"}, {"id": "763-虚继承共享一个虚基类子对象", "level": 2, "title": "7.6.3 虚继承：共享一个虚基类子对象"}, {"id": "764-虚基类构造由最派生类负责", "level": 2, "title": "7.6.4 虚基类构造：由最派生类负责"}, {"id": "765-多层次多虚基类时怎么看顺序", "level": 2, "title": "7.6.5 多层次、多虚基类时怎么看顺序"}, {"id": "课程小结与练习ppt-第-6770-页", "level": 1, "title": "课程小结与练习（PPT 第 67—70 页）"}, {"id": "核心区分速查", "level": 2, "title": "核心区分速查"}, {"id": "练习-1追踪完整对象的构造与析构", "level": 2, "title": "练习 1：追踪完整对象的构造与析构"}, {"id": "练习-2判断-show-的调用目标", "level": 2, "title": "练习 2：判断 Show() 的调用目标"}, {"id": "练习-3圆与圆柱体的面积体积课件第-69-页作业", "level": 2, "title": "练习 3：圆与圆柱体的面积、体积（课件第 69 页作业）"}, {"id": "阅读课件与实践时的五项校订", "level": 2, "title": "阅读课件与实践时的五项校订"}]</script>
+</body></html>

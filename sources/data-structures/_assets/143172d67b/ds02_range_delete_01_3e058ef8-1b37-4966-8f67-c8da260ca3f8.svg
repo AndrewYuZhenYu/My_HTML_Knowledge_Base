@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="630" viewBox="0 0 1240 630">
+<defs><marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7Z" fill="#2575ba"/></marker><marker id="arrR" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7Z" fill="#cf4264"/></marker><marker id="arrT" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7Z" fill="#07957b"/></marker></defs>
+<rect width="100%" height="100%" fill="#f9fbfe"/>
+<rect x="32" y="24" width="1176" height="96" rx="22" fill="#eaf3fc"/>
+<text x="62" y="62" fill="#16334b" font-size="31" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="start">有序链表区间删除：利用排序一次跳过连续结点</text>
+<text x="63" y="99" fill="#61758a" font-size="19" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="start">过程帧 01 · 带头结点单链表；箭头表示真实 next 指针</text>
+<rect x="138.0" y="212" width="105.0" height="55.44" rx="7" fill="#e9eff7" stroke="#b9c9d8" stroke-width="2"/>
+<line x1="208.35000000000002" y1="212" x2="208.35000000000002" y2="267.44" stroke="#b9c9d8" stroke-width="1.5" stroke-linecap="round"  />
+<text x="173.7" y="245.8184" fill="#16334b" font-size="20.16" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">H</text>
+<text x="225.675" y="245.264" fill="#2575ba" font-size="17.64" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">•</text>
+<rect x="269.88" y="212" width="105.0" height="55.44" rx="7" fill="#fff" stroke="#b9c9d8" stroke-width="2"/>
+<line x1="340.23" y1="212" x2="340.23" y2="267.44" stroke="#b9c9d8" stroke-width="1.5" stroke-linecap="round"  />
+<text x="305.58" y="245.8184" fill="#16334b" font-size="20.16" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">1</text>
+<text x="357.555" y="245.264" fill="#2575ba" font-size="17.64" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">•</text>
+<rect x="401.76" y="212" width="105.0" height="55.44" rx="7" fill="#fff" stroke="#b9c9d8" stroke-width="2"/>
+<line x1="472.11" y1="212" x2="472.11" y2="267.44" stroke="#b9c9d8" stroke-width="1.5" stroke-linecap="round"  />
+<text x="437.46" y="245.8184" fill="#16334b" font-size="20.16" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">3</text>
+<text x="489.435" y="245.264" fill="#2575ba" font-size="17.64" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">•</text>
+<rect x="533.64" y="212" width="105.0" height="55.44" rx="7" fill="#d7f5e9" stroke="#07957b" stroke-width="2"/>
+<line x1="603.99" y1="212" x2="603.99" y2="267.44" stroke="#b9c9d8" stroke-width="1.5" stroke-linecap="round"  />
+<text x="569.34" y="245.8184" fill="#16334b" font-size="20.16" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">4</text>
+<text x="621.3149999999999" y="245.264" fill="#2575ba" font-size="17.64" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">•</text>
+<rect x="665.52" y="212" width="105.0" height="55.44" rx="7" fill="#fff" stroke="#b9c9d8" stroke-width="2"/>
+<line x1="735.87" y1="212" x2="735.87" y2="267.44" stroke="#b9c9d8" stroke-width="1.5" stroke-linecap="round"  />
+<text x="701.22" y="245.8184" fill="#16334b" font-size="20.16" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">7</text>
+<text x="753.1949999999999" y="245.264" fill="#2575ba" font-size="17.64" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">•</text>
+<rect x="797.4" y="212" width="105.0" height="55.44" rx="7" fill="#fff" stroke="#b9c9d8" stroke-width="2"/>
+<line x1="867.75" y1="212" x2="867.75" y2="267.44" stroke="#b9c9d8" stroke-width="1.5" stroke-linecap="round"  />
+<text x="833.1" y="245.8184" fill="#16334b" font-size="20.16" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">8</text>
+<text x="885.0749999999999" y="245.264" fill="#2575ba" font-size="17.64" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">•</text>
+<rect x="929.28" y="212" width="105.0" height="55.44" rx="7" fill="#fff" stroke="#b9c9d8" stroke-width="2"/>
+<line x1="999.63" y1="212" x2="999.63" y2="267.44" stroke="#b9c9d8" stroke-width="1.5" stroke-linecap="round"  />
+<text x="964.98" y="245.8184" fill="#16334b" font-size="20.16" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">9</text>
+<text x="1016.9549999999999" y="245.264" fill="#2575ba" font-size="17.64" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">•</text>
+<rect x="1061.1599999999999" y="212" width="105.0" height="55.44" rx="7" fill="#fff" stroke="#b9c9d8" stroke-width="2"/>
+<line x1="1131.5099999999998" y1="212" x2="1131.5099999999998" y2="267.44" stroke="#b9c9d8" stroke-width="1.5" stroke-linecap="round"  />
+<text x="1096.86" y="245.8184" fill="#16334b" font-size="20.16" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">12</text>
+<text x="1148.8349999999998" y="245.264" fill="#2575ba" font-size="17.64" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="middle">•</text>
+<line x1="239.0" y1="240.8288" x2="262.88" y2="240.8288" stroke="#2575ba" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arr)" />
+<line x1="370.88" y1="240.8288" x2="394.76" y2="240.8288" stroke="#2575ba" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arr)" />
+<line x1="502.76" y1="240.8288" x2="526.64" y2="240.8288" stroke="#2575ba" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arr)" />
+<line x1="634.64" y1="240.8288" x2="658.52" y2="240.8288" stroke="#2575ba" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arr)" />
+<line x1="766.52" y1="240.8288" x2="790.4" y2="240.8288" stroke="#2575ba" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arr)" />
+<line x1="898.4" y1="240.8288" x2="922.28" y2="240.8288" stroke="#2575ba" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arr)" />
+<line x1="1030.28" y1="240.8288" x2="1054.1599999999999" y2="240.8288" stroke="#2575ba" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arr)" />
+<line x1="1162.1599999999999" y1="240.8288" x2="1211.1599999999999" y2="240.8288" stroke="#61758a" stroke-width="2.2" stroke-linecap="round"  />
+<text x="1217.1599999999999" y="246.37279999999998" fill="#61758a" font-size="16" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="start">NULL</text>
+<text x="454.26" y="159" fill="#cf4264" font-size="22" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="middle">pre</text>
+<line x1="454.26" y1="169" x2="454.26" y2="204" stroke="#cf4264" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrR)" />
+<rect x="38" y="534" width="1164" height="68" rx="15" fill="white" stroke="#cbd9e6" stroke-width="1.5"/>
+<text x="62" y="562" fill="#2575ba" font-size="21" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="700" text-anchor="start">先找到前驱 3，准备删除严格区间 (3,10) 内的元素</text>
+<text x="62" y="588" fill="#61758a" font-size="17" font-family="Noto Sans CJK SC, PingFang SC, Microsoft YaHei, DejaVu Sans, sans-serif" font-weight="400" text-anchor="start">条件为 mink &lt; x &lt; maxk；3 和 12 均保留</text>
+</svg>
