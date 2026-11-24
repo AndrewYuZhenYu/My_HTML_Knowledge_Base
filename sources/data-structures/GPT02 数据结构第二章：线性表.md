@@ -1,1152 +1,1139 @@
-# 第二章 线性表
+# 第二章 线性表：从逻辑顺序到内存与指针的完整机制
 
-> [!abstract] 本章学习路线
-> **线性表的逻辑结构 → ADT 操作 → 顺序表 → 单链表 → 其他链表 → 有序表 → 一元多项式 → 综合比较与典型题。**
->
-> 学习重点不是记住某份长程序，而是解释：**数据放在哪里、要找到谁、怎样修改数据或指针、操作为什么有相应的时间复杂度**。
+> [!abstract] 学习主线
+> **线性表的逻辑次序 → 抽象操作 → 顺序存储 → 单链表 → 各类扩展链表 → 有序表 → 稀疏多项式**。同一种逻辑操作，可能通过**移动数组元素**或**修改结点指针**实现。理解每个操作前后的实际状态，比只背函数声明重要。
 
-> [!note] 全章代码约定
-> - 使用 **C++17**，默认元素为 `int`；多项式系数使用 `double`。
-> - 代码采用教学所需的**最小有效片段**：结构体定义、函数定义或具备明确上下文的语句段，不要求每段都写 `main()`。
-> - 不使用 `typedef`、`using`、`ElemType`、`Status` 等人为类型别名。
-> - 线性表的**位序从 1 开始**，C++ 数组**下标从 0 开始**。
-> - 单链表算法除另有说明均使用**带头结点**的形式；`head` 指向头结点。
-> - 动态结点使用 `new` / `delete`。下文代码片段共享各节首先给出的结构体定义；使用 `std::cout` 的示例需包含 `<iostream>`；调用前应保证结构已正确初始化。
+## 一、线性表的逻辑结构与抽象数据类型
 
-## 目录
+### 1. 线性表是什么
 
-1. [线性表的逻辑结构与 ADT](#1-线性表的逻辑结构与-adt)
-2. [顺序表：用数组存储线性表](#2-顺序表用数组存储线性表)
-3. [单链表：用指针连接结点](#3-单链表用指针连接结点)
-4. [其他链表形式](#4-其他链表形式)
-5. [改进的线性链表与有序表](#5-改进的线性链表与有序表)
-6. [一元多项式的表示与相加](#6-一元多项式的表示与相加)
-7. [顺序表和链表的比较](#7-顺序表和链表的比较)
-8. [典型算法与课程练习](#8-典型算法与课程练习)
-9. [考前速查与自测](#9-考前速查与自测)
-
----
-
-# 1. 线性表的逻辑结构与 ADT
-
-## 1.1 线性表是什么
-
-**线性表（Linear List）** 是 $n$ 个数据元素组成的有限序列：
+线性表是由 $n\;(n\ge0)$ 个具有相同性质的数据元素组成的**有限序列**：
 
 $$
-L=(a_1,a_2,\ldots,a_n),\qquad n\ge 0
+L=(a_1,a_2,\ldots,a_n).
 $$
 
-- $n$ 是**表长**；$n=0$ 是**空表**。
-- $a_i$ 的**位序**为 $i$；位序不等于元素值。
-- 同一个线性表中的元素具有相同的数据特性；元素本身可以是整数，也可以是含有学号、姓名等多个数据项的记录。
-- ==线性表允许重复元素==；它与数学上不能出现重复元素的集合不是一回事。
+其中 $n$ 为**表长**；$n=0$ 时为空表；$i$ 是元素 $a_i$ 的**位序**（自 1 起），不是 C++ 数组下标（自 0 起）。一个元素既可以是整数，也可以是由姓名、学号等数据项构成的记录，同一线性表中元素应符合统一的数据类型约定。
 
-> [!example] 从实例理解位序
-> $L=(8,13,13,21)$，表长为 4，第 3 个元素的值为 13。两个值为 13 的元素具有**不同的位序**（2、3）。
+非空线性表具有**唯一的首元素与尾元素**；首元素无直接前驱，尾元素无直接后继，其余每个元素各有唯一直接前驱和直接后继。相邻关系描述的是**逻辑次序**，不意味着对应数据必须在物理内存中相邻。
 
-## 1.2 前驱、后继及线性关系
+> [!warning] 边界与术语
+> - $a_i$ 的直接前驱是 $a_{i-1}$（要求 $i>1$），直接后继是 $a_{i+1}$（要求 $i<n$）。
+> - **逻辑相邻不等于物理相邻**：顺序表恰好借助物理地址相邻表示逻辑关系，单链表则借助 `next` 指针。
+> - 头指针、头结点、首元结点是三个不同的概念，后面会逐一展示。
 
-在非空表中：
+### 2. 抽象数据类型 ADT List
 
-- 第一个元素唯一，没有直接前驱。
-- 最后一个元素唯一，没有直接后继。
-- 除第一个外，每个元素有且仅有一个**直接前驱**。
-- 除最后一个外，每个元素有且仅有一个**直接后继**。
+抽象数据类型只规定“做什么”及操作结果，并不规定“怎样实现”。以下是本章的基本操作，书写时保留课程使用的操作名称，而具体 C++ 示例会使用 `int` 作为元素类型和正常的函数声明。
 
-例如：`a₁ → a₂ → a₃ → a₄`，其中 $a_2$ 是 $a_3$ 的直接前驱，$a_4$ 是 $a_3$ 的直接后继。
+| 操作 | 语义与重要条件 |
+| --- | --- |
+| `InitList` / `DestroyList` | 初始化空表 / 销毁表及其资源 |
+| `ClearList` | 清除全部数据元素，表仍可继续使用 |
+| `ListEmpty` / `ListLength` | 判空 / 返回元素个数 |
+| `GetElem(L,i,e)` | 返回位序 $i$ 的元素，$1\le i\le n$ |
+| `PutElem(L,i,e)` | 修改位序 $i$ 的元素 |
+| `LocateElem` | 查找第一个满足比较条件的元素位序；没有则返回 0 |
+| `PriorElem` / `NextElem` | 按元素值查询直接前驱或后继；不存在时失败 |
+| `ListTraverse` | 按逻辑次序访问元素 |
+| `ListInsert(L,i,e)` | 在原第 $i$ 个元素之前插入，$1\le i\le n+1$ |
+| `ListDelete(L,i,e)` | 删除第 $i$ 个元素并返回其值，$1\le i\le n$ |
 
-> [!important] 逻辑结构不等于存储结构
-> **逻辑结构**规定“谁排在谁后面”；**存储结构**规定“这些元素在内存中如何摆放”。顺序表和单链表表示的是**同一种线性逻辑关系**。
->
-> 注意：空表没有“第一个元素”和“最后一个元素”，上述唯一性讨论应限定在非空表。
+`DestroyList` 和 `ClearList` 不能机械等同：销毁处理资源与对象生命周期，清空只改变逻辑内容。具体实现中的初始化、内存管理方式需与所选存储结构匹配。
 
-## 1.3 抽象数据类型 ADT List
+### 3. 利用基本操作构造更复杂运算
 
-**抽象数据类型（ADT）** 先规定数据对象、数据关系与操作的含义，不预先指定使用数组还是指针。在线性表中，主要操作分为：
+**集合并（保留首次出现顺序）**：先把集合 $A$ 表示为线性表 `La`，再逐一检查 `Lb` 的成员，未在 `La` 出现的元素才追加。若不借助哈希、有序性等额外条件，逐次线性查找的最坏复杂度可能达到 $O(|A||B|+|B|^2)$。这里讨论的是用线性表实现集合成员去重，并非将“允许重复”的普通序列直接当成数学集合。
 
-| 类别 | 典型操作 | 意义 |
-|---|---|---|
-| 初始化与销毁 | `InitList`、`DestroyList` | 创建空表、释放整个表 |
-| 引用型 | `ListEmpty`、`ListLength`、`GetElem` | 判空、求长、按位序取值 |
-| 引用型 | `LocateElem`、`PriorElem`、`NextElem`、`ListTraverse` | 查找、求前驱后继、遍历 |
-| 加工型 | `ClearList`、`PutElem` | 清空数据、修改元素 |
-| 加工型 | `ListInsert`、`ListDelete` | 插入、删除元素 |
+**有序去重**：若 $B=(2,2,3,3,3,5,5,7)$ 已按值非递减排列，相等元素连续出现，因此每次只需把当前元素与结果的最后一个元素比较，就能得到 $(2,3,5,7)$，时间 $O(n)$。
 
-`LocateElem(L,e,compare)` 在一般 ADT 中可以传入判定关系；普通整数示例为便于学习，默认以相等 `==` 作为判定条件。查找失败时返回 0（不是数组下标）。
+**过程 1：第1项处理：输入值 2 与输出末项不同：追加**
 
-> [!important] 两种位序范围
-> - **读取、修改、删除**第 $i$ 个元素：$1\le i\le n$。
-> - **在第 $i$ 个位置之前插入**：$1\le i\le n+1$。
->
-> 空表只能在位置 1 插入；在位置 $n+1$ 插入就是**尾插**。
+![ds02_dedup_01_526a79fe-7e68-4fbc-afc3-ff4f872b2800](./_assets/143172d67b/ds02_dedup_01_526a79fe-7e68-4fbc-afc3-ff4f872b2800.svg)
 
-### 清空与销毁有何区别
+**过程 2：第2项处理：输入值 2 与输出末项相同：跳过**
 
-`ClearList` 删除有效数据，但表仍可继续使用；`DestroyList` 还应释放表自身管理的存储资源。采用固定数组时不存在需要单独释放的动态内存；采用动态结点时则必须逐结点释放。
+![ds02_dedup_02_8344f4d5-321c-4704-8411-5a02dd67e606](./_assets/143172d67b/ds02_dedup_02_8344f4d5-321c-4704-8411-5a02dd67e606.svg)
 
-## 1.4 用基本操作解决复杂任务
+**过程 3：第3项处理：输入值 3 与输出末项不同：追加**
 
-### 集合的并集
+![ds02_dedup_03_4ba87cc0-2212-4053-beac-c0e3dc346760](./_assets/143172d67b/ds02_dedup_03_4ba87cc0-2212-4053-beac-c0e3dc346760.svg)
 
-如果 `LA` 和 `LB` 分别保存两个集合的成员：依次取 `LB` 的元素，在 `LA` 中查找，不存在时才追加到 `LA`。关键是**查重之后才插入**，否则不能保持集合元素唯一。
+**过程 4：第4项处理：输入值 3 与输出末项相同：跳过**
 
-若 $|LA|=m$、$|LB|=n$，使用普通线性查找的最坏时间量级为 $O(mn+n^2)$（因为 `LA` 在追加过程中可能增长）。
+![ds02_dedup_04_d87b721a-fa67-4125-822d-e9f54868be86](./_assets/143172d67b/ds02_dedup_04_d87b721a-fa67-4125-822d-e9f54868be86.svg)
 
-### 从含重复元素的表得到不重复元素表
+**过程 5：第5项处理：输入值 3 与输出末项相同：跳过**
 
-例如：`(2,3,3,5,6,6,8)` → `(2,3,5,6,8)`。
+![ds02_dedup_05_c7f7e823-b1ba-4c20-bd4b-c4cd8ec29ae1](./_assets/143172d67b/ds02_dedup_05_c7f7e823-b1ba-4c20-bd4b-c4cd8ec29ae1.svg)
 
-- 无序表：对每个元素在结果表中查重，最坏 $O(n^2)$。
-- **有序表**：重复值相邻，只须和前一个保留的值比较，$O(n)$。
+**过程 6：第6项处理：输入值 5 与输出末项不同：追加**
 
-### 有序表归并
+![ds02_dedup_06_21bcdea9-4c2a-4502-be3a-7b63a5e1571e](./_assets/143172d67b/ds02_dedup_06_21bcdea9-4c2a-4502-be3a-7b63a5e1571e.svg)
 
-设 $A=(3,5,8,11)$、$B=(2,6,8,9,11,15,20)$，每次从两个尚未处理的表头元素中取较小者：
+**过程 7：第7项处理：输入值 5 与输出末项相同：跳过**
+
+![ds02_dedup_07_cc380938-a018-495d-949b-d41e107a9ba6](./_assets/143172d67b/ds02_dedup_07_cc380938-a018-495d-949b-d41e107a9ba6.svg)
+
+**过程 8：第8项处理：输入值 7 与输出末项不同：追加**
+
+![ds02_dedup_08_61d721a2-402b-42a8-80ea-1bde65602521](./_assets/143172d67b/ds02_dedup_08_61d721a2-402b-42a8-80ea-1bde65602521.svg)
+
+
+**两个有序表的交集**：分别让两个指针从表首出发；值较小的一方前进；值相等则记录该元素并同时前进。若按数学集合处理重复值，记录时还应避免重复输出。整个流程最多扫描 $m+n$ 个元素。
+
+**过程 1：1 小于 2，移动 A 的指针**
+
+![ds02_intersection_01_2084ed2a-894b-4eca-9f36-4364f457e0dc](./_assets/143172d67b/ds02_intersection_01_2084ed2a-894b-4eca-9f36-4364f457e0dc.svg)
+
+**过程 2：两个有序表求交集，时间 O(m+n)**
+
+![ds02_intersection_02_2bec7e9d-90a1-43b1-9e61-c3d2eb9196bd](./_assets/143172d67b/ds02_intersection_02_2bec7e9d-90a1-43b1-9e61-c3d2eb9196bd.svg)
+
+**过程 3：两个有序表求交集，时间 O(m+n)**
+
+![ds02_intersection_03_1fbbb40a-3882-4251-a7d8-40ebacc7f340](./_assets/143172d67b/ds02_intersection_03_1fbbb40a-3882-4251-a7d8-40ebacc7f340.svg)
+
+**过程 4：两个有序表求交集，时间 O(m+n)**
+
+![ds02_intersection_04_97f2fba6-1d89-45d5-a73b-feeb48c937db](./_assets/143172d67b/ds02_intersection_04_97f2fba6-1d89-45d5-a73b-feeb48c937db.svg)
+
+**过程 5：两个有序表求交集，时间 O(m+n)**
+
+![ds02_intersection_05_ec23c397-23fb-4315-9a98-0a2e69b71e60](./_assets/143172d67b/ds02_intersection_05_ec23c397-23fb-4315-9a98-0a2e69b71e60.svg)
+
+**过程 6：两个有序表求交集，时间 O(m+n)**
+
+![ds02_intersection_06_8141bc28-8492-423f-b63d-27fdca4226d5](./_assets/143172d67b/ds02_intersection_06_8141bc28-8492-423f-b63d-27fdca4226d5.svg)
+
+**过程 7：两个有序表求交集，时间 O(m+n)**
+
+![ds02_intersection_07_ce607e2e-ed80-4e71-9f9f-935008f1b51f](./_assets/143172d67b/ds02_intersection_07_ce607e2e-ed80-4e71-9f9f-935008f1b51f.svg)
+
+**过程 8：两个有序表求交集，时间 O(m+n)**
+
+![ds02_intersection_08_0459441f-63fe-4fb1-a78b-369ca5b329ae](./_assets/143172d67b/ds02_intersection_08_0459441f-63fe-4fb1-a78b-369ca5b329ae.svg)
+
+**过程 9：两个有序表求交集，时间 O(m+n)**
+
+![ds02_intersection_09_594eb08b-6e8d-442f-90dd-9bfd9622180f](./_assets/143172d67b/ds02_intersection_09_594eb08b-6e8d-442f-90dd-9bfd9622180f.svg)
+
+
+## 二、顺序表：为什么访问快而插入删除需要搬移
+
+### 1. 存储映象与地址计算
+
+顺序存储以一段**连续地址空间**依次存放 $a_1,a_2,\dots,a_n$，令每个元素占 $L$ 个存储单元，首元素基地址为 $LOC(a_1)$，则
 
 $$
-C=(2,3,5,6,8,8,9,11,11,15,20)
+LOC(a_i)=LOC(a_1)+(i-1)L,\qquad 1\le i\le n.
 $$
 
-等值元素分别来自两个表时，**一般有序归并不会去重**；若要求集合并集，还需额外消除重复元素。两个指针各向前移动一次，整体为 $O(m+n)$。
+C++ `data[i-1]` 对应数学位序 $i$。只要基地址和定长元素大小已知，计算任意元素地址不依赖它前面有多少元素，因此**按位随机访问 $O(1)$**。但寻找某个未知值通常仍需依次比较，线性查找为 $O(n)$。
 
----
+顺序表通常记录三个信息：`data`（基地址）、`length`（当前有效元素数）、`capacity`（已分配的单元数）。必须满足
 
-# 2. 顺序表：用数组存储线性表
+$$0\le length\le capacity.$$
 
-## 2.1 连续存储与随机存取
+`capacity` 不是 `length`：扩容后新增空闲位置不应自动计入表长。
 
-**顺序表**在一组**地址连续**的存储单元中，按逻辑顺序存储元素。
+### 2. 初始化、查找与扩容
 
-若每个元素占用 $L$ 个存储单元：
-
-$$
-\mathrm{LOC}(a_i)=\mathrm{LOC}(a_1)+(i-1)L
-$$
-
-只需首地址与位序就能计算位置，所以**按位序访问为 $O(1)$**，称为**随机存取**。这里的“随机”不是随机抽样，而是不必依次经过前面的元素。
-
-## 2.2 先建立最简单的顺序表模型
-
-本节先使用**固定容量数组**，避免在理解插入与删除前就引入动态内存、扩容和异常处理。
+下面用可动态扩容的原始数组清晰展示底层行为。示例各函数可放在同一个 `.cpp` 中；不使用 `typedef` 或抽象 `Status` 类型。
 
 ```cpp
-struct SqList {
-    int data[100];    // 连续存储数据，最多容纳 100 个元素
-    int length = 0;   // 当前有效元素个数，初始为空表
+#include <algorithm>
+#include <new>
+
+struct SeqList {
+    int* data = nullptr;    // 指向动态数组起始位置
+    int length = 0;         // 当前有效元素个数
+    int capacity = 0;       // 已分配空间容量
 };
-```
 
-`data` 有 100 个位置，不代表表中已有 100 个元素。例如 `length == 3` 时，有效下标是 `0、1、2`，`data[3]` 不属于线性表。
-
-> [!warning] 位序与下标不能混用
-> 第 $i$ 个元素对应 `data[i - 1]`；`data[i]` 对应的是第 $i+1$ 个元素。
-
-## 2.3 按位序取值、按值查找
-
-**按位序取值**不需要循环；`e` 通过引用参数返回数据，`bool` 表示操作是否成功。
-
-```cpp
-bool GetElem(const SqList& L, int i, int& e) {
-    if (i < 1 || i > L.length) return false; // 位序越界
-    e = L.data[i - 1];                       // 位序转数组下标
-    return true;                             // 取值成功
+void InitList(SeqList& L, int capacity = 8) {
+    L.data = new int[capacity];  // 申请连续存储单元
+    L.length = 0;                // 初始化为空表
+    L.capacity = capacity;       // 记录分配容量
 }
-```
 
-**按值查找**无法直接由值计算下标，需要逐项比较，最坏 $O(n)$。
+void DestroyList(SeqList& L) {
+    delete[] L.data;             // 与 new[] 配对释放
+    L.data = nullptr;            // 置空，避免悬空指针
+    L.length = 0;
+    L.capacity = 0;
+}
 
-```cpp
-int LocateElem(const SqList& L, int e) {
-    for (int j = 0; j < L.length; ++j) { // 依次检查有效元素
-        if (L.data[j] == e) return j + 1; // 下标转位序
+void ExtendList(SeqList& L) {
+    int newCapacity = L.capacity == 0 ? 8 : L.capacity * 2;
+    int* bigger = new int[newCapacity];     // 申请更大的连续空间
+    std::copy(L.data, L.data + L.length, bigger); // 搬移原有有效元素
+    delete[] L.data;                        // 释放旧存储区
+    L.data = bigger;                         // 更新可能改变的基地址
+    L.capacity = newCapacity;                // 修改容量，不改变表长
+}
+
+int LocateElem(const SeqList& L, int value) {
+    for (int i = 0; i < L.length; ++i) {    // 自左向右逐项比较
+        if (L.data[i] == value) return i + 1; // 返回从 1 开始的位序
     }
-    return 0;                            // 0 表示未找到
+    return 0;                                // 未找到
 }
 ```
 
-> [!important] 区分两类“查找”
-> **已知位序取元素：** $O(1)$；**只知道元素值，寻找它在哪里：** 一般 $O(n)$。顺序表支持随机存取，不等于按值查找一定快。
+> [!warning] 顺序表扩容不能按最坏 $O(1)$ 理解
+> 新数组分配及原有 $n$ 个元素的复制，在一次发生搬迁的扩容中需要 $O(n)$ 时间。**容量按倍数增长**时，可证明大量连续尾插操作的平均摊还成本可为 $O(1)$ 每次，但不能把“偶尔的一次扩容”直接当成 $O(1)$ 最坏时间。原始指针版本需认真管理拷贝和销毁；实际工程中优先考虑 `std::vector<int>`。
 
-## 2.4 插入：后面的元素向右移动
+**过程 1：第 1 次比较；随机访问单次 O(1)，线性查找总最坏 O(n)**
 
-在长度为 $n$ 的顺序表第 $i$ 个位置插入 `e`，原来从 $a_i$ 到 $a_n$ 的元素都必须右移。
+![ds02_seq_find_01_dc2efa99-6d5e-4b25-b607-dc16eaebfbed](./_assets/143172d67b/ds02_seq_find_01_dc2efa99-6d5e-4b25-b607-dc16eaebfbed.svg)
 
-```text
-原表：  [10] [20] [30] [40] [  ]
-下标：    0    1    2    3    4
-                 ↑ 在位序 3 插入 99
-右移：  [10] [20] [30] [30] [40]
-结果：  [10] [20] [99] [30] [40]
-```
+**过程 2：第 2 次比较；随机访问单次 O(1)，线性查找总最坏 O(n)**
 
-**要从右向左移动**，否则前面的元素会覆盖后面尚未搬走的元素。
+![ds02_seq_find_02_e1eeb067-de9a-49ff-9193-a9448dff429b](./_assets/143172d67b/ds02_seq_find_02_e1eeb067-de9a-49ff-9193-a9448dff429b.svg)
+
+**过程 3：第 3 次比较；随机访问单次 O(1)，线性查找总最坏 O(n)**
+
+![ds02_seq_find_03_524e2640-56e1-4ebd-88fa-857dd3d2d60d](./_assets/143172d67b/ds02_seq_find_03_524e2640-56e1-4ebd-88fa-857dd3d2d60d.svg)
+
+**过程 4：第 4 次比较；随机访问单次 O(1)，线性查找总最坏 O(n)**
+
+![ds02_seq_find_04_7670b5ca-803a-4de3-bca4-b929abda1c13](./_assets/143172d67b/ds02_seq_find_04_7670b5ca-803a-4de3-bca4-b929abda1c13.svg)
+
+
+### 3. 在第 $i$ 个位置之前插入：必须逆向右移
+
+原逻辑结构
+
+$$(a_1,\dots,a_{i-1},a_i,\dots,a_n)$$
+
+插入新值 $e$ 后变成
+
+$$(a_1,\dots,a_{i-1},e,a_i,\dots,a_n).$$
+
+当 $i\le n$ 时，必须先把原尾部元素放到新尾部位置，再往前逐项右移；若从插入位置开始顺向复制，会覆盖尚未读取的元素。插入后表长增加 1；插入到末尾 $i=n+1$ 时无须移动任何旧元素。
+
+**过程 1：从尾部向前搬移，避免覆盖还未复制的数据**
+
+![ds02_seq_insert_01_2515199c-60b5-4ebc-b5f4-50a17ad23e3f](./_assets/143172d67b/ds02_seq_insert_01_2515199c-60b5-4ebc-b5f4-50a17ad23e3f.svg)
+
+**过程 2：扩容可能更换基地址，但不改变元素的逻辑次序**
+
+![ds02_seq_insert_02_c7890fc8-7ce3-48ae-b94e-50e10414fb83](./_assets/143172d67b/ds02_seq_insert_02_c7890fc8-7ce3-48ae-b94e-50e10414fb83.svg)
+
+**过程 3：由右向左，直到原第 3 个位置腾空**
+
+![ds02_seq_insert_03_bd798a9b-ff99-4c8a-9286-e3c610b10fc1](./_assets/143172d67b/ds02_seq_insert_03_bd798a9b-ff99-4c8a-9286-e3c610b10fc1.svg)
+
+**过程 4：由右向左，直到原第 3 个位置腾空**
+
+![ds02_seq_insert_04_c2babbf8-5b9c-490c-8e4a-6df3bd0140dd](./_assets/143172d67b/ds02_seq_insert_04_c2babbf8-5b9c-490c-8e4a-6df3bd0140dd.svg)
+
+**过程 5：由右向左，直到原第 3 个位置腾空**
+
+![ds02_seq_insert_05_3bd4e2af-00f2-4851-9dcd-62932743be63](./_assets/143172d67b/ds02_seq_insert_05_3bd4e2af-00f2-4851-9dcd-62932743be63.svg)
+
+**过程 6：写入目标，不再需要右移其他元素**
+
+![ds02_seq_insert_06_6d2602c4-fafe-48ea-9e86-aaef631dd3e4](./_assets/143172d67b/ds02_seq_insert_06_6d2602c4-fafe-48ea-9e86-aaef631dd3e4.svg)
+
+**过程 7：结果 [10, 20, 25, 30, 40, 50]；实际移动 3 次**
+
+![ds02_seq_insert_07_a441a4ae-0baa-419e-8a69-7cb426609d6d](./_assets/143172d67b/ds02_seq_insert_07_a441a4ae-0baa-419e-8a69-7cb426609d6d.svg)
+
 
 ```cpp
-bool ListInsert(SqList& L, int i, int e) {
-    if (i < 1 || i > L.length + 1 || L.length == 100)
-        return false;                            // 位序错误或表满
-    for (int j = L.length; j >= i; --j)
-        L.data[j] = L.data[j - 1];               // 从后往前右移
-    L.data[i - 1] = e;                           // 写入新值
-    ++L.length;                                  // 表长增加 1
-    return true;
+int ListInsert(SeqList& L, int pos, int value) {
+    if (pos < 1 || pos > L.length + 1) return 0;  // 检查 1 基位序
+    if (L.length == L.capacity) ExtendList(L);    // 必要时扩容
+    for (int j = L.length; j >= pos; --j) {      // 从右往左依次搬移
+        L.data[j] = L.data[j - 1];                // 下标 j-1 → j
+    }
+    L.data[pos - 1] = value;                      // 空出的单元写入新值
+    ++L.length;                                   // 更新表长
+    return 1;
 }
 ```
 
-**跟踪变量：** `j` 是搬移后的目标下标；循环结束后目标位置 `i-1` 留给新元素。尾插时 `i=length+1`，循环不执行，直接填入表尾。
+长度为 $n$ 的表在位序 $i$ 处插入，搬移元素数为 $n-i+1$。假定 $n+1$ 个合法插入位置等概率，则
 
-## 2.5 删除：后面的元素向左移动
+$$
+E_{insert}=\frac1{n+1}\sum_{i=1}^{n+1}(n-i+1)=\frac n2.
+$$
 
-删除位序 2 的元素：`[10,20,30,40]` → `[10,30,40]`。先保存被删元素，再从左向右覆盖空位。
+最坏需移动 $n$ 个元素，所以按位插入的最坏时间为 $O(n)$，另可能发生扩容搬迁。
+
+### 4. 删除第 $i$ 项：先保存，再顺向左移
+
+从第 $i+1$ 项开始依次覆盖前一个位置，最后将表长减少 1。若先减少表长或没有保存被删除值，容易产生返回值错误和边界错误。
+
+**过程 1：数组下标 1 被删除，后续元素逐个左移**
+
+![ds02_seq_delete_01_7ddfd74a-1e41-4cf0-a787-ba01b9dff5fa](./_assets/143172d67b/ds02_seq_delete_01_7ddfd74a-1e41-4cf0-a787-ba01b9dff5fa.svg)
+
+**过程 2：从删除位置起向右读取、向左写入**
+
+![ds02_seq_delete_02_c718ca89-c84c-4588-b3dd-e8880a23b4d1](./_assets/143172d67b/ds02_seq_delete_02_c718ca89-c84c-4588-b3dd-e8880a23b4d1.svg)
+
+**过程 3：从删除位置起向右读取、向左写入**
+
+![ds02_seq_delete_03_8c205b44-5077-470e-a972-884b702f20df](./_assets/143172d67b/ds02_seq_delete_03_8c205b44-5077-470e-a972-884b702f20df.svg)
+
+**过程 4：从删除位置起向右读取、向左写入**
+
+![ds02_seq_delete_04_60d4f5d7-5f60-48c8-860a-585052be0c77](./_assets/143172d67b/ds02_seq_delete_04_60d4f5d7-5f60-48c8-860a-585052be0c77.svg)
+
+**过程 5：最后一个旧单元内容不再属于线性表；逻辑长度以 length 为准**
+
+![ds02_seq_delete_05_8ec4f7c9-1aed-4127-8623-744a87e685c7](./_assets/143172d67b/ds02_seq_delete_05_8ec4f7c9-1aed-4127-8623-744a87e685c7.svg)
+
+**过程 6：最终序列 [10, 30, 40, 50]；移动 3 次**
+
+![ds02_seq_delete_06_4cde0f6d-04c1-4865-ae3c-4cd5fe511695](./_assets/143172d67b/ds02_seq_delete_06_4cde0f6d-04c1-4865-ae3c-4cd5fe511695.svg)
+
 
 ```cpp
-bool ListDelete(SqList& L, int i, int& e) {
-    if (i < 1 || i > L.length) return false; // 待删位置不存在
-    e = L.data[i - 1];                       // 先保存被删值
-    for (int j = i; j < L.length; ++j)
-        L.data[j - 1] = L.data[j];           // 从前往后左移
-    --L.length;                              // 表长减少 1
-    return true;
+int ListDelete(SeqList& L, int pos, int& removed) {
+    if (pos < 1 || pos > L.length) return 0;  // 必须确实存在该元素
+    removed = L.data[pos - 1];                // 先保存被删除的值
+    for (int j = pos; j < L.length; ++j) {    // 由左到右覆盖空缺
+        L.data[j - 1] = L.data[j];             // 下标 j → j-1
+    }
+    --L.length;                                // 逻辑上丢弃末尾单元
+    return 1;
 }
 ```
 
-> [!tip] 记移动方向
-> **插入：从后往前，防覆盖。删除：从前往后，补空位。**
->
-> 删除后的数组尾部可能残留旧数值，但该位置已经不在 `length` 指定的有效范围内，无须为了逻辑删除而清零。
+删除位置 $i$ 需移动 $n-i$ 个旧元素，若 $n$ 个合法删除位置等概率，则
 
-## 2.6 插入与删除的复杂度
+$$
+E_{delete}=\frac1n\sum_{i=1}^{n}(n-i)=\frac{n-1}{2}.
+$$
 
-令插入前表长为 $n$，插入在第 $i$ 个位置，实际移动次数是 $n-i+1$；删除第 $i$ 个元素，移动次数是 $n-i$。
+首删最坏移动 $n-1$ 个元素，尾删无须移动，整体复杂度最坏 $O(n)$。
 
-| 操作 | 最好情况 | 最坏情况 | 各合法位置等概率时的平均移动次数 |
-|---|---:|---:|---:|
-| 插入 | 0（尾插） | $n$（头插） | $n/2$ |
-| 删除 | 0（删尾） | $n-1$（删头） | $(n-1)/2$ |
+> [!tip] 方向速记
+> **插入右移从右往左；删除左移从左往右。** 这不是任意约定，而是为了避免在复制源数据之前将它覆盖。
 
-所以插入、删除的**最坏时间复杂度**均为 $O(n)$；更准确地说，是否大量移动取决于**操作位置**。
+## 三、单链表：用指针表达“下一个元素在哪里”
 
-## 2.7 动态顺序表与扩容（理解性补充）
+### 1. 结点、头指针、头结点与首元结点
 
-课件还讨论了预先分配容量、容量不足时扩充空间的动态顺序表。若使用动态数组，通常记录：
+单链表的每个结点由**数据域**与**后继指针 `next`** 组成。物理内存中的结点可以不连续；依据 `next` 可以还原唯一的逻辑次序。末结点的 `next` 为 `nullptr`。单链表可以只用头指针指向首元结点，也可以额外设置不存放有效业务数据的**头结点**来统一边界处理。
 
-```cpp
-struct DynamicSqList {
-    int* data = nullptr;  // 指向动态分配的连续数组
-    int length = 0;       // 实际元素个数
-    int capacity = 0;     // 已分配的容量
-};
-```
+- **头指针 `head`**：一个指针变量，表示链表入口。
+- **头结点**：首元结点之前的附加结点，便于在首位插入和删除；不计入表长。
+- **首元结点**：存放第一个有效数据元素的结点；带头结点时为 `head->next`。
 
-始终保持 $0\le\text{length}\le\text{capacity}$。扩容的原理只有四步：**申请更大的连续数组 → 复制有效元素 → 释放旧数组 → 更新指针与容量**。
-
-> [!note] 这里不把扩容和插入合并成百行程序
-> `new int[容量]` 申请动态数组，`delete[]` 释放；二者必须匹配。单次扩容复制 $n$ 个元素，耗时 $O(n)$。使用 `std::vector` 可由标准库管理扩容，但课程的重点是理解**底层连续存储和元素搬移**，不应让内存管理细节掩盖它们。
-
-## 2.8 顺序表的特点
-
-**优点：** 存储密度高；可以 $O(1)$ 按位序访问；数组结构直观。
-
-**缺点：** 插入删除一般需移动元素；需要连续空间；固定容量可能不够用，动态扩容也可能产生复制成本。
-
----
-# 3. 单链表：用指针连接结点
-
-## 3.1 为什么需要链式存储
-
-顺序表把元素紧挨着存放，插入时可能大规模搬移。**单链表**不要求元素在内存中连续，而让每个结点记录下一个结点的地址。
-
-```text
-head ──→ [头结点|next] ──→ [10|next] ──→ [20|next] ──→ [30|nullptr]
-                         首元结点                      尾结点
-```
-
-每个数据结点包含**数据域**和**指针域**。
+带头结点的空表满足 `head != nullptr` 且 `head->next == nullptr`；不带头结点的空表才常以 `head == nullptr` 表示。
 
 ```cpp
 struct Node {
-    int data;      // 保存结点的数据
-    Node* next;    // 保存后继结点的地址
+    int data;                // 数据域
+    Node* next;              // 指向直接后继结点
 };
-```
 
-- `Node* p` 表示指向 `Node` 的指针。
-- `p->data` 访问结点中的数据，相当于 `(*p).data`。
-- `p = p->next` 使指针前进到下一个结点。
-- `nullptr` 表示没有后继结点（普通单链表的结尾）。
-
-> [!important] 逻辑相邻 ≠ 内存相邻
-> 单链表靠 `next` 保存次序，不能用起始地址和位序直接算出第 $i$ 个结点的位置。因此按位序取元素需要**逐结点遍历**。
-
-## 3.2 头指针、头结点与首元结点
-
-| 概念 | 含义 | 是否保存有效表元素 |
-|---|---|---|
-| 头指针 `head` | 指向链表起始结点的指针 | 本身是指针变量 |
-| 头结点 | 人为加在首元结点之前的结点 | 否 |
-| 首元结点 | 第一个真正存储数据的结点 | 是 |
-
-本节统一**带头结点**：空表满足 `head->next == nullptr`，表长不计头结点。使用头结点后，删除第一个元素也能通过“修改前驱结点的 `next`”完成，处理逻辑更统一。
-
-```cpp
-Node* InitList() {
-    return new Node{0, nullptr}; // 创建头结点，0 仅为占位数据
+Node* InitList_L() {
+    return new Node{0, nullptr};  // 申请不计入表长的头结点
 }
 ```
 
-> [!warning] 带头结点不代表头指针可以为空
-> `head == nullptr` 表示没有有效头结点（例如尚未初始化）；`head->next == nullptr` 才表示**已初始化的空表**。不能混淆。
+### 2. 取第 $i$ 项：只能从头沿链寻找
 
-## 3.3 遍历与查找：指针一步一步前进
+按位取值不具备顺序表的直接地址公式。`p` 从首元结点开始，每执行一次 `p=p->next` 才能到达下一个逻辑元素。头结点虽在内存中，却不算第一个有效元素。
 
-最基本的遍历方式是：
+**过程 1：逐结点访问才能找到第 1 个元素**
 
-```cpp
-for (Node* p = head->next; p != nullptr; p = p->next) {
-    std::cout << p->data << ' '; // 输出当前结点的数据
-}
-```
+![ds02_link_find_01_7cd477ee-4e46-4760-89a8-47a7cd90621a](./_assets/143172d67b/ds02_link_find_01_7cd477ee-4e46-4760-89a8-47a7cd90621a.svg)
 
-> [!note] 代码上下文
-> 此处及本章类似的局部片段默认 `head` 已指向有效头结点；花括号内的注释表示此处由具体访问任务决定处理逻辑，循环本身是有效 C++ 语法。
+**过程 2：逐结点访问才能找到第 2 个元素**
 
-### 取第 $i$ 个元素
+![ds02_link_find_02_e5b76851-3629-4ee7-a116-251915d3005d](./_assets/143172d67b/ds02_link_find_02_e5b76851-3629-4ee7-a116-251915d3005d.svg)
 
-`p` 从首元结点出发，每向后移动一次，位序 `j` 增加 1。
+**过程 3：逐结点访问才能找到第 3 个元素**
 
-```cpp
-bool GetElem(const Node* head, int i, int& e) {
-    if (head == nullptr || i < 1) return false; // 基本检查
-    const Node* p = head->next;                  // 从首元结点开始
-    int j = 1;                                  // 当前结点的位序
-    while (p != nullptr && j < i) {
-        p = p->next;                            // 后移一个结点
-        ++j;                                    // 位序同步更新
-    }
-    if (p == nullptr) return false;             // 第 i 个结点不存在
-    e = p->data;                                // 取出值
-    return true;
-}
-```
+![ds02_link_find_03_a007da08-66c9-41e9-b410-748124b3d0bf](./_assets/143172d67b/ds02_link_find_03_a007da08-66c9-41e9-b410-748124b3d0bf.svg)
 
-**最坏时间：** $O(n)$。顺序表 `data[i-1]` 能一步到达，单链表却必须沿指针走过前面的结点，这就是两者在“存取方式”上的根本区别。
+**过程 4：逐结点访问才能找到第 4 个元素**
 
-### 按值查找
+![ds02_link_find_04_a0010b3c-ce19-4de0-9a04-f17a2dd182f2](./_assets/143172d67b/ds02_link_find_04_a0010b3c-ce19-4de0-9a04-f17a2dd182f2.svg)
+
 
 ```cpp
-Node* LocateElem(Node* head, int e) {
-    if (head == nullptr) return nullptr;       // 头结点不存在
-    for (Node* p = head->next; p; p = p->next) {
-        if (p->data == e) return p;             // 返回首个匹配结点
-    }
-    return nullptr;                             // 未找到
-}
-```
-
-这里返回的是**结点指针**，而前面 ADT 中的 `LocateElem` 返回**位序**；两种接口都可以设计，但使用时必须看清返回值的含义，不能直接混用。
-
-## 3.4 插入：先找前驱，再接好两条链
-
-假设要在结点 `p` 之后插入新结点 `s`：
-
-```text
-插入前：p ──→ q
-插入后：p ──→ s ──→ q
-```
-
-真正实现插入仅需两个指针赋值：
-
-```cpp
-Node* s = new Node{e, nullptr}; // e 为待插入的数据
-s->next = p->next;             // 先让 s 连接原后继
-p->next = s;                   // 再让 p 指向 s
-```
-
-> [!danger] 两个指针赋值的先后顺序
-> 若先写 `p->next = s`，又没有另外保存原后继，原来的后半条链可能无法找到。**先接后面，再改前面。**
-
-### 按位序插入的完整局部算法
-
-在第 $i$ 个数据元素**之前**插入，关键在于找到第 $i-1$ 个结点 `p`。因为有头结点，插入位置 1 的前驱恰好就是头结点。
-
-```cpp
-bool ListInsert(Node* head, int i, int e) {
-    if (head == nullptr || i < 1) return false; // 基本检查
-    Node* p = head;                              // 从头结点开始
-    int j = 0;                                   // 头结点对应 0
-    while (p != nullptr && j < i - 1) {
-        p = p->next;                             // 寻找第 i-1 个结点
+int GetElem_L(const Node* head, int pos, int& value) {
+    if (!head || pos < 1) return 0;    // 头指针及位序检查
+    const Node* p = head->next;        // 从第 1 个有效结点出发
+    int j = 1;                         // j 是 p 的逻辑位序
+    while (p && j < pos) {            // 未走到目标，逐个后移
+        p = p->next;
         ++j;
     }
-    if (p == nullptr) return false;             // 插入位置超出表尾
-    Node* s = new Node{e, p->next};             // 新结点接原后继
-    p->next = s;                                // 前驱接新结点
-    return true;
+    if (!p) return 0;                 // 已到链尾，位序无效
+    value = p->data;                  // 读取对应元素
+    return 1;
 }
 ```
 
-- 定位前驱：最坏 $O(n)$。
-- **已知前驱 `p`** 后连接结点：$O(1)$。
-- 所以“按位序插入单链表”整体通常为 $O(n)$，而不能一概说链表插入是 $O(1)$。
+此操作最坏 $O(n)$。如果已经保存了指向该结点的可靠指针，读取其 `data` 可以是 $O(1)$，两种前提不能混为一谈。
 
-## 3.5 删除：摘下结点后释放空间
+### 3. 在指定位置前插入：先接后继，再改前驱
 
-删除 `p` 后面的结点 `q`：
-
-```text
-删除前：p ──→ q ──→ r
-删除后：p ─────────→ r      （q 被释放）
-```
+目标是把结点 `s` 插在原来的 `p` 与 `p->next` 之间。关键只有两条语句：
 
 ```cpp
-Node* q = p->next;           // q 是要删除的结点（须确保存在）
-e = q->data;                 // 删除前保存需要返回的值
-p->next = q->next;           // 绕过 q，连接它的后继
-delete q;                    // 释放已摘下的动态结点
+s->next = p->next;   // 第一步：新结点先接住原后继
+p->next = s;         // 第二步：前驱再改为指向新结点
 ```
 
-**理解关键：** `delete q` 后不能再访问 `q->data` 或 `q->next`，因此先保存数据、先完成重新连接，最后才释放。
+若错误地先执行 `p->next=s`，随后再执行 `s->next=p->next`，`s` 就可能指向自己，原后继链丢失。必须区分**新结点已分配、指针已设置、旧链入口已切换**三个状态。
 
-### 按位序删除函数
+**过程 1：先定位前驱：否则无法修改前驱的 next**
+
+![ds02_link_insert_01_45e29b56-b9c1-4546-b0de-e136c3417aee](./_assets/143172d67b/ds02_link_insert_01_45e29b56-b9c1-4546-b0de-e136c3417aee.svg)
+
+**过程 2：新结点未接入链表，绝不能提前改变 p->next**
+
+![ds02_link_insert_02_db05dd19-745b-4c0b-a8f3-dd7d37150fe2](./_assets/143172d67b/ds02_link_insert_02_db05dd19-745b-4c0b-a8f3-dd7d37150fe2.svg)
+
+**过程 3：现在 s 指向旧结点 40，原链表尚未改动**
+
+![ds02_link_insert_03_37e0a76c-3a6b-4e94-b1ac-1d3fa8c879aa](./_assets/143172d67b/ds02_link_insert_03_37e0a76c-3a6b-4e94-b1ac-1d3fa8c879aa.svg)
+
+**过程 4：两条新指针同时成立后，链中增加一项**
+
+![ds02_link_insert_04_8b48dde2-8885-49b6-8695-3f4a4b3e8e88](./_assets/143172d67b/ds02_link_insert_04_8b48dde2-8885-49b6-8695-3f4a4b3e8e88.svg)
+
+**过程 5：只改两条 next 指针；定位前驱仍可能 O(n)**
+
+![ds02_link_insert_05_c0e005f3-94ba-46be-a080-5627c72b8611](./_assets/143172d67b/ds02_link_insert_05_c0e005f3-94ba-46be-a080-5627c72b8611.svg)
+
+**过程 6：第二句会让 s.next 指向 s 自身，旧 40 从链表断开**
+
+![ds02_link_insert_06_0d0b34a0-fbfe-495e-8b2c-b4549568baa7](./_assets/143172d67b/ds02_link_insert_06_0d0b34a0-fbfe-495e-8b2c-b4549568baa7.svg)
+
 
 ```cpp
-bool ListDelete(Node* head, int i, int& e) {
-    if (head == nullptr || i < 1) return false; // 基本检查
-    Node* p = head;                              // 先找前驱
+int ListInsert_L(Node* head, int pos, int value) {
+    if (!head || pos < 1) return 0;
+    Node* p = head;                       // 从头结点起，逻辑位序视为 0
     int j = 0;
-    while (p->next != nullptr && j < i - 1) {
-        p = p->next;                             // p 向后寻找
+    while (p && j < pos - 1) {           // 找到第 pos-1 个结点
+        p = p->next;
         ++j;
     }
-    if (p->next == nullptr) return false;        // 无第 i 个结点
-    Node* q = p->next;                           // 保存待删结点
-    e = q->data;                                 // 取出被删值
-    p->next = q->next;                           // 从链上摘下 q
-    delete q;                                    // 释放 q
-    return true;
+    if (!p) return 0;                    // 插入位置越界
+    Node* s = new Node{value, nullptr};  // 新建独立结点
+    s->next = p->next;                    // 先连接原后继
+    p->next = s;                          // 再改前驱的后继
+    return 1;
 }
 ```
 
-定位前驱最坏 $O(n)$；仅执行摘链和释放为 $O(1)$。
+**已知前驱结点**时指针修改本身为 $O(1)$；若题目要求“按位序插入”，查找前驱需要 $O(n)$，整体最坏仍是 $O(n)$。
 
-## 3.6 清空、销毁与内存管理
+### 4. 删除指定位置：绕过目标，然后释放内存
 
-清空：保留头结点，释放所有数据结点。
+删除结点 `q` 时，若 `p` 是其前驱，需要保存 `q=p->next`，然后执行 `p->next=q->next`，再读取数据并 `delete q`。不能在释放 `q` 后再次访问 `q->data` 或 `q->next`。
+
+**过程 1：找到前驱后才能方便地越过待删除结点**
+
+![ds02_link_delete_01_eff1785b-cd7e-4733-b09b-2b0b5f9b0d01](./_assets/143172d67b/ds02_link_delete_01_eff1785b-cd7e-4733-b09b-2b0b5f9b0d01.svg)
+
+**过程 2：q 仍连接着旧后继 40**
+
+![ds02_link_delete_02_33f62d19-1284-4c6b-a368-5fc32387588b](./_assets/143172d67b/ds02_link_delete_02_33f62d19-1284-4c6b-a368-5fc32387588b.svg)
+
+**过程 3：此时链表主路径改为 10→20→40，但 q 尚未释放**
+
+![ds02_link_delete_03_99755303-6c8d-4509-8781-0533940932bd](./_assets/143172d67b/ds02_link_delete_03_99755303-6c8d-4509-8781-0533940932bd.svg)
+
+**过程 4：先保存 q 的 data，后释放 q；不能访问已释放结点**
+
+![ds02_link_delete_04_78f60726-d28c-4591-9e42-c307c1869228](./_assets/143172d67b/ds02_link_delete_04_78f60726-d28c-4591-9e42-c307c1869228.svg)
+
+**过程 5：p 后继从 30 改为 40；释放一个结点**
+
+![ds02_link_delete_05_1dc19e49-82e7-43cb-8e91-ea5bdd016a35](./_assets/143172d67b/ds02_link_delete_05_1dc19e49-82e7-43cb-8e91-ea5bdd016a35.svg)
+
 
 ```cpp
-void ClearList(Node* head) {
-    if (head == nullptr) return;        // 无有效头结点
-    Node* p = head->next;               // 从首元结点开始
-    while (p != nullptr) {
-        Node* next = p->next;           // 必须先保存后继
-        delete p;                       // 再释放当前结点
-        p = next;                       // 继续处理下一个
+int ListDelete_L(Node* head, int pos, int& removed) {
+    if (!head || pos < 1) return 0;
+    Node* p = head;                       // 找待删结点的前驱
+    for (int j = 1; j < pos && p; ++j) {
+        p = p->next;                      // 逐个后移
     }
-    head->next = nullptr;               // 恢复为空表
+    if (!p || !p->next) return 0;         // 待删结点不存在
+    Node* q = p->next;                    // 保存目标结点地址
+    p->next = q->next;                    // 前驱改指后继，跳过 q
+    removed = q->data;                    // 释放前保存返回值
+    delete q;                             // 回收结点内存
+    return 1;
 }
 ```
 
-销毁：再释放头结点，并修改调用者的指针。
+删除表首元素时前驱恰好是头结点，这正是带头结点可以减少边界分支的原因。若删除后还存在某个指针变量指向已释放的 `q`，该变量成为**悬空指针**，不得再解引用。
+
+### 5. 创建链表：头插法与尾插法必须观察每次指针变化
+
+**头插法**在每次输入新元素时，把它放在原首元结点之前。因此依次输入 `10,20,30`，建立的表是 `30→20→10`；若输入顺序本来就是 `a_n,...,a_1`，则头插后的逻辑顺序恢复为 `a_1,...,a_n`。
+
+**过程 1：头结点不计入数据元素个数**
+
+![ds02_head_build_01_6350392a-f317-428c-a9b7-e0fdc5d6fb7a](./_assets/143172d67b/ds02_head_build_01_6350392a-f317-428c-a9b7-e0fdc5d6fb7a.svg)
+
+**过程 2：本帧 s 尚未接入链表**
+
+![ds02_head_build_02_f993c42f-dec1-4a17-8617-2b934ac81c7b](./_assets/143172d67b/ds02_head_build_02_f993c42f-dec1-4a17-8617-2b934ac81c7b.svg)
+
+**过程 3：无论原表是否为空，都先连接新结点的 next**
+
+![ds02_head_build_03_58da2fc5-101e-47e9-a6c9-22f8eebf1cac](./_assets/143172d67b/ds02_head_build_03_58da2fc5-101e-47e9-a6c9-22f8eebf1cac.svg)
+
+**过程 4：当前数据顺序：[10]；头插导致输入顺序反转**
+
+![ds02_head_build_04_c3fb5702-0840-43da-b81e-522b10b22220](./_assets/143172d67b/ds02_head_build_04_c3fb5702-0840-43da-b81e-522b10b22220.svg)
+
+**过程 5：本帧 s 尚未接入链表**
+
+![ds02_head_build_05_58812465-71a5-4012-9f0f-d7a64218ae69](./_assets/143172d67b/ds02_head_build_05_58812465-71a5-4012-9f0f-d7a64218ae69.svg)
+
+**过程 6：无论原表是否为空，都先连接新结点的 next**
+
+![ds02_head_build_06_08e0b059-add5-41ff-8cb8-e8c0c749d810](./_assets/143172d67b/ds02_head_build_06_08e0b059-add5-41ff-8cb8-e8c0c749d810.svg)
+
+**过程 7：当前数据顺序：[20, 10]；头插导致输入顺序反转**
+
+![ds02_head_build_07_af87d1ca-2567-403e-9c34-0a7ad3764201](./_assets/143172d67b/ds02_head_build_07_af87d1ca-2567-403e-9c34-0a7ad3764201.svg)
+
+**过程 8：本帧 s 尚未接入链表**
+
+![ds02_head_build_08_01e14433-8038-42ce-b0b8-2bd6d921fb6e](./_assets/143172d67b/ds02_head_build_08_01e14433-8038-42ce-b0b8-2bd6d921fb6e.svg)
+
+**过程 9：无论原表是否为空，都先连接新结点的 next**
+
+![ds02_head_build_09_34f92464-213f-4bfe-a1c4-e88b9ae14f42](./_assets/143172d67b/ds02_head_build_09_34f92464-213f-4bfe-a1c4-e88b9ae14f42.svg)
+
+**过程 10：当前数据顺序：[30, 20, 10]；头插导致输入顺序反转**
+
+![ds02_head_build_10_af4956b5-bc20-40d1-8d58-35379828c3f9](./_assets/143172d67b/ds02_head_build_10_af4956b5-bc20-40d1-8d58-35379828c3f9.svg)
+
 
 ```cpp
-void DestroyList(Node*& head) {
-    if (head == nullptr) return;       // 避免访问空头指针
-    ClearList(head);                   // 清空数据结点
-    delete head;                       // 释放头结点
-    head = nullptr;                    // 清除悬空指针
+#include <vector>
+
+Node* CreateHeadList(const std::vector<int>& input) {
+    Node* head = new Node{0, nullptr};      // 建立空的带头结点链表
+    for (int x : input) {
+        Node* s = new Node{x, nullptr};     // 为当前输入元素申请结点
+        s->next = head->next;               // 新结点指向原首元结点
+        head->next = s;                     // 头结点改指新首元结点
+    }
+    return head;                            // 返回链表入口
 }
 ```
 
-> [!warning] C++ 动态内存的配对关系
-> `new Node{...}` 使用 `delete`；`new int[100]` 使用 `delete[]`。不要把 `new` 与 `free` 混用，也不要在释放结点后继续解引用。
+**尾插法**让 `tail` 始终指向最后一个有效结点；初始空表 `tail=head`。每次先 `tail->next=s`，再 `tail=s`，因此数据顺序与输入顺序一致。注意 `tail` 必须更新，否则下一次插入可能覆盖此前插入的结点。
 
-## 3.7 建表：头插法与尾插法
+**过程 1：空表下 tail 必须指向头结点，方便首次连接**
 
-### 头插法
+![ds02_tail_build_01_a2f693c9-a4e9-44de-a110-2ffd38dc5bf3](./_assets/143172d67b/ds02_tail_build_01_a2f693c9-a4e9-44de-a110-2ffd38dc5bf3.svg)
 
-每个新结点都插在头结点之后：
+**过程 2：新结点 next 为空，尚未成为尾结点**
+
+![ds02_tail_build_02_8ae9fbef-44af-409a-8b6b-9b926a129378](./_assets/143172d67b/ds02_tail_build_02_8ae9fbef-44af-409a-8b6b-9b926a129378.svg)
+
+**过程 3：此时旧 tail 仍是旧结点，下一步必须更新尾指针**
+
+![ds02_tail_build_03_e26f1c9e-a99f-4eb5-ad30-c9cfc852d044](./_assets/143172d67b/ds02_tail_build_03_e26f1c9e-a99f-4eb5-ad30-c9cfc852d044.svg)
+
+**过程 4：尾插保留输入顺序，使用尾指针每次接入 O(1)**
+
+![ds02_tail_build_04_96ba9ef5-f87a-4d80-887b-7d386a2b26ea](./_assets/143172d67b/ds02_tail_build_04_96ba9ef5-f87a-4d80-887b-7d386a2b26ea.svg)
+
+**过程 5：新结点 next 为空，尚未成为尾结点**
+
+![ds02_tail_build_05_fc6c81eb-1b06-499b-8f7a-a677473b426a](./_assets/143172d67b/ds02_tail_build_05_fc6c81eb-1b06-499b-8f7a-a677473b426a.svg)
+
+**过程 6：此时旧 tail 仍是旧结点，下一步必须更新尾指针**
+
+![ds02_tail_build_06_f77f7736-8bb1-4f34-839a-3537355ee288](./_assets/143172d67b/ds02_tail_build_06_f77f7736-8bb1-4f34-839a-3537355ee288.svg)
+
+**过程 7：尾插保留输入顺序，使用尾指针每次接入 O(1)**
+
+![ds02_tail_build_07_18c13c6c-a477-43b1-bd7a-527d15aa409a](./_assets/143172d67b/ds02_tail_build_07_18c13c6c-a477-43b1-bd7a-527d15aa409a.svg)
+
+**过程 8：新结点 next 为空，尚未成为尾结点**
+
+![ds02_tail_build_08_e5bfdd0b-ab9e-4e1e-91da-92ee98f8eb1e](./_assets/143172d67b/ds02_tail_build_08_e5bfdd0b-ab9e-4e1e-91da-92ee98f8eb1e.svg)
+
+**过程 9：此时旧 tail 仍是旧结点，下一步必须更新尾指针**
+
+![ds02_tail_build_09_e87e586f-346b-463f-a6f0-1ed788491590](./_assets/143172d67b/ds02_tail_build_09_e87e586f-346b-463f-a6f0-1ed788491590.svg)
+
+**过程 10：尾插保留输入顺序，使用尾指针每次接入 O(1)**
+
+![ds02_tail_build_10_1a431a02-92c3-4f97-a839-91dbf26a6e5c](./_assets/143172d67b/ds02_tail_build_10_1a431a02-92c3-4f97-a839-91dbf26a6e5c.svg)
+
 
 ```cpp
-void CreateHead(Node* head, const int a[], int n) {
-    for (int i = 0; i < n; ++i) {
-        Node* s = new Node{a[i], head->next}; // 连接原首元结点
-        head->next = s;                      // 新结点成为首元结点
+Node* CreateTailList(const std::vector<int>& input) {
+    Node* head = new Node{0, nullptr};  // 带头结点的空链表
+    Node* tail = head;                   // 初始尾指针是头结点
+    for (int x : input) {
+        Node* s = new Node{x, nullptr};  // 新结点后继初始化为空
+        tail->next = s;                  // 旧尾结点指向新结点
+        tail = s;                        // 更新真正的尾结点
+    }
+    return head;
+}
+```
+
+> [!important] 清空与销毁必须实际释放每个结点
+> `head->next=nullptr` **只是切断链表入口**，并没有释放此前动态申请的结点，会造成内存泄漏。需要先逐个保存待删地址、移动头结点的指针并释放结点。最后若连头结点也销毁，才 `delete head`。
+
+```cpp
+void ClearList_L(Node* head) {
+    if (!head) return;
+    while (head->next) {                // 表中还有有效结点
+        Node* q = head->next;           // 暂存即将释放的结点
+        head->next = q->next;           // 先更新头结点的后继
+        delete q;                       // 释放旧首元结点
     }
 }
-```
 
-输入 `1,2,3` 后得到 `3→2→1`。若希望最终保持 $a_1,a_2,\ldots,a_n$，可按逆序输入或改用尾插法。建表时间 $O(n)$。
-
-### 尾插法
-
-保持 `tail` 指向最后一个结点，就不用每次重新从头找尾。
-
-```cpp
-void CreateTail(Node* head, const int a[], int n) {
-    Node* tail = head;                            // 假设原表为空
-    for (int i = 0; i < n; ++i) {
-        tail->next = new Node{a[i], nullptr};    // 在尾部接结点
-        tail = tail->next;                       // 更新尾指针
-    }
+void DestroyList_L(Node*& head) {
+    ClearList_L(head);                  // 先清理所有有效结点
+    delete head;                        // 再释放头结点
+    head = nullptr;                     // 避免外部继续使用旧地址
 }
 ```
 
-输入 `1,2,3` 后得到 `1→2→3`，总时间 $O(n)$；若每次尾插都从头遍历找末结点，总时间可能达到 $O(n^2)$。
+### 6. 两个有序单链表归并：边比较边连接，避免重复扫描
 
-## 3.8 两个非递减单链表的归并
+假设 $L_A=(3,5,8,11)$，$L_B=(2,6,8,9,11,15,20)$，归并为非递减的 $L_C$。分别用 `pa`、`pb` 指向各自未处理的首结点；每次取较小者接入 `Lc` 尾部，再移动对应输入指针。值相等时可优先取 `pa`，这样会保留两个重复值，得到的是**有序表归并**，不是数学集合求并。
 
-假设 `a`、`b` **直接指向各自第一个数据结点**（不是头结点），且各自非递减有序。每次从 `a`、`b` 取较小结点，将原结点接到结果表尾；一个链结束时，接上另一个链的余下部分。
+**过程 1：较小的 2 首先接入 C；相等时通常可先选 A**
+
+![ds02_sorted_merge_01_977d797d-9580-456f-b12c-8930eb721cdd](./_assets/143172d67b/ds02_sorted_merge_01_977d797d-9580-456f-b12c-8930eb721cdd.svg)
+
+**过程 2：输出前缀 [2]；仅移动指针即可连接结点**
+
+![ds02_sorted_merge_02_aa8ada4b-5a06-467d-9564-eb824e2d33a8](./_assets/143172d67b/ds02_sorted_merge_02_aa8ada4b-5a06-467d-9564-eb824e2d33a8.svg)
+
+**过程 3：输出前缀 [2, 3]；仅移动指针即可连接结点**
+
+![ds02_sorted_merge_03_f285f392-72ad-4e95-9afb-f7128ab8b22c](./_assets/143172d67b/ds02_sorted_merge_03_f285f392-72ad-4e95-9afb-f7128ab8b22c.svg)
+
+**过程 4：输出前缀 [2, 3, 5]；仅移动指针即可连接结点**
+
+![ds02_sorted_merge_04_d812850f-7c1d-4ea9-9991-e09366c9b3bb](./_assets/143172d67b/ds02_sorted_merge_04_d812850f-7c1d-4ea9-9991-e09366c9b3bb.svg)
+
+**过程 5：输出前缀 [2, 3, 5, 6]；仅移动指针即可连接结点**
+
+![ds02_sorted_merge_05_36fd713c-bc4e-4c6e-a951-bad3011e8b16](./_assets/143172d67b/ds02_sorted_merge_05_36fd713c-bc4e-4c6e-a951-bad3011e8b16.svg)
+
+**过程 6：输出前缀 [2, 3, 5, 6, 8]；仅移动指针即可连接结点**
+
+![ds02_sorted_merge_06_ec844403-bac1-401c-835c-cd403862dac8](./_assets/143172d67b/ds02_sorted_merge_06_ec844403-bac1-401c-835c-cd403862dac8.svg)
+
+**过程 7：输出前缀 [2, 3, 5, 6, 8, 8]；仅移动指针即可连接结点**
+
+![ds02_sorted_merge_07_92bc1b12-0dad-4b40-b18e-b27516f6d9e7](./_assets/143172d67b/ds02_sorted_merge_07_92bc1b12-0dad-4b40-b18e-b27516f6d9e7.svg)
+
+**过程 8：输出前缀 [2, 3, 5, 6, 8, 8, 9]；仅移动指针即可连接结点**
+
+![ds02_sorted_merge_08_b3718ec3-c6f0-4cab-b25b-41bd29c51373](./_assets/143172d67b/ds02_sorted_merge_08_b3718ec3-c6f0-4cab-b25b-41bd29c51373.svg)
+
+**过程 9：输出前缀 [2, 3, 5, 6, 8, 8, 9, 11]；仅移动指针即可连接结点**
+
+![ds02_sorted_merge_09_f6745626-55fe-4449-ae3d-b3631b6a2491](./_assets/143172d67b/ds02_sorted_merge_09_f6745626-55fe-4449-ae3d-b3631b6a2491.svg)
+
+**过程 10：结果保持非递减：[2, 3, 5, 6, 8, 8, 9, 11, 11]**
+
+![ds02_sorted_merge_10_81accfe0-784f-40a6-8cb1-04ef345ab44c](./_assets/143172d67b/ds02_sorted_merge_10_81accfe0-784f-40a6-8cb1-04ef345ab44c.svg)
+
+**过程 11：结果保持非递减：[2, 3, 5, 6, 8, 8, 9, 11, 11, 15]**
+
+![ds02_sorted_merge_11_6db4b33d-83b3-4ed2-8bfc-f93b0fd830f6](./_assets/143172d67b/ds02_sorted_merge_11_6db4b33d-83b3-4ed2-8bfc-f93b0fd830f6.svg)
+
+**过程 12：结果保持非递减：[2, 3, 5, 6, 8, 8, 9, 11, 11, 15, 20]**
+
+![ds02_sorted_merge_12_cd23bf0e-da7c-4466-9c9b-303a5058002f](./_assets/143172d67b/ds02_sorted_merge_12_cd23bf0e-da7c-4466-9c9b-303a5058002f.svg)
+
 
 ```cpp
-Node* MergeSorted(Node* a, Node* b) {
-    Node dummy{0, nullptr};               // 临时哨兵，不计入结果数据
-    Node* tail = &dummy;                  // tail 始终指向结果的尾结点
-    while (a != nullptr && b != nullptr) {
-        if (a->data <= b->data) {
-            tail->next = a;               // 取 A 当前结点
-            a = a->next;                  // A 向后移动
+Node* MergeSortedCopy(const Node* A, const Node* B) {
+    Node* C = new Node{0, nullptr};         // 结果表的头结点
+    Node* tail = C;                         // 结果尾指针
+    const Node* p = A ? A->next : nullptr;  // 输入 A 的首元
+    const Node* q = B ? B->next : nullptr;  // 输入 B 的首元
+    while (p && q) {
+        if (p->data <= q->data) {           // 相等时先选 A
+            tail->next = new Node{p->data, nullptr};
+            p = p->next;                    // 仅 A 前进
         } else {
-            tail->next = b;               // 取 B 当前结点
-            b = b->next;                  // B 向后移动
+            tail->next = new Node{q->data, nullptr};
+            q = q->next;                    // 仅 B 前进
         }
-        tail = tail->next;                // 结果尾指针跟进
+        tail = tail->next;                  // 结果尾结点跟随更新
     }
-    tail->next = (a != nullptr) ? a : b; // 接上尚未耗尽的部分
-    return dummy.next;                   // 返回新的首元结点
+    while (p) {                            // 直接复制 A 的剩余结点
+        tail->next = new Node{p->data, nullptr};
+        tail = tail->next;
+        p = p->next;
+    }
+    while (q) {                            // 直接复制 B 的剩余结点
+        tail->next = new Node{q->data, nullptr};
+        tail = tail->next;
+        q = q->next;
+    }
+    return C;
 }
 ```
 
-例如 `1→4→8` 与 `2→4→9` 归并后为 `1→2→4→4→8→9`。复杂度 $O(m+n)$，仅重连指针时额外辅助空间 $O(1)$。
+这里采用**复制结点**的版本，输入 A、B 原样保留，C 拥有独立数据结点；其时间 $O(m+n)$，新增结点空间 $O(m+n)$。如果改成“摘下输入结点直接接入 C”，可以做到额外辅助结点空间 $O(1)$，但必须重新明确原链表的所有权，不能在没有解除所有权时重复释放结点。
 
-> [!warning] 重连原结点会改变原表
-> 该函数**重用输入结点**，不能把结果与两条旧链当作三个独立拥有结点的链表分别释放。若调用者使用两个带头结点的输入链表，应将结果接至一个头结点，并把另一个头结点的 `next` 置空，统一管理结点。想要保留原表时应另行复制结点。
+## 四、链表的其他重要形式
 
----
+### 1. 静态链表：用数组位置 `cur` 代替机器指针
 
-# 4. 其他链表形式
+静态链表使用预先分配的数组，每个数组分量保存 `data` 和整数 `cur`。`cur` 不是下一个线性数组元素的位置，而是下一个**逻辑结点所在的下标**。从头结点 `S[0]` 开始依次执行 `i=S[i].cur` 才能遍历真实的逻辑序列。空闲槽位也可以连成一条备用链，模拟动态分配与回收。
 
-## 4.1 静态链表：用数组下标模拟指针
+**过程 1：备用链：1→5→3→7→8；逻辑次序与物理顺序不同**
 
-在不能方便使用指针的环境下，可以把结点放入数组，并用**游标 `cur`**表示后继结点的数组下标。它在存储形式上是数组，在逻辑连接上是链表。
+![ds02_static_link_01_68e3b111-a005-4fd2-a395-f3edf8d250af](./_assets/143172d67b/ds02_static_link_01_68e3b111-a005-4fd2-a395-f3edf8d250af.svg)
+
+**过程 2：依次写入 S[1] 的 data=16 和 cur=6**
+
+![ds02_static_link_02_7f81dd62-2193-4054-86af-6a19c5471e85](./_assets/143172d67b/ds02_static_link_02_7f81dd62-2193-4054-86af-6a19c5471e85.svg)
+
+**过程 3：主链变为 2→1→6→4，未移动任何原数组数据**
+
+![ds02_static_link_03_cb31fe8d-b60f-432c-b104-25148092bbdb](./_assets/143172d67b/ds02_static_link_03_cb31fe8d-b60f-432c-b104-25148092bbdb.svg)
+
+**过程 4：待删槽恢复到备用链表，free 指回 1**
+
+![ds02_static_link_04_5fcd4df2-9443-482c-874f-0a8c5a0c9c07](./_assets/143172d67b/ds02_static_link_04_5fcd4df2-9443-482c-874f-0a8c5a0c9c07.svg)
+
+**过程 5：静态链表仍须预先分配容量，使用整数 cur 代替机器指针**
+
+![ds02_static_link_05_46bf4f98-1d77-4efd-8ce7-9af8d6ea2d86](./_assets/143172d67b/ds02_static_link_05_46bf4f98-1d77-4efd-8ce7-9af8d6ea2d86.svg)
+
 
 ```cpp
 struct StaticNode {
-    int data;     // 结点数据
-    int cur;      // 后继结点的数组下标，0 表示结束
+    int data;                     // 结点的数据内容
+    int cur;                      // 下一个结点在数组中的下标
 };
-StaticNode S[100]; // 约定 S[0] 为头结点，S[0].cur 指向首元
-```
 
-若 `S[0].cur=5`、`S[5].cur=2`、`S[2].cur=0`，实际逻辑顺序是 `S[5]→S[2]`，并非数组下标的递增顺序。
-
-```cpp
-int LocateElem(StaticNode S[], int e) {
-    int i = S[0].cur;                   // 从首元结点的游标开始
-    int pos = 1;                        // 记录逻辑位序
-    while (i != 0) {
-        if (S[i].data == e) return pos; // 找到返回位序
-        i = S[i].cur;                  // 用游标访问后继
-        ++pos;
+int LocateStatic(const StaticNode S[], int value) {
+    int i = S[0].cur;             // 从头结点所指的首元素出发
+    int position = 1;             // 记录逻辑位序
+    while (i != 0) {              // 约定 0 为链尾标记
+        if (S[i].data == value) return position;
+        i = S[i].cur;              // 只通过 cur 后移
+        ++position;
     }
-    return 0;                           // 没有匹配元素
+    return 0;
 }
 ```
 
-> [!note] 静态链表中的空间回收
-> 由于不能直接使用 `new` / `delete` 分配数组中的单个“结点”，常把闲置数组分量也用游标串成一条**备用链表**。插入时从备用链取空位，删除时把分量放回备用链。与动态链表相同的是**改链接而不搬移数据元素**，不同的是数组容量通常固定。
+静态链表的优点是插入删除通常不用移动全部表元素；缺点是容量固定，仍需维护备用链（空闲表），定位元素依旧是顺序查找。具体实现必须明确“0 号元既作表头，又作为空指针标记”的存储约定。
 
-## 4.2 循环单链表
+### 2. 循环单链表：从尾部回到头结点
 
-最后一个结点不指向 `nullptr`，而是重新指向头结点：
+循环单链表把末结点的 `next` 指向头结点，不再使用空指针作为正常的循环结束状态。带头结点的空循环表满足 `head->next==head`，判断遍历结束要检查 `p==head`，不能照搬普通单链表的 `p!=nullptr`。
 
-```text
-head → 10 → 20 → 30 ──┐
-  ↑                   │
-  └───────────────────┘
-```
+**过程 1：head.next 指向 head 自己**
 
-对于**带头结点的循环单链表**：
+![ds02_circular_01_20f87074-0367-4d9f-9272-042da2ad7b0f](./_assets/143172d67b/ds02_circular_01_20f87074-0367-4d9f-9272-042da2ad7b0f.svg)
 
-- 空表：`head->next == head`。
-- 尾结点：`tail->next == head`。
-- 遍历的结束条件：`p != head`，不能再使用 `p != nullptr`，否则可能无限循环。
+**过程 2：唯一数据结点的 next 指向 head**
+
+![ds02_circular_02_cd4d0dc0-b198-4149-a070-57b825a4ad77](./_assets/143172d67b/ds02_circular_02_cd4d0dc0-b198-4149-a070-57b825a4ad77.svg)
+
+**过程 3：新尾 20.next 指向 head，保留环**
+
+![ds02_circular_03_4550bfed-c2c0-4e03-b7eb-816bd0ff6212](./_assets/143172d67b/ds02_circular_03_4550bfed-c2c0-4e03-b7eb-816bd0ff6212.svg)
+
+**过程 4：此时尾结点并不指向 NULL**
+
+![ds02_circular_04_58e6ee32-a8da-4368-9c58-c1f528bc9d0c](./_assets/143172d67b/ds02_circular_04_58e6ee32-a8da-4368-9c58-c1f528bc9d0c.svg)
+
+**过程 5：前驱 10.next 改指 30，循环结构不断裂**
+
+![ds02_circular_05_34b20c29-78d0-4de7-8820-aa140a58521c](./_assets/143172d67b/ds02_circular_05_34b20c29-78d0-4de7-8820-aa140a58521c.svg)
+
+**过程 6：head.next 更新为 30；尾结点仍指向 head**
+
+![ds02_circular_06_8fe20bcf-9aa1-4643-8a67-d3e6a8ff7d01](./_assets/143172d67b/ds02_circular_06_8fe20bcf-9aa1-4643-8a67-d3e6a8ff7d01.svg)
+
+**过程 7：重新变为 head.next=head**
+
+![ds02_circular_07_921bb64a-e42a-4aa1-bf71-8a377eb1ef87](./_assets/143172d67b/ds02_circular_07_921bb64a-e42a-4aa1-bf71-8a377eb1ef87.svg)
+
 
 ```cpp
-for (Node* p = head->next; p != head; p = p->next) {
-    std::cout << p->data << ' '; // 回到头结点前逐个输出
+struct CircularNode {
+    int data;
+    CircularNode* next;
+};
+
+CircularNode* InitCircular() {
+    CircularNode* head = new CircularNode{0, nullptr};
+    head->next = head;                  // 空表的自环
+    return head;
+}
+
+int CountCircular(const CircularNode* head) {
+    if (!head) return 0;
+    int count = 0;
+    const CircularNode* p = head->next;
+    while (p != head) {                // 不能以 nullptr 判定环尾
+        ++count;
+        p = p->next;
+    }
+    return count;
 }
 ```
 
-## 4.3 双向链表
+### 3. 双向链表与双向循环链表：两个方向同时连接
 
-普通单链表仅能直接找后继；**双向链表**再增加一个 `prior` 指针保存前驱地址。
+双向链表结点分别用 `prior`、`next` 指向前驱和后继。除了前向关系 `p->next=q`，相应逆向关系也应是 `q->prior=p`。**插入前、删除后必须保证两个方向一致**，否则沿正向和反向遍历可能看到完全不同的结构。
+
+例如在 `p` 之前插入新结点 `s`，一种可行的操作顺序是：先设置 `s->prior=p->prior`，再让旧前驱指向 `s`，接着设置 `s->next=p`，最后更新 `p->prior=s`。以下连续帧显示每一条指针的实际变化。
+
+**过程 1：先取得 p 和 p.prior（即 20）**
+
+![ds02_double_insert_01_fd6d13ba-9d66-4c96-8d1a-cf197781fa32](./_assets/143172d67b/ds02_double_insert_01_fd6d13ba-9d66-4c96-8d1a-cf197781fa32.svg)
+
+**过程 2：新结点 s 的前驱先指向 20，主链未断开**
+
+![ds02_double_insert_02_6c316ddb-3a58-49bc-9605-30e70aa08852](./_assets/143172d67b/ds02_double_insert_02_6c316ddb-3a58-49bc-9605-30e70aa08852.svg)
+
+**过程 3：前驱 20 的 next 改为指向 s**
+
+![ds02_double_insert_03_31589c40-e779-4a50-a2c9-3c3900babc4a](./_assets/143172d67b/ds02_double_insert_03_31589c40-e779-4a50-a2c9-3c3900babc4a.svg)
+
+**过程 4：新结点 s 的后继指向 40**
+
+![ds02_double_insert_04_acf0f2a6-05f9-43cc-894a-5bfc538165c6](./_assets/143172d67b/ds02_double_insert_04_acf0f2a6-05f9-43cc-894a-5bfc538165c6.svg)
+
+**过程 5：四处指针修改完成，双向链路一致**
+
+![ds02_double_insert_05_93ef5b7c-35d3-47bb-a7c8-f6859485eac9](./_assets/143172d67b/ds02_double_insert_05_93ef5b7c-35d3-47bb-a7c8-f6859485eac9.svg)
+
 
 ```cpp
 struct DNode {
-    int data;       // 数据域
-    DNode* prior;   // 指向直接前驱
-    DNode* next;    // 指向直接后继
+    int data;
+    DNode* prior;                 // 双向链表前驱指针
+    DNode* next;                  // 双向链表后继指针
 };
-```
 
-```text
-      prior ← [ 20 ] ← [ 30 ]
-      next  → [ 20 ] → [ 30 ]
-```
-
-知道某结点的地址后可以直接访问它的前驱，但每个结点也需要额外保存一个指针。
-
-## 4.4 双向循环链表：插入与删除
-
-在**带头结点的双向循环链表**中，头结点与尾结点通过 `prior`、`next` 构成闭环。空表有：
-
-```cpp
-DNode* head = new DNode{0, nullptr, nullptr}; // 创建头结点
-head->prior = head;                           // 空表时前驱指向自己
-head->next = head;                            // 空表时后继指向自己
-```
-
-### 在已知结点 `p` 前插入 `e`
-
-以下假设 `p` 是链中的有效结点（可以是头结点，以表示尾插），链表前后链接正常。
-
-```cpp
-DNode* s = new DNode{e, p->prior, p}; // 新结点先连前驱和后继
-p->prior->next = s;                   // 原前驱的后继改为 s
-p->prior = s;                         // 原 p 的前驱改为 s
-```
-
-插入涉及的是**四条前后方向的链接关系**，但利用构造时初始化 `s` 的两个成员，可以把操作保持得很短。
-
-### 删除已知数据结点 `p`
-
-```cpp
-p->prior->next = p->next;   // 前驱绕过 p
-p->next->prior = p->prior;  // 后继绕过 p
-delete p;                   // 释放已脱链结点
-```
-
-> [!warning] 双向链表的基本不变量
-> 相邻结点 `p`、`q` 若满足 `p->next == q`，应同时满足 `q->prior == p`。插入或删除时只修改一个方向，会使链表结构不一致。以上删除片段**不能用于头结点**。
-
-### 按位序操作为何仍可能是 $O(n)$
-
-上面示例的前提是**已知目标结点地址**。若只知道“第 $i$ 个位置”，必须先从头或尾找到相应结点，定位过程仍可能为 $O(n)$。
-
-## 4.5 四种链表对照
-
-| 结构 | 后继表示 | 可否直接向前走 | 结束/空表特征 | 主要用途 |
-|---|---|---|---|---|
-| 单链表 | `next` 指针 | 否 | 尾结点 `next == nullptr` | 基本链式操作 |
-| 静态链表 | 整数游标 `cur` | 通常否 | 游标 0 表示结束 | 用数组模拟动态连接 |
-| 循环单链表 | `next` 指针 | 否 | 走回头结点 | 循环访问 |
-| 双向链表 | `next` 和 `prior` | 是 | 可采用非循环或循环形式 | 双向查找及结点增删 |
-
----
-
-# 5. 改进的线性链表与有序表
-
-## 5.1 为什么还要记录尾指针、长度与当前指针
-
-普通单链表只有头指针，求长度或找到尾结点都可能需要遍历。课程中的**改进型链表**增加辅助字段：
-
-```cpp
-struct LinkList {
-    Node* head;       // 头结点
-    Node* tail;       // 尾结点；空表时等于 head
-    Node* current;    // 当前被访问的结点
-    int length;       // 数据结点个数
-};
-```
-
-初始化可以写成两句：
-
-```cpp
-Node* h = new Node{0, nullptr}; // 创建空表头结点
-LinkList L{h, h, h, 0};         // 三指针指向头结点，长度为 0
-```
-
-增加字段的价值在于**用少量空间换取常用操作的速度**。
-
-| 操作 | 只保留头指针 | 额外维护对应字段 |
-|---|---:|---:|
-| 求长度 | $O(n)$ | `length`，$O(1)$ |
-| 直接获得尾结点 | $O(n)$ | `tail`，$O(1)$ |
-| 访问当前结点 | 需先定位 | `current`，$O(1)$ |
-| 从当前结点找前驱 | $O(n)$ | 单链结构仍为 $O(n)$ |
-
-### 在当前结点之后插入
-
-```cpp
-bool InsAfter(LinkList& L, int e) {
-    if (L.current == nullptr) return false;      // 当前指针无效
-    Node* s = new Node{e, L.current->next};      // 新结点接后继
-    L.current->next = s;                         // 当前结点接新结点
-    if (L.tail == L.current) L.tail = s;         // 若原位置是尾部，更新 tail
-    L.current = s;                               // 更新当前指针
-    ++L.length;                                  // 更新长度
-    return true;
+void InsertBefore(DNode* p, int value) {
+    if (!p || !p->prior) return;  // 此版要求 p 存在前驱结点
+    DNode* s = new DNode{value, nullptr, nullptr};
+    s->prior = p->prior;          // 让 s 记住原前驱
+    p->prior->next = s;           // 原前驱的 next 指向 s
+    s->next = p;                  // 新结点的后继是 p
+    p->prior = s;                 // p 的 prior 更新为 s
 }
 ```
 
-### 删除当前结点之后的结点
+删除结点 `p` 时，应在释放前让左右相邻结点重新互相连接。下面示例适合 **p 同时存在前驱和后继** 的双向链表场景，例如带头结点且其尾部有有效哨兵，或双向循环链表；普通非循环链表删除末结点应单独判断 `p->next == nullptr`。
+
+**过程 1：先确认两侧前驱 20、后继 40**
+
+![ds02_double_delete_01_85a27a02-89e0-4f48-b9e1-fbca43144f3a](./_assets/143172d67b/ds02_double_delete_01_85a27a02-89e0-4f48-b9e1-fbca43144f3a.svg)
+
+**过程 2：20 直接指向 40，尚须修正 prior**
+
+![ds02_double_delete_02_cfa6ecf0-2ddf-483d-aa90-eca2f24af006](./_assets/143172d67b/ds02_double_delete_02_cfa6ecf0-2ddf-483d-aa90-eca2f24af006.svg)
+
+**过程 3：40 的前驱也改回 20，两方向连接一致**
+
+![ds02_double_delete_03_593c99f3-a65a-42e1-8171-e07ae5d59983](./_assets/143172d67b/ds02_double_delete_03_593c99f3-a65a-42e1-8171-e07ae5d59983.svg)
+
+**过程 4：移除孤立 30，最终结果 10↔20↔40**
+
+![ds02_double_delete_04_ebb0886d-9ad7-4404-a774-a218395f55de](./_assets/143172d67b/ds02_double_delete_04_ebb0886d-9ad7-4404-a774-a218395f55de.svg)
+
 
 ```cpp
-bool DelAfter(LinkList& L, int& e) {
-    if (L.current == nullptr || L.current->next == nullptr)
-        return false;                            // 没有可以删除的后继
-    Node* q = L.current->next;                   // 待删除结点
-    e = q->data;                                 // 保存数据
-    L.current->next = q->next;                   // 改指针
-    if (L.tail == q) L.tail = L.current;         // 若删除原尾结点，修正 tail
-    delete q;                                    // 释放结点
-    --L.length;                                  // 修正长度
-    return true;
+void DeleteMiddle(DNode* p) {
+    if (!p || !p->prior || !p->next) return; // 限制为内部结点
+    p->prior->next = p->next;       // 前驱跳过 p 指向后继
+    p->next->prior = p->prior;      // 后继回指原前驱
+    delete p;                      // 两端已衔接，再释放 p
 }
 ```
 
-> [!warning] 冗余字段必须同步更新
-> 有了 `tail`、`length` 等字段，每次插入和删除都必须维护它们。否则虽然 `next` 链本身正确，尾指针和表长仍可能错误。
+双向**循环**链表若设置头结点，那么空表为 `head->next==head && head->prior==head`；非空时还满足 `head->prior` 指向尾结点，尾结点 `next` 指回头结点。环形的前后指针可避免许多边界分类，但插入删除仍必须同步维护双向关系。
 
-## 5.2 有序表的特殊性质
+### 4. 改进的链表类型：头、尾、当前指针与长度
 
-**有序表**是数据按某种次序排列的线性表。例如**非递减**序列满足：
+有的链表在结构体中额外记录 `head`、`tail`、`current`、`length`，方便常见操作。若 `tail` 总指向最后一个有效结点，末尾追加只需常数次指针修改；`length` 可使求表长变为 $O(1)$；但每次删除最后一个结点、清空链表或修改当前位置时都必须同步维护这些成员。功能越方便，数据结构**不变量**越需要认真检查。
 
-$$
-a_1\le a_2\le\cdots\le a_n
-$$
+## 五、有序表与结构选择
 
-允许相等元素，因此有序表也可能有重复值。利用已排序的性质，可以在发现当前值已经大于目标时提前结束查找。
+有序表是元素按某个比较关系**非递减**（或非递增）排列的线性表。有序不意味着没有重复；例如 $(2,3,3,5)$ 仍是有序表。有序性使得合并、交集、去重和区间删除可以利用比较结果提前停止，而不必对每个元素从头扫描。
 
-### 找到应该插入的位置
+### 1. 有序链表的区间删除
 
-对**带头结点、非递减有序**的单链表，下面返回“待插值 `e` 应插入在谁之后”。
+若要求删除所有满足 $mink < x < maxk$ 的元素，先定位最后一个不大于 `mink` 的结点作为 `pre`，然后连续删除其后方所有小于 `maxk` 的结点。当遇到 `x≥maxk`，有序性保证后面都不需要删除，立即停止。
+
+**过程 1：条件为 mink < x < maxk；3 和 12 均保留**
+
+![ds02_range_delete_01_3e058ef8-1b37-4966-8f67-c8da260ca3f8](./_assets/143172d67b/ds02_range_delete_01_3e058ef8-1b37-4966-8f67-c8da260ca3f8.svg)
+
+**过程 2：条件为 mink < x < maxk；3 和 12 均保留**
+
+![ds02_range_delete_02_1a8c3c1a-a0cb-4613-b992-9afd739b57f3](./_assets/143172d67b/ds02_range_delete_02_1a8c3c1a-a0cb-4613-b992-9afd739b57f3.svg)
+
+**过程 3：条件为 mink < x < maxk；3 和 12 均保留**
+
+![ds02_range_delete_03_87dae9fd-b66a-4f96-a566-72682f010569](./_assets/143172d67b/ds02_range_delete_03_87dae9fd-b66a-4f96-a566-72682f010569.svg)
+
+**过程 4：条件为 mink < x < maxk；3 和 12 均保留**
+
+![ds02_range_delete_04_8efa8331-51dc-4622-ad78-3db876ab404c](./_assets/143172d67b/ds02_range_delete_04_8efa8331-51dc-4622-ad78-3db876ab404c.svg)
+
+**过程 5：条件为 mink < x < maxk；3 和 12 均保留**
+
+![ds02_range_delete_05_27b5a058-0bd0-477e-bde8-f7b8be7fc1ef](./_assets/143172d67b/ds02_range_delete_05_27b5a058-0bd0-477e-bde8-f7b8be7fc1ef.svg)
+
+**过程 6：条件为 mink < x < maxk；3 和 12 均保留**
+
+![ds02_range_delete_06_5a96faf9-3acb-4dd2-b288-bce1058ce63c](./_assets/143172d67b/ds02_range_delete_06_5a96faf9-3acb-4dd2-b288-bce1058ce63c.svg)
+
 
 ```cpp
-Node* FindInsertPrev(Node* head, int e) {
-    Node* p = head;                                // 从头结点出发
-    while (p->next != nullptr && p->next->data < e)
-        p = p->next;                               // 越过所有小于 e 的元素
-    return p;                                      // p 是插入位置的前驱
+void DeleteOpenInterval(Node* head, int mink, int maxk) {
+    if (!head || mink >= maxk) return;
+    Node* pre = head;                           // 起始为头结点
+    while (pre->next && pre->next->data <= mink) {
+        pre = pre->next;                        // 寻找区间左边界前驱
+    }
+    while (pre->next && pre->next->data < maxk) {
+        Node* q = pre->next;                    // 目标在开区间内
+        pre->next = q->next;                    // 绕过待删结点
+        delete q;                              // 释放该结点
+    }
 }
 ```
 
-随后使用普通单链表的插入规则即可：
+这段算法时间 $O(n)$，额外空间 $O(1)$。如果 `mink`、`maxk` 恰等于表中元素，其相等结点应保留，因为约束是**严格大于、严格小于**。
 
-```cpp
-Node* p = FindInsertPrev(head, e); // 找到前驱位置
-Node* s = new Node{e, p->next};    // 创建新结点并连接后继
-p->next = s;                       // 插入后仍保持非递减有序
-```
+### 2. 顺序表和链表怎么选择
 
-> [!example] 定位结果
-> `12→23→34→45→56`，插入 40 时，`p` 停在 34；插入 45 时，以上实现把新 45 插在旧 45 之前，**但同样保持非递减顺序**。
->
-> 若课程要求查找已有元素并同时返回首个大于目标元素的前驱，可在上述定位后再判断 `p->next` 的值是否等于 `e`。
+**过程 1：基地址和元素大小确定，访问第 i 个元素不需要遍历**
 
-## 5.3 有序集合与普通有序表的差别
+![ds02_tradeoffs_01_fbbbee70-201e-4acc-aa6e-92e5274f610d](./_assets/143172d67b/ds02_tradeoffs_01_fbbbee70-201e-4acc-aa6e-92e5274f610d.svg)
 
-- **普通有序表**只保证大小顺序，可以有重复元素。
-- **有序集合的线性表表示**除保持有序外，还要保证每个值只出现一次。
-- 归并两个**有序表**时通常保留重复值；求两个**有序集合**的并集或交集时，则依据集合规则去重。
+**过程 2：每条 next 保存下一结点位置，随机访存无固定偏移公式**
 
----
-# 6. 一元多项式的表示与相加
+![ds02_tradeoffs_02_78fcd78d-229b-4bed-8942-e51020482110](./_assets/143172d67b/ds02_tradeoffs_02_78fcd78d-229b-4bed-8942-e51020482110.svg)
 
-## 6.1 为什么多项式可以用线性表表示
+**过程 3：搬移量随着表长度变化，最坏 O(n)**
 
-一元 $n$ 次多项式写成：
+![ds02_tradeoffs_03_bda4eb4a-dc12-40a9-91b3-ffac5fbc79fe](./_assets/143172d67b/ds02_tradeoffs_03_bda4eb4a-dc12-40a9-91b3-ffac5fbc79fe.svg)
 
-$$
-P_n(x)=p_0+p_1x+p_2x^2+\cdots+p_nx^n
-$$
+**过程 4：已知前驱时接入新结点 O(1)，按位定位仍 O(n)**
 
-可以用系数序列 $(p_0,p_1,\ldots,p_n)$ 表示。由于每个系数的位置就是对应的指数，因此**无需额外保存指数**。
+![ds02_tradeoffs_04_d30132c7-77f8-4216-a6e3-e1f42ae40112](./_assets/143172d67b/ds02_tradeoffs_04_d30132c7-77f8-4216-a6e3-e1f42ae40112.svg)
 
-但对于稀疏多项式：
 
-$$
-S(x)=1+3x^{10000}-2x^{20000}
-$$
+| 需求与性质 | 顺序表 | 单链表 |
+| --- | --- | --- |
+| 按位序直接访问 | $O(1)$，通过地址公式 | $O(n)$，需逐结点扫描 |
+| 按值线性查找 | 最坏 $O(n)$ | 最坏 $O(n)$ |
+| 已知具体插入位置或前驱的局部修改 | 通常要移动，最坏 $O(n)$ | 指针修改本身 $O(1)$ |
+| 内存组织 | 连续区域，扩容可能搬迁 | 结点可分散申请 |
+| 附加空间 | 元素紧密存放，但可能预留容量 | 每个结点额外保存指针 |
+| 缓存局部性 | 通常较好 | 可能较差 |
 
-若按所有次数分配系数数组，就需要 20001 个位置，实际上非零项只有 3 个。
+> [!important] 复杂度判断先写前提
+> “链表插入是 $O(1)$”仅在**插入位置已经定位**，而且结点申请与简单指针操作按常数时间模型计算时成立。若给的是第 $i$ 个位置，则必须把寻找前驱的 $O(n)$ 算进去。类似地，顺序表能够 $O(1)$ 获取第 $i$ 个元素，不代表它能 $O(1)$ 查找某个未知值。
 
-> [!important] 稀疏多项式的核心思想
-> **只保存非零项。** 每一项同时记录“系数”和“指数”，按指数从小到大排列。它本质上是一个元素为 `(系数, 指数)` 的**有序线性表**。
+## 六、一元多项式的表示及相加
 
-例如：
+### 1. 稠密系数数组与稀疏项表
 
-$$
-P(x)=7x^3-2x^{12}-8x^{999}
-$$
+一元多项式
 
-对应：`(7,3) → (-2,12) → (-8,999)`。
+$$P_n(x)=p_0+p_1x+p_2x^2+\cdots+p_nx^n$$
 
-## 6.2 两种表示方式
+可以由系数序列 $(p_0,p_1,\dots,p_n)$ 表示：下标天然表示指数。若 $P(x)=1+3x^{10000}-2x^{20000}$，用系数数组就需要包含大量零系数的位置，此时只存非零项更合理。
 
-### 顺序存储
+稀疏多项式表示为按指数严格递增排列的**（系数，指数）**对：
+
+$$P(x)=\sum_{k=1}^{m}c_k x^{e_k},\qquad 0\le e_1<e_2<\cdots<e_m.$$
+
+例如 $7x^3-2x^{12}-8x^{999}$ 对应 `[(7,3),(-2,12),(-8,999)]`。若只计算多项式值、无需频繁修改，连续数组存储项对很适合；若要频繁相加、合并、删去零系数项，可用链表表示。
+
+### 2. 多项式相加就是“按指数归并”
+
+用两个指针分别查看当前项 $p$ 与 $q$。若 `p.exp<q.exp`，先输出 $p$；若 `p.exp>q.exp`，先输出 $q$；若指数相等，则系数相加。**系数之和为零时不能输出该项**，应同时跳过两个原项。最后直接追加未结束的一方。
+
+**过程 1：指数较小者直接加入结果，无需改变其系数**
+
+![ds02_poly_add_01_3d8ae9db-4b6d-4157-93bb-0c9b2bb3d3d9](./_assets/143172d67b/ds02_poly_add_01_3d8ae9db-4b6d-4157-93bb-0c9b2bb3d3d9.svg)
+
+**过程 2：当前结果项：['2']**
+
+![ds02_poly_add_02_940d3599-03c6-4c7f-a2f7-ecb1ca64f6ba](./_assets/143172d67b/ds02_poly_add_02_940d3599-03c6-4c7f-a2f7-ecb1ca64f6ba.svg)
+
+**过程 3：当前结果项：['2', '5x^1']**
+
+![ds02_poly_add_03_534652ac-5115-4493-b98a-ff41c2864e9c](./_assets/143172d67b/ds02_poly_add_03_534652ac-5115-4493-b98a-ff41c2864e9c.svg)
+
+**过程 4：当前结果项：['2', '5x^1']**
+
+![ds02_poly_add_04_b216a857-2f3a-48fd-8e9b-ff5c749c3f81](./_assets/143172d67b/ds02_poly_add_04_b216a857-2f3a-48fd-8e9b-ff5c749c3f81.svg)
+
+**过程 5：当前结果项：['2', '5x^1', '1x^4']**
+
+![ds02_poly_add_05_aa0a52b7-31cd-40d5-a71e-fddb7b9d09b3](./_assets/143172d67b/ds02_poly_add_05_aa0a52b7-31cd-40d5-a71e-fddb7b9d09b3.svg)
+
+**过程 6：当前结果项：['2', '5x^1', '1x^4', '4x^5']**
+
+![ds02_poly_add_06_c0775ca8-ea39-4e12-b505-bf65416631f0](./_assets/143172d67b/ds02_poly_add_06_c0775ca8-ea39-4e12-b505-bf65416631f0.svg)
+
+**过程 7：并非系数逐位置相加，而是按指数归并**
+
+![ds02_poly_add_07_f555e773-8d52-41f9-bfeb-c5a90442e673](./_assets/143172d67b/ds02_poly_add_07_f555e773-8d52-41f9-bfeb-c5a90442e673.svg)
+
 
 ```cpp
 struct Term {
-    double coef;  // 系数，可以是小数
-    int exp;      // 非负整数指数
+    double coef;                     // 非零项系数
+    int exp;                         // 非负整数指数
+    Term* next;                      // 指向更大指数的下一项
 };
-Term terms[100]; // 数组中的每个元素保存一个非零项
-```
 
-适合主要进行访问、遍历和求值，或项数较稳定的情况。
-
-### 链式存储
-
-```cpp
-struct PolyNode {
-    double coef;        // 非零项系数
-    int exp;            // 指数，结点依指数升序链接
-    PolyNode* next;     // 指向下一项
-};
-```
-
-适合多项式相加等需要频繁删除零系数项、插入新指数项的情况。结点存储顺序为**指数非递减**；规范化后的多项式中，同一指数只出现一次，所以实际是严格递增。
-
-> [!warning] 稀疏表示的两个不变量
-> - **指数严格递增**：例如 $0,3,12,999$。
-> - **系数不为 0**：相加结果为 0 的项不应保留。
->
-> 没有这两个前提，后面的“双指针归并相加”算法就不能直接照搬。
-
-## 6.3 多项式 ADT 的基本操作
-
-课程讨论了创建、销毁、输出、求项数，以及多项式加、减、乘等操作；其中本章重点是**相加**。
-
-设 $A(x)$、$B(x)$ 按指数升序存储，多项式相加实际上是**有序表归并**，只是“指数相等”时必须将系数相加：
-
-| 两个当前项的指数 | 处理方法 |
-|---|---|
-| $e_A<e_B$ | 取 A 当前项，A 指针后移 |
-| $e_A>e_B$ | 取 B 当前项，B 指针后移 |
-| $e_A=e_B$ | 系数相加，两个指针都后移；和为 0 时不保留该项 |
-
-> [!example] 手工做一次多项式归并
-> $A(x)=2+3x^2+5x^5$，$B(x)=-2+4x^3-5x^5$。
->
-> - $x^0$：$2+(-2)=0$，不保留；
-> - $x^2$：只在 A 中出现，保留 $3x^2$；
-> - $x^3$：只在 B 中出现，保留 $4x^3$；
-> - $x^5$：$5+(-5)=0$，不保留。
->
-> 结果为 $A(x)+B(x)=3x^2+4x^3$。
-
-## 6.4 相加算法：先看清三个分支，再看函数
-
-为避免把注意力转移到复杂的结点所有权管理，本例采用**复制生成新结果链表**：输入指针 `a`、`b` 都直接指向首个多项式项结点，不包括头结点；返回新的**数据结点链**。原多项式不改变。
-
-```cpp
-PolyNode* AddPoly(const PolyNode* a, const PolyNode* b) {
-    PolyNode dummy{0, 0, nullptr};         // 临时头结点
-    PolyNode* tail = &dummy;              // 结果链的末端
-    while (a != nullptr || b != nullptr) {
-        double c;                         // 本轮结果系数
-        int e;                            // 本轮结果指数
-        if (b == nullptr || (a != nullptr && a->exp < b->exp)) {
-            c = a->coef; e = a->exp;      // A 指数较小
-            a = a->next;
-        } else if (a == nullptr || b->exp < a->exp) {
-            c = b->coef; e = b->exp;      // B 指数较小
-            b = b->next;
+Term* AddPolynomial(const Term* a, const Term* b) {
+    Term* head = new Term{0.0, 0, nullptr}; // 结果头结点
+    Term* tail = head;                      // 结果尾指针
+    while (a || b) {
+        double coef = 0.0;
+        int exp = 0;
+        if (!b || (a && a->exp < b->exp)) {
+            coef = a->coef; exp = a->exp; a = a->next; // 选 A 项
+        } else if (!a || b->exp < a->exp) {
+            coef = b->coef; exp = b->exp; b = b->next; // 选 B 项
         } else {
-            c = a->coef + b->coef;        // 指数相等，合并系数
-            e = a->exp;
-            a = a->next; b = b->next;     // 两边均已处理
+            coef = a->coef + b->coef; exp = a->exp;    // 同指数相加
+            a = a->next; b = b->next;                  // 两个指针同进
         }
-        if (c != 0) {                     // 零系数项不进入结果
-            tail->next = new PolyNode{c, e, nullptr};
-            tail = tail->next;            // 更新结果尾指针
+        if (coef != 0.0) {                            // 不保留零系数
+            tail->next = new Term{coef, exp, nullptr};
+            tail = tail->next;                         // 移动尾指针
         }
     }
-    return dummy.next;                    // 返回新结果首项
+    return head;                                       // 返回带头结点的结果表
 }
 ```
 
-**跟踪重点：** 每轮处理至少一项；指数相等时消耗两边各一项；输出前才检查系数是否为 0。代码把“指数比较”与“链表插入”分成了两个明确步骤。
+这是**新建结果表**版本：输入多项式不被销毁或修改。教材中“在 `Pa` 上完成 `Pa=Pa+Pb` 并销毁 `Pb`”属于另一种**破坏性原位归并**，需要明确被摘下结点的所有权，不能将两种函数的资源管理语义混用。
 
-时间复杂度 $O(m+n)$（$m,n$ 为两个多项式的非零项数）；复制结果最坏需要 $O(m+n)$ 额外结点空间。
+## 七、典型习题与完整解法
 
-### 与课件的原地相加有何区别
+### 1. 原位逆置带头结点单链表
 
-课程中的 `AddPolyn` 操作规定 **`Pa = Pa + Pb`，并销毁 `Pb`**。因此可通过**移动原有结点**达到近似 $O(1)$ 的辅助空间，而不必复制结果。对应处理仍是上述三种指数关系，只不过：
-
-- A 指数较小：保留 A 结点，A 前进。
-- B 指数较小：将 B 当前结点**摘出并接入 A**，B 前进。
-- 指数相等：修改 A 结点系数，释放 B 对应结点；和为零时连 A 对应结点也删除。
-
-> [!warning] 复制归并与原地归并不是同一个接口
-> 前面 `AddPoly` **不会销毁输入链表**，方便先学清楚核心算法；如果作业明确要求“销毁 `Pb`”，则必须使用原地重连方案，且正确处理头结点、释放和结点归属。二者结果相同，但空间开销和内存管理责任不同。
-
-## 6.5 多项式的拓展操作
-
-- **求值：** 给定 $x$，依次计算并累加每个非零项的 $\text{coef}\cdot x^{\text{exp}}$。
-- **相减：** 可以在归并时把 B 对应项系数视为相反数，再按相加规则处理。
-- **相乘：** 两两相乘得到新项，指数相加、系数相乘；相同指数还需要合并。它涉及更多操作，本章理解表示思想即可。
-
----
-
-# 7. 顺序表和链表的比较
-
-## 7.1 基本操作复杂度对照
-
-以下比较默认：顺序表已初始化且有足够容量；链表是带头结点的普通单链表；**没有预先保存目标结点或其前驱**。
-
-| 操作 | 顺序表 | 单链表 | 原因 |
-|---|---:|---:|---|
-| 按位序取第 $i$ 个元素 | $O(1)$ | $O(n)$ | 数组可直接计算地址，链表需沿 `next` 遍历 |
-| 按值查找 | $O(n)$ | $O(n)$ | 一般需要逐个比较 |
-| 在指定第 $i$ 个位置插入 | $O(n)$ | $O(n)$ | 前者搬移数据，后者先定位前驱 |
-| 删除指定第 $i$ 个元素 | $O(n)$ | $O(n)$ | 前者搬移数据，后者先定位前驱 |
-| **已知插入位置的前驱结点** | 不适用同类结点概念 | $O(1)$ | 直接修改两个 `next` 链接 |
-| 求表长 | $O(1)$ | $O(n)$ | 链表若另存 `length` 可变为 $O(1)$ |
-| 顺序遍历 | $O(n)$ | $O(n)$ | 均须处理所有元素 |
-
-> [!important] 高频易错结论
-> **“链表插入删除是 $O(1)$”必须附带条件：已经找到有关结点。** 若题目只给位序 $i$，定位仍是 $O(n)$；如果题目明确给出前驱结点指针，那么摘链/接链可以是 $O(1)$。
-
-## 7.2 存储密度与空间分配
-
-**存储密度**一般定义为：
-
-$$
-\text{存储密度}=\frac{\text{数据本身所占存储量}}{\text{存储整个结点所占存储量}}
-$$
-
-顺序表的元素无须单独保存后继指针，数据部分存储密度高；链表每个结点附带 `next`，双向链表还附带 `prior`，通常开销更大。
-
-- 顺序表需要**连续存储空间**，动态扩容可能复制原有元素。
-- 链表允许结点分散在内存中，按需要逐个申请、逐个释放。
-- 但链表也并非绝对不会申请失败：当内存不足时，`new` 仍可能失败。
-
-## 7.3 怎样选用合适的存储结构
-
-| 情形 | 优先考虑 | 理由 |
-|---|---|---|
-| 频繁按下标访问、主要读数据 | 顺序表 | 随机存取速度快 |
-| 插入删除频繁且已掌握结点位置 | 链表 | 不需要整体移动数据 |
-| 数据规模大幅变化、难以预估大小 | 链表 / 动态顺序表 | 按需增长，各有额外成本 |
-| 需要从任意结点直接找到前驱 | 双向链表 | 有 `prior` 指针 |
-| 需要反复循环访问 | 循环链表 | 尾部自然连接到开头 |
-| 大量操作集中在末尾 | 维护尾指针的链表 / 动态顺序表 | 尾插方便，需考虑具体实现 |
-
-没有永远最优的存储结构。要先看**最频繁的操作是什么**，再决定为了加快该操作是否值得增加空间或维护成本。
-
----
-
-# 8. 典型算法与课程练习
-
-> [!note] 本节统一约定
-> 普通单链表使用第 3 节的 `Node`，且带头结点；双向链表使用第 4 节的 `DNode`。例题中的代码是可以直接作为函数定义放入上述结构体声明之后的 C++ 片段；调用者仍需负责创建输入链表、销毁产生的结点等通用资源管理工作。
-
-## 8.1 有序单链表：删除开区间内的元素
-
-**题目：** 元素按值严格递增，删除所有满足 $\text{minK}<x<\text{maxK}$ 的结点，同时释放空间。
-
-**分析：** 因为链表有序，先越过 `<= minK` 的部分；然后连续删除 `< maxK` 的结点；碰到 `>= maxK` 就结束，无须扫描剩余部分。
-
-```cpp
-void DeleteRange(Node* head, int minK, int maxK) {
-    if (head == nullptr || minK >= maxK) return; // 无合法删除区间
-    Node* p = head;                               // 保持指向待查结点的前驱
-    while (p->next && p->next->data <= minK)
-        p = p->next;                              // 跳过区间左侧元素
-    while (p->next && p->next->data < maxK) {
-        Node* q = p->next;                        // 待删除结点
-        p->next = q->next;                        // 摘链
-        delete q;                                 // 释放空间
-    }
-}
-```
-
-> [!example] 边界演示
-> `1→3→5→7→9`，令 `minK=3`、`maxK=9`，结果为 `1→3→9`。注意 3 和 9 **不删除**，因为区间是开区间。
-
-最多沿链表扫描与删除 $n$ 个结点，时间 $O(n)$，额外空间 $O(1)$。
-
-## 8.2 单链表就地逆置
-
-**题目：** 将 `1→2→3` 改成 `3→2→1`，不能新建数据结点。
-
-**核心问题：** 当前结点的 `next` 一旦指向前驱，原后继地址就可能丢失。所以必须先用 `next` 变量保存原后继。
+要求：不另辟存放结点的数组，将单链表 `1→2→3→4` 逆置为 `4→3→2→1`。核心原理是**头插已摘下的结点**，每次只修改指针。
 
 ```cpp
 void ReverseList(Node* head) {
-    if (head == nullptr) return;     // 没有头结点
-    Node* prev = nullptr;            // 已逆置部分的起点
-    Node* p = head->next;            // 当前待处理结点
-    while (p != nullptr) {
-        Node* next = p->next;        // 第一步：保存原后继
-        p->next = prev;              // 第二步：反转指针方向
-        prev = p;                    // 第三步：已逆置部分前进
-        p = next;                    // 第四步：处理下一个
+    if (!head) return;
+    Node* p = head->next;                 // 保存原首元结点
+    head->next = nullptr;                 // 逆序部分初始为空
+    while (p) {
+        Node* next = p->next;             // 提前保存尚未处理的部分
+        p->next = head->next;             // 当前结点接到新表首
+        head->next = p;                   // 更新新表首
+        p = next;                         // 继续处理原表后续结点
     }
-    head->next = prev;               // 新首元结点
 }
 ```
 
-> [!tip] 用三个指针记逆置
-> `prev` 是**已反转部分**，`p` 是**正在处理的结点**，`next` 是**尚未处理的后续链段**。每轮都先保存 `next`，再反转 `p->next`。
+**过程 1：逆序链的入口 head.next 先置空**
 
-时间 $O(n)$，辅助空间 $O(1)$。空表和只有一个数据结点的链表也能正确处理。
+![ds02_reverse_01_a8ba468a-eecf-44ab-9465-5abf87728a8f](./_assets/143172d67b/ds02_reverse_01_a8ba468a-eecf-44ab-9465-5abf87728a8f.svg)
 
-## 8.3 两个递增有序集合：构造交集
+**过程 2：执行指针改写前保留后续入口，避免断链**
 
-设 A、B 均按值严格递增，各自没有重复元素。结果 C 也要求严格递增，且必须**另辟空间**，不能破坏输入。
+![ds02_reverse_02_53af8955-d42c-44be-9ee9-85c2356bcace](./_assets/143172d67b/ds02_reverse_02_53af8955-d42c-44be-9ee9-85c2356bcace.svg)
 
-**双指针思想：** 较小的元素不可能与另一个表中后续更大的元素相等，可以跳过；相等时写入结果，两个指针都前进。
+**过程 3：p->next = head->next；head->next = p**
 
-### 顺序表版本
+![ds02_reverse_03_6bbd80f1-885b-4a2c-b53b-d26569156c8c](./_assets/143172d67b/ds02_reverse_03_6bbd80f1-885b-4a2c-b53b-d26569156c8c.svg)
+
+**过程 4：已逆序前缀变成 2→1，未处理剩余 3→4**
+
+![ds02_reverse_04_9ea9d24c-1e55-41d0-a503-4350ec304d54](./_assets/143172d67b/ds02_reverse_04_9ea9d24c-1e55-41d0-a503-4350ec304d54.svg)
+
+**过程 5：已逆序前缀变成 3→2→1，待处理剩下 4**
+
+![ds02_reverse_05_70e2201c-c890-46b1-9b50-8d3bd29aafa5](./_assets/143172d67b/ds02_reverse_05_70e2201c-c890-46b1-9b50-8d3bd29aafa5.svg)
+
+**过程 6：p 变为 NULL，终止循环**
+
+![ds02_reverse_06_bfe523fb-e58a-4877-a861-99a3f76b4daf](./_assets/143172d67b/ds02_reverse_06_bfe523fb-e58a-4877-a861-99a3f76b4daf.svg)
+
+**过程 7：不创建新数据结点，额外辅助空间 O(1)**
+
+![ds02_reverse_07_c449b4b2-8dc0-4482-bd51-d87aac85fd9f](./_assets/143172d67b/ds02_reverse_07_c449b4b2-8dc0-4482-bd51-d87aac85fd9f.svg)
+
+
+单次遍历完成，时间 $O(n)$、额外空间 $O(1)$。易错点是没有提前保存 `next`，改动 `p->next` 后失去原来的后续结点入口。
+
+### 2. 有序表求交集（另辟结果空间）
+
+考虑两个按值递增排列的整数序列。双指针方法如前所述，产生的新结果不应指向输入链表的旧结点；若使用集合语义，必须跳过连续重复元素。
 
 ```cpp
-SqList Intersection(const SqList& A, const SqList& B) {
-    SqList C;                            // length 默认为 0
-    int i = 0, j = 0;                    // 两个输入数组的下标
-    while (i < A.length && j < B.length) {
-        if (A.data[i] < B.data[j]) ++i;  // A 当前值太小
-        else if (A.data[i] > B.data[j]) ++j; // B 当前值太小
+#include <vector>
+
+std::vector<int> Intersection(const std::vector<int>& A,
+                              const std::vector<int>& B) {
+    std::vector<int> C;
+    int i = 0, j = 0;                          // 两端指针从 0 开始
+    while (i < static_cast<int>(A.size()) &&
+           j < static_cast<int>(B.size())) {
+        if (A[i] < B[j]) ++i;                   // A 较小：A 前进
+        else if (A[i] > B[j]) ++j;              // B 较小：B 前进
         else {
-            C.data[C.length++] = A.data[i]; // 交集元素加入 C
-            ++i; ++j;                       // 两边均前进
+            if (C.empty() || C.back() != A[i]) C.push_back(A[i]);
+            ++i; ++j;                          // 相等时两侧都前进
         }
     }
-    return C;                            // 返回新的顺序表
+    return C;                                  // 空间独立于输入
 }
 ```
 
-这里两个输入数组最多各容纳 100 个元素；交集长度不超过较短输入表的长度，所以 `C.data[100]` 不会溢出。
+### 3. 双向链表保留奇数位序元素
 
-### 单链表版本
+设首元结点位序为 1，目标为保留原表第 1、3、5、… 项且保持顺序。遍历时维护一个位置计数器；遇到奇数位序时新建结点、用尾指针插入新的双向链表。原表不应受修改。该题的核心不是单纯“值为奇数”，而是**位序为奇数**。
 
-输入 `a`、`b` 直接指向各自首元结点；返回带头结点的**新链表**。
+### 4. 按访问频度调整双向循环链表
 
-```cpp
-Node* Intersection(const Node* a, const Node* b) {
-    Node* head = new Node{0, nullptr};          // 结果头结点
-    Node* tail = head;                         // 结果尾指针
-    while (a != nullptr && b != nullptr) {
-        if (a->data < b->data) a = a->next;     // A 较小
-        else if (a->data > b->data) b = b->next; // B 较小
-        else {
-            tail->next = new Node{a->data, nullptr}; // 复制交集元素
-            tail = tail->next;                     // 更新尾指针
-            a = a->next; b = b->next;             // 输入均后移
-        }
-    }
-    return head;                                 // 新链表独立管理
-}
-```
+结点附加 `freq` 字段。每次 `locate(L,x)` 成功后，先把命中结点的 `freq` 加 1，再将它向前移动至仍能维持 `freq` 非递增排序的位置。调整可以通过解除原先的四条相邻连接、再在目标位置重新建立四条连接实现；必须同时维护 `prior`、`next`。若使用局部相邻交换，则重复交换直到前驱频度不小于当前频度为止。**同频时的稳定顺序**需要按题目或实现选定并保持一致；此题不应把 `freq` 当成数据元素本身。
 
-两种实现都是 $O(m+n)$ 时间；若交集有 $k$ 个元素，新结果额外占用 $O(k)$ 个元素/结点的空间，顺序表在本示例中预先固定分配了 100 个位置。
+## 八、复习清单：从“会背”到“能画出执行过程”
 
-> [!warning] 不要把“交集”当成“归并”
-> 普通归并要保留两边所有数据（含重复）；交集只保留**两边都有**的元素。若输入是允许重复值的普通有序表，还需针对重复项作进一步去重处理。
+> [!summary] 本章最重要的八个检查点
+> 1. 能解释表的逻辑位序从 1 开始而 C++ 数组下标从 0 开始。
+> 2. 能手推顺序表插入时的逆向搬移、删除时的顺向搬移。
+> 3. 能区分 `head`、头结点、首元结点和 `nullptr` 的不同作用。
+> 4. 能画出链表插入 `s->next=p->next; p->next=s;` 的每一步。
+> 5. 能说明删除结点时何时应保存地址、修改指针、释放内存。
+> 6. 能用头插与尾插分别建立链表，预测结果次序。
+> 7. 能说明静态链表游标、循环链表尾指针、双向链表双重指针的区别。
+> 8. 能手推有序归并、区间删除及多项式同指数合并和零系数消除。
 
-## 8.4 复制双向链表的奇数位序结点
-
-**题目：** 创建一个新双向链表，包含原链表第 1、3、5、……个数据结点的值，保持相对顺序。
-
-下面使用**带头结点、非循环双向链表**，末结点 `next == nullptr`。每次处理一个结点后前进两次；新结点的 `prior` 要正确指向已有尾结点。
-
-```cpp
-DNode* CopyOdd(const DNode* head) {
-    DNode* result = new DNode{0, nullptr, nullptr}; // 结果头结点
-    DNode* tail = result;                          // 结果尾结点
-    for (const DNode* p = head->next; p != nullptr;) {
-        DNode* s = new DNode{p->data, tail, nullptr}; // 复制当前奇数位
-        tail->next = s;                           // 尾部链接新结点
-        tail = s;                                 // 更新尾指针
-        p = p->next;                              // 先走一格
-        if (p != nullptr) p = p->next;             // 再走一格
-    }
-    return result;                                // 返回独立的新链表
-}
-```
-
-例如 `10⇄20⇄30⇄40⇄50` → `10⇄30⇄50`。时间 $O(n)$，额外结点空间 $O(\lceil n/2\rceil)$。
-
-## 8.5 按访问频度调整双向循环链表
-
-**题目：** 在双向循环链表的每个结点中增加 `freq`。每当按值访问某结点后，该结点访问频度加 1，并按 `freq` **非递增**排序，使高频结点靠近表头。
-
-先给出结点结构（与第 4 节 `DNode` 不同，新增了一个字段）：
-
-```cpp
-struct FNode {
-    int data;       // 元素值
-    int freq;       // 被访问次数，初始为 0
-    FNode* prior;   // 前驱结点
-    FNode* next;    // 后继结点
-};
-```
-
-查找后，若当前结点比前驱访问频度更高，就把它与前驱**交换相邻位置**，直到频度顺序恢复。下方函数假定 `head` 是双向循环链表头结点，数据结点的 `freq` 已正确初始化。
-
-```cpp
-FNode* LocateAndAdjust(FNode* head, int x) {
-    FNode* p = head->next;                   // 从第一个数据结点开始
-    while (p != head && p->data != x)
-        p = p->next;                        // 按值查找
-    if (p == head) return nullptr;          // 未找到，不作调整
-    ++p->freq;                              // 访问次数增加 1
-    while (p->prior != head && p->prior->freq < p->freq) {
-        FNode* q = p->prior;                 // q 原本紧挨在 p 前面
-        q->prior->next = p;                 // q 前面改接 p
-        p->prior = q->prior;                // p 接原来 q 的前驱
-        q->next = p->next;                  // q 接原来 p 的后继
-        p->next->prior = q;                 // 后继的前驱改为 q
-        p->next = q;                        // p 排在 q 前面
-        q->prior = p;                       // q 的前驱改为 p
-    }
-    return p;                               // 返回已调整的结点
-}
-```
-
-> [!example] 为什么相等频度时不交换
-> 当前频度顺序为 `5,3,2,2`，访问最后一个结点后它的频度变成 3，应越过前方频度为 2 的结点，但不越过原本频度就为 3 的结点。用严格 `<` 作交换条件，可以避免不必要的同频结点换位。
-
-**复杂度：** 查找最多 $O(n)$，向前调整最多交换 $O(n)$ 次，总时间为 $O(n)$，辅助空间 $O(1)$。这道题的重点在于同时维护**相邻双向指针的完整连接关系**。
-
----
-
-# 9. 考前速查与自测
-
-## 9.1 关键操作只记住这些核心语句
-
-| 操作 | 关键代码 / 条件 | 常见错误 |
-|---|---|---|
-| 顺序表按位序取值 | `data[i-1]` | 写成 `data[i]` |
-| 顺序表插入 | `data[j]=data[j-1]`，**倒序**移动 | 从左往右导致覆盖 |
-| 顺序表删除 | `data[j-1]=data[j]`，**正序**移动 | 先覆盖再保存被删值 |
-| 单链表插入 | `s->next=p->next; p->next=s;` | 指针修改顺序错误 |
-| 单链表删除 | `q=p->next; p->next=q->next; delete q;` | 释放后访问 `q` |
-| 单链表遍历 | `p=p->next` | 忘记更新指针造成死循环 |
-| 单链表逆置 | 先 `next=p->next`，再 `p->next=prev` | 后继地址丢失 |
-| 双向链表删除 | 两个方向都绕过被删结点 | 只修改 `next` |
-| 非循环链表尾部 | `next==nullptr` | 与循环链表混淆 |
-| 循环链表遍历结束 | `p==head`（带头结点） | 用 `p==nullptr` 结束 |
-
-## 9.2 十个应能直接回答的问题
-
-1. 线性表的逻辑关系如何定义？空表有多长？
-2. 位序 $i$ 与数组下标如何对应？
-3. 为什么顺序表能够随机存取？
-4. 顺序表插入为何从后往前移动？删除为何相反？
-5. 头指针、头结点和首元结点分别是什么？
-6. 为什么按位序访问单链表是 $O(n)$？
-7. 什么条件下单链表插入删除才是 $O(1)$？
-8. 普通单链表与循环链表的遍历终止条件有什么区别？
-9. 双向链表为什么要维护前驱和后继两个方向？
-10. 为什么稀疏多项式适合只存储非零项？相加为何可以使用有序归并？
-
-> [!summary] 本章最终框架
-> **一条逻辑关系，两种基本存储：** 顺序表靠**连续地址**保存相邻关系，单链表靠**指针**保存相邻关系。
+> [!question] 自测题
+> 给定带头结点链表 `12→20→35→47`：如果要在 35 之前插入 30，请写出 `p`、`s` 的指向关系，以及两条指针语句的先后顺序。随后删除 20，指出哪条指针首先需要重新指向、哪一个结点最终释放，并分析若只给出“位序 2”时的整体时间复杂度。
 >
-> **两类主要代价：** 顺序表按位序访问快但插删可能要**移动元素**；链表无需移动原数据但按位序访问要**逐结点定位**。
->
-> **一个通用思想：** 有序表、有序链表归并、集合交集和多项式相加，都可以利用**两个指针比较当前项并逐步推进**的方式处理。
+> **参考答案**：找到前驱 `p` 指向 20，申请 `s` 保存 30；执行 `s->next=p->next`，再执行 `p->next=s`。删除 20 时应从头结点找到其前驱（12），保存指向 20 的结点 `q`，令前驱 `next=q->next`，保存数据再 `delete q`。按位序定位需要线性遍历，整体最坏 $O(n)$。

@@ -1,14 +1,17 @@
 # 知栈 V3｜HTML 阅读优先知识库
 
-> 已将大学物理、离散数学、数据结构共 13 篇 Markdown 笔记导入本地网页；源文件保存在 `sources/`，阅读页由构建器生成。
+> 已将大学物理、离散数学、数据结构、面向对象 C++ 共 27 篇 Markdown 笔记导入本地网页；源文件保存在 `sources/`，阅读页由构建器生成。
 
 ## 当前收录
 
 - 大学物理：第 12 章气体动理论、第 13 章热力学基础、第 14 章振动、第 15 章波动。四章正文和 145 张配图以对应 ZIP 为准。
-- 离散数学：命题逻辑第 1–5 讲。
-- 数据结构：第 2–5 章。
+- 离散数学：命题逻辑第 1–5 讲、推理综合复习、一阶逻辑及集合专题。
+- 数据结构：第 2–7、9 章。
+- 面向对象 C++：第 5–8 讲。
 
-每篇笔记都有双侧思维导图，节点可直接跳转到正文；导图根据当前 Markdown 标题层级生成。新版大学物理四章分别含 40、28、42、35 张 ZIP 原配图，并保留第 12～14 章已有的 10 个参数交互图与麦克斯韦速率分布实验室。其余课程的原有图解和交互组件继续保留。四个 ZIP 导入时只将图片引用改写为本地相对路径，并将 Obsidian `![[图片]]` 引用改为标准 Markdown 图片语法；正文文字与公式来自 ZIP。
+2026-11-24 批次从 28 个 ZIP 中遴选 21 篇导入并保留 1321 个被正文引用的原始图片文件；四份物理 ZIP 与现有章节正文一致，无需再次导入。详见 [ZIP 更新记录](docs/ZIP_知识库更新记录_2026-11-24.md)及 `docs/archive-import-report.json`。
+
+每篇笔记都有双侧思维导图，节点可直接跳转到正文；导图根据当前 Markdown 标题层级生成。大学物理四章分别含 40、28、42、35 张 ZIP 原配图，并保留第 12～14 章已有的 10 个参数交互图与麦克斯韦速率分布实验室。新版数据结构、离散数学和 C++ 讲义以所选 ZIP 的专题插图为主；原有数据结构算法步骤组件和命题逻辑交互真值表仍可使用。ZIP 导入时只规范化图片路径与 Obsidian 图片嵌入语法，正文文字与公式来自 ZIP。
 
 直接打开根目录的 `index.html`，即可从首页进入所有课程页面。新版第 14 章的图片已随 ZIP 导入；详情见 `docs/conversion-report.json`。
 
@@ -68,7 +71,7 @@ python tools/build.py --check
 
 构建器会自动生成独立 HTML、分级课程导航、搜索索引、公式 SVG、Callout 语义色样式，并输出迁移报告到 `docs/conversion-report.json`。后续可重复执行；不会修改 `sources/` 原文，但会**覆盖自动生成的 HTML**。
 
-若需重新导入第 12～15 章的四个权威 ZIP，运行 `python tools/import_physics_zips.py "ZIP 所在文件夹"`，再重新构建。导入脚本会验证四个压缩包中的配图引用是否齐全。
+若需重新导入第 12～15 章的四个权威 ZIP，运行 `python tools/import_physics_zips.py "ZIP 所在文件夹"`，再重新构建。其他课程的已遴选 ZIP 使用 `python tools/import_archive_zips.py "ZIP 存档根目录"`。后者会先核验全部 21 份 ZIP，再把正文和所引用的图片写入 `sources/`，不导入附属代码、重复 PNG/SVG 副本或说明文件。选目清单位于 `tools/import_archive_zips.py`，新增课程或改选版本时先审查该清单和 `config/courses.json`。
 
 需要增加一个课程文件夹时，先在 `config/courses.json` 中添加该课程的 `id`、`name` 和 `order`。
 
@@ -91,6 +94,7 @@ python tools/prepare_netlify.py
 ```bash
 python tools/build.py --check
 python tests/smoke.py
+python tests/code_blocks.py
 python tests/test_site_integrity.py
 python tools/check_site_integrity.py --require-tracked
 git status -sb
@@ -117,6 +121,8 @@ git status -sb
 - `tools/visual_catalog.py`：逐章审核过的专题图解配置；构建时校验标题匹配和每篇至少 15 幅。
 - `tools/upgrade_diagrams.py`：以定量函数图与结构图替换早期文字框图。
 - `tools/build.py`：Python 批量构建。
+- `tools/import_archive_zips.py`：经遴选的 Obsidian ZIP 批量导入、图片引用转换与安全校验。
+- `tools/archive_visuals.py`：原 ZIP 配图较少的一阶逻辑章节的真值表、关系矩阵与推理规则图。
 - `tools/prepare_netlify.py`：生成并检查轻量的手动上传目录。
 - `tools/check_site_integrity.py`：递归检查生成页面、静态资源和可选 Git 发布树。
 - `tools/render_math.js`：MathJax 构建阶段转换 LaTeX 为 SVG。

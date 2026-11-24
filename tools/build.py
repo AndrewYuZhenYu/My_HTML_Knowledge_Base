@@ -18,6 +18,8 @@ from learning_widgets import STEPS, TRUTHS, render_widget as render_learning_wid
 from upgrade_diagrams import UPGRADES, INTERACTIVE_KINDS, render_upgrade
 from code_blocks import enhance as enhance_code_blocks
 from check_site_integrity import Checker
+from import_archive_zips import selected_source_keys
+from archive_visuals import SUPPLEMENTS
 
 ROOT=Path(__file__).resolve().parents[1]
 COURSE_CONFIG=json.loads((ROOT/'config/courses.json').read_text(encoding='utf-8'))
@@ -30,10 +32,19 @@ CONFIG_IDS={c['id'] for c in COURSES}
 OVERRIDES=COURSE_CONFIG.get('overrides',{})
 md=mistune.create_markdown(escape=True,plugins=['table','strikethrough','url'])
 ZIP_PHYSICS={f'physics/{name}.md' for name in ('12 气体动理论','13 热力学基础｜知识体系重构版','14 振动 扩充版','15 波动')}
+ZIP_IMPORTED=selected_source_keys()
+ZIP_WIDGET_MATCHES={
+ 'data-structures/GPT02 数据结构第二章：线性表.md':'在第 $i$ 个位置之前插入',
+ 'data-structures/GPT03数据结构第三章：栈和队列.md':'14. 循环队列：空间复用与取模运算',
+ 'data-structures/GPT04 数据结构第四章：串.md':'4.2 BF（Brute Force）朴素匹配',
+ 'data-structures/GPT05 数据结构第五章：数组和广义表.md':'3.3 稀疏矩阵转置：正确性与有序性是两个问题',
+ 'discrete-math/GPT01命题逻辑基础：命题、联结词、命题公式与真值表.md':'8. 真值表：从输入组合到公式分类',
+ 'discrete-math/GPT02命题逻辑命题公式、逻辑等值式与联结词完备集.md':'3.4 蕴涵和等价联结词的消去',
+}
 
 def visual_specs(key):
- # These ZIP chapters already contain a complete, chapter-specific figure set.
- return [] if key in ZIP_PHYSICS else SPECS.get(key,[])+EXTRA_SPECS.get(key,[])
+ # Archive chapters carry figures at the exact knowledge points in their notes.
+ return SUPPLEMENTS.get(key,[]) if key in ZIP_IMPORTED else ([] if key in ZIP_PHYSICS else SPECS.get(key,[])+EXTRA_SPECS.get(key,[]))
 
 
 def safe_slug(s):
@@ -71,7 +82,11 @@ def docs_list():
    if output in outputs:raise ValueError(f'output collision: {outputs[output]} and {rel} -> {output}')
    outputs[output]=rel
    docs.append({'course':c,'source':src,'source_rel':rel,'output':output,'title':override.get('title') or src.stem,'description':override.get('description','')})
- return docs
+ def order(d):
+  number=re.match(r'(\d+)',d['output'].name)
+  default=int(number.group(1))*10 if number else 1000
+  return (d['course'].get('order',100),OVERRIDES.get(d['source_rel'],{}).get('order',default),d['source_rel'].casefold())
+ return sorted(docs,key=order)
 
 def global_url(path):return path.relative_to(ROOT).as_posix()
 
@@ -120,6 +135,8 @@ def wrap(title,subtitle,inner,output,docs, *, current='note',toc=None,extra_scri
 class Batch:
  def __init__(self):self.formulas=OrderedDict();self.math_counts={};self.warnings=[];self.math_errors=[]
  def protect(self,text,doc_key):
+  # Keep Obsidian YAML in the authoritative source, but do not print it as prose.
+  text=re.sub(r'\A---\r?\n.*?\r?\n---\r?\n','',text,count=1,flags=re.S)
   # Math is protected before Markdown punctuation processing (both display and inline).
   # Leave fenced and inline code intact: dollar signs there are examples, not formulas.
   code={};lines=[];fence=None;block=[]
@@ -243,10 +260,15 @@ def transform(doc,batch,svg_map):
      fragment='#'+raw.split('#',1)[1] if '#' in raw else ''
      node[attr]=os.path.relpath(matching['output'],doc['output'].parent).replace(os.sep,'/')+fragment
     continue
-   # Hash a repository-relative path so builds on another machine keep identical URLs.
-   media_key=source_candidate.relative_to(SOURCES.resolve()).as_posix()
-   dest=ROOT/'assets'/'imported'/safe_slug(doc['course']['id'])/(hashlib.sha1(media_key.encode()).hexdigest()[:10]+'-'+source_candidate.name)
-   dest.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(source_candidate,dest)
+   if key in ZIP_IMPORTED:
+    # Selected archive media already lives inside this repository. Reuse those
+    # bytes directly instead of creating a second 100 MB copy in assets/imported.
+    dest=source_candidate
+   else:
+    # Hash a repository-relative path so builds on another machine keep identical URLs.
+    media_key=source_candidate.relative_to(SOURCES.resolve()).as_posix()
+    dest=ROOT/'assets'/'imported'/safe_slug(doc['course']['id'])/(hashlib.sha1(media_key.encode()).hexdigest()[:10]+'-'+source_candidate.name)
+    dest.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(source_candidate,dest)
    node[attr]=os.path.relpath(dest,doc['output'].parent).replace(os.sep,'/')
  heads=[]
  for i,heading in enumerate(soup.select('h1,h2,h3,h4,h5,h6'),1):
@@ -283,6 +305,7 @@ def transform(doc,batch,svg_map):
  for widget_kind,widget_specs in (('stepper',STEPS),('truth',TRUTHS)):
   spec=widget_specs.get(key)
   if not spec:continue
+  if key in ZIP_WIDGET_MATCHES:spec=dict(spec,match=ZIP_WIDGET_MATCHES[key])
   matches=[h for h in soup.select('h1,h2,h3,h4,h5,h6') if spec['match'] in heading_label(h)]
   if len(matches)!=1:raise ValueError(f'{key}: {widget_kind} heading {spec["match"]!r} matched {len(matches)} sections')
   matches[0].insert_after(BeautifulSoup(render_learning_widget(spec,widget_kind),'html.parser'))

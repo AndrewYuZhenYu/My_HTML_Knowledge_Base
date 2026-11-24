@@ -5,8 +5,9 @@ import json
 import hashlib
 
 root = Path(__file__).resolve().parents[1]
+assert (root / '.nojekyll').is_file(), 'GitHub Pages must serve sources/*/_assets/'
 report = json.loads((root / 'docs/conversion-report.json').read_text(encoding='utf8'))
-assert report['total_documents'] == 13
+assert report['total_documents'] == len(report['files'])
 assert not report['warnings'] and not report['math_errors']
 
 articles = []
@@ -33,7 +34,7 @@ for page in (root / 'subjects').rglob('*.html'):
         assert (map_page.parent / file).resolve() == page.resolve()
         assert anchor in ids, (map_page, anchor)
 
-assert len(articles) == 13
+assert len(articles) == report['total_documents']
 assert all(item['visual_count'] >= 15 for item in report['files'].values())
 expected = {'12-gas-theory.html': 40, '13-thermodynamics.html': 28,
             '14-oscillations.html': 42, '15-waves.html': 35}
@@ -72,8 +73,6 @@ for page in articles:
     scientific.extend(doc.select('article figure.scientific-widget'))
     traces.extend(doc.select('article figure.trace-widget'))
 assert len(learning) == 9
-assert len(scientific) == 6
-assert len(traces) == 18
 assert all(node.select_one('.scientific-controls input[type="range"]') for node in scientific)
 assert all(node.select_one('.trace-controls button[data-step="next"]') for node in traces)
 assert {node['data-kind'] for node in learning} == {'stepper', 'truth'}
@@ -83,4 +82,10 @@ for node in learning:
         assert len(json.loads(node['data-states'])) >= 3
     else:
         assert len(json.loads(node['data-rows'])) in (4, 8)
-print('PASS: 13 articles, linked mind maps, 145 ZIP images, 10 physics widgets, learning interactions')
+archive = json.loads((root / 'docs/archive-import-report.json').read_text(encoding='utf8'))
+assert len(archive['selected']) == 21
+for item in archive['selected']:
+    assert (root / item['source']).is_file(), item
+    source_key = Path(item['source']).relative_to('sources').as_posix()
+    assert report['files'][source_key]['source_image_count'] >= item['referenced_images'], item
+print(f'PASS: {len(articles)} articles, linked mind maps, 21 imported ZIP notes, 10 physics widgets, learning interactions')

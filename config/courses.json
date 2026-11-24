@@ -18,6 +18,12 @@
       "name": "数据结构",
       "icon": "▦",
       "order": 30
+    },
+    {
+      "id": "cpp-oop",
+      "name": "面向对象 C++",
+      "icon": "⌘",
+      "order": 40
     }
   ],
   "overrides": {
@@ -76,6 +82,20 @@
     "data-structures/GPT05 数据结构第五章：数组和广义表.md": {
       "output": "05-arrays-generalized-lists.html",
       "title": "第5章 数组和广义表"
-    }
+    },
+    "data-structures/06 树和二叉树.md": {"output": "06-trees.html", "title": "第6章 树和二叉树"},
+    "data-structures/07 图.md": {"output": "07-graphs.html", "title": "第7章 图"},
+    "data-structures/09 查找.md": {"output": "09-search.html", "title": "第9章 查找"},
+    "discrete-math/04-05 推理与自然推理综合.md": {"output": "04-05-inference-review.html", "title": "推理与自然推理综合复习", "order": 55},
+    "discrete-math/06 一阶逻辑基础.md": {"output": "06-first-order-logic.html", "title": "一阶逻辑基础"},
+    "discrete-math/07 一阶逻辑等值式.md": {"output": "07-first-order-equivalence.html", "title": "一阶逻辑等值式"},
+    "discrete-math/08 谓词逻辑推理.md": {"output": "08-predicate-inference.html", "title": "谓词逻辑推理"},
+    "discrete-math/09 集合的基本概念.md": {"output": "09-sets.html", "title": "集合的基本概念"},
+    "discrete-math/10 集合运算与计数.md": {"output": "10-set-operations.html", "title": "集合运算与计数"},
+    "discrete-math/11 集合恒等式.md": {"output": "11-set-identities.html", "title": "集合恒等式"},
+    "cpp-oop/05 友元与程序组织.md": {"output": "05-friends-organization.html", "title": "第5讲 友元与程序组织"},
+    "cpp-oop/06 重载与类型转换.md": {"output": "06-overloading-conversion.html", "title": "第6讲 重载与类型转换"},
+    "cpp-oop/07 继承与派生类.md": {"output": "07-inheritance.html", "title": "第7讲 继承与派生类"},
+    "cpp-oop/08 多态性与虚函数.md": {"output": "08-polymorphism.html", "title": "第8讲 多态性与虚函数"}
   }
 }

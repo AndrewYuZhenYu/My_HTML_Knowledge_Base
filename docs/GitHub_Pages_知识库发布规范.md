@@ -69,7 +69,7 @@
 ![驻波示意图](./_assets/zip15/images/standing_wave.png)
 ```
 
-图片必须真实位于所写相对路径。构建器会复制到 `assets/imported/<course>/`，并把生成 HTML 的 `src` 改为从 HTML 所在目录出发的相对路径。导入 ZIP 时使用现有[导入脚本](../tools/import_physics_zips.py)或等效校验流程，先确认压缩包内每一处图片引用都能匹配到附件。Obsidian 的 `![[图片]]` 语法需要在导入时转换；不要指望标准 Markdown 渲染器自动识别。
+图片必须真实位于所写相对路径。物理旧章节的构建器会复制图片到 `assets/imported/<course>/`；本批次遴选 ZIP 的图片位于 `sources/<course>/_assets/<稳定目录名>/`，构建器直接生成相对 URL 引用，不再重复复制。仓库根目录必须保留 `.nojekyll`，以便 Pages 发布 `_assets`。导入物理 ZIP 使用[物理导入脚本](../tools/import_physics_zips.py)，导入其他已遴选章节使用[批量导入脚本](../tools/import_archive_zips.py)；它会检查每处图片引用并把 Obsidian `![[图片]]` 转为标准 Markdown 图片。附件目录名不得含空格，文件名中的空格、中文和特殊字符须在 Markdown URL 中编码，避免解析器把图片当作普通文字。
 
 不通过删除、降采样、重新压缩图片来“修复”路径问题。`tests/smoke.py` 会核对现有四章 145 张导入图片与源文件的字节一致。新增章节应增加相应的内容或资源测试，而不是只检查页面能打开。
 
@@ -105,6 +105,7 @@ npm ci
 ```bash
 python tools/build.py --check
 python tests/smoke.py
+python tests/code_blocks.py
 python tests/test_site_integrity.py
 python tools/check_site_integrity.py
 ```

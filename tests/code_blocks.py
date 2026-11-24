@@ -3,6 +3,7 @@ from pathlib import Path
 from html import unescape
 import re
 import sys
+import json
 
 from bs4 import BeautifulSoup
 
@@ -31,5 +32,6 @@ for doc in docs_list():
         assert rendered.select_one('script[src$="code-copy.js"]'), doc['source_rel']
     total += len(blocks)
 
-assert total == 116, total
+report = json.loads((root / 'docs/conversion-report.json').read_text(encoding='utf8'))
+assert total == sum(item['code_blocks'] for item in report['files'].values()), total
 print(f'PASS: {total} highlighted code blocks preserve exact source and have copy controls')

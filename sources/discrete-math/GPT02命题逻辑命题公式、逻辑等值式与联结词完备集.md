@@ -1,959 +1,984 @@
-# 命题逻辑：命题公式、逻辑等值式与联结词完备集
-
-> [!abstract] 知识导航
-> 本章的学习主线为：**命题公式与赋值 → 真值表 → 逻辑等值 → 基本等值律 → 等值演算 → 真值函数 → 联结词完备集 → 实际应用**。
->
-> - **基础层**：看懂命题公式、计算真值、判定重言式与矛盾式。
-> - **核心层**：理解 $\leftrightarrow$ 和 $\Leftrightarrow$ 的区别，熟练使用等值律证明、化简。
-> - **提高层**：理解真值函数的数量、完备集的判定与构造，能够完成指定联结词集下的公式转换。
-> - **应用层**：将语言条件抽象为公式，通过等值演算求解。
-
+---
+tags:
+  - 离散数学/命题逻辑
+  - 离散数学/等值演算
+  - 离散数学/联结词完备集
+aliases:
+  - 命题逻辑等值式与联结词完备集
 ---
 
-## 一、命题公式、真值指派与真值表
+# 命题逻辑：逻辑等值式、等值演算与联结词完备集
 
-### 1. 逻辑联结词回顾
+逻辑学习中，**公式的外表可能完全不同，但其在每一种赋值下的真值可以完全相同**。这种不依赖自然语言含义、只依赖真值结构的关系，就是逻辑等值。掌握等值式后，可以将复杂公式逐步化简，还能回答更深一层的问题：**究竟需要保留哪些联结词，才能表达全部命题逻辑的真值关系？**
 
-命题逻辑将命题的真值记为 **1（真）** 或 **0（假）**。常用五种联结词如下。
+本章主线：
 
-| 联结词 | 名称 | 公式 | 真值成立的条件 |
-| --- | --- | --- | --- |
-| $\neg$ | 否定 | $\neg p$ | $p$ 为假 |
-| $\land$ | 合取 | $p\land q$ | $p,q$ 均真 |
-| $\lor$ | 析取 | $p\lor q$ | $p,q$ 至少一个真 |
-| $\to$ | 蕴涵 | $p\to q$ | **除 $p=1,q=0$ 外均为真** |
-| $\leftrightarrow$ | 等价联结词 | $p\leftrightarrow q$ | $p,q$ 真值相同 |
+**命题公式与真值指派 → 判断等值 → 常用等值律 → 代入、置换与等值演算 → 典型推理应用 → 真值函数 → 联结词完备集及其证明 → 公式改写与逻辑线路。**
 
-| $p$ | $q$ | $\neg p$ | $p\land q$ | $p\lor q$ | $p\to q$ | $p\leftrightarrow q$ |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| 0 | 0 | 1 | 0 | 0 | 1 | 1 |
-| 0 | 1 | 1 | 0 | 1 | 1 | 0 |
-| 1 | 0 | 0 | 0 | 1 | 0 | 0 |
-| 1 | 1 | 0 | 1 | 1 | 1 | 1 |
+## 1. 基础衔接：命题公式、真值指派与真值表
 
-> [!warning] 蕴涵的关键特殊性
-> $p\to q$ **仅在前件真、后件假时为假**。特别地，$p=0$ 时，无论 $q$ 真或假，整个蕴涵式均为真。数理逻辑中的联结词按真值定义，不要求连接的两个命题在日常意义上存在因果关系。
+### 1.1 命题变项与五种基本联结词
 
-> [!example] 自然语言中的“只有”和“除非”
-> 令 $p$：“今天是星期一”，$q$：“明天是星期二”。
+命题是能够确定真假的陈述句。一般用 $p,q,r$ 等表示命题变项，规定 $1$ 为真、$0$ 为假。对命题进行组合时，主要使用以下联结词：
+
+| 联结词 | 名称 | 读法和真值条件 |
+|---|---|---|
+| $\neg p$ | 否定 | 与 $p$ 的真值相反 |
+| $p\land q$ | 合取 | 两者都真才为真 |
+| $p\lor q$ | 析取 | 至少一个真就为真，允许同时真 |
+| $p\to q$ | 蕴涵 | **只有前件真、后件假才为假** |
+| $p\leftrightarrow q$ | 等价联结词 | 两者真值相同才为真 |
+
+![logic_truth_five_7d596023-e77f-4336-8855-1a5fbf8b4f41](./_assets/b46f918791/logic_truth_five_7d596023-e77f-4336-8855-1a5fbf8b4f41.png)
+
+*图：五种联结词真值表与蕴涵唯一为假的赋值。*
+
+> [!warning] 对蕴涵的常见误解
+> 不能将 $p\to q$ 理解为“先发生 $p$，然后发生 $q$”，也不能要求两个命题在现实内容上存在因果联系。在**实质蕴涵**中，只检查真值。只要 $p=0$，$p\to q$ 就为真，不论 $q$ 是真是假。
+
+自然语言中特别注意：
+
+- “只要 $p$，就 $q$”：$p\to q$。
+- “只有 $p$，才 $q$”：$q\to p$，因为 $p$ 是 $q$ 的必要条件。
+- “$p$ 当且仅当 $q$”：$p\leftrightarrow q$。
+- “除非 $r$，否则若 $p$ 则 $q$”：$\neg r\to(p\to q)$，也等值于 $(p\land\neg r)\to q$。
+
+例如，令 $p$：“今天是星期一”，$q$：“明天是星期二”，$r$：“明天是星期三”。“只有今天是星期一，明天才是星期二”写成 $q\to p$，不是 $p\to q$。
+
+### 1.2 合式公式的递归定义
+
+**命题公式**（well-formed formula, wff），又称**合式公式**，由以下有限步骤形成：
+
+1. 单个命题变项是公式；
+2. 若 $A$ 是公式，则 $\neg A$ 是公式；
+3. 若 $A,B$ 是公式，则 $(A\land B)$、$(A\lor B)$、$(A\to B)$、$(A\leftrightarrow B)$ 也是公式；
+4. 只有通过上述规则**有限次**形成的符号串才是公式。
+
+例如 $((p\land q)\to r)$ 的最外层联结词是 $\to$，其左子公式是 $p\land q$，右子公式是 $r$。这可以看成一棵由子公式逐级构造的语法树：
+
+![logic_formula_tree_df4fd2a3-b5d4-4316-b290-4103ed2bb631](./_assets/b46f918791/logic_formula_tree_df4fd2a3-b5d4-4316-b290-4103ed2bb631.png)
+
+*图：合式公式语法树：原子命题如何递归组成更大公式。*
+
+书写时通常可以根据约定的联结词优先级省略部分括号，但做等值演算时，**复杂公式宜保留必要括号**，避免误读。
+
+### 1.3 真值指派、成真赋值和成假赋值
+
+设 $A$ 中有 $n$ 个不同命题变项 $p_1,p_2,\ldots,p_n$。对它们分别指定 $0$ 或 $1$ 的组合，称为一个**真值指派**（或赋值）。当变项顺序确定后，可以用一个 $n$ 位二进制串表示。
+
+- 使 $A=1$ 的赋值叫**成真赋值**；
+- 使 $A=0$ 的赋值叫**成假赋值**。
+
+$n$ 个变项各有两种取值，所以不同赋值总数是
+
+$$
+2^n.
+$$
+
+![logic_assignment_growth_dfccbf97-e9a9-455c-b340-aa8f82cbf136](./_assets/b46f918791/logic_assignment_growth_dfccbf97-e9a9-455c-b340-aa8f82cbf136.png)
+
+*图：变项数量增加时赋值组合与真值函数数量的双指数关系。*
+
+> [!example] 不必列完整真值表，也能找成假赋值
+> 求 $A=(p\land q)\to\neg(q\lor r)$ 的成假赋值。
 >
-> - “若今天是星期一，则明天是星期二”：$p\to q$。
-> - “**只有**今天是星期一，明天**才**是星期二”：$q\to p$（“只有 $p$，才 $q$”中，$p$ 是必要条件）。
-> - “今天是星期一当且仅当明天是星期二”：$p\leftrightarrow q$。
+> 蕴涵为假，必须同时有 $p\land q=1$ 与 $\neg(q\lor r)=0$。前一个条件要求 $p=q=1$，此时 $q\lor r=1$ 自动成立，不限制 $r$。
 >
-> 再令 $p$：“别人有困难”，$q$：“老王帮助别人”，$r$：“困难解决了”。
->
-> “只要别人有困难，老王就帮助别人，除非困难解决了”可表示为：
->
-> $$\neg r\to(p\to q)$$
->
-> 或等值地写作：
->
-> $$(p\land\neg r)\to q$$
->
-> 这里“除非困难解决了”限定了前述帮助义务适用的情形。
+> 因此仅有 $(p,q,r)=(1,1,0)$、$(1,1,1)$ 两组成假赋值，其余六组均成真。
 
-### 2. 命题公式（合式公式）
+再看 $B=(p\land q)\to r$。它只有 $(p,q,r)=(1,1,0)$ 一组成假赋值，在三维赋值结构中可以直观看到：
 
-**命题公式（well-formed formula，wff）**按下列规则递归构成：
+![logic_assignment_cube_eec262d9-5f1d-4216-96b0-83ff017ceba4](./_assets/b46f918791/logic_assignment_cube_eec262d9-5f1d-4216-96b0-83ff017ceba4.png)
 
-1. 单个命题变项 $p,q,r,\dots$ 是命题公式。
-2. 若 $A$ 是命题公式，则 $\neg A$ 也是命题公式。
-3. 若 $A,B$ 是命题公式，则 $(A\land B)$、$(A\lor B)$、$(A\to B)$、$(A\leftrightarrow B)$ 也是命题公式。
-4. **只有有限次应用以上规则得到的式子**才是命题公式。
+*图：三元赋值立方体中唯一使蕴涵公式成假的顶点。*
 
-括号用于明确联结范围；在不产生歧义时可依通常约定省略部分括号。
+### 1.4 重言式、矛盾式与可满足式
 
-> [!note] 公式与具体命题的区别
-> $p\land q$ 是一个符号形式。若未指定 $p,q$ 的真值，它不具有固定的真值；指定真值指派后，才能算出它在该指派下的真值。不要把“合式公式”与“恒真命题”混淆。
+| 公式类型 | 判定条件 | 典型例子 |
+|---|---|---|
+| **重言式 / 永真式** | 所有赋值均使公式为 $1$ | $p\lor\neg p$、$p\to p$ |
+| **矛盾式 / 永假式** | 所有赋值均使公式为 $0$ | $p\land\neg p$ |
+| **可满足式** | **至少存在一组**成真赋值 | $p\land q$；重言式也可满足 |
+| **可满足而非重言式** | 至少一真，且至少一假 | $p\to q$、$p\land q$ |
 
-### 3. 真值指派、成真指派与成假指派
+> [!important] 逻辑包含关系
+> 所有重言式都是可满足式，但可满足式不一定是重言式。矛盾式不可满足。对任何公式 $A$，$A$ 是重言式当且仅当 $\neg A$ 是矛盾式。
 
-设公式 $A$ 涉及 $n$ 个不同的命题变项 $p_1,p_2,\dots,p_n$。
+真值表最右侧输出列全为 $1$、全为 $0$ 或真假混合，分别对应该分类。重言式还有两个常用性质：两个重言式的合取、析取仍是重言式；若 $A$ 与 $A\to B$ 均为重言式，则 $B$ 也是重言式。
 
-- 对所有变项逐个指定一个确定真值，称为 **真值指派（赋值）**。
-- 若在某一指派下 $A=1$，该指派称为 **成真指派（成真赋值）**。
-- 若在某一指派下 $A=0$，该指派称为 **成假指派（成假赋值）**。
-- 每个变项有两种取值，所以 $n$ 元公式有 **$2^n$ 种不同的真值指派**。
+> [!example] 逆否命题的重言关系
+> 对公式 $(p\to q)\to(\neg q\to\neg p)$，由于 $p\to q$ 和 $\neg q\to\neg p$ 等值，它们形成的蕴涵在所有四组赋值下都是 $1$，因此为重言式。
 
-$$\boxed{\text{真值指派数}=2^n}$$
+## 2. 逻辑等值：两种形式相同的真值规律
 
-例如，三元公式的指派可依 $(p,q,r)$ 的顺序写为 $(0,1,0)$，一共有 $2^3=8$ 种。
+### 2.1 逻辑等值的定义与符号
 
-> [!example] 由蕴涵的成假条件直接求赋值
-> 求 $A=(p\land q)\to\neg(q\lor r)$ 的成真、成假指派。
->
-> 蕴涵式成假，必须前件为 1、后件为 0：
->
-> $$p\land q=1,\qquad \neg(q\lor r)=0$$
->
-> 因而 $p=q=1$，此时 $q\lor r=1$ 自动满足，$r$ 可以任取。
->
-> **成假指派**（按 $p,q,r$ 顺序）：$(1,1,0)$、$(1,1,1)$。
->
-> **成真指派**：$(0,0,0)$、$(0,0,1)$、$(0,1,0)$、$(0,1,1)$、$(1,0,0)$、$(1,0,1)$。
+若命题公式 $A,B$ **在所有有关命题变项的真值指派下真值完全相同**，称二者逻辑等值或逻辑等价，记为
 
-### 4. 公式的三类重要性质
+$$
+A\Leftrightarrow B.
+$$
 
-设 $A$ 为 $n$ 元命题公式。
+这里的 $\Leftrightarrow$ 表示**两公式之间的元语言关系**：无论怎样赋值，两侧的输出永远一致。
 
-| 类型 | 定义 | 真值表末列 | 典型例子 |
-| --- | --- | --- | --- |
-| **重言式（永真式）** | 所有赋值下都为真 | 全 1 | $p\lor\neg p$、$p\to p$ |
-| **矛盾式（永假式）** | 所有赋值下都为假 | 全 0 | $p\land\neg p$ |
-| **可满足式** | 至少存在一个成真指派 | 至少一个 1 | $p$、$p\lor q$，也包括所有重言式 |
+相反，$A\leftrightarrow B$ 是**可以放入公式内部的等价联结词**，表示在一次给定赋值下 $A,B$ 的真值是否一致。因此：
 
-> [!important] 分类关系要分清
-> - ==重言式一定是可满足式==，二者不是互斥类别。
-> - **矛盾式不可满足**；反之，不可满足的公式就是矛盾式。
-> - 若公式既有成真赋值也有成假赋值，则它是**可满足但非重言式**。
-> - 判断“可满足”，只需找到一个成真赋值；判断“重言式”，必须证明**所有赋值**都为真。
+$$
+\boxed{A\Leftrightarrow B\quad\Longleftrightarrow\quad A\leftrightarrow B\text{ 是重言式。}}
+$$
 
-**相关性质：**
+![logic_biconditional_test_0064205c-4108-43f6-9c73-bef05cc04f7e](./_assets/b46f918791/logic_biconditional_test_0064205c-4108-43f6-9c73-bef05cc04f7e.png)
 
-- 两个重言式的合取仍是重言式，其析取也仍是重言式。
-- 两个矛盾式的合取、析取仍是矛盾式。
-- 若 $A$ 与 $A\to B$ 均为重言式，则 $B$ 也是重言式。
+*图：A与B的真值相等当且仅当A↔B取1的四种情形。*
 
-> [!example] 直接化简判别矛盾式
-> $$\begin{aligned}
-> \neg(p\to q)\land q
-> &\Leftrightarrow\neg(\neg p\lor q)\land q\\
-> &\Leftrightarrow(p\land\neg q)\land q\\
-> &\Leftrightarrow p\land(\neg q\land q)\\
-> &\Leftrightarrow p\land0\\
-> &\Leftrightarrow0
-> \end{aligned}$$
->
-> 因此其**成真指派为空**，四个二元指派全是成假指派。
+> [!warning] 两个箭头不能混写
+> $A\leftrightarrow B$ 本身是命题公式，仍然可能真或假；$A\Leftrightarrow B$ 则是关于**两公式逻辑关系**的断言。例如 $p\leftrightarrow q$ 并非重言式，但 $p\to q\Leftrightarrow\neg p\lor q$ 成立。
 
-### 5. 真值表的构造与用途
+### 2.2 判断是否等值的两条路径
 
-真值表按照每一种指派，逐层计算子公式的真值，并在最后一列记录目标公式的值。它可以用于：
+**真值表法**：枚举所有赋值，逐行求 $A,B$ 的真值，比较它们的输出列。所有行对应相同才等值。优点是直观且机械可靠；缺点是变项数增大后行数 $2^n$ 迅速增长。
 
-1. 求公式的全部成真、成假指派。
-2. 判断公式是重言式、矛盾式还是可满足但非重言式。
-3. 比较两个公式在每个赋值下的真值，从而判断等值关系。
+**等值演算法**：用已知的基本等值律逐步改写公式，直到两侧转化为同一个表达式。适合较长公式及理论证明，要求每一步都说明所依据的等值律。
 
-> [!tip] 构造真值表的标准步骤
-> **列不同变项 → 按 $00\dots0$ 到 $11\dots1$ 枚举 → 计算内部子式 → 计算最外层式 → 观察最后一列。**
->
-> 例如 $p\to(q\to r)$，先算 $q\to r$，再算外层蕴涵。不要从左到右不分括号地计算。
+> [!tip] 如何最快证明“不等值”
+> 只需要给出**一个反例赋值**，使 $A,B$ 真值不同；不必完成整张真值表。证明等值则需要覆盖全部赋值，或给出有效的等值推导。
 
-| $p$ | $q$ | $r$ | $q\to r$ | $p\to(q\to r)$ | $(p\land q)\to r$ |
-| :---: | :---: | :---: | :---: | :---: | :---: |
-| 0 | 0 | 0 | 1 | 1 | 1 |
-| 0 | 0 | 1 | 1 | 1 | 1 |
-| 0 | 1 | 0 | 0 | 1 | 1 |
-| 0 | 1 | 1 | 1 | 1 | 1 |
-| 1 | 0 | 0 | 1 | 1 | 1 |
-| 1 | 0 | 1 | 1 | 1 | 1 |
-| 1 | 1 | 0 | 0 | 0 | 0 |
-| 1 | 1 | 1 | 1 | 1 | 1 |
+![logic_nonequivalence_counterexample_440ea5cd-e99e-4130-b600-ffc4e3bd7e4e](./_assets/b46f918791/logic_nonequivalence_counterexample_440ea5cd-e99e-4130-b600-ffc4e3bd7e4e.png)
 
-两公式输出列完全相同，说明它们逻辑等值。这个结论也可用等值演算证明。
+*图：以单个赋值证明两个公式真值不同。*
 
----
+### 2.3 经典三式比较
 
-## 二、逻辑等值式的定义与判定
+考虑
 
-### 1. 什么叫“逻辑等值”
+$$
+A=p\to(q\to r),\qquad
+B=(p\to q)\to r,\qquad
+C=(p\land q)\to r.
+$$
 
-> [!important] 逻辑等值式的定义
-> 若两个命题公式 $A,B$ 在**所有可能的真值指派下**均具有相同的真值，则称二者**逻辑等值（逻辑等价）**，记作：
->
-> $$\boxed{A\Leftrightarrow B}$$
->
-> 等价的判定条件是：
->
-> $$\boxed{A\Leftrightarrow B\quad\text{当且仅当}\quad A\leftrightarrow B\text{是重言式}}$$
+三个公式虽然只改变了括号和联结词，却不一定逻辑等值。下面的逐行对照展示：$A$ 与 $C$ 真值完全相同，而 $B$ 不同。
 
-逻辑等值强调“真值函数相同”，而不是说两个表达式的文字长得一样。
+![logic_truth_vector_compare_4663ca84-3234-41c3-b78c-2f5da2736f93](./_assets/b46f918791/logic_truth_vector_compare_4663ca84-3234-41c3-b78c-2f5da2736f93.png)
 
-### 2. 两种“等价”符号的严格区分
+*图：三条逻辑公式的真值向量比较，展示相同与不同的输出列。*
 
-| 符号 | 性质 | 含义 | 举例 |
-| --- | --- | --- | --- |
-| $\leftrightarrow$ | **命题联结词** | 将 $A,B$ 连成新的命题公式，其真值依赖赋值 | $p\leftrightarrow q$ |
-| $\Leftrightarrow$ | **等值关系符号** | 断言两侧的公式在所有赋值下取值相同 | $p\to q\Leftrightarrow\neg p\lor q$ |
+代数上，
 
-> [!warning] 不要混用
-> $p\leftrightarrow q$ 一般**不是**重言式；当 $p,q$ 不同真值时它为假。
->
-> $p\to q\Leftrightarrow\neg p\lor q$ 是对两个公式的**全局等值关系**的陈述。写等值演算时，使用 $\Leftrightarrow$ 连接前后步骤；在构造一个具体命题公式时，使用 $\leftrightarrow$。
+$$
+\begin{aligned}
+p\to(q\to r)
+&\Leftrightarrow \neg p\lor(\neg q\lor r)\\
+&\Leftrightarrow\neg p\lor\neg q\lor r,\\
+(p\land q)\to r
+&\Leftrightarrow\neg(p\land q)\lor r\\
+&\Leftrightarrow\neg p\lor\neg q\lor r.
+\end{aligned}
+$$
 
-### 3. 判定公式等值的两种基本方法
+所以
 
-**方法一：真值表法。** 列出所有指派，比较两个公式最终输出列。只要有一行不同，就**不等值**。
+$$
+p\to(q\to r)\Leftrightarrow(p\land q)\to r.
+$$
 
-**方法二：等值演算法。** 依据基本等值式、代入规则、置换规则和等值关系的传递性，把一个公式逐步变形成另一个公式。
+但在 $p=q=r=0$ 时，$A=1$ 而 $B=0$，因此 $A\not\Leftrightarrow B$。
 
-> [!example] 三个结构相近的蕴涵式
-> 比较：
->
-> $$A=p\to(q\to r)$$
-> $$B=(p\to q)\to r$$
-> $$C=(p\land q)\to r$$
->
-> 按上一节真值表，$A,C$ 输出列完全相同，所以：
->
-> $$\boxed{p\to(q\to r)\Leftrightarrow(p\land q)\to r}$$
->
-> 但 $B$ 与前两者不等值。取 $(p,q,r)=(0,0,0)$：$A=C=1$，$B=0$，已构成反例。
+## 3. 必须熟练掌握的逻辑等值律
 
-> [!tip] 判断“不等值”更快
-> ==证等值要求所有指派一致；证不等值只需找到一个反例指派。==
->
-> 真值表法是可靠的穷举检验；等值演算法则更适合练习题中的“证明”“化简”和“大量变项”的场景。
+以下的 $A,B,C$ 均表示**任意命题公式**，不只是单个命题变项。这些规律是可用来匹配实际子公式的**等值式模式**。
 
----
+### 3.1 关于合取、析取的代数规律
 
-## 三、常用逻辑等值律：分类、原理与使用
+| 名称 | 等值式模式 | 使用场合 |
+|---|---|---|
+| 幂等律 | $A\lor A\Leftrightarrow A$；$A\land A\Leftrightarrow A$ | 删除重复条件 |
+| 交换律 | $A\lor B\Leftrightarrow B\lor A$；$A\land B\Leftrightarrow B\land A$ | 调整条件顺序 |
+| 结合律 | $(A\lor B)\lor C\Leftrightarrow A\lor(B\lor C)$；合取同理 | 重新分组 |
+| 分配律 | $A\lor(B\land C)\Leftrightarrow(A\lor B)\land(A\lor C)$ | 展开或提取公共项 |
+| 分配律 | $A\land(B\lor C)\Leftrightarrow(A\land B)\lor(A\land C)$ | 展开合取 |
+| 吸收律 | $A\lor(A\land B)\Leftrightarrow A$；$A\land(A\lor B)\Leftrightarrow A$ | 删除冗余条件 |
 
-以下 $A,B,C$ **代表任意命题公式**，不只是单个变项。因而每一条同时代表无穷多条具体等值式，称为**等值式模式**。
+**吸收律的本质是集合包含**：$A\land B$ 成立的范围一定包含于 $A$ 成立的范围，因此再把交集与 $A$ 求并，不会增加任何新情形。
 
-### 1. 关于合取、析取的等值律
+![logic_absorption_venn_c0831cfd-e084-48ba-bde0-e4dd0794b973](./_assets/b46f918791/logic_absorption_venn_c0831cfd-e084-48ba-bde0-e4dd0794b973.png)
+
+*图：吸收律的集合区域示意：交集已经包含在A内部。*
+
+**分配律的本质是区域保持**：要求 $A$ 成立且 $B,C$ 至少一个成立，等于分别考虑“$A,B$ 都成立”与“$A,C$ 都成立”，再取并集。
+
+![logic_distribution_regions_dddf8ba9-06dd-47ca-b493-9589f69aab95](./_assets/b46f918791/logic_distribution_regions_dddf8ba9-06dd-47ca-b493-9589f69aab95.png)
+
+*图：用三集合重叠区域验证分配律两侧相等。*
+
+> [!note] 还有两条关于 $\leftrightarrow$ 的规律
+> $A\leftrightarrow B\Leftrightarrow B\leftrightarrow A$（交换），以及 $(A\leftrightarrow B)\leftrightarrow C\Leftrightarrow A\leftrightarrow(B\leftrightarrow C)$（结合）。此外，$A\to(B\to C)\Leftrightarrow(A\to B)\to(A\to C)$，可通过消去蕴涵并使用分配律验证。
+
+### 3.2 否定律与德·摩根律
+
+$$
+\begin{aligned}
+\neg\neg A&\Leftrightarrow A &&\text{（双重否定律）},\\
+\neg(A\lor B)&\Leftrightarrow\neg A\land\neg B &&\text{（德·摩根律）},\\
+\neg(A\land B)&\Leftrightarrow\neg A\lor\neg B &&\text{（德·摩根律）}.
+\end{aligned}
+$$
+
+必须特别理解：**否定一个“或”，会得到两个条件都不成立；否定一个“且”，会得到至少一个条件不成立。** 它不是机械地在括号前添加负号，而是同时改变联结词和两个子公式的极性。
+
+![logic_demorgan_values_6362aeaa-d0d0-4364-8e9b-f9c2e045b0ad](./_assets/b46f918791/logic_demorgan_values_6362aeaa-d0d0-4364-8e9b-f9c2e045b0ad.png)
+
+*图：德摩根律在四个二元赋值下的同步变化。*
+
+> [!warning] 常见错误
+> $\neg(A\lor B)\not\Leftrightarrow\neg A\lor\neg B$；$\neg(A\land B)\not\Leftrightarrow\neg A\land\neg B$。正确做法是**否定向内分配、$\land$ 与 $\lor$ 互换**。
+
+### 3.3 常量、排中律和矛盾律
+
+记 $1$ 为恒真，$0$ 为恒假：
 
 | 名称 | 等值式 |
-| --- | --- |
-| **幂等律** | $A\lor A\Leftrightarrow A$；$A\land A\Leftrightarrow A$ |
-| **交换律** | $A\lor B\Leftrightarrow B\lor A$；$A\land B\Leftrightarrow B\land A$ |
-| **结合律** | $(A\lor B)\lor C\Leftrightarrow A\lor(B\lor C)$；$(A\land B)\land C\Leftrightarrow A\land(B\land C)$ |
-| **分配律：$\lor$ 对 $\land$** | $A\lor(B\land C)\Leftrightarrow(A\lor B)\land(A\lor C)$ |
-| **分配律：$\land$ 对 $\lor$** | $A\land(B\lor C)\Leftrightarrow(A\land B)\lor(A\land C)$ |
-| **吸收律** | $A\lor(A\land B)\Leftrightarrow A$；$A\land(A\lor B)\Leftrightarrow A$ |
-
-> [!note] 理解“吸收律”
-> $A\lor(A\land B)$ 的第二部分若为真，$A$ 必然已为真，所以第二部分没有增加新情况；$A\land(A\lor B)$ 同理，附加条件 $A\lor B$ 不再收紧结果。理解这一点比死记公式更有效。
-
-> [!example] 结合律、分配律的典型应用
-> $$\begin{aligned}
-> (p\land r)\lor(q\land r)
-> &\Leftrightarrow(p\lor q)\land r\\
-> (p\lor q)\land(p\lor r)
-> &\Leftrightarrow p\lor(q\land r)
-> \end{aligned}$$
->
-> 两式均可**双向**使用；证明时可以“展开”，化简时一般优先“提取公因式”。
-
-### 2. 否定相关等值律
-
-| 名称 | 等值式 |
-| --- | --- |
-| **双重否定律** | $\neg\neg A\Leftrightarrow A$ |
-| **德·摩根律（否定析取）** | $\neg(A\lor B)\Leftrightarrow\neg A\land\neg B$ |
-| **德·摩根律（否定合取）** | $\neg(A\land B)\Leftrightarrow\neg A\lor\neg B$ |
-
-> [!tip] 德·摩根律记忆法
-> **否定进入括号，内部联结词互换，两个子式分别取否定。**
->
-> $$\neg(A\lor B)\Leftrightarrow\neg A\land\neg B$$
-> $$\neg(A\land B)\Leftrightarrow\neg A\lor\neg B$$
->
-> 特别注意：$\neg(A\lor B)$ **不是** $\neg A\lor\neg B$。
+|---|---|
+| 零律 | $A\lor1\Leftrightarrow1$；$A\land0\Leftrightarrow0$ |
+| 同一律 | $A\lor0\Leftrightarrow A$；$A\land1\Leftrightarrow A$ |
+| 排中律 | $A\lor\neg A\Leftrightarrow1$ |
+| 矛盾律 | $A\land\neg A\Leftrightarrow0$ |
 
-### 3. 关于常量 0、1 的等值律
+通过这些规律经常能快速判断公式是否为重言式或矛盾式。例如：
 
-| 名称 | 等值式 | 含义 |
-| --- | --- | --- |
-| **零律** | $A\lor1\Leftrightarrow1$；$A\land0\Leftrightarrow0$ | 1 对析取、0 对合取起支配作用 |
-| **同一律** | $A\lor0\Leftrightarrow A$；$A\land1\Leftrightarrow A$ | 0 对析取、1 对合取不改变结果 |
-| **排中律** | $A\lor\neg A\Leftrightarrow1$ | $A$ 与其否定至少一真 |
-| **矛盾律** | $A\land\neg A\Leftrightarrow0$ | $A$ 与其否定不可能同真 |
+$$
+(A\lor\neg A)\land B\Leftrightarrow1\land B\Leftrightarrow B,
+$$
 
-> [!warning] 零律与同一律容易记反
-> - $\lor1$、$\land0$：**整个结果被锁死**，是零律。
-> - $\lor0$、$\land1$：**保持原公式**，是同一律。
-> - $A\lor\neg A$ 与 $A\land\neg A$ 体现排中律与矛盾律，不是零律。
+$$
+(A\land\neg A)\lor B\Leftrightarrow0\lor B\Leftrightarrow B.
+$$
 
-### 4. 蕴涵与等价联结词的等值律
+> [!tip] 化简顺序
+> 优先找 $A\lor\neg A$ 和 $A\land\neg A$，然后用零律、同一律消掉常量；遇到 $A\lor(A\land B)$ 时优先用吸收律，而非展开后再化简。
 
-| 名称 | 等值式 |
-| --- | --- |
-| **蕴涵等值式** | $A\to B\Leftrightarrow\neg A\lor B$ |
-| **假言易位（逆否等值）** | $A\to B\Leftrightarrow\neg B\to\neg A$ |
-| **归谬论** | $(A\to B)\land(A\to\neg B)\Leftrightarrow\neg A$ |
-| **等价等值式** | $A\leftrightarrow B\Leftrightarrow(A\to B)\land(B\to A)$ |
-| **等价否定等值式** | $A\leftrightarrow B\Leftrightarrow\neg A\leftrightarrow\neg B$ |
+### 3.4 蕴涵和等价联结词的消去
 
-课件还列出下列关于蕴涵、等价联结词的结构性等值式：
+**蕴涵等值式**：
 
-$$A\to(B\to C)\Leftrightarrow(A\to B)\to(A\to C)$$
+$$
+A\to B\Leftrightarrow\neg A\lor B.
+$$
 
-$$(A\leftrightarrow B)\leftrightarrow C\Leftrightarrow A\leftrightarrow(B\leftrightarrow C)$$
+![logic_implication_case_b6fe41a4-dcf1-4141-aaa1-abc44bf3f5e0](./_assets/b46f918791/logic_implication_case_b6fe41a4-dcf1-4141-aaa1-abc44bf3f5e0.png)
 
-以及等价联结词的交换律：
+*图：蕴涵真值只有在前件为真后件为假时失败。*
 
-$$A\leftrightarrow B\Leftrightarrow B\leftrightarrow A$$
+**假言易位（逆否）**：
 
-**两种常用的等价联结词展开形式：**
+$$
+A\to B\Leftrightarrow\neg B\to\neg A.
+$$
 
-$$\begin{aligned}
-A\leftrightarrow B
-&\Leftrightarrow(A\to B)\land(B\to A)\\
-&\Leftrightarrow(A\land B)\lor(\neg A\land\neg B)
-\end{aligned}$$
-
-> [!important] 全章最重要的两条“消去公式”
-> $$\boxed{A\to B\Leftrightarrow\neg A\lor B}$$
-> $$\boxed{A\leftrightarrow B\Leftrightarrow(A\to B)\land(B\to A)}$$
->
-> 学会消去 $\to,\leftrightarrow$，是证明常见等值式、化简公式、构造完备集的共同起点。
-
-> [!example] 归谬论的推导
-> $$\begin{aligned}
-> (A\to B)\land(A\to\neg B)
-> &\Leftrightarrow(\neg A\lor B)\land(\neg A\lor\neg B)\\
-> &\Leftrightarrow\neg A\lor(B\land\neg B)\\
-> &\Leftrightarrow\neg A\lor0\\
-> &\Leftrightarrow\neg A
-> \end{aligned}$$
->
-> 含义：如果假设 $A$ 成立，会同时得到 $B$ 和 $\neg B$，那么 $A$ 只能为假。
-
-### 5. 等值式的使用顺序：先消去，再整理
-
-> [!tip] 常见化简思路
-> 1. 出现 $\leftrightarrow$ 时，按需要转换为 $\to,\land$。
-> 2. 出现 $\to$ 时，考虑 $A\to B\Leftrightarrow\neg A\lor B$。
-> 3. 出现否定整个括号时，用德·摩根律把否定推进。
-> 4. 通过交换、结合、分配、吸收律整理相同项。
-> 5. 找到 $A\lor\neg A$ 或 $A\land\neg A$，化为 $1$ 或 $0$。
-> 6. 用零律、同一律、幂等律收尾。
->
-> **这是一种便于解题的策略，不是必须遵循的唯一顺序。** 有时直接用吸收律或逆否等值会更快。
-
----
-
-## 四、等值演算的规则与证明方法
-
-### 1. 等值式模式
-
-基本等值式中的 $A,B,C$ 都是任意命题公式。以蕴涵等值式为例：
-
-$$A\to B\Leftrightarrow\neg A\lor B$$
-
-取 $A=p\lor q\lor r$，$B=p\land q$，得到：
-
-$$(p\lor q\lor r)\to(p\land q)\Leftrightarrow\neg(p\lor q\lor r)\lor(p\land q)$$
-
-### 2. 代入规则
-
-> [!important] 代入规则
-> 如果 $T$ 是重言式，将 $T$ 中**同一个命题变项的所有出现**统一替换为**同一个命题公式**，所得公式仍是重言式。
-
-例如已知 $p\leftrightarrow\neg\neg p$ 为重言式，将其中所有的 $p$ 统一替换成 $q\land r$：
-
-$$(q\land r)\leftrightarrow\neg\neg(q\land r)$$
-
-仍为重言式。
-
-### 3. 置换规则
-
-> [!important] 置换规则
-> 若 $A\Leftrightarrow B$，则在任意较大公式中，把一个（或若干个）出现的子公式 $A$ 换成 $B$，得到的整个公式仍与原公式等值。
-
-例如：
-
-$$\begin{aligned}
-((p\lor q)\land p)\lor(p\land r)
-&\Leftrightarrow p\lor(p\land r) &&\text{吸收律}\\
-&\Leftrightarrow p &&\text{吸收律}
-\end{aligned}$$
-
-这里是在更大公式的**局部**应用已知等值式。
-
-### 4. 代入规则与置换规则的比较
-
-| 比较角度 | 代入规则 | 置换规则 |
-| --- | --- | --- |
-| 主要用途 | 从**重言式模式**产生新的重言式 | 对**任意公式的等值子式**进行变形 |
-| 被操作的对象 | 命题变项 | 子公式 |
-| 用来替换的内容 | 任意命题公式 | 与原子公式等值的公式 |
-| 替换范围 | 同一命题变项的**全部出现** | 可只替换子公式的**部分出现** |
-| 保证的结果 | 仍为重言式 | 变形前后整体等值 |
-
-> [!warning] 关键区别
-> **代入要求“同一变项、统一代换”**；置换允许只处理某个局部。例如已知 $p\Leftrightarrow\neg\neg p$，把公式 $p\land p$ 的左边一个 $p$ 置换为 $\neg\neg p$，得到 $(\neg\neg p)\land p$，二者仍等值；但这不应误称为“对重言式中的所有 $p$ 实行代入”。
-
-### 5. 等值演算的常用证明
-
-> [!example] 证明一：蕴涵与析取的转换
-> $$\begin{aligned}
-> (p\land q)\to r
-> &\Leftrightarrow\neg(p\land q)\lor r &&\text{蕴涵等值式}\\
-> &\Leftrightarrow(\neg p\lor\neg q)\lor r &&\text{德·摩根律}\\
-> &\Leftrightarrow\neg p\lor\neg q\lor r &&\text{结合律}
-> \end{aligned}$$
->
-> 得到：$\boxed{(p\land q)\to r\Leftrightarrow\neg p\lor\neg q\lor r}$。
-
-> [!example] 证明二：蕴涵的嵌套等值
-> $$\begin{aligned}
-> p\to(q\to r)
-> &\Leftrightarrow\neg p\lor(\neg q\lor r)\\
-> &\Leftrightarrow\neg p\lor\neg q\lor r
-> \end{aligned}$$
->
-> 又因为：
->
-> $$\begin{aligned}
-> (p\land q)\to r
-> &\Leftrightarrow\neg(p\land q)\lor r\\
-> &\Leftrightarrow\neg p\lor\neg q\lor r
-> \end{aligned}$$
->
-> 故：
->
-> $$\boxed{p\to(q\to r)\Leftrightarrow(p\land q)\to r}$$
-
-> [!example] 证明三：另一种嵌套形式
-> 证明 $p\to(q\to r)\Leftrightarrow(p\to q)\to(p\to r)$。
->
-> $$\begin{aligned}
-> (p\to q)\to(p\to r)
-> &\Leftrightarrow\neg(\neg p\lor q)\lor(\neg p\lor r)\\
-> &\Leftrightarrow(p\land\neg q)\lor\neg p\lor r\\
-> &\Leftrightarrow(p\lor\neg p\lor r)\land(\neg q\lor\neg p\lor r)\\
-> &\Leftrightarrow1\land(\neg p\lor\neg q\lor r)\\
-> &\Leftrightarrow\neg p\lor\neg q\lor r
-> \end{aligned}$$
->
-> 这与 $p\to(q\to r)$ 的化简结果相同，因此二者等值。倒数第二步使用**排中律及同一律**。
-
-### 6. 判定公式类型：将公式化为 0 或 1
-
-> [!example] 例一：证明公式为重言式
-> 判断 $q\lor\neg((\neg p\lor q)\land p)$ 的类型。
->
-> 先化简括号：
->
-> $$\begin{aligned}
-> (\neg p\lor q)\land p
-> &\Leftrightarrow(\neg p\land p)\lor(q\land p)\\
-> &\Leftrightarrow0\lor(p\land q)\\
-> &\Leftrightarrow p\land q
-> \end{aligned}$$
->
-> 再化简全式：
->
-> $$\begin{aligned}
-> q\lor\neg((\neg p\lor q)\land p)
-> &\Leftrightarrow q\lor\neg(p\land q)\\
-> &\Leftrightarrow q\lor\neg p\lor\neg q\\
-> &\Leftrightarrow\neg p\lor(q\lor\neg q)\\
-> &\Leftrightarrow\neg p\lor1\\
-> &\Leftrightarrow1
-> \end{aligned}$$
->
-> 因此是**重言式**。
-
-> [!example] 例二：证明公式为矛盾式
-> $$\begin{aligned}
-> (p\lor\neg p)\to((q\land\neg q)\land r)
-> &\Leftrightarrow1\to(0\land r)\\
-> &\Leftrightarrow1\to0\\
-> &\Leftrightarrow\neg1\lor0\\
-> &\Leftrightarrow0
-> \end{aligned}$$
->
-> 因此是**矛盾式**。
-
-### 7. 两道综合等值证明
-
-> [!example] 综合题一：提取公共因子
-> 证明：
->
-> $$(\neg p\land(\neg q\land r))\lor(q\land r)\lor(p\land r)\Leftrightarrow r$$
->
-> $$\begin{aligned}
-> &\quad(\neg p\land\neg q\land r)\lor(q\land r)\lor(p\land r)\\
-> &\Leftrightarrow[(\neg p\land\neg q)\lor q\lor p]\land r\\
-> &\Leftrightarrow[\neg(p\lor q)\lor(p\lor q)]\land r\\
-> &\Leftrightarrow1\land r\\
-> &\Leftrightarrow r
-> \end{aligned}$$
->
-> 核心技巧：**先提取公共项 $r$，再构造 $A\lor\neg A$**。
-
-> [!example] 综合题二：构造排中律
-> 证明下式为重言式：
->
-> $$E=((p\lor q)\land\neg(\neg p\land(\neg q\lor\neg r)))\lor(\neg p\land\neg q)\lor(\neg p\land\neg r)$$
->
-> 令 $X=p\lor q$，$Y=p\lor r$。由德·摩根律与分配律：
->
-> $$\begin{aligned}
-> \neg(\neg p\land(\neg q\lor\neg r))
-> &\Leftrightarrow p\lor(q\land r)\\
-> &\Leftrightarrow(p\lor q)\land(p\lor r)\\
-> &\Leftrightarrow X\land Y
-> \end{aligned}$$
->
-> 又有 $\neg p\land\neg q\Leftrightarrow\neg X$，$\neg p\land\neg r\Leftrightarrow\neg Y$，从而：
->
-> $$\begin{aligned}
-> E&\Leftrightarrow[X\land(X\land Y)]\lor\neg X\lor\neg Y\\
-> &\Leftrightarrow(X\land Y)\lor\neg(X\land Y)\\
-> &\Leftrightarrow1
-> \end{aligned}$$
->
-> 技巧：为较大的重复结构**引入辅助记号**，可显著减少书写量。
-
-### 8. 等值演算的三类典型任务
-
-| 题目要求 | 常用目标 | 解题重点 |
-| --- | --- | --- |
-| 证明 $A\Leftrightarrow B$ | 将两边化为同一式 | 每一步有等值依据 |
-| 判断公式类型 | 化为常量 $1$、$0$，或给出真、假赋值 | 排中律、矛盾律、零律 |
-| 求实际条件的唯一解 | 符号化约束、删去不可能情形 | 约束不能遗漏，如“互不并列” |
-
----
-
-## 五、真值函数与所有可能的联结词
-
-### 1. 真值函数的定义
-
-一个 $n$ 元真值函数是从 $n$ 个真值输入到一个真值输出的函数：
-
-$$\boxed{F:\{0,1\}^{n}\to\{0,1\}}$$
-
-在命题逻辑中，**每个确定的联结词（或命题公式）都有对应的真值函数**。对于固定的一组 $n$ 个变项，一个真值函数由其真值表输出列唯一确定。
-
-### 2. 为什么 $n$ 元真值函数共有 $2^{2^n}$ 个
-
-- $n$ 个变项的真值指派有 $2^n$ 种，因此真值表有 $2^n$ 行。
-- 对每一行，函数输出都可独立地选择 0 或 1，选择数为 2。
-- 所以一共有：
-
-$$\boxed{\underbrace{2\times2\times\cdots\times2}_{2^n\text{ 个}}=2^{2^n}}$$
-
-| 元数 $n$ | 真值表输入组合数 $2^n$ | 不同真值函数数 $2^{2^n}$ |
-| :---: | :---: | :---: |
-| 1 | 2 | 4 |
-| 2 | 4 | 16 |
-| 3 | 8 | 256 |
-
-> [!warning] 两个“指数”不能混淆
-> **$2^n$ 是输入组合（真值指派）的数量；$2^{2^n}$ 是所有可能的输出列（真值函数）的数量。** 二元联结词对应四种输入，因此有 $2^4=16$ 种可能真值函数，而不是 4 种。
-
-### 3. 一元真值函数：只有四种
-
-| $p$ | 恒假 $F_1$ | 恒等 $F_2=p$ | 否定 $F_3=\neg p$ | 恒真 $F_4$ |
-| :---: | :---: | :---: | :---: | :---: |
-| 0 | 0 | 0 | 1 | 1 |
-| 1 | 0 | 1 | 0 | 1 |
-
-### 4. 二元真值函数：16 种全部列出
-
-规定指派顺序始终是 $(p,q)=(0,0),(0,1),(1,0),(1,1)$。表格中的 **输出序列** 按这个顺序写出四位真值。
-
-| 输出序列 | 相应真值函数／逻辑表达式 | 说明 |
-| :---: | --- | --- |
-| `0000` | $0$ | 永假 |
-| `0001` | $p\land q$ | 合取 |
-| `0010` | $p\land\neg q$ | $p\to q$ 的否定 |
-| `0011` | $p$ | 取第一个输入 |
-| `0100` | $\neg p\land q$ | $q\to p$ 的否定 |
-| `0101` | $q$ | 取第二个输入 |
-| `0110` | $p\mathbin{\nabla}q$ | 不可兼或（异或） |
-| `0111` | $p\lor q$ | 析取 |
-| `1000` | $p\downarrow q$ | 或非 |
-| `1001` | $p\leftrightarrow q$ | 等价 |
-| `1010` | $\neg q$ | 否定第二个输入 |
-| `1011` | $q\to p$ | 反向蕴涵 |
-| `1100` | $\neg p$ | 否定第一个输入 |
-| `1101` | $p\to q$ | 蕴涵 |
-| `1110` | $p\uparrow q$ | 与非 |
-| `1111` | $1$ | 永真 |
-
-其中 `0001` 表示仅在 $p=q=1$ 时输出 1，而 `1110` 表示除 $p=q=1$ 外输出均为 1。
-
-### 5. 四种新增的二元联结词
+**归谬型等值式**：
 
-| 名称 | 课件符号 | 定义 | 何时为真 |
-| --- | --- | --- | --- |
-| **不可兼或（异或）** | $p\nabla q$ | $\neg(p\leftrightarrow q)$ | 两个输入真值不同 |
-| **蕴涵否定** | $p\not\to q$ | $\neg(p\to q)$ | 仅 $p=1,q=0$ |
-| **与非（NAND）** | $p\uparrow q$ | $\neg(p\land q)$ | 除两者都真外 |
-| **或非（NOR）** | $p\downarrow q$ | $\neg(p\lor q)$ | 仅两者都假 |
+$$
+(A\to B)\land(A\to\neg B)\Leftrightarrow\neg A.
+$$
 
-> [!note] 符号说明
-> 课件采用 $\nabla$ 表示“不可兼或”，采用在蕴涵符号上加否定标识表示“蕴涵否定”。由于不同字体中后一符号不完全统一，笔记以 $\not\to$ 表示，最稳妥的定义始终是 $\neg(p\to q)$。
+这表明：若假设 $A$ 成立会同时得到 $B$ 和 $\neg B$，那么 $A$ 必定不成立。代数验证：
 
-其四种真值列为：
+$$
+\begin{aligned}
+(A\to B)\land(A\to\neg B)
+&\Leftrightarrow(\neg A\lor B)\land(\neg A\lor\neg B)\\
+&\Leftrightarrow\neg A\lor(B\land\neg B)\\
+&\Leftrightarrow\neg A.
+\end{aligned}
+$$
 
-| $p$ | $q$ | $p\nabla q$ | $p\not\to q$ | $p\uparrow q$ | $p\downarrow q$ |
-| :---: | :---: | :---: | :---: | :---: | :---: |
-| 0 | 0 | 0 | 0 | 1 | 1 |
-| 0 | 1 | 1 | 0 | 1 | 0 |
-| 1 | 0 | 1 | 1 | 1 | 0 |
-| 1 | 1 | 0 | 0 | 0 | 0 |
+**等价等值式**：
 
-> [!note] 真值函数与主范式的联系
-> 课件指出：一个给定真值函数可以由唯一的**主析取范式**和唯一的**主合取范式**（相对于固定的变项集合和顺序）来表示。由此可理解：即使原公式写法不同，只要真值函数相同，它们就逻辑等值。
->
-> 这里仅建立联系，不展开主范式的系统求法；主范式计算应放在相关章节集中学习。
+$$
+A\leftrightarrow B\Leftrightarrow(A\to B)\land(B\to A).
+$$
 
----
+由此可得另一种重要写法：
 
-## 六、联结词完备集与极小完备集
+$$
+A\leftrightarrow B\Leftrightarrow(A\land B)\lor(\neg A\land\neg B).
+$$
 
-### 1. 联结词完备集的定义
+**等价否定等值式**：
 
-> [!important] 定义：联结词完备集
-> 设 $S$ 是一个联结词集合。如果**任意命题公式**都能找到一个与之逻辑等值、且**只使用 $S$ 中联结词**的公式，则称 $S$ 为**联结词完备集（functionally complete set）**。
+$$
+A\leftrightarrow B\Leftrightarrow\neg A\leftrightarrow\neg B.
+$$
 
-这意味着：即使只保留很少几种联结词，也可能表示所有命题真值函数。这里的“完备”指**表达能力足够**，不是说集合必须包含所有已知联结词。
+> [!important] 核心技巧
+> 许多复杂公式不能直接“看出”怎样化简，但只要先用 $A\to B\Leftrightarrow\neg A\lor B$ 消去所有 $\to$，再用德·摩根律把否定推进括号内部，就会转化为只含 $\neg,\land,\lor$ 的布尔代数问题。
 
-> [!important] 定义：极小完备集
-> 若 $S$ 是完备集，且 **$S$ 的任何真子集都不是完备集**，则称 $S$ 为**极小完备集**。
->
-> 注意“极小”强调**删掉任一必要成员即不再完备**，不表示元素数一定最少。例如二元的极小完备集仍存在，而 $\{\uparrow\}$、$\{\downarrow\}$ 是只有一个元素的极小完备集。
+## 4. 等值演算的操作规则与证明方法
 
-### 2. 五种常用联结词并非缺一不可
+### 4.1 等值式模式与代入规则
 
-从最常用的集合开始：
+因为 $A\to B\Leftrightarrow\neg A\lor B$ 对任意公式都成立，所以令
 
-$$S_0=\{\neg,\land,\lor,\to,\leftrightarrow\}$$
+$$
+A=(p\lor q\lor r),\quad B=(p\land q),
+$$
 
-利用：
+便得到
 
-$$A\to B\Leftrightarrow\neg A\lor B$$
+$$
+(p\lor q\lor r)\to(p\land q)
+\Leftrightarrow
+\neg(p\lor q\lor r)\lor(p\land q).
+$$
 
-$$A\leftrightarrow B\Leftrightarrow(A\to B)\land(B\to A)$$
+**代入规则**：若一个公式是重言式，则用任意公式**统一代换其中同一个命题变项的所有出现**，所得公式仍是重言式。
 
-可以将 $\to$、$\leftrightarrow$ 全部消去，因此：
+![logic_uniform_substitution_131077dc-a739-4c54-bfa5-6e7171b87773](./_assets/b46f918791/logic_uniform_substitution_131077dc-a739-4c54-bfa5-6e7171b87773.png)
 
-$$\boxed{\{\neg,\land,\lor\}\text{ 是完备集}}$$
+*图：重言式代入规则展示同一命题变项全局统一替换。*
 
-进一步使用德·摩根律：
+例如 $p\leftrightarrow\neg\neg p$ 是重言式，把每个 $p$ 同时替换为 $q\land r$，得到
 
-$$A\lor B\Leftrightarrow\neg(\neg A\land\neg B)$$
+$$
+(q\land r)\leftrightarrow\neg\neg(q\land r),
+$$
 
-$$A\land B\Leftrightarrow\neg(\neg A\lor\neg B)$$
+仍然是重言式。
 
-于是得到两个**极小完备集**：
+### 4.2 置换规则：局部替换任意等值子式
 
-$$\boxed{\{\neg,\land\}\qquad\{\neg,\lor\}}$$
+**置换规则**：若 $A\Leftrightarrow B$，则一个复杂公式中出现的 $A$，可以用与其等值的 $B$ 替换，整体真值保持不变；**不强制所有相同子式同时替换**。
 
-### 3. 为什么 $\{\neg,\to\}$ 是完备集
+以 $p\lor(p\land q)\Leftrightarrow p$ 为例：
 
-只需证明该集合可以表达已经知道完备的 $\{\neg,\lor\}$：
+$$
+\bigl(p\lor(p\land q)\bigr)\land r
+\Leftrightarrow p\land r.
+$$
 
-$$\boxed{p\lor q\Leftrightarrow\neg p\to q}$$
+![logic_context_replacement_c7791cec-5b75-4378-9c12-21924d89546e](./_assets/b46f918791/logic_context_replacement_c7791cec-5b75-4378-9c12-21924d89546e.png)
 
-右侧只用到了 $\neg$ 和 $\to$，因此：
+*图：置换规则示意：局部用吸收律替换不改变整体真值。*
 
-$$\boxed{\{\neg,\to\}\text{ 是完备集}}$$
+| 比较点 | 代入规则 | 置换规则 |
+|---|---|---|
+| 起点 | 一个已知**重言式** | 一个含有等值子公式的**公式** |
+| 替换对象 | 某个命题变项 | 某个出现的子公式 |
+| 替换依据 | 任意命题公式，统一代入 | 必须与原子公式等值 |
+| 替换范围 | 相同变项的**全部出现** | 指定的某个或某些出现 |
+| 保证结果 | 仍是重言式 | 整个公式与原式等值 |
 
-如果需要合取，还可以：
+> [!warning] 不要混淆“同时代入”和“局部置换”
+> 例如把重言式 $p\leftrightarrow p$ 的左侧 $p$ 换成 $q$、右侧仍保留 $p$，得到 $q\leftrightarrow p$，**不保证是重言式**；这是错误的代入。置换则必须先证明被替换的子公式与新公式等值。
 
-$$p\land q\Leftrightarrow\neg(p\to\neg q)$$
+### 4.3 等值演算的标准书写方式
 
-> [!tip] 证明“是完备集”的通用路线
-> **不必直接重建 16 种二元真值函数。** 只需在目标联结词集下表示出一组**已知完备**的联结词，例如 $\{\neg,\lor\}$ 或 $\{\neg,\land\}$，就可完成证明。
+证明两个公式等值，推荐采用下面的格式：
 
-### 4. 为什么 $\{\neg,\leftrightarrow\}$ 不是完备集
+$$
+\begin{aligned}
+(p\land q)\to r
+&\Leftrightarrow\neg(p\land q)\lor r &&\text{（蕴涵等值式）}\\
+&\Leftrightarrow(\neg p\lor\neg q)\lor r &&\text{（德·摩根律）}\\
+&\Leftrightarrow\neg p\lor\neg q\lor r &&\text{（结合律）}.
+\end{aligned}
+$$
 
-课件给出的判据是：由 $p,q$ 构成、仅使用 $\neg,\leftrightarrow$ 的二元公式，其真值表中**1 的个数与 0 的个数均为偶数**（可能为 0、2 或 4）。
+![logic_implication_rewrite_5157e3a4-5bea-4953-a68b-a8526fe8d770](./_assets/b46f918791/logic_implication_rewrite_5157e3a4-5bea-4953-a68b-a8526fe8d770.png)
 
-但 $p\land q$ 的输出列为 `0001`，有 **1 个 1 和 3 个 0**，不可能由此类公式表示。因此：
+*图：三步把(p∧q)→r改写成仅含否定和析取的公式。*
 
-$$\boxed{\{\neg,\leftrightarrow\}\text{ 不是完备集}}$$
+这里应用的是等值关系的**传递性**：$A\Leftrightarrow B$ 且 $B\Leftrightarrow C$，则 $A\Leftrightarrow C$。验证等值式时常采用“两边分别化成同一形式”的路线，不必强行只变换左侧。
 
-> [!note] 为什么这个判据可以用于证明
-> 仅用 $\neg$ 与 $\leftrightarrow$ 构成的二元公式，真值列只会出现恒值、$p$、$q$、各自否定、异或及等价等形式；相应输出列的 1 的数量只能是 0、2 或 4，永远凑不出 $p\land q$ 的 1 个 1。
->
-> **这个“偶数个”性质的前提是研究固定 $p,q$ 两个输入上的完整四行真值表**，不可脱离变量数和真值表范围随意推广。
+### 4.4 例题：两条不同结构的公式为什么等值？
 
-### 5. 为什么 $\{\land,\lor,\to,\leftrightarrow\}$ 不是完备集
+证明
 
-此集合的所有联结词都满足：**当输入全为 1 时，其输出为 1**。由这些联结词反复组成的任意公式，在全部命题变项取 1 时也必为 1。
+$$
+p\to(q\to r)\Leftrightarrow(p\to q)\to(p\to r).
+$$
 
-但 $\neg p$ 在 $p=1$ 时输出 0，所以根本不可能用该集合表示 $\neg p$：
+左侧：
 
-$$\boxed{\{\land,\lor,\to,\leftrightarrow\}\text{ 不是完备集}}$$
+$$
+p\to(q\to r)
+\Leftrightarrow\neg p\lor(\neg q\lor r)
+\Leftrightarrow\neg p\lor\neg q\lor r.
+$$
 
-> [!tip] 证明“不是完备集”的通用路线
-> 找出目标联结词集所具有的**共同性质**，证明这种性质在复合公式中始终保持，再举出一个**不满足该性质**的真值函数。
->
-> 本例中的共同性质是“**全 1 输入必输出 1**”；而 $\neg p$ 构成反例。
+右侧：
 
-单独的 $\{\land\}$、$\{\lor\}$、$\{\neg\}$、$\{\to\}$、$\{\leftrightarrow\}$ 均不是完备集。
+$$
+\begin{aligned}
+(p\to q)\to(p\to r)
+&\Leftrightarrow\neg(\neg p\lor q)\lor(\neg p\lor r)\\
+&\Leftrightarrow(p\land\neg q)\lor\neg p\lor r\\
+&\Leftrightarrow(\neg p\lor p\lor r)\land(\neg p\lor\neg q\lor r)\\
+&\Leftrightarrow 1\land(\neg p\lor\neg q\lor r)\\
+&\Leftrightarrow\neg p\lor\neg q\lor r.
+\end{aligned}
+$$
 
-### 6. 一个联结词就能构成完备集：与非、或非
+两侧都等值于 $\neg p\lor\neg q\lor r$，所以原命题得证。这里最关键的一步是对 $\lor$ 与 $\land$ 施加分配律，并通过排中律消掉一整个因子。
 
-**与非**定义：
+### 4.5 用等值演算判定公式类型
 
-$$p\uparrow q\Leftrightarrow\neg(p\land q)$$
+**例一：重言式。** 判断
 
-先用与非表示否定：
+$$
+A=q\lor\neg((\neg p\lor q)\land p).
+$$
 
-$$\boxed{\neg p\Leftrightarrow p\uparrow p}$$
+先由分配律及矛盾律发现
 
-再用与非表示合取：
+$$
+(\neg p\lor q)\land p
+\Leftrightarrow(\neg p\land p)\lor(q\land p)
+\Leftrightarrow p\land q.
+$$
 
-$$\boxed{p\land q\Leftrightarrow(p\uparrow q)\uparrow(p\uparrow q)}$$
+因此
 
-因此 $\{\uparrow\}$ 能实现 $\{\neg,\land\}$，所以**与非单独就构成完备集**。
+$$
+\begin{aligned}
+A&\Leftrightarrow q\lor\neg(p\land q)\\
+&\Leftrightarrow q\lor\neg p\lor\neg q\\
+&\Leftrightarrow\neg p\lor(q\lor\neg q)\\
+&\Leftrightarrow\neg p\lor1\\
+&\Leftrightarrow1.
+\end{aligned}
+$$
 
-**或非**定义：
+故 $A$ 为重言式。
 
-$$p\downarrow q\Leftrightarrow\neg(p\lor q)$$
+**例二：矛盾式。** 判断
 
-同理：
+$$
+B=(p\lor\neg p)\to((q\land\neg q)\land r).
+$$
 
-$$\boxed{\neg p\Leftrightarrow p\downarrow p}$$
+利用排中律、矛盾律和零律，
 
-$$\boxed{p\lor q\Leftrightarrow(p\downarrow q)\downarrow(p\downarrow q)}$$
+$$
+B\Leftrightarrow1\to(0\land r)
+\Leftrightarrow1\to0
+\Leftrightarrow0.
+$$
 
-所以 $\{\downarrow\}$ 能实现 $\{\neg,\lor\}$，**或非单独也构成完备集**。
+故 $B$ 为矛盾式。
 
-> [!important] 两个最值得记忆的单元素完备集
-> $$\boxed{\{\uparrow\}\quad\text{与}\quad\{\downarrow\}}$$
->
-> ==与非、或非都能单独表示所有命题公式==。证明时的核心是先构造**否定**，再构造**合取**或**析取**。
+![logic_formula_classification_95d3d683-6da5-4151-8e89-66164ea405b4](./_assets/b46f918791/logic_formula_classification_95d3d683-6da5-4151-8e89-66164ea405b4.png)
 
-### 7. 联结词集判定速查
+*图：化简后恒为1或恒为0的公式类型及输出向量。*
 
-| 联结词集 | 是否完备 | 主要依据 |
-| --- | :---: | --- |
-| $\{\neg,\land,\lor,\to,\leftrightarrow\}$ | 是 | 原始常用集合 |
-| $\{\neg,\land,\lor\}$ | 是 | 可消去 $\to,\leftrightarrow$ |
-| $\{\neg,\land\}$ | 是 | 德·摩根律构造 $\lor$ |
-| $\{\neg,\lor\}$ | 是 | 德·摩根律构造 $\land$ |
-| $\{\neg,\to\}$ | 是 | $p\lor q\Leftrightarrow\neg p\to q$ |
-| $\{\uparrow\}$ | 是 | 构造 $\neg$ 和 $\land$ |
-| $\{\downarrow\}$ | 是 | 构造 $\neg$ 和 $\lor$ |
-| $\{\neg,\leftrightarrow\}$ | 否 | 二元真值列的 1 数量只能为偶数 |
-| $\{\land,\lor,\to,\leftrightarrow\}$ | 否 | 全 1 输入时必输出 1 |
-| $\{\land\},\{\lor\},\{\neg\},\{\to\},\{\leftrightarrow\}$ | 否 | 各自表达能力不足 |
+> [!tip] 真值表与等值演算各有优势
+> 成真、成假赋值较少时，直接利用“什么情况下整个公式为假/真”反推变量往往最快；遇到大量对立项或子公式重复时，等值演算通常更快。两种方法可互相验算。
 
----
+### 4.6 典型证明：含重复分支的公式
 
-## 七、限定联结词集下的公式转换
+**练习一。** 证明
 
-### 1. 问题的本质
+$$
+(\neg p\land(\neg q\land r))\lor(q\land r)\lor(p\land r)
+\Leftrightarrow r.
+$$
 
-题目要求把 $C$ 写成仅由某集合 $S$ 中联结词构成的公式，且保持：
+提出公共因子 $r$：
 
-$$\boxed{C\Leftrightarrow C'}$$
+$$
+\begin{aligned}
+& (\neg p\land\neg q\land r)\lor(q\land r)\lor(p\land r)\\
+\Leftrightarrow{}&r\land\bigl((\neg p\land\neg q)\lor q\lor p\bigr)\\
+\Leftrightarrow{}&r\land\bigl(\neg(p\lor q)\lor(p\lor q)\bigr)\\
+\Leftrightarrow{}&r\land1\\
+\Leftrightarrow{}&r.
+\end{aligned}
+$$
 
-这里 $C'$ 不能出现集合 $S$ 以外的联结词，但允许出现原命题变项与必要的括号。
+**练习二。** 证明
 
-### 2. 典型题：转换到 $S=\{\neg,\to\}$
+$$
+\begin{aligned}
+C={}&((p\lor q)\land\neg(\neg p\land(\neg q\lor\neg r)))\\
+&\lor(\neg p\land\neg q)\lor(\neg p\land\neg r)
+\end{aligned}
+$$
 
-将：
+是重言式。取
 
-$$C=(p\land\neg q)\lor r$$
+$$
+X=(p\lor q)\land(p\lor r).
+$$
 
-变成仅用 $\neg,\to$ 的公式。
+根据德·摩根律和分配律，$C$ 的第一部分等值于 $X$，而余下两部分
 
-**方法一：按课件的分配—消去路线。**
+$$
+(\neg p\land\neg q)\lor(\neg p\land\neg r)
+\Leftrightarrow\neg(p\lor q)\lor\neg(p\lor r)
+\Leftrightarrow\neg X.
+$$
 
-$$\begin{aligned}
-C&=(p\land\neg q)\lor r\\
-&\Leftrightarrow(p\lor r)\land(\neg q\lor r)\\
+于是 $C\Leftrightarrow X\lor\neg X\Leftrightarrow1$。这个证明的关键不是展开所有项，而是**识别“某式及其否定”**。
+
+## 5. 等值演算在判断问题中的应用
+
+### 5.1 排名预测：每人“对一半”意味着异或条件
+
+四名选手 $A,B,C,D$ 参加比赛，无并列。三位观众预测：
+
+| 观众 | 第一个判断 | 第二个判断 |
+|---|---|---|
+| 甲 | $C$ 第一 | $B$ 第二 |
+| 乙 | $C$ 第二 | $D$ 第三 |
+| 丙 | $A$ 第二 | $D$ 第四 |
+
+每人恰有一个判断正确。记 $C_1$ 为“$C$ 第一”，其他符号同理。
+
+“两个判断恰好一个为真”写成
+
+$$
+(X\land\neg Y)\lor(\neg X\land Y),
+$$
+
+也即**异或**，不是简单的 $X\lor Y$（后者允许两者同时真）。三个条件为
+
+$$
+\begin{aligned}
+&(C_1\land\neg B_2)\lor(\neg C_1\land B_2),\\
+&(C_2\land\neg D_3)\lor(\neg C_2\land D_3),\\
+&(A_2\land\neg D_4)\lor(\neg A_2\land D_4).
+\end{aligned}
+$$
+
+还需满足比赛**同一名次只能由一个人占有，同一个人也只能占一个名次**的约束。例如 $C_1\land C_2$ 不可能成立，$A_2\land B_2$ 也不可能成立。
+
+![logic_race_rank_constraints_7147e7ff-93f7-46bb-a400-8ce4bf6008a0](./_assets/b46f918791/logic_race_rank_constraints_7147e7ff-93f7-46bb-a400-8ce4bf6008a0.png)
+
+*图：三组预测恰有一真及唯一有效名次的约束关系。*
+
+运用三个“恰好一个为真”约束及名次不冲突条件排除分支，唯一解为
+
+$$
+\boxed{C\text{ 第一，}A\text{ 第二，}D\text{ 第三，}B\text{ 第四。}}
+$$
+
+验证：甲只猜中 $C$ 第一；乙只猜中 $D$ 第三；丙只猜中 $A$ 第二；且四人名次没有重复。
+
+### 5.2 红黑帽问题：从“沉默”获取间接信息
+
+桌上有两顶红帽、三顶黑帽，商人和两位应试者在暗处各戴一顶。开灯后，两名应试者都看到商人戴红帽，并能看到另一名应试者所戴帽子的颜色。过一段时间，其中一人断定自己戴的是黑帽。
+
+推理可以分成两层：
+
+1. **直接观察**：若某人同时看见商人和另一应试者戴着两顶红帽，由于只有两顶红帽，他必定立即知道自己戴的是黑帽。
+2. **观察别人未立即回答**：一名应试者如果看见另一人戴黑帽，会继续推想：“假如我戴红帽，对方就看见两顶红帽，应该立即得出自己戴黑帽的结论；但对方没有立即回答，因此我不可能戴红帽。”
+
+由此，在双方公开知道帽子总数、都能正确推理，并且“立即回答”有共同可观察意义的前提下，可以得出**两位应试者都戴黑帽**。
+
+![logic_hat_epistemic_0f9ffb0e-3980-4cce-8a8c-dada3481f91a](./_assets/b46f918791/logic_hat_epistemic_0f9ffb0e-3980-4cce-8a8c-dada3481f91a.png)
+
+*图：帽子推理中的可见信息与沉默所提供的间接信息。*
+
+> [!note] 这道题的隐藏前提
+> 这里利用了“所有参与者都知道其他人也能进行正确推理”这一层次的信息。如果不允许观察等待过程，或不知道他人能否及时回答，仅凭“看到商人戴红帽”并不能直接判定自己的帽色。
+
+### 5.3 围棋子的一问猜色问题：辨明“说谎”的含义
+
+一人手持黑棋或白棋，另一人只能问一个是非问题，回答者可以说真话或假话。**仅凭一次普通回答不可能在允许任意选择说真话、说假话的情况下保证猜中**：对于相同棋色，他完全可以选择相反回答。
+
+若另加明确条件：回答者具有**固定的诚实或说谎规则**，并且会按这一规则回答假设性问题，可以问：“如果我问你‘棋子是黑色的吗？’，你会回答‘是’吗？”在固定诚实者或固定说谎者的标准谜题模型下，可以消去一次说谎的影响；但这**不适用于随时任意改变真假回答策略**的情形。
+
+## 6. 真值函数与全部可能的联结词
+
+### 6.1 从公式到真值函数
+
+设 $F$ 是一个 $n$ 元真值函数：
+
+$$
+F:\{0,1\}^{n}\longrightarrow\{0,1\}.
+$$
+
+其输入是 $n$ 个布尔真值，输出是一个布尔真值。任一包含 $n$ 个变项的命题公式都对应这样一个函数。反过来，在通常的命题逻辑联结词体系中，任一这样的真值函数都能用适当命题公式表达。
+
+**一元情况**：输入只有 $0$、$1$ 两行，输出列的全部可能是
+
+| 函数 | $F(0)$ | $F(1)$ | 对应公式 |
+|---|---:|---:|---|
+| $F_1$ | 0 | 0 | 恒假 $0$ |
+| $F_2$ | 0 | 1 | $p$ |
+| $F_3$ | 1 | 0 | $\neg p$ |
+| $F_4$ | 1 | 1 | 恒真 $1$ |
+
+因此一元真值函数有 $2^2=4$ 种。
+
+**二元情况**：输入固定为 $(0,0),(0,1),(1,0),(1,1)$ 四行，输出列的每一位都能自由取 $0$ 或 $1$，所以共有
+
+$$
+2^4=16
+$$
+
+种不同的二元真值函数，也就是 16 种不同真值行为的二元联结词。
+
+![logic_sixteen_functions_bfe3502e-3b44-46a9-bb0c-38dba781fb27](./_assets/b46f918791/logic_sixteen_functions_bfe3502e-3b44-46a9-bb0c-38dba781fb27.png)
+
+*图：二元联结词的全部16种四位真值函数指纹。*
+
+### 6.2 一般的数量公式：为什么有两个指数？
+
+首先有 $2^n$ 组不同输入；对于每一组输入，真值函数都能独立指定一个 $0$ 或 $1$。所以函数种数为
+
+$$
+\boxed{2^{(2^n)}}.
+$$
+
+> [!warning] 两个数字不可混淆
+> $2^n$ 是**一个 n 元公式的真值表行数**；$2^{(2^n)}$ 是**可能出现的不同输出列数，即真值函数总数**。例如 $n=3$ 时，真值表有 $8$ 行，但可能的真值函数有 $2^8=256$ 种。
+
+在**变项集合和变项次序固定**的前提下，真值函数还可以一一对应地转换为规范化的**主析取范式**或**主合取范式**：输出为 $1$ 的各行决定主析取范式中的极小项，输出为 $0$ 的各行决定主合取范式中的极大项。这是后续范式与逻辑综合问题的重要联系；这里先理解其与真值表的对应，不额外引入复杂范式算法。
+
+### 6.3 非基本联结词：异或、蕴涵否定、与非、或非
+
+除了五种常用联结词，还可定义：
+
+| 名称 | 常用符号 | 真值表达式 | 为真的条件 |
+|---|---|---|---|
+| 不可兼或 / 异或 | $p\oplus q$（也常记 $p\nabla q$） | $\neg(p\leftrightarrow q)$ | 恰好一个为真 |
+| 蕴涵否定 | $p\nrightarrow q$ | $\neg(p\to q)=p\land\neg q$ | $p$ 真、$q$ 假 |
+| 与非 NAND | $p\uparrow q$ | $\neg(p\land q)$ | 不是两者同时真 |
+| 或非 NOR | $p\downarrow q$ | $\neg(p\lor q)$ | 两者都假 |
+
+这里异或按惯常符号 $\oplus$ 书写；当出现资料中使用的 $\nabla$ 时，指的是相同的“不兼容或”真值行为。
+
+![logic_xor_nand_nor_37bf545f-ddbf-4ce0-9bdc-c463d3fe306b](./_assets/b46f918791/logic_xor_nand_nor_37bf545f-ddbf-4ce0-9bdc-c463d3fe306b.png)
+
+*图：三个非常用联结词在2×2赋值表上的不同真值模式。*
+
+特别记住：
+
+$$
+p\uparrow q\Leftrightarrow\neg(p\land q),\qquad
+p\downarrow q\Leftrightarrow\neg(p\lor q).
+$$
+
+与非、或非在数字电路中经常出现。可把它们理解为“先做与/或，最后再把输出翻转”，门图的输出端小圆圈即代表反相。
+
+![logic_nand_nor_gate_ea6b74ba-9f48-4c2e-8c11-6b26a6c2375b](./_assets/b46f918791/logic_nand_nor_gate_ea6b74ba-9f48-4c2e-8c11-6b26a6c2375b.png)
+
+*图：与非门和或非门的输入、逻辑运算及输出反相结构。*
+
+## 7. 联结词完备集：用尽可能少的工具表达所有公式
+
+### 7.1 完备集与极小完备集的定义
+
+设 $S$ 为一个联结词集合。若**任意命题公式都等值于一个仅使用 $S$ 中联结词的公式**，则称 $S$ 是一个**联结词完备集**（functionally complete set）。
+
+若 $S$ 完备，并且删掉其中任意一个联结词后所得真子集都不再完备，称 $S$ 为**极小完备联结词集**（按集合包含关系极小）。
+
+> [!important] “完备”与“极小”是两回事
+> 完备意味着**表达能力足够**；极小意味着**其中每一个元素都不可删除**。极小不是指不同候选完备集中元素个数绝对最少。例如 $\{\neg,\land\}$ 是极小完备集，但 $\{\uparrow\}$ 只需要一个联结词，同样完备。
+
+### 7.2 从五种常用联结词逐步压缩
+
+基础集合
+
+$$
+S_0=\{\neg,\land,\lor,\to,\leftrightarrow\}
+$$
+
+显然完备。由
+
+$$
+A\to B\Leftrightarrow\neg A\lor B,
+$$
+
+$$
+A\leftrightarrow B\Leftrightarrow(A\to B)\land(B\to A),
+$$
+
+可知 $\to$ 和 $\leftrightarrow$ 都能由 $\neg,\land,\lor$ 表达。因此
+
+$$
+\{\neg,\land,\lor\}
+$$
+
+也是完备集。
+
+再用德·摩根律：
+
+$$
+A\lor B\Leftrightarrow\neg(\neg A\land\neg B),
+$$
+
+$$
+A\land B\Leftrightarrow\neg(\neg A\lor\neg B),
+$$
+
+于是
+
+$$
+\boxed{\{\neg,\land\}\text{ 和 }\{\neg,\lor\}\text{ 都是完备集。}}
+$$
+
+此外，
+
+$$
+A\lor B\Leftrightarrow\neg A\to B,
+$$
+
+$$
+A\land B\Leftrightarrow\neg(A\to\neg B),
+$$
+
+所以
+
+$$
+\boxed{\{\neg,\to\}\text{ 也是完备集。}}
+$$
+
+### 7.3 为什么仅用一个 NAND 就足够？
+
+设 $p\uparrow q=\neg(p\land q)$。先用两个相同输入实现否定：
+
+$$
+\neg p\Leftrightarrow p\uparrow p.
+$$
+
+接着使用两级与非，恢复合取：
+
+$$
+p\land q
+\Leftrightarrow(p\uparrow q)\uparrow(p\uparrow q).
+$$
+
+最后结合德·摩根律构造析取：
+
+$$
+p\lor q
+\Leftrightarrow(p\uparrow p)\uparrow(q\uparrow q).
+$$
+
+这三步已经构造出 $\neg,\land,\lor$。由于它们组成完备集，所以**只用 $\uparrow$ 就能表达任意命题公式**。
+
+![logic_nand_universal_construction_79d9e663-d5c2-444e-9e23-cb36b7c76e2a](./_assets/b46f918791/logic_nand_universal_construction_79d9e663-d5c2-444e-9e23-cb36b7c76e2a.png)
+
+*图：NAND门分线、两级反相、三级组合构造三种基本联结词。*
+
+> [!tip] 证明单联结词完备的统一套路
+> 不必直接证明“所有公式都能写出来”。只需**构造出一个已知的完备集**，例如 $\{\neg,\land\}$ 或 $\{\neg,\lor\}$，即足以完成证明。
+
+### 7.4 为什么仅用一个 NOR 也足够？
+
+设 $p\downarrow q=\neg(p\lor q)$，同样从否定开始：
+
+$$
+\neg p\Leftrightarrow p\downarrow p.
+$$
+
+两级或非恢复析取：
+
+$$
+p\lor q\Leftrightarrow(p\downarrow q)\downarrow(p\downarrow q).
+$$
+
+而由德·摩根律构造合取：
+
+$$
+p\land q\Leftrightarrow(p\downarrow p)\downarrow(q\downarrow q).
+$$
+
+故
+
+$$
+\boxed{\{\uparrow\}\quad\text{与}\quad\{\downarrow\}\quad\text{均为单元素完备集。}}
+$$
+
+![logic_nor_universal_construction_0d770fd3-d3a2-4a9c-97c0-fd9b89ab8fe1](./_assets/b46f918791/logic_nor_universal_construction_0d770fd3-d3a2-4a9c-97c0-fd9b89ab8fe1.png)
+
+*图：NOR门分线、两级反相、三级组合构造三种基本联结词。*
+
+### 7.5 几个不完备集合及其不可能性证明
+
+判断一个联结词集**不完备**，关键是找出它的所有公式都必须满足的某种**不变性质**，再找一个逻辑函数不满足该性质。
+
+**情况一：$\{\land,\lor,\to,\leftrightarrow\}$ 不完备。**
+
+把所有命题变项都赋值为 $1$。有
+
+$$
+1\land1=1,\quad1\lor1=1,\quad1\to1=1,\quad1\leftrightarrow1=1.
+$$
+
+因此，**用这些联结词递归构成的任意公式，在全 $1$ 赋值时仍然为 $1$**。但 $\neg p$ 在 $p=1$ 时为 $0$，无法表达，所以该集合不完备。
+
+![logic_ones_preserving_invariant_14f81dc2-e9b6-4cb6-b85e-0c8f1d92d619](./_assets/b46f918791/logic_ones_preserving_invariant_14f81dc2-e9b6-4cb6-b85e-0c8f1d92d619.png)
+
+*图：无否定联结词集合在全真输入下的闭包性质及不完备性。*
+
+这类性质称为保持 $1$（1-preserving）。类似思路还能说明只有 $\land$、只有 $\lor$、只有 $\to$ 或只有 $\leftrightarrow$ 都不能表达任意真值函数。
+
+**情况二：$\{\neg,\leftrightarrow\}$ 不完备。**
+
+在固定的两个或更多变项上，这种联结词组合得到的函数都属于奇偶型布尔函数：其输出可以表达成若干变量的异或，再加一个固定真值常量。特别在**两元真值表的四行中，输出 $1$ 的行数总为偶数**。但 $p\land q$ 在四行中恰有一行输出 $1$，故无法表示，集合不完备。
+
+> [!note] 此处不能只说“没有合取符号”
+> 一个集合是否完备不取决于有没有写出某个联结词的字符，而在于**能否用其他联结词组合出同样真值函数**。$\{\uparrow\}$ 没有 $\neg,\land,\lor$ 的符号却完全能构造它们；$\{\neg,\leftrightarrow\}$ 虽然有两个联结词，却仍不能表达所有二元函数。
+
+### 7.6 常见联结词集结论速查
+
+| 联结词集合 | 完备性 | 是否极小 | 关键理由 |
+|---|---|---|---|
+| $\{\neg,\land,\lor,\to,\leftrightarrow\}$ | 是 | 否 | 包含基本完备集 |
+| $\{\neg,\land,\lor\}$ | 是 | 否 | $\land$ 与 $\lor$ 可互相用否定表达 |
+| $\{\neg,\land\}$ | 是 | 是 | 可构造析取 |
+| $\{\neg,\lor\}$ | 是 | 是 | 可构造合取 |
+| $\{\neg,\to\}$ | 是 | 是 | 可构造合取、析取 |
+| $\{\uparrow\}$ | 是 | 是 | 单独构造非、且、或 |
+| $\{\downarrow\}$ | 是 | 是 | 单独构造非、或、且 |
+| $\{\neg,\leftrightarrow\}$ | 否 | — | 只能构造奇偶型函数 |
+| $\{\land,\lor,\to,\leftrightarrow\}$ | 否 | — | 保持全 $1$ 赋值输出为 $1$ |
+| 只含一个 $\land/\lor/\neg/\to/\leftrightarrow$ | 否 | — | 表达能力受限 |
+
+## 8. 把公式转换到指定完备集
+
+### 8.1 转换为只含 $\neg$ 与 $\to$ 的公式
+
+要求把
+
+$$
+C=(p\land\neg q)\lor r
+$$
+
+转换为 $S=\{\neg,\to\}$ 上的公式。思路是先分配，再逐个消去 $\lor$，最后把合取改成“否定蕴涵”。
+
+$$
+\begin{aligned}
+C&\Leftrightarrow(p\lor r)\land(\neg q\lor r)\\
 &\Leftrightarrow(\neg p\to r)\land(q\to r)\\
-&\Leftrightarrow\neg\bigl(\neg(\neg p\to r)\lor\neg(q\to r)\bigr)\\
-&\Leftrightarrow\boxed{\neg\bigl((\neg p\to r)\to\neg(q\to r)\bigr)}
-\end{aligned}$$
+&\Leftrightarrow\neg\Big((\neg p\to r)\to\neg(q\to r)\Big).
+\end{aligned}
+$$
 
-**方法二：更简短的等值转换。**
+所以结果是
 
-因为 $p\land\neg q\Leftrightarrow\neg(p\to q)$，所以：
+$$
+\boxed{\neg\big((\neg p\to r)\to\neg(q\to r)\big).}
+$$
 
-$$\begin{aligned}
-C&\Leftrightarrow\neg(p\to q)\lor r\\
-&\Leftrightarrow\boxed{(p\to q)\to r}
-\end{aligned}$$
+![logic_basis_transform_1e295d32-0f71-465e-9f9e-b443cea674b9](./_assets/b46f918791/logic_basis_transform_1e295d32-0f71-465e-9f9e-b443cea674b9.png)
 
-> [!important] 两种结果都正确
-> 两个答案写法不同，但真值函数完全一样，都是所要求的 $\{\neg,\to\}$ 上的公式。**第二种更简洁**，考试通常优先选步数少且理由清楚的形式。
+*图：通过分配、蕴涵表达和德摩根改写到{¬,→}的四阶段。*
 
-### 3. 限定联结词集题的检查方法
+> [!warning] 不要“只换运算符，不管括号”
+> $A\land B\Leftrightarrow\neg(A\to\neg B)$，外层与内层否定必须成对出现；$A\lor B\Leftrightarrow\neg A\to B$，否定作用的是整个 $A$。在复合子公式上改写，应先把 $A,B$ 看成完整的括号单元。
 
-> [!tip] 两次检查
-> **检查 1：联结词合法。** 最终公式中不能残留集合以外的 $\land,\lor,\leftrightarrow$ 等符号。
+### 8.2 优先级输入线路：从文字要求到逻辑公式
+
+三个输入信号分别为 $A,B,C$，优先顺序为
+
+$$
+A>B>C.
+$$
+
+规则：**同一时间只能有一个输出**；多个信号同时输入时，优先级较高的信号先获得通行权。对应输出为 $F_A,F_B,F_C$。
+
+按情形直接得到：
+
+- $A$ 只需自己存在就能获得通行权，不受 $B,C$ 影响：$F_A=A$；
+- $B$ 能输出，必须 $B=1$ 且 $A=0$：$F_B=\neg A\land B$；
+- $C$ 能输出，必须 $C=1$ 且 $A=B=0$：$F_C=\neg A\land\neg B\land C$。
+
+因此结果为
+
+$$
+\boxed{F_A=A,\qquad F_B=\neg A\land B,\qquad F_C=\neg A\land\neg B\land C.}
+$$
+
+![logic_priority_arbiter_table_540f6cc6-d4f1-4150-871d-8c1042899096](./_assets/b46f918791/logic_priority_arbiter_table_540f6cc6-d4f1-4150-871d-8c1042899096.png)
+
+*图：A>B>C优先仲裁输出的8种真值组合与简化公式。*
+
+真值表对应的实际时序效果如下，展示输入怎样被优先级规则筛选，保证同一时刻不会有多个输出为 $1$。
+
+![logic_priority_arbiter_timeline_53494363-8e40-4ee4-963c-b1e175b13b07](./_assets/b46f918791/logic_priority_arbiter_timeline_53494363-8e40-4ee4-963c-b1e175b13b07.png)
+
+*图：离散时间波形显示A、B、C请求与互斥输出。*
+
+这也是一种常见的逻辑设计思想：**先描述约束，再列出各输出的成真条件，最后用等值律化简**。例如由最小项展开 $F_A$：
+
+$$
+\begin{aligned}
+F_A={}&(A\land\neg B\land\neg C)
+\lor(A\land\neg B\land C)\\
+&\lor(A\land B\land\neg C)
+\lor(A\land B\land C)\\
+\Leftrightarrow{}& A.
+\end{aligned}
+$$
+
+同理，$F_B$ 由两个最小项合并成 $\neg A\land B$，$F_C$ 只对应一个最小项 $\neg A\land\neg B\land C$。
+
+## 9. 解题方法总览与自测
+
+### 9.1 常见问题的选法
+
+| 题目任务 | 推荐方法 | 最常见失误 |
+|---|---|---|
+| 找成真/成假赋值 | 从外层联结词的真假条件倒推；必要时列真值表 | 蕴涵为假条件记反 |
+| 判断是否重言式 | 等值演算化成 $1$，或真值表全 $1$ | 把可满足式误当重言式 |
+| 证明两式等值 | 消去 $\to,\leftrightarrow$；分别化为同一形式 | 用一个特例证明普遍等值 |
+| 证明两式不等值 | 找一个输出不同的赋值 | 无意义地枚举全部情况 |
+| 用代入规则 | 同一命题变项全体统一替换 | 只替换一部分出现 |
+| 用置换规则 | 找到已证等值的局部子公式 | 没有验证局部等值 |
+| 证明完备集 | 构造已知的完备集 | 仅罗列几种例子而没有一般证明 |
+| 证明不完备 | 找所有组合都保留的不变量 | 只凭“缺少某个符号”判断 |
+| 转换指定联结词集 | 逐步消去不允许的联结词 | 忘记括号和否定范围 |
+| 设计逻辑线路 | 从优先条件求各个输出函数 | 忽略互斥条件 |
+
+### 9.2 核心公式压缩速查
+
+$$
+\begin{gathered}
+A\to B\Leftrightarrow\neg A\lor B,\qquad
+A\leftrightarrow B\Leftrightarrow(A\to B)\land(B\to A),\\
+\neg(A\lor B)\Leftrightarrow\neg A\land\neg B,\qquad
+\neg(A\land B)\Leftrightarrow\neg A\lor\neg B,\\
+A\lor(A\land B)\Leftrightarrow A,\qquad
+A\land(A\lor B)\Leftrightarrow A,\\
+A\lor\neg A\Leftrightarrow1,\qquad
+A\land\neg A\Leftrightarrow0,\\
+\neg A\Leftrightarrow A\uparrow A\Leftrightarrow A\downarrow A,\\
+A\land B\Leftrightarrow(A\uparrow B)\uparrow(A\uparrow B),\\
+A\lor B\Leftrightarrow(A\downarrow B)\downarrow(A\downarrow B).
+\end{gathered}
+$$
+
+### 9.3 独立练习
+
+> [!question] 练习 A：等值与反例
+> 1. 判断 $p\to(q\to r)$ 和 $(p\to q)\to r$ 是否等值，尽可能少用赋值。
+> 2. 证明 $\neg(p\to q)\Leftrightarrow p\land\neg q$。
+> 3. 证明 $(p\leftrightarrow q)\Leftrightarrow(\neg p\leftrightarrow\neg q)$。
+
+> [!question] 练习 B：完备集与转换
+> 1. 把 $p\leftrightarrow q$ 改写为只含 $\neg,\land,\lor$ 的公式。
+> 2. 只用 $\uparrow$ 写出 $p\lor q$。
+> 3. 说明为什么仅使用 $\land,\lor,\to,\leftrightarrow$ 无法得到 $\neg p$。
+> 4. 将 $p\lor q$ 转写为仅含 $\neg,\to$ 的公式。
+
+> [!example]- 参考答案与关键思路
+> **A1**：不等值；令 $(p,q,r)=(0,0,0)$，左侧为 $1$，右侧为 $0$。
 >
-> **检查 2：真值等值。** 通过已知等值律逐步推导，必要时用真值表检验所有赋值。只检查最终结构而不检查等值是不够的。
-
----
-
-## 八、逻辑等值式的应用题
-
-### 1. 百米竞赛：由“各对一半”求名次
-
-> [!example] 题意
-> $A,B,C,D$ 四人参加百米比赛，没有并列名次。三人作出预测：
+> **A2**：$\neg(p\to q)\Leftrightarrow\neg(\neg p\lor q)\Leftrightarrow p\land\neg q$。
 >
-> - 甲：$C$ 第一，$B$ 第二。
-> - 乙：$C$ 第二，$D$ 第三。
-> - 丙：$A$ 第二，$D$ 第四。
+> **A3**：可从等价两式均要求两边同真或同假出发，或将左右化为 $(p\land q)\lor(\neg p\land\neg q)$。
 >
-> **每个人的两项判断恰好有一项正确**。求实际名次。
-
-令 $A_i,B_i,C_i,D_i$ 分别表示相应选手获得第 $i$ 名（$i=1,2,3,4$）。
-
-“恰好对一半”不是两个判断均真或均假，而是**恰好一个真**。因此有：
-
-$$\begin{aligned}
-\text{甲：}&\quad(C_1\land\neg B_2)\lor(\neg C_1\land B_2)\\
-\text{乙：}&\quad(C_2\land\neg D_3)\lor(\neg C_2\land D_3)\\
-\text{丙：}&\quad(A_2\land\neg D_4)\lor(\neg A_2\land D_4)
-\end{aligned}$$
-
-**推理：**
-
-1. 假设 $D$ 不是第三，则按乙的预测 $C$ 必为第二。
-2. $C$ 已为第二，故甲预测中的“$C$ 第一”为假，于是 $B$ 必须第二，与 $C$ 第二冲突。
-3. 所以 $D$ **第三**，乙的另一个判断“$C$ 第二”为假。
-4. $D$ 既然第三，就不是第四；根据丙的预测，$A$ **第二**。
-5. $A$ 已第二，因此 $B$ 不可能第二；根据甲的预测，$C$ **第一**。
-6. 剩下 $B$ 为第四。
-
-$$\boxed{C\text{ 第一},\quad A\text{ 第二},\quad D\text{ 第三},\quad B\text{ 第四}}$$
-
-> [!warning] 本题必须保留“无并列名次”条件
-> 只列三名观众的判断还不够。推理过程中多次用到“同一人不能占两个名次”和“两人不能同时占同一个名次”。忽略这些约束可能得到不合理的候选解。
-
-### 2. 土耳其商人与帽子：利用他人的沉默推理
-
-> [!example] 题意
-> 桌上有 **2 顶红帽子、3 顶黑帽子**。商人和两位应聘者各戴一顶；两位应聘者均看到商人戴着**红帽子**。过了一会儿，其中一人断言：“我戴的是黑帽子。”判断其推理是否成立。
-
-**分析：**
-
-- 已经看到商人戴红帽子，故两位应聘者中**至多一人**还能戴红帽子。
-- 如果说话的人也戴红帽子，那么另一位应聘者就能看见**两顶红帽子**（商人与说话者），会立刻知道自己只能戴黑帽子。
-- 题意是过了一会儿另一位仍未抢先回答；在**双方都会及时说出能够确定的答案**这一前提下，可排除“说话者戴红帽子”。
-- 因而说话的人应戴**黑帽子**。
-
-> [!note] 推理隐含的前提
-> “沉默”本身不是逻辑联结词。上述判断需要假定另一位应聘者能看到所有人的帽子、正确推理，且一旦能确定便会作答。若没有这些行为条件，仅从“两人看见商人红帽”无法独立确定每人的帽色。
-
-### 3. 趣味思考：只能问一个是非问题，且对方可能说谎
-
-> [!question] 题意与条件辨析
-> 一方手持黑色或白色围棋子，另一方只能问一个可回答“是/否”的问题；持子者可以说真话，也可以说假话。能否**保证**通过一个回答确定棋子的颜色？
+> **B1**：$(p\land q)\lor(\neg p\land\neg q)$。
 >
-> **按题面的字面条件，不能保证。** 如果回答者可以对同一个问题随意决定说真或说假，则一个“是”或“否”的回答并没有稳定的判别意义；必须再增加例如“始终诚实”或“始终撒谎”的一致性规则，才能构造通用问法。
+> **B2**：$(p\uparrow p)\uparrow(q\uparrow q)$。
 >
-> 若额外约定回答者属于**始终讲真话**或**始终撒谎**两类之一，可问：“**如果我问你‘棋子是白色的吗？’，你会回答‘是’吗？**”在此额外假设下，回答“是”对应白棋，“否”对应黑棋。这个附加设定不应误认为原题已经明确给出。
-
-### 4. 信号优先输出线路
-
-> [!example] 题意
-> 线路有三个输入 $A,B,C$，优先级依次为 $A>B>C$。同一时刻最多允许**一个**输出信号：若多个输入同时出现，优先输出高优先级信号。要求在 $\{\neg,\land\}$ 中表示三个输出。
-
-令 $p$ 表示 $A$ 有输入，$q$ 表示 $B$ 有输入，$r$ 表示 $C$ 有输入。
-
-- **$A$ 的输出：** 只要 $A$ 输入，就一定优先选中它，不受 $B,C$ 影响。
-- **$B$ 的输出：** 要求 $B$ 输入，且 $A$ 没有输入；$C$ 的情况无关。
-- **$C$ 的输出：** 要求 $C$ 输入，且 $A,B$ 都没有输入。
-
-$$\boxed{\begin{aligned}
-F_A&=p\\
-F_B&=\neg p\land q\\
-F_C&=\neg p\land\neg q\land r
-\end{aligned}}$$
-
-它们只使用了允许的 $\neg,\land$，且不会出现两个输出同时为 1 的情况。
-
-**完整输入/输出检验表：**
-
-| $p$ | $q$ | $r$ | $F_A$ | $F_B$ | $F_C$ | 优先结果 |
-| :---: | :---: | :---: | :---: | :---: | :---: | --- |
-| 0 | 0 | 0 | 0 | 0 | 0 | 无输出 |
-| 0 | 0 | 1 | 0 | 0 | 1 | $C$ |
-| 0 | 1 | 0 | 0 | 1 | 0 | $B$ |
-| 0 | 1 | 1 | 0 | 1 | 0 | $B$ |
-| 1 | 0 | 0 | 1 | 0 | 0 | $A$ |
-| 1 | 0 | 1 | 1 | 0 | 0 | $A$ |
-| 1 | 1 | 0 | 1 | 0 | 0 | $A$ |
-| 1 | 1 | 1 | 1 | 0 | 0 | $A$ |
-
-> [!tip] 将“优先级”翻译成逻辑公式
-> 某个输入能获得输出的条件是：**它自身有效，且所有比它优先级更高的输入全部无效**。用这一句话，就能直接写出本题三个公式，而不必先列很长的析取式再化简。
-
----
-
-## 九、综合易错点与方法整理
-
-### 1. 最容易混淆的六组概念
-
-| 容易混淆 | 正确区分 |
-| --- | --- |
-| $A\leftrightarrow B$ / $A\Leftrightarrow B$ | 前者是新公式；后者表示逻辑等值关系 |
-| 成真赋值 / 重言式 | 前者指**某一个**赋值下为真；后者指**所有**赋值下为真 |
-| 重言式 / 可满足式 | 重言式包含在可满足式中，不是并列互斥关系 |
-| 真值指派数 / 真值函数数 | 分别是 $2^n$ / $2^{2^n}$ |
-| 代入规则 / 置换规则 | 统一代换全部同名变项 / 可以局部置换等值子式 |
-| 完备集 / 极小完备集 | 能表达所有公式 / 还要求任何真子集都不完备 |
-
-### 2. 常见解题错误
-
-> [!warning] 错误检查清单
-> 1. 将 $p\to q$ 误认为“前件为假时整个式子为假”。
-> 2. 把 $p\to(q\to r)$ 写成 $(p\to q)\to r$，无视括号。
-> 3. 把德·摩根律写成 $\neg(p\lor q)=\neg p\lor\neg q$。
-> 4. 将 $A\lor\neg A$ 与 $A\land\neg A$ 的结果弄反。
-> 5. 将“找到一个成真赋值”误当成“证明了重言式”。
-> 6. 证明公式不等值时硬做完整真值表，而不先寻找反例。
-> 7. 证明完备集时只列出若干例子，没有证明可构造一组已知完备的联结词。
-> 8. 公式转换完毕后仍残留题目禁止使用的联结词。
-
-### 3. 复习速查：公式最小核心集
-
-> [!summary] 必须熟练调用的等值式
-> $$\begin{aligned}
-> A\to B&\Leftrightarrow\neg A\lor B\\
-> A\leftrightarrow B&\Leftrightarrow(A\to B)\land(B\to A)\\
-> \neg(A\land B)&\Leftrightarrow\neg A\lor\neg B\\
-> \neg(A\lor B)&\Leftrightarrow\neg A\land\neg B\\
-> A\lor\neg A&\Leftrightarrow1\\
-> A\land\neg A&\Leftrightarrow0\\
-> A\lor(A\land B)&\Leftrightarrow A\\
-> A\land(A\lor B)&\Leftrightarrow A
-> \end{aligned}$$
+> **B3**：全体变项都取 $1$ 时，这四种联结词组合的输出必为 $1$；但 $\neg p=0$，矛盾。
 >
-> **做证明题**：消去联结词 → 推进否定 → 交换结合分配 → 吸收与化常量。
->
-> **做完备集题**：要证明“完备”就构造已知完备集；要证明“不完备”就寻找共同保留性质及反例。
->
-> **做应用题**：先用命题变项表达全部约束，再检查唯一性和题目限定条件。
+> **B4**：$\neg p\to q$。
 
----
-
-## 十、自测练习与答案
-
-### A. 自测题
-
-1. 不使用真值表，判断 $\neg(p\to q)\lor p$ 属于哪一类公式。
-2. 证明 $(p\to q)\land(p\to\neg q)\Leftrightarrow\neg p$。
-3. 判断 $p\to(q\to r)$ 与 $(p\to q)\to r$ 是否等值，并给出一种证明方法。
-4. 一个四元真值函数具有多少种真值指派？一共有多少种不同的四元真值函数？
-5. 说明 $\{\neg,\lor\}$ 为什么是完备集。
-6. 把 $p\lor q$ 转换为只含 $\uparrow$ 的公式。
-7. 按照 $A>B>C$ 优先级，若输入为 $(p,q,r)=(0,1,1)$，求 $(F_A,F_B,F_C)$。
-
-### B. 参考答案与关键步骤
-
-> [!example]- 参考答案（可折叠）
-> **1.** $\neg(p\to q)\lor p\Leftrightarrow(p\land\neg q)\lor p\Leftrightarrow p$，是**可满足但非重言式**。
->
-> **2.** $(\neg p\lor q)\land(\neg p\lor\neg q)\Leftrightarrow\neg p\lor(q\land\neg q)\Leftrightarrow\neg p$。
->
-> **3.** 不等值。取 $(p,q,r)=(0,0,0)$：前者为 1，后者为 0。
->
-> **4.** $2^4=16$ 种指派；$2^{16}=65536$ 种四元真值函数。
->
-> **5.** 由德·摩根律，$p\land q\Leftrightarrow\neg(\neg p\lor\neg q)$。可构造 $\{\neg,\land,\lor\}$，因此完备。
->
-> **6.** 先构造否定：$\neg p\Leftrightarrow p\uparrow p$。再由 $p\lor q\Leftrightarrow\neg(\neg p\land\neg q)$，得：
->
-> $$p\lor q\Leftrightarrow(p\uparrow p)\uparrow(q\uparrow q)$$
->
-> **7.** $F_A=p=0$；$F_B=\neg p\land q=1$；$F_C=\neg p\land\neg q\land r=0$。故 $(0,1,0)$，即输出 $B$。
-
+> [!summary] 学习完成后的关键能力
+> 真值表能回答**某一公式或两公式是否等值**；基本等值律能让你**高效证明和化简**；代入和置换让有限的等值律推广到任意大公式；真值函数把公式变为输入输出规律；完备性则回答**哪些联结词足以表达所有这样的规律**。真正的掌握标准，是能够在真值表、等值演算和逻辑线路三种表达之间准确切换。
