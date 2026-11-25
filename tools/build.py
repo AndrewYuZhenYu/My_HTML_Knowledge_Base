@@ -22,6 +22,7 @@ from import_archive_zips import selected_source_keys
 from import_social_zips import selected_source_keys as social_source_keys
 from social_widgets import WIDGETS as SOCIAL_WIDGETS, render_widget as render_social_widget
 from redraw_social_vectors import recreate as recreate_social_svg
+from investment_native import render as render_investment_native
 from archive_visuals import SUPPLEMENTS
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -311,6 +312,17 @@ def transform(doc,batch,svg_map):
   else:
    img.replace_with(node)
   social_widget_count+=1
+ if key=='social-sciences/05 股票投资与证券交易.md':
+  for img in list(soup.select('img[src]')):
+   if img.find_parent('figure',class_='social-widget'):continue
+   src=(doc['output'].parent/img['src']).resolve()
+   native=BeautifulSoup(render_investment_native(src,img.get('alt','配图')),'html.parser').figure
+   if img.parent.name=='p' and len(img.parent.find_all('img'))==1:
+    paragraph=img.parent
+    paragraph.insert_before(native)
+    img.extract()
+    if not paragraph.get_text(strip=True):paragraph.decompose()
+   else:img.replace_with(native)
  visual_count=asset_visual_count+source_image_count+social_widget_count
  for spec in visual_specs(key):
   matches=[h for h in soup.select('h1,h2,h3,h4,h5,h6') if spec['match'] in heading_label(h)]
@@ -351,6 +363,7 @@ def transform(doc,batch,svg_map):
  extra=f'<script defer src="{root}assets/lab.js"></script>' if key=='physics/12 气体动理论.md' else ''
  if key in WIDGETS:extra+=f'<script defer src="{root}assets/physics-widgets.js"></script>'
  if key in SOCIAL_WIDGETS:extra+=f'<script defer src="{root}assets/social-widgets.js"></script>'
+ if key=='social-sciences/05 股票投资与证券交易.md':extra+=f'<script defer src="{root}assets/investment-native.js"></script>'
  if key in STEPS or key in TRUTHS:extra+=f'<script defer src="{root}assets/learning-widgets.js"></script>'
  if any(s['kind']=='trace' for s in visual_specs(key)):extra+=f'<script defer src="{root}assets/trace-widgets.js"></script>'
  if key not in ZIP_PHYSICS and any(config[0] in INTERACTIVE_KINDS for config in UPGRADES.get(key,{}).values()):extra+=f'<script defer src="{root}assets/concept-interactions.js"></script>'
@@ -474,7 +487,7 @@ if __name__=='__main__':
    if r['visual_count']!=len(visual_specs(d['source_rel']))+len(WIDGETS.get(d['source_rel'],[]))+int(d['source_rel'] in STEPS)+int(d['source_rel'] in TRUTHS)+r['asset_visual_count']+r['source_image_count']+r['social_widget_count']:errors.append(d['source_rel']+': visual mismatch')
    if r['visual_count']<15:errors.append(d['source_rel']+': fewer than 15 teaching figures')
    article=BeautifulSoup(d['output'].read_text(encoding='utf8'),'html.parser')
-   if len(article.select('article figure.concept-visual svg'))+len(article.select('article img[src]'))!=r['visual_count']:errors.append(d['source_rel']+': figure count mismatch')
+   if len(article.select('article figure.concept-visual svg'))+len(article.select('article img[src]'))+len(article.select('article figure.invest-table table'))!=r['visual_count']:errors.append(d['source_rel']+': figure count mismatch')
    map_page=map_output(d)
    if not map_page.is_file() or not BeautifulSoup(map_page.read_text(encoding='utf8'),'html.parser').select('details.map-branch a.map-leaf[href]'):
     errors.append(d['source_rel']+': mind map missing or empty')

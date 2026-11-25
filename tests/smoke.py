@@ -20,7 +20,7 @@ for page in (root / 'subjects').rglob('*.html'):
     diagrams = article.select('figure.concept-visual')
     images = article.select('img[src]')
     assert len(diagrams) + len(images) >= 15, page
-    assert all(fig.find('svg') and fig.find('figcaption') and fig.parent.name != 'p' for fig in diagrams), page
+    assert all((fig.find('svg') or fig.find('table')) and fig.find('figcaption') and fig.parent.name != 'p' for fig in diagrams), page
     for image in images:
         assert (page.parent / image['src']).is_file(), (page, image['src'])
     link = article.select_one('.chapter-links a[href$="-mindmap.html"]')
@@ -108,9 +108,21 @@ for item in social:
     assert doc.select_one('script[src$="social-widgets.js"]'), page
     assert not doc.select('article a[href$=".html"][href*="_assets/"]'), page
     redrawn += sum('/assets/social-redrawn/' in '/' + img['src'] for img in doc.select('article img[src]'))
+    if page.name == '05-investing.html':
+        native = doc.select('article figure.invest-native')
+        assert len(native) == 93, len(native)
+        assert len(doc.select('article figure.invest-inline svg')) == 88
+        assert len(doc.select('article figure.invest-table table')) == 2
+        assert len(doc.select('article figure.invest-dashboard')) == 3
+        assert not doc.select('article img[src$=".jpg"]')
+        assert doc.select_one('script[src$="investment-native.js"]')
+        assert all(fig.select_one('[data-invest-copy]') for fig in native)
+        redrawn += len(doc.select('article figure.invest-inline svg'))
+        redrawn += len(doc.select('article figure.invest-table table'))
+        redrawn += len(doc.select('article figure.invest-dashboard[data-invest-panel="quote"]'))
     social_widgets.extend(doc.select('article figure.social-widget'))
 assert len(social_widgets) == 43
 assert redrawn == 680, redrawn
 assert all(w.select_one('svg[role="img"]') and w.select_one('.social-original img[src]')
            and w.select_one('.social-controls') for w in social_widgets)
-print(f'PASS: {len(articles)} articles, linked mind maps, 8 social systems, 680 redrawn vectors, 43 social widgets')
+print(f'PASS: {len(articles)} articles, 8 social systems, 680 vector-derived figures, 43 social widgets, 93 investment DOM figures')

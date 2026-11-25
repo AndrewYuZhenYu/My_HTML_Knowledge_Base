@@ -24,6 +24,7 @@ jobs:
       - run: python tools/build.py --check
       - run: python tests/smoke.py
       - run: node tests/social_widgets.cjs
+      - run: node tests/investment_native.cjs
       - run: python tests/code_blocks.py
       - run: python tests/test_site_integrity.py
       - run: python tools/check_site_integrity.py --require-tracked
