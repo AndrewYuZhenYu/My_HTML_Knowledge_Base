@@ -19,6 +19,9 @@ from upgrade_diagrams import UPGRADES, INTERACTIVE_KINDS, render_upgrade
 from code_blocks import enhance as enhance_code_blocks
 from check_site_integrity import Checker
 from import_archive_zips import selected_source_keys
+from import_social_zips import selected_source_keys as social_source_keys
+from social_widgets import WIDGETS as SOCIAL_WIDGETS, render_widget as render_social_widget
+from redraw_social_vectors import recreate as recreate_social_svg
 from archive_visuals import SUPPLEMENTS
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -32,7 +35,7 @@ CONFIG_IDS={c['id'] for c in COURSES}
 OVERRIDES=COURSE_CONFIG.get('overrides',{})
 md=mistune.create_markdown(escape=True,plugins=['table','strikethrough','url'])
 ZIP_PHYSICS={f'physics/{name}.md' for name in ('12 气体动理论','13 热力学基础｜知识体系重构版','14 振动 扩充版','15 波动')}
-ZIP_IMPORTED=selected_source_keys()
+ZIP_IMPORTED=selected_source_keys() | social_source_keys()
 ZIP_WIDGET_MATCHES={
  'data-structures/GPT02 数据结构第二章：线性表.md':'在第 $i$ 个位置之前插入',
  'data-structures/GPT03数据结构第三章：栈和队列.md':'14. 循环队列：空间复用与取模运算',
@@ -260,7 +263,12 @@ def transform(doc,batch,svg_map):
      fragment='#'+raw.split('#',1)[1] if '#' in raw else ''
      node[attr]=os.path.relpath(matching['output'],doc['output'].parent).replace(os.sep,'/')+fragment
     continue
-   if key in ZIP_IMPORTED:
+   if key in social_source_keys() and tag=='img' and source_candidate.suffix.lower()=='.svg':
+    # Reconstruct every source vector into the site's palette; preserve labels,
+    # topology, and numerical geometry. Original ZIP bytes remain in sources/.
+    dest=ROOT/'assets'/'social-redrawn'/source_candidate.parent.name/source_candidate.name
+    recreate_social_svg(source_candidate,dest)
+   elif key in ZIP_IMPORTED:
     # Selected archive media already lives inside this repository. Reuse those
     # bytes directly instead of creating a second 100 MB copy in assets/imported.
     dest=source_candidate
@@ -289,7 +297,21 @@ def transform(doc,batch,svg_map):
     embed='''<div class="inline-viz"><div class="inline-viz-head"><div><b>交互插图 · 麦克斯韦速率分布</b><small>在知识点旁直接调节气体和温度</small></div><a href="12-lab.html">全屏查看 ↗</a></div><div class="inline-viz-controls"><label>气体 <select id="gasSelect"><option value="o2">氧气 O₂</option><option value="n2">氮气 N₂</option><option value="h2">氢气 H₂</option><option value="he">氦气 He</option></select></label><label>温度 <input type="range" id="tempSelect" min="200" max="900" step="25" value="300"><strong id="tempLabel">300 K</strong></label></div><svg id="maxwellPlot" viewBox="0 0 820 365" aria-label="随参数变化的麦克斯韦速率分布函数图"></svg><div class="plot-legend"><span><i style="background:#3675bd"></i><span id="legend1">300 K</span></span><span><i style="background:#d39959"></i><span id="legend2">510 K 对照</span></span></div><div class="inline-viz-stats"><span>最概然速率<b id="statVp">—</b></span><span>平均速率<b id="statMean">—</b></span><span>方均根速率<b id="statRms">—</b></span></div><p id="formulaSummary" class="inline-viz-tip">拖动滑块观察曲线变化。</p></div>'''
     h.insert_after(BeautifulSoup(embed,'html.parser'));break
  source_image_count=len(soup.select('img[src]'))
- visual_count=asset_visual_count+source_image_count
+ social_widget_count=0
+ for spec in SOCIAL_WIDGETS.get(key,[]):
+  matches=[img for img in soup.select('img[src]') if spec['prefix'] in img.get('src','')]
+  if len(matches)!=1:raise ValueError(f'{key}: social figure {spec["prefix"]!r} matched {len(matches)} images')
+  img=matches[0]
+  node=BeautifulSoup(render_social_widget(spec,img['src'],img.get('alt','')),'html.parser').figure
+  if img.parent.name=='p' and len(img.parent.find_all('img'))==1:
+   paragraph=img.parent
+   paragraph.insert_before(node)
+   img.extract()
+   if not paragraph.get_text(strip=True):paragraph.decompose()
+  else:
+   img.replace_with(node)
+  social_widget_count+=1
+ visual_count=asset_visual_count+source_image_count+social_widget_count
  for spec in visual_specs(key):
   matches=[h for h in soup.select('h1,h2,h3,h4,h5,h6') if spec['match'] in heading_label(h)]
   if len(matches)!=1:raise ValueError(f'{key}: visual heading {spec["match"]!r} matched {len(matches)} sections')
@@ -328,13 +350,14 @@ def transform(doc,batch,svg_map):
  inner=f'<div class="reading-head">{intro}</div><article class="reading-content" data-pagefind-body>{soup}</article>'
  extra=f'<script defer src="{root}assets/lab.js"></script>' if key=='physics/12 气体动理论.md' else ''
  if key in WIDGETS:extra+=f'<script defer src="{root}assets/physics-widgets.js"></script>'
+ if key in SOCIAL_WIDGETS:extra+=f'<script defer src="{root}assets/social-widgets.js"></script>'
  if key in STEPS or key in TRUTHS:extra+=f'<script defer src="{root}assets/learning-widgets.js"></script>'
  if any(s['kind']=='trace' for s in visual_specs(key)):extra+=f'<script defer src="{root}assets/trace-widgets.js"></script>'
  if key not in ZIP_PHYSICS and any(config[0] in INTERACTIVE_KINDS for config in UPGRADES.get(key,{}).values()):extra+=f'<script defer src="{root}assets/concept-interactions.js"></script>'
  if code_block_count:extra+=f'<script defer src="{root}assets/code-copy.js"></script>'
  doc['output'].parent.mkdir(parents=True,exist_ok=True)
  doc['output'].write_text(wrap(doc['title'],'完整 Markdown 转换',inner,doc['output'],ALL_DOCS,toc=heads,extra_script=extra),encoding='utf-8')
- return {'headings':heads,'source_headings':len(re.findall(r'^#{1,6} ',text,re.M)),'math_count':batch.math_counts.get(key,0),'svg_count':len(soup.select('.math-inline,.math-display')),'callout_count':callout_count,'source_callouts':len(re.findall(r'^>\s*(?:>\s*)*\[!\w+\]',text,re.M)),'tables':len(soup.select('table')),'code_blocks':code_block_count,'visual_count':visual_count,'asset_visual_count':asset_visual_count,'source_image_count':source_image_count,'search':snippet_entries}
+ return {'headings':heads,'source_headings':len(re.findall(r'^#{1,6} ',text,re.M)),'math_count':batch.math_counts.get(key,0),'svg_count':len(soup.select('.math-inline,.math-display')),'callout_count':callout_count,'source_callouts':len(re.findall(r'^>\s*(?:>\s*)*\[!\w+\]',text,re.M)),'tables':len(soup.select('table')),'code_blocks':code_block_count,'visual_count':visual_count,'asset_visual_count':asset_visual_count,'source_image_count':source_image_count,'social_widget_count':social_widget_count,'search':snippet_entries}
 
 def map_html(heads):
  def link(prefix):
@@ -448,7 +471,7 @@ if __name__=='__main__':
    if r['source_headings']!=len(r['headings']):errors.append(d['source_rel']+': heading mismatch')
    if r['math_count']!=r['svg_count']:errors.append(d['source_rel']+': math mismatch')
    if r['callout_count']!=r['source_callouts']:errors.append(d['source_rel']+': callout mismatch')
-   if r['visual_count']!=len(visual_specs(d['source_rel']))+len(WIDGETS.get(d['source_rel'],[]))+int(d['source_rel'] in STEPS)+int(d['source_rel'] in TRUTHS)+r['asset_visual_count']+r['source_image_count']:errors.append(d['source_rel']+': visual mismatch')
+   if r['visual_count']!=len(visual_specs(d['source_rel']))+len(WIDGETS.get(d['source_rel'],[]))+int(d['source_rel'] in STEPS)+int(d['source_rel'] in TRUTHS)+r['asset_visual_count']+r['source_image_count']+r['social_widget_count']:errors.append(d['source_rel']+': visual mismatch')
    if r['visual_count']<15:errors.append(d['source_rel']+': fewer than 15 teaching figures')
    article=BeautifulSoup(d['output'].read_text(encoding='utf8'),'html.parser')
    if len(article.select('article figure.concept-visual svg'))+len(article.select('article img[src]'))!=r['visual_count']:errors.append(d['source_rel']+': figure count mismatch')

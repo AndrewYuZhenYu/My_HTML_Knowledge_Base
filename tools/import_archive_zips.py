@@ -49,10 +49,10 @@ def selected_source_keys() -> set[str]:
     return {f'{course}/{filename}' for _, _, course, filename in SELECTION}
 
 
-def prepare(archives: Path):
+def prepare(archives: Path, selection=None, *, prefer_svg=False, caption_from_context=False):
     """Validate every ZIP before writing any file; return prepared changes."""
     prepared = []
-    for category, archive_name, course, filename in SELECTION:
+    for category, archive_name, course, filename in selection or SELECTION:
         archive = archives / category / archive_name
         with zipfile.ZipFile(archive) as bundle:
             entries = [i for i in bundle.infolist() if not i.is_dir()]
@@ -69,6 +69,10 @@ def prepare(archives: Path):
             for info in entries:
                 if PurePosixPath(info.filename).suffix.lower() in IMAGE_SUFFIXES:
                     images.setdefault(PurePosixPath(info.filename).name, []).append(info)
+            vectors_by_topic: dict[str, list[str]] = {}
+            for image_name in images:
+                if image_name.lower().endswith('.svg'):
+                    vectors_by_topic.setdefault(image_name.rsplit('_', 1)[0], []).append(image_name)
             content = bundle.read(markdown[0]).decode('utf-8-sig')
             used: dict[str, bytes] = {}
             media_id = hashlib.sha1(f'{course}/{filename}'.encode('utf-8')).hexdigest()[:10]
@@ -76,6 +80,14 @@ def prepare(archives: Path):
 
             def image_ref(raw: str) -> str:
                 name = PurePosixPath(unquote(raw.split('|', 1)[0])).name
+                if prefer_svg and name.lower().endswith('.png'):
+                    vector = name[:-4] + '.svg'
+                    if vector in images:
+                        name = vector
+                    elif len(vectors_by_topic.get(name.rsplit('_', 1)[0], [])) == 1:
+                        # Some exports give the PNG and SVG of the same diagram
+                        # different UUIDs while retaining a unique topic stem.
+                        name = vectors_by_topic[name.rsplit('_', 1)[0]][0]
                 if name not in images:
                     raise ValueError(f'{archive.name}: missing referenced image {raw}')
                 candidates = images[name]
@@ -90,7 +102,18 @@ def prepare(archives: Path):
 
             def wiki_replace(match: re.Match[str]) -> str:
                 raw = match.group(1)
-                label = raw.split('|', 1)[1] if '|' in raw else PurePosixPath(raw).stem
+                if '|' in raw:
+                    label = raw.split('|', 1)[1]
+                elif caption_from_context:
+                    following = content[match.end():]
+                    caption = re.match(r'\s*\n\s*\*([^*\n]+)\*', following)
+                    if caption and caption.group(1).strip().startswith('图'):
+                        label = caption.group(1).strip()
+                    else:
+                        headings = re.findall(r'^#{1,6}\s+(.+)$', content[:match.start()], re.M)
+                        label = headings[-1].strip() if headings else PurePosixPath(raw).stem
+                else:
+                    label = PurePosixPath(raw).stem
                 label = label.replace('[', '').replace(']', '')
                 return f'![{label}]({image_ref(raw)})'
 

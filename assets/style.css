@@ -235,6 +235,19 @@ body[data-current="map"] .map-help{line-height:1.8}
 .scientific-controls input{flex:1;min-width:95px;accent-color:var(--accent)}
 .scientific-controls output{min-width:28px;text-align:right;color:var(--accent);font-variant-numeric:tabular-nums}
 .scientific-widget.scientific-ready .scientific-readout{display:block;padding:8px 20px 0;color:var(--viz-blue);font-size:13px;font-weight:650;line-height:1.6}
+.social-widget:not(.widget-ready)>svg,.social-widget:not(.widget-ready)>.social-controls,.social-widget:not(.widget-ready)>.social-readout{display:none}
+.social-widget .social-controls{display:flex;flex-wrap:wrap;gap:12px 20px;padding:15px 20px;border-bottom:1px solid var(--border);background:color-mix(in srgb,var(--accent-bg) 18%,var(--paper))}
+.social-controls label{display:flex;align-items:center;gap:8px;flex:1 1 210px;color:var(--text);font-size:13px;font-weight:650}
+.social-controls input{min-width:90px;flex:1;accent-color:var(--accent)}
+.social-controls output{min-width:38px;text-align:right;color:var(--accent);font-variant-numeric:tabular-nums}
+.social-step-actions{display:flex;gap:10px;margin:auto}
+.social-step-actions button{border:1px solid var(--border);border-radius:8px;background:var(--paper);padding:7px 12px;color:var(--text);font:inherit;font-size:13px;cursor:pointer}
+.social-step-actions button:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.social-step-actions button:disabled{opacity:.45;cursor:default}
+.social-widget .social-readout{padding:8px 20px;color:var(--viz-blue);font-size:13px;font-weight:650;line-height:1.6}
+.social-widget .social-original{margin:0 20px 16px;border-top:1px solid var(--border);color:var(--soft);font-size:13px}
+.social-original summary{padding:10px 0;cursor:pointer}
+.social-original img{max-height:650px;object-fit:contain}
 @media(max-width:760px){.concept-visual figcaption{display:block}.concept-visual figcaption strong{display:block;margin-top:4px;font-size:15px}.concept-visual svg{min-width:680px}.concept-visual{overflow-x:auto}.course-map-shortcut{margin-left:14px}}
 @media print{.concept-visual{break-inside:avoid}.outline-map .map-stage{height:auto;overflow:visible}}
 

@@ -24,6 +24,12 @@
       "name": "面向对象 C++",
       "icon": "⌘",
       "order": 40
+    },
+    {
+      "id": "social-sciences",
+      "name": "社会科学 · 认知拓展",
+      "icon": "◎",
+      "order": 50
     }
   ],
   "overrides": {
@@ -96,6 +102,14 @@
     "cpp-oop/05 友元与程序组织.md": {"output": "05-friends-organization.html", "title": "第5讲 友元与程序组织"},
     "cpp-oop/06 重载与类型转换.md": {"output": "06-overloading-conversion.html", "title": "第6讲 重载与类型转换"},
     "cpp-oop/07 继承与派生类.md": {"output": "07-inheritance.html", "title": "第7讲 继承与派生类"},
-    "cpp-oop/08 多态性与虚函数.md": {"output": "08-polymorphism.html", "title": "第8讲 多态性与虚函数"}
+    "cpp-oop/08 多态性与虚函数.md": {"output": "08-polymorphism.html", "title": "第8讲 多态性与虚函数"},
+    "social-sciences/01 世界法学知识体系.md": {"output": "01-world-law.html", "title": "世界法学知识体系", "description": "法律思维、制度比较、民商刑法与国际法"},
+    "social-sciences/02 政治学知识体系.md": {"output": "02-political-science.html", "title": "政治学知识体系", "description": "政治制度、选举、公共政策与比较政治"},
+    "social-sciences/03 经济学知识体系.md": {"output": "03-economics.html", "title": "经济学知识体系", "description": "微观机制、宏观运行与经济政策"},
+    "social-sciences/04 金融学知识体系.md": {"output": "04-finance.html", "title": "金融学知识体系", "description": "金融体系、定价、风险与市场工具"},
+    "social-sciences/05 股票投资与证券交易.md": {"output": "05-investing.html", "title": "股票投资与证券交易", "description": "投资逻辑、市场结构、风险与交易案例"},
+    "social-sciences/06 会计学知识体系.md": {"output": "06-accounting.html", "title": "会计学知识体系", "description": "复式记账、财务报表、成本与财务管理"},
+    "social-sciences/07 管理学知识体系.md": {"output": "07-management.html", "title": "管理学知识体系", "description": "组织、决策、运营、质量与战略"},
+    "social-sciences/08 心理学知识体系.md": {"output": "08-psychology.html", "title": "心理学知识体系", "description": "研究方法、认知、发展、社会与行为"}
   }
 }

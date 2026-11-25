@@ -1,6 +1,6 @@
 # 知栈 V3｜HTML 阅读优先知识库
 
-> 已将大学物理、离散数学、数据结构、面向对象 C++ 共 27 篇 Markdown 笔记导入本地网页；源文件保存在 `sources/`，阅读页由构建器生成。
+> 已将大学物理、离散数学、数据结构、面向对象 C++ 和社会科学共 35 篇 Markdown 笔记导入本地网页；源文件保存在 `sources/`，阅读页由构建器生成。
 
 ## 当前收录
 
@@ -8,6 +8,9 @@
 - 离散数学：命题逻辑第 1–5 讲、推理综合复习、一阶逻辑及集合专题。
 - 数据结构：第 2–7、9 章。
 - 面向对象 C++：第 5–8 讲。
+- 社会科学与认知拓展：世界法学、政治学、经济学、金融学、股票投资、会计学、管理学、心理学，共 8 篇完整体系笔记。
+
+2026-11-25 社会科学批次导入 8 份 ZIP、682 个正文图位。原始素材为 680 张 SVG 和 2 张 JPG；网站将 680 张矢量图按原始几何和文字重新绘制为统一风格的 SVG，43 个知识点另有直接嵌入的参数交互或步骤交互。原素材仍保留在 `sources/` 供核对，2 张交易软件截图保留原样。详见 [社会科学导入与绘图记录](docs/社会科学_认知拓展_导入与重绘记录.md)。
 
 2026-11-24 批次从 28 个 ZIP 中遴选 21 篇导入并保留 1321 个被正文引用的原始图片文件；四份物理 ZIP 与现有章节正文一致，无需再次导入。详见 [ZIP 更新记录](docs/ZIP_知识库更新记录_2026-11-24.md)及 `docs/archive-import-report.json`。
 
@@ -73,6 +76,8 @@ python tools/build.py --check
 
 若需重新导入第 12～15 章的四个权威 ZIP，运行 `python tools/import_physics_zips.py "ZIP 所在文件夹"`，再重新构建。其他课程的已遴选 ZIP 使用 `python tools/import_archive_zips.py "ZIP 存档根目录"`。后者会先核验全部 21 份 ZIP，再把正文和所引用的图片写入 `sources/`，不导入附属代码、重复 PNG/SVG 副本或说明文件。选目清单位于 `tools/import_archive_zips.py`，新增课程或改选版本时先审查该清单和 `config/courses.json`。
 
+社会科学 8 份 ZIP 使用 `python tools/import_social_zips.py "ZIP 存档根目录"`；随后运行 `python tools/build.py --check`。导入器优先选择 SVG，并把旧 Obsidian HTML 演示链接指向页面内的重绘组件。原始 ZIP 素材保留在 `sources/social-sciences/_assets/`，发布图由构建器输出到 `assets/social-redrawn/`。
+
 需要增加一个课程文件夹时，先在 `config/courses.json` 中添加该课程的 `id`、`name` 和 `order`。
 
 ## Netlify 手动部署
@@ -122,6 +127,8 @@ git status -sb
 - `tools/upgrade_diagrams.py`：以定量函数图与结构图替换早期文字框图。
 - `tools/build.py`：Python 批量构建。
 - `tools/import_archive_zips.py`：经遴选的 Obsidian ZIP 批量导入、图片引用转换与安全校验。
+- `tools/import_social_zips.py`、`tools/redraw_social_vectors.py`、`tools/social_widgets.py`：社会科学 ZIP 导入、矢量重建和独立交互图配置。
+- `assets/social-widgets.js`：社会科学交互图的本地绘制和参数计算。
 - `tools/archive_visuals.py`：原 ZIP 配图较少的一阶逻辑章节的真值表、关系矩阵与推理规则图。
 - `tools/prepare_netlify.py`：生成并检查轻量的手动上传目录。
 - `tools/check_site_integrity.py`：递归检查生成页面、静态资源和可选 Git 发布树。

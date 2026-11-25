@@ -88,4 +88,29 @@ for item in archive['selected']:
     assert (root / item['source']).is_file(), item
     source_key = Path(item['source']).relative_to('sources').as_posix()
     assert report['files'][source_key]['source_image_count'] >= item['referenced_images'], item
-print(f'PASS: {len(articles)} articles, linked mind maps, 21 imported ZIP notes, 10 physics widgets, learning interactions')
+social = json.loads((root / 'docs/social-archive-import-report.json').read_text(encoding='utf8'))['selected']
+assert len(social) == 8
+assert sum(item['figures'] for item in social) == 682
+assert sum(item['vectors'] for item in social) == 680
+assert sum(item['raster_fallbacks'] for item in social) == 2
+social_widgets = []
+redrawn = 0
+for item in social:
+    key = Path(item['source']).relative_to('sources').as_posix()
+    assert report['files'][key]['source_image_count'] == item['figures'], item
+    page = next(page for page in articles if page.name == {
+        '01': '01-world-law.html', '02': '02-political-science.html',
+        '03': '03-economics.html', '04': '04-finance.html',
+        '05': '05-investing.html', '06': '06-accounting.html',
+        '07': '07-management.html', '08': '08-psychology.html',
+    }[Path(item['source']).name[:2]])
+    doc = BeautifulSoup(page.read_text(encoding='utf8'), 'html.parser')
+    assert doc.select_one('script[src$="social-widgets.js"]'), page
+    assert not doc.select('article a[href$=".html"][href*="_assets/"]'), page
+    redrawn += sum('/assets/social-redrawn/' in '/' + img['src'] for img in doc.select('article img[src]'))
+    social_widgets.extend(doc.select('article figure.social-widget'))
+assert len(social_widgets) == 43
+assert redrawn == 680, redrawn
+assert all(w.select_one('svg[role="img"]') and w.select_one('.social-original img[src]')
+           and w.select_one('.social-controls') for w in social_widgets)
+print(f'PASS: {len(articles)} articles, linked mind maps, 8 social systems, 680 redrawn vectors, 43 social widgets')

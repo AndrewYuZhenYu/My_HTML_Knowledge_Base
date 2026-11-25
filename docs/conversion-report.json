@@ -11,7 +11,8 @@
       "code_blocks": 0,
       "visual_count": 43,
       "asset_visual_count": 0,
-      "source_image_count": 40
+      "source_image_count": 40,
+      "social_widget_count": 0
     },
     "physics/13 热力学基础｜知识体系重构版.md": {
       "source_headings": 45,
@@ -23,7 +24,8 @@
       "code_blocks": 0,
       "visual_count": 31,
       "asset_visual_count": 0,
-      "source_image_count": 28
+      "source_image_count": 28,
+      "social_widget_count": 0
     },
     "physics/14 振动 扩充版.md": {
       "source_headings": 54,
@@ -35,7 +37,8 @@
       "code_blocks": 0,
       "visual_count": 46,
       "asset_visual_count": 0,
-      "source_image_count": 42
+      "source_image_count": 42,
+      "social_widget_count": 0
     },
     "physics/15 波动.md": {
       "source_headings": 62,
@@ -47,7 +50,8 @@
       "code_blocks": 0,
       "visual_count": 35,
       "asset_visual_count": 0,
-      "source_image_count": 35
+      "source_image_count": 35,
+      "social_widget_count": 0
     },
     "discrete-math/GPT01命题逻辑基础：命题、联结词、命题公式与真值表.md": {
       "source_headings": 48,
@@ -59,7 +63,8 @@
       "code_blocks": 0,
       "visual_count": 31,
       "asset_visual_count": 0,
-      "source_image_count": 30
+      "source_image_count": 30,
+      "social_widget_count": 0
     },
     "discrete-math/GPT02命题逻辑命题公式、逻辑等值式与联结词完备集.md": {
       "source_headings": 44,
@@ -71,7 +76,8 @@
       "code_blocks": 0,
       "visual_count": 27,
       "asset_visual_count": 0,
-      "source_image_count": 26
+      "source_image_count": 26,
+      "social_widget_count": 0
     },
     "discrete-math/GPT03命题逻辑-范式：析取范式、合取范式与主范式.md": {
       "source_headings": 40,
@@ -83,7 +89,8 @@
       "code_blocks": 0,
       "visual_count": 23,
       "asset_visual_count": 0,
-      "source_image_count": 22
+      "source_image_count": 22,
+      "social_widget_count": 0
     },
     "discrete-math/GPT04命题逻辑：推理的形式结构与有效性判定.md": {
       "source_headings": 41,
@@ -95,7 +102,8 @@
       "code_blocks": 0,
       "visual_count": 20,
       "asset_visual_count": 0,
-      "source_image_count": 0
+      "source_image_count": 0,
+      "social_widget_count": 0
     },
     "discrete-math/GPT05命题逻辑：自然推理系统 P 与演绎证明.md": {
       "source_headings": 72,
@@ -107,7 +115,8 @@
       "code_blocks": 0,
       "visual_count": 20,
       "asset_visual_count": 0,
-      "source_image_count": 0
+      "source_image_count": 0,
+      "social_widget_count": 0
     },
     "discrete-math/04-05 推理与自然推理综合.md": {
       "source_headings": 81,
@@ -119,7 +128,8 @@
       "code_blocks": 1,
       "visual_count": 53,
       "asset_visual_count": 0,
-      "source_image_count": 53
+      "source_image_count": 53,
+      "social_widget_count": 0
     },
     "discrete-math/06 一阶逻辑基础.md": {
       "source_headings": 69,
@@ -131,7 +141,8 @@
       "code_blocks": 0,
       "visual_count": 15,
       "asset_visual_count": 0,
-      "source_image_count": 14
+      "source_image_count": 14,
+      "social_widget_count": 0
     },
     "discrete-math/07 一阶逻辑等值式.md": {
       "source_headings": 47,
@@ -143,7 +154,8 @@
       "code_blocks": 0,
       "visual_count": 15,
       "asset_visual_count": 0,
-      "source_image_count": 7
+      "source_image_count": 7,
+      "social_widget_count": 0
     },
     "discrete-math/08 谓词逻辑推理.md": {
       "source_headings": 47,
@@ -155,7 +167,8 @@
       "code_blocks": 0,
       "visual_count": 15,
       "asset_visual_count": 0,
-      "source_image_count": 6
+      "source_image_count": 6,
+      "social_widget_count": 0
     },
     "discrete-math/09 集合的基本概念.md": {
       "source_headings": 35,
@@ -167,7 +180,8 @@
       "code_blocks": 0,
       "visual_count": 36,
       "asset_visual_count": 0,
-      "source_image_count": 36
+      "source_image_count": 36,
+      "social_widget_count": 0
     },
     "discrete-math/10 集合运算与计数.md": {
       "source_headings": 35,
@@ -179,7 +193,8 @@
       "code_blocks": 0,
       "visual_count": 40,
       "asset_visual_count": 0,
-      "source_image_count": 40
+      "source_image_count": 40,
+      "social_widget_count": 0
     },
     "discrete-math/11 集合恒等式.md": {
       "source_headings": 38,
@@ -191,7 +206,8 @@
       "code_blocks": 0,
       "visual_count": 32,
       "asset_visual_count": 0,
-      "source_image_count": 32
+      "source_image_count": 32,
+      "social_widget_count": 0
     },
     "data-structures/GPT02 数据结构第二章：线性表.md": {
       "source_headings": 34,
@@ -203,7 +219,8 @@
       "code_blocks": 20,
       "visual_count": 127,
       "asset_visual_count": 0,
-      "source_image_count": 126
+      "source_image_count": 126,
+      "social_widget_count": 0
     },
     "data-structures/GPT03数据结构第三章：栈和队列.md": {
       "source_headings": 48,
@@ -215,7 +232,8 @@
       "code_blocks": 14,
       "visual_count": 158,
       "asset_visual_count": 0,
-      "source_image_count": 157
+      "source_image_count": 157,
+      "social_widget_count": 0
     },
     "data-structures/GPT04 数据结构第四章：串.md": {
       "source_headings": 46,
@@ -227,7 +245,8 @@
       "code_blocks": 12,
       "visual_count": 121,
       "asset_visual_count": 0,
-      "source_image_count": 120
+      "source_image_count": 120,
+      "social_widget_count": 0
     },
     "data-structures/GPT05 数据结构第五章：数组和广义表.md": {
       "source_headings": 40,
@@ -239,7 +258,8 @@
       "code_blocks": 12,
       "visual_count": 93,
       "asset_visual_count": 0,
-      "source_image_count": 92
+      "source_image_count": 92,
+      "social_widget_count": 0
     },
     "data-structures/06 树和二叉树.md": {
       "source_headings": 55,
@@ -251,7 +271,8 @@
       "code_blocks": 25,
       "visual_count": 77,
       "asset_visual_count": 0,
-      "source_image_count": 77
+      "source_image_count": 77,
+      "social_widget_count": 0
     },
     "data-structures/07 图.md": {
       "source_headings": 107,
@@ -263,7 +284,8 @@
       "code_blocks": 12,
       "visual_count": 118,
       "asset_visual_count": 0,
-      "source_image_count": 118
+      "source_image_count": 118,
+      "social_widget_count": 0
     },
     "data-structures/09 查找.md": {
       "source_headings": 62,
@@ -275,7 +297,8 @@
       "code_blocks": 10,
       "visual_count": 69,
       "asset_visual_count": 0,
-      "source_image_count": 69
+      "source_image_count": 69,
+      "social_widget_count": 0
     },
     "cpp-oop/05 友元与程序组织.md": {
       "source_headings": 41,
@@ -287,7 +310,8 @@
       "code_blocks": 28,
       "visual_count": 65,
       "asset_visual_count": 0,
-      "source_image_count": 65
+      "source_image_count": 65,
+      "social_widget_count": 0
     },
     "cpp-oop/06 重载与类型转换.md": {
       "source_headings": 48,
@@ -299,7 +323,8 @@
       "code_blocks": 24,
       "visual_count": 46,
       "asset_visual_count": 0,
-      "source_image_count": 46
+      "source_image_count": 46,
+      "social_widget_count": 0
     },
     "cpp-oop/07 继承与派生类.md": {
       "source_headings": 33,
@@ -311,7 +336,8 @@
       "code_blocks": 18,
       "visual_count": 129,
       "asset_visual_count": 0,
-      "source_image_count": 129
+      "source_image_count": 129,
+      "social_widget_count": 0
     },
     "cpp-oop/08 多态性与虚函数.md": {
       "source_headings": 53,
@@ -323,11 +349,116 @@
       "code_blocks": 19,
       "visual_count": 65,
       "asset_visual_count": 0,
-      "source_image_count": 65
+      "source_image_count": 65,
+      "social_widget_count": 0
+    },
+    "social-sciences/01 世界法学知识体系.md": {
+      "source_headings": 297,
+      "math_count": 8,
+      "svg_count": 8,
+      "callout_count": 81,
+      "source_callouts": 81,
+      "tables": 125,
+      "code_blocks": 0,
+      "visual_count": 86,
+      "asset_visual_count": 0,
+      "source_image_count": 81,
+      "social_widget_count": 5
+    },
+    "social-sciences/02 政治学知识体系.md": {
+      "source_headings": 245,
+      "math_count": 14,
+      "svg_count": 14,
+      "callout_count": 0,
+      "source_callouts": 0,
+      "tables": 84,
+      "code_blocks": 0,
+      "visual_count": 78,
+      "asset_visual_count": 0,
+      "source_image_count": 73,
+      "social_widget_count": 5
+    },
+    "social-sciences/03 经济学知识体系.md": {
+      "source_headings": 430,
+      "math_count": 17,
+      "svg_count": 17,
+      "callout_count": 0,
+      "source_callouts": 0,
+      "tables": 25,
+      "code_blocks": 0,
+      "visual_count": 41,
+      "asset_visual_count": 0,
+      "source_image_count": 38,
+      "social_widget_count": 3
+    },
+    "social-sciences/04 金融学知识体系.md": {
+      "source_headings": 521,
+      "math_count": 34,
+      "svg_count": 34,
+      "callout_count": 0,
+      "source_callouts": 0,
+      "tables": 27,
+      "code_blocks": 0,
+      "visual_count": 70,
+      "asset_visual_count": 0,
+      "source_image_count": 66,
+      "social_widget_count": 4
+    },
+    "social-sciences/05 股票投资与证券交易.md": {
+      "source_headings": 304,
+      "math_count": 95,
+      "svg_count": 95,
+      "callout_count": 3,
+      "source_callouts": 3,
+      "tables": 78,
+      "code_blocks": 0,
+      "visual_count": 105,
+      "asset_visual_count": 0,
+      "source_image_count": 99,
+      "social_widget_count": 6
+    },
+    "social-sciences/06 会计学知识体系.md": {
+      "source_headings": 263,
+      "math_count": 76,
+      "svg_count": 76,
+      "callout_count": 5,
+      "source_callouts": 5,
+      "tables": 109,
+      "code_blocks": 6,
+      "visual_count": 90,
+      "asset_visual_count": 0,
+      "source_image_count": 83,
+      "social_widget_count": 7
+    },
+    "social-sciences/07 管理学知识体系.md": {
+      "source_headings": 373,
+      "math_count": 46,
+      "svg_count": 46,
+      "callout_count": 66,
+      "source_callouts": 66,
+      "tables": 134,
+      "code_blocks": 0,
+      "visual_count": 141,
+      "asset_visual_count": 0,
+      "source_image_count": 134,
+      "social_widget_count": 7
+    },
+    "social-sciences/08 心理学知识体系.md": {
+      "source_headings": 339,
+      "math_count": 15,
+      "svg_count": 15,
+      "callout_count": 59,
+      "source_callouts": 59,
+      "tables": 106,
+      "code_blocks": 0,
+      "visual_count": 114,
+      "asset_visual_count": 0,
+      "source_image_count": 108,
+      "social_widget_count": 6
     }
   },
-  "total_documents": 27,
-  "total_search_entries": 1238,
+  "total_documents": 35,
+  "total_search_entries": 3091,
   "warnings": [],
   "math_errors": []
 }
