@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="295.2pt" viewBox="0 0 720 295.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-25T04:36:24.150696</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 295.2 
+L 720 295.2 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 72 256.824 
+L 320.275862 256.824 
+L 320.275862 61.992 
+L 72 61.992 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 72 168.264 
+L 320.275862 168.264 
+L 320.275862 150.552 
+L 72 150.552 
+z
+" clip-path="url(#p6779867486)" style="fill: #b38332; opacity: 0.22; stroke: #b38332; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2"/>
+   <g id="LineCollection_1">
+    <path d="M 134.068966 239.112 
+L 134.068966 168.264 
+" clip-path="url(#p6779867486)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_2">
+    <path d="M 237.517241 150.552 
+L 237.517241 79.704 
+" clip-path="url(#p6779867486)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #b38332" x="268.551724" y="162.80925" transform="rotate(-0 268.551724 162.80925)">缺口</text>
+   </g>
+   <g id="patch_4">
+    <path d="M 112.344828 221.4 
+L 155.793103 221.4 
+L 155.793103 185.976 
+L 112.344828 185.976 
+z
+" clip-path="url(#p6779867486)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 215.793103 132.84 
+L 259.241379 132.84 
+L 259.241379 97.416 
+L 215.793103 97.416 
+z
+" clip-path="url(#p6779867486)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 17px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="196.137931" y="55.992" transform="rotate(-0 196.137931 55.992)">向上缺口</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_6">
+    <path d="M 399.724138 256.824 
+L 648 256.824 
+L 648 61.992 
+L 399.724138 61.992 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 399.724138 168.264 
+L 648 168.264 
+L 648 150.552 
+L 399.724138 150.552 
+z
+" clip-path="url(#pf7fa54ba81)" style="fill: #b38332; opacity: 0.22; stroke: #b38332; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_3"/>
+   <g id="matplotlib.axis_4"/>
+   <g id="LineCollection_3">
+    <path d="M 461.793103 150.552 
+L 461.793103 79.704 
+" clip-path="url(#pf7fa54ba81)" style="fill: none; stroke: #16816f; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_4">
+    <path d="M 565.241379 239.112 
+L 565.241379 168.264 
+" clip-path="url(#pf7fa54ba81)" style="fill: none; stroke: #16816f; stroke-width: 2"/>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #b38332" x="596.275862" y="162.80925" transform="rotate(-0 596.275862 162.80925)">缺口</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 440.068966 132.84 
+L 483.517241 132.84 
+L 483.517241 97.416 
+L 440.068966 97.416 
+z
+" clip-path="url(#pf7fa54ba81)" style="fill: #16816f; stroke: #16816f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 543.517241 221.4 
+L 586.965517 221.4 
+L 586.965517 185.976 
+L 543.517241 185.976 
+z
+" clip-path="url(#pf7fa54ba81)" style="fill: #16816f; stroke: #16816f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 17px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="523.862069" y="55.992" transform="rotate(-0 523.862069 55.992)">向下缺口</text>
+   </g>
+  </g>
+  <g id="text_5">
+   <text style="font-weight: 700; font-size: 20px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="360" y="31.799375" transform="rotate(-0 360 31.799375)">向上与向下跳空缺口</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p6779867486">
+   <rect x="72" y="61.992" width="248.275862" height="194.832"/>
+  </clipPath>
+  <clipPath id="pf7fa54ba81">
+   <rect x="399.724138" y="61.992" width="248.275862" height="194.832"/>
+  </clipPath>
+ </defs>
+</svg>

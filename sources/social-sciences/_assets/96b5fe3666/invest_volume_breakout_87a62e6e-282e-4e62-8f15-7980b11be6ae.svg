@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="396pt" viewBox="0 0 720 396" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-25T04:36:24.635962</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 396 
+L 720 396 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 72 265.885714 
+L 684 265.885714 
+L 684 59.4 
+L 72 59.4 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2">
+    <g id="text_1">
+     <text style="font-size: 14px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="64.793125" y="162.642857" transform="rotate(-90 64.793125 162.642857)">价格（示意）</text>
+    </g>
+   </g>
+   <g id="line2d_1">
+    <path d="M 126.215099 231.471429 
+L 164.951238 185.585714 
+L 203.687377 220.764762 
+L 242.423515 170.290476 
+L 281.159654 208.528571 
+L 319.895792 168.760952 
+L 358.631931 193.233333 
+L 397.368069 124.404762 
+L 436.104208 109.109524 
+L 474.840346 139.7 
+L 513.576485 170.290476 
+L 552.312623 139.7 
+L 591.048762 109.109524 
+L 629.784901 93.814286 
+" clip-path="url(#pe8e247510c)" style="fill: none; stroke: #2866a4; stroke-width: 2.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 72 170.290476 
+L 684 170.290476 
+" clip-path="url(#pe8e247510c)" style="fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: #b38332; stroke-width: 1.5"/>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #b38332" x="677.88" y="167.541726" transform="rotate(-0 677.88 167.541726)">原阻力</text>
+   </g>
+   <g id="patch_3">
+    <path d="M 397.368069 106.399508 
+Q 397.368069 114.402087 397.368069 122.404667 
+" style="fill: none; stroke: #8294a5; stroke-linecap: round"/>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="397.368069" y="99.656012" transform="rotate(-0 397.368069 99.656012)">放量突破</text>
+   </g>
+   <g id="patch_4">
+    <path d="M 513.576485 184.285507 
+Q 513.576485 178.287393 513.576485 172.289278 
+" style="fill: none; stroke: #8294a5; stroke-linecap: round"/>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="513.576485" y="197.841726" transform="rotate(-0 513.576485 197.841726)">缩量回踩</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_5">
+    <path d="M 72 348.48 
+L 684 348.48 
+L 684 279.651429 
+L 72 279.651429 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 114.206897 348.48 
+L 138.223302 348.48 
+L 138.223302 330.014924 
+L 114.206897 330.014924 
+z
+" clip-path="url(#p68b0e38e4d)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 152.943035 348.48 
+L 176.959441 348.48 
+L 176.959441 327.245162 
+L 152.943035 327.245162 
+z
+" clip-path="url(#p68b0e38e4d)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 191.679174 348.48 
+L 215.69558 348.48 
+L 215.69558 330.938178 
+L 191.679174 330.938178 
+z
+" clip-path="url(#p68b0e38e4d)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 230.415312 348.48 
+L 254.431718 348.48 
+L 254.431718 326.321909 
+L 230.415312 326.321909 
+z
+" clip-path="url(#p68b0e38e4d)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 269.151451 348.48 
+L 293.167857 348.48 
+L 293.167857 330.014924 
+L 269.151451 330.014924 
+z
+" clip-path="url(#p68b0e38e4d)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 307.887589 348.48 
+L 331.903995 348.48 
+L 331.903995 327.245162 
+L 307.887589 327.245162 
+z
+" clip-path="url(#p68b0e38e4d)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 346.623728 348.48 
+L 370.640134 348.48 
+L 370.640134 331.861431 
+L 346.623728 331.861431 
+z
+" clip-path="url(#p68b0e38e4d)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 385.359866 348.48 
+L 409.376272 348.48 
+L 409.376272 282.92898 
+L 385.359866 282.92898 
+z
+" clip-path="url(#p68b0e38e4d)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 424.096005 348.48 
+L 448.112411 348.48 
+L 448.112411 297.701041 
+L 424.096005 297.701041 
+z
+" clip-path="url(#p68b0e38e4d)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 462.832143 348.48 
+L 486.848549 348.48 
+L 486.848549 321.70564 
+L 462.832143 321.70564 
+z
+" clip-path="url(#p68b0e38e4d)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 501.568282 348.48 
+L 525.584688 348.48 
+L 525.584688 332.784685 
+L 501.568282 332.784685 
+z
+" clip-path="url(#p68b0e38e4d)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 540.30442 348.48 
+L 564.320826 348.48 
+L 564.320826 329.09167 
+L 540.30442 329.09167 
+z
+" clip-path="url(#p68b0e38e4d)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 579.040559 348.48 
+L 603.056965 348.48 
+L 603.056965 318.012624 
+L 579.040559 318.012624 
+z
+" clip-path="url(#p68b0e38e4d)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 617.776698 348.48 
+L 641.793103 348.48 
+L 641.793103 310.626594 
+L 617.776698 310.626594 
+z
+" clip-path="url(#p68b0e38e4d)" style="fill: #8294a5"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="text_5">
+     <text style="font-size: 14px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="378" y="363.623125" transform="rotate(-0 378 363.623125)">时间</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="text_6">
+     <text style="font-size: 14px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="64.793125" y="314.065714" transform="rotate(-90 64.793125 314.065714)">成交量</text>
+    </g>
+   </g>
+  </g>
+  <g id="text_7">
+   <text style="font-weight: 700; font-size: 20px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="360" y="31.799375" transform="rotate(-0 360 31.799375)">放量突破与缩量回踩</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pe8e247510c">
+   <rect x="72" y="59.4" width="612" height="206.485714"/>
+  </clipPath>
+  <clipPath id="p68b0e38e4d">
+   <rect x="72" y="279.651429" width="612" height="68.828571"/>
+  </clipPath>
+ </defs>
+</svg>

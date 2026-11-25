@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="201.6pt" viewBox="0 0 720 201.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-25T04:36:32.203550</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 201.6 
+L 720 201.6 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 44.8488 175.81536 
+L 347.5512 175.81536 
+Q 355.4136 175.81536 355.4136 173.831616 
+L 355.4136 43.896384 
+Q 355.4136 41.91264 347.5512 41.91264 
+L 44.8488 41.91264 
+Q 36.9864 41.91264 36.9864 43.896384 
+L 36.9864 173.831616 
+Q 36.9864 175.81536 44.8488 175.81536 
+z
+" clip-path="url(#pa489e65358)" style="fill: #f2f7fb; stroke: #b7cddf; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 372.4488 175.81536 
+L 675.1512 175.81536 
+Q 683.0136 175.81536 683.0136 173.831616 
+L 683.0136 43.896384 
+Q 683.0136 41.91264 675.1512 41.91264 
+L 372.4488 41.91264 
+Q 364.5864 41.91264 364.5864 43.896384 
+L 364.5864 173.831616 
+Q 364.5864 175.81536 372.4488 175.81536 
+z
+" clip-path="url(#pa489e65358)" style="fill: #f2f7fb; stroke: #b7cddf; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #19354d" x="54.6768" y="85.46385" transform="rotate(-0 54.6768 85.46385)">商品期货</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; fill: #263746" transform="translate(54.6768 122.422697)">能源期货</text>
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; fill: #263746" transform="translate(54.6768 137.477705)">金属期货</text>
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; fill: #263746" transform="translate(54.6768 152.532713)">农产品期货</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #19354d" x="382.2768" y="85.46385" transform="rotate(-0 382.2768 85.46385)">金融期货</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; fill: #263746" transform="translate(382.2768 122.422697)">股指期货</text>
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; fill: #263746" transform="translate(382.2768 137.477705)">国债期货</text>
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; fill: #263746" transform="translate(382.2768 152.532713)">利率及外汇期货</text>
+   </g>
+  </g>
+  <g id="text_5">
+   <text style="font-weight: 700; font-size: 20px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="360" y="31.799375" transform="rotate(-0 360 31.799375)">期货的主要分类</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pa489e65358">
+   <rect x="32.4" y="26.208" width="655.2" height="165.312"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="727.2pt" viewBox="0 0 720 727.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-25T04:36:24.055280</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 727.2 
+L 720 727.2 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 46.8 183.528737 
+L 325.561062 183.528737 
+L 325.561062 80.64 
+L 46.8 80.64 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2"/>
+   <g id="line2d_1">
+    <path d="M 61.733628 95.338391 
+L 97.289886 168.830346 
+L 132.846144 104.524885 
+L 168.402402 159.643852 
+L 203.95866 113.71138 
+L 239.514918 150.457357 
+L 275.071176 122.897874 
+L 310.627434 104.524885 
+" clip-path="url(#p0b8e3e9668)" style="fill: none; stroke: #2866a4; stroke-width: 2.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 61.733628 95.338391 
+L 275.071176 122.897874 
+" clip-path="url(#p0b8e3e9668)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #b38332; stroke-width: 1.3"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 97.289886 168.830346 
+L 275.071176 132.084369 
+" clip-path="url(#p0b8e3e9668)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #b38332; stroke-width: 1.3"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="186.180531" y="75.64" transform="rotate(-0 186.180531 75.64)">对称三角形</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_3">
+    <path d="M 398.038938 183.528737 
+L 676.8 183.528737 
+L 676.8 80.64 
+L 398.038938 80.64 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_3"/>
+   <g id="matplotlib.axis_4"/>
+   <g id="line2d_4">
+    <path d="M 412.972566 168.830346 
+L 448.528824 111.669937 
+L 484.085082 152.498801 
+L 519.64134 111.669937 
+L 555.197598 136.167255 
+L 590.753856 111.669937 
+L 626.310114 119.835709 
+L 661.866372 95.338391 
+" clip-path="url(#pbdfab4c63f)" style="fill: none; stroke: #2866a4; stroke-width: 2.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 398.038938 111.669937 
+L 676.8 111.669937 
+" clip-path="url(#pbdfab4c63f)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #b38332; stroke-width: 1.3"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 412.972566 168.830346 
+L 626.310114 119.835709 
+" clip-path="url(#pbdfab4c63f)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #b38332; stroke-width: 1.3"/>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="537.419469" y="75.64" transform="rotate(-0 537.419469 75.64)">上升三角形</text>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g id="patch_4">
+    <path d="M 46.8 350.208491 
+L 325.561062 350.208491 
+L 325.561062 247.319754 
+L 46.8 247.319754 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_5"/>
+   <g id="matplotlib.axis_6"/>
+   <g id="line2d_7">
+    <path d="M 61.733628 262.018145 
+L 97.289886 319.178555 
+L 132.846144 278.349691 
+L 168.402402 319.178555 
+L 203.95866 294.681236 
+L 239.514918 319.178555 
+L 275.071176 311.012782 
+L 310.627434 335.5101 
+" clip-path="url(#p1f5b1e5a35)" style="fill: none; stroke: #2866a4; stroke-width: 2.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 46.8 319.178555 
+L 325.561062 319.178555 
+" clip-path="url(#p1f5b1e5a35)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #b38332; stroke-width: 1.3"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 61.733628 262.018145 
+L 275.071176 311.012782 
+" clip-path="url(#p1f5b1e5a35)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #b38332; stroke-width: 1.3"/>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="186.180531" y="242.319754" transform="rotate(-0 186.180531 242.319754)">下降三角形</text>
+   </g>
+  </g>
+  <g id="axes_4">
+   <g id="patch_5">
+    <path d="M 398.038938 350.208491 
+L 676.8 350.208491 
+L 676.8 247.319754 
+L 398.038938 247.319754 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_7"/>
+   <g id="matplotlib.axis_8"/>
+   <g id="line2d_10">
+    <path d="M 412.972566 335.5101 
+L 448.528824 272.516996 
+L 484.085082 335.5101 
+L 519.64134 272.516996 
+L 555.197598 335.5101 
+L 590.753856 272.516996 
+L 626.310114 335.5101 
+L 661.866372 262.018145 
+" clip-path="url(#p6482d67995)" style="fill: none; stroke: #2866a4; stroke-width: 2.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_11">
+    <path d="M 398.038938 272.516996 
+L 676.8 272.516996 
+" clip-path="url(#p6482d67995)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #b38332; stroke-width: 1.3"/>
+   </g>
+   <g id="line2d_12">
+    <path d="M 398.038938 335.5101 
+L 676.8 335.5101 
+" clip-path="url(#p6482d67995)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #b38332; stroke-width: 1.3"/>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="537.419469" y="242.319754" transform="rotate(-0 537.419469 242.319754)">箱体整理</text>
+   </g>
+  </g>
+  <g id="axes_5">
+   <g id="patch_6">
+    <path d="M 46.8 516.888246 
+L 325.561062 516.888246 
+L 325.561062 413.999509 
+L 46.8 413.999509 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_9"/>
+   <g id="matplotlib.axis_10"/>
+   <g id="line2d_13">
+    <path d="M 61.733628 502.189855 
+L 97.289886 436.863672 
+L 132.846144 445.029445 
+L 168.402402 469.526764 
+L 203.95866 453.195218 
+L 239.514918 477.692536 
+L 275.071176 461.360991 
+L 310.627434 428.6979 
+" clip-path="url(#pc52bc7afdc)" style="fill: none; stroke: #2866a4; stroke-width: 2.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_14">
+    <path d="M 132.846144 440.946559 
+L 275.071176 457.278104 
+" clip-path="url(#pc52bc7afdc)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #b38332; stroke-width: 1.3"/>
+   </g>
+   <g id="line2d_15">
+    <path d="M 132.846144 461.360991 
+L 275.071176 477.692536 
+" clip-path="url(#pc52bc7afdc)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #b38332; stroke-width: 1.3"/>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="186.180531" y="408.999509" transform="rotate(-0 186.180531 408.999509)">上涨旗形</text>
+   </g>
+  </g>
+  <g id="axes_6">
+   <g id="patch_7">
+    <path d="M 398.038938 516.888246 
+L 676.8 516.888246 
+L 676.8 413.999509 
+L 398.038938 413.999509 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_11"/>
+   <g id="matplotlib.axis_12"/>
+   <g id="line2d_16">
+    <path d="M 412.972566 428.6979 
+L 448.528824 494.024082 
+L 484.085082 485.858309 
+L 519.64134 461.360991 
+L 555.197598 477.692536 
+L 590.753856 453.195218 
+L 626.310114 469.526764 
+L 661.866372 502.189855 
+" clip-path="url(#p6317c68590)" style="fill: none; stroke: #2866a4; stroke-width: 2.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_17">
+    <path d="M 484.085082 469.526764 
+L 626.310114 449.112332 
+" clip-path="url(#p6317c68590)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #b38332; stroke-width: 1.3"/>
+   </g>
+   <g id="line2d_18">
+    <path d="M 484.085082 494.024082 
+L 626.310114 473.60965 
+" clip-path="url(#p6317c68590)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #b38332; stroke-width: 1.3"/>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="537.419469" y="408.999509" transform="rotate(-0 537.419469 408.999509)">下跌旗形</text>
+   </g>
+  </g>
+  <g id="axes_7">
+   <g id="patch_8">
+    <path d="M 46.8 683.568 
+L 325.561062 683.568 
+L 325.561062 580.679263 
+L 46.8 580.679263 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_13"/>
+   <g id="matplotlib.axis_14"/>
+   <g id="line2d_19">
+    <path d="M 61.733628 668.869609 
+L 97.289886 616.992935 
+L 132.846144 651.577384 
+L 168.402402 608.346822 
+L 203.95866 634.285159 
+L 239.514918 599.70071 
+L 275.071176 616.992935 
+L 310.627434 642.931272 
+" clip-path="url(#p5763c8a637)" style="fill: none; stroke: #2866a4; stroke-width: 2.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_20">
+    <path d="M 61.733628 668.869609 
+L 275.071176 616.992935 
+" clip-path="url(#p5763c8a637)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #b38332; stroke-width: 1.3"/>
+   </g>
+   <g id="line2d_21">
+    <path d="M 97.289886 616.992935 
+L 275.071176 595.377654 
+" clip-path="url(#p5763c8a637)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #b38332; stroke-width: 1.3"/>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="186.180531" y="575.679263" transform="rotate(-0 186.180531 575.679263)">上升楔形</text>
+   </g>
+  </g>
+  <g id="axes_8">
+   <g id="patch_9">
+    <path d="M 398.038938 683.568 
+L 676.8 683.568 
+L 676.8 580.679263 
+L 398.038938 580.679263 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_15"/>
+   <g id="matplotlib.axis_16"/>
+   <g id="line2d_22">
+    <path d="M 412.972566 595.377654 
+L 448.528824 647.254328 
+L 484.085082 612.669879 
+L 519.64134 655.90044 
+L 555.197598 629.962103 
+L 590.753856 664.546553 
+L 626.310114 647.254328 
+L 661.866372 621.315991 
+" clip-path="url(#pac62ab36ee)" style="fill: none; stroke: #2866a4; stroke-width: 2.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_23">
+    <path d="M 412.972566 595.377654 
+L 626.310114 647.254328 
+" clip-path="url(#pac62ab36ee)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #b38332; stroke-width: 1.3"/>
+   </g>
+   <g id="line2d_24">
+    <path d="M 448.528824 647.254328 
+L 626.310114 668.869609 
+" clip-path="url(#pac62ab36ee)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #b38332; stroke-width: 1.3"/>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="537.419469" y="575.679263" transform="rotate(-0 537.419469 575.679263)">下降楔形</text>
+   </g>
+  </g>
+  <g id="text_9">
+   <text style="font-weight: 700; font-size: 20px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="360" y="31.799375" transform="rotate(-0 360 31.799375)">整理与趋势持续候选形态</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p0b8e3e9668">
+   <rect x="46.8" y="80.64" width="278.761062" height="102.888737"/>
+  </clipPath>
+  <clipPath id="pbdfab4c63f">
+   <rect x="398.038938" y="80.64" width="278.761062" height="102.888737"/>
+  </clipPath>
+  <clipPath id="p1f5b1e5a35">
+   <rect x="46.8" y="247.319754" width="278.761062" height="102.888737"/>
+  </clipPath>
+  <clipPath id="p6482d67995">
+   <rect x="398.038938" y="247.319754" width="278.761062" height="102.888737"/>
+  </clipPath>
+  <clipPath id="pc52bc7afdc">
+   <rect x="46.8" y="413.999509" width="278.761062" height="102.888737"/>
+  </clipPath>
+  <clipPath id="p6317c68590">
+   <rect x="398.038938" y="413.999509" width="278.761062" height="102.888737"/>
+  </clipPath>
+  <clipPath id="p5763c8a637">
+   <rect x="46.8" y="580.679263" width="278.761062" height="102.888737"/>
+  </clipPath>
+  <clipPath id="pac62ab36ee">
+   <rect x="398.038938" y="580.679263" width="278.761062" height="102.888737"/>
+  </clipPath>
+ </defs>
+</svg>

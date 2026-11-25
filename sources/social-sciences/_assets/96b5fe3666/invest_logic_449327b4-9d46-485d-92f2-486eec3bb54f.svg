@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="650.16pt" viewBox="0 0 720 650.16" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-25T04:36:19.731518</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 650.16 
+L 720 650.16 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 44.8488 123.223896 
+L 675.1512 123.223896 
+Q 683.0136 123.223896 683.0136 116.826322 
+L 683.0136 63.360878 
+Q 683.0136 56.963304 675.1512 56.963304 
+L 44.8488 56.963304 
+Q 36.9864 56.963304 36.9864 63.360878 
+L 36.9864 116.826322 
+Q 36.9864 123.223896 44.8488 123.223896 
+z
+" clip-path="url(#pf62035c4bb)" style="fill: #f2f7fb; stroke: #b7cddf; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 44.8488 199.385496 
+L 675.1512 199.385496 
+Q 683.0136 199.385496 683.0136 192.987922 
+L 683.0136 139.522478 
+Q 683.0136 133.124904 675.1512 133.124904 
+L 44.8488 133.124904 
+Q 36.9864 133.124904 36.9864 139.522478 
+L 36.9864 192.987922 
+Q 36.9864 199.385496 44.8488 199.385496 
+z
+" clip-path="url(#pf62035c4bb)" style="fill: #f2f7fb; stroke: #b7cddf; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 44.8488 275.547096 
+L 675.1512 275.547096 
+Q 683.0136 275.547096 683.0136 269.149522 
+L 683.0136 215.684078 
+Q 683.0136 209.286504 675.1512 209.286504 
+L 44.8488 209.286504 
+Q 36.9864 209.286504 36.9864 215.684078 
+L 36.9864 269.149522 
+Q 36.9864 275.547096 44.8488 275.547096 
+z
+" clip-path="url(#pf62035c4bb)" style="fill: #f2f7fb; stroke: #b7cddf; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 44.8488 351.708696 
+L 675.1512 351.708696 
+Q 683.0136 351.708696 683.0136 345.311122 
+L 683.0136 291.845678 
+Q 683.0136 285.448104 675.1512 285.448104 
+L 44.8488 285.448104 
+Q 36.9864 285.448104 36.9864 291.845678 
+L 36.9864 345.311122 
+Q 36.9864 351.708696 44.8488 351.708696 
+z
+" clip-path="url(#pf62035c4bb)" style="fill: #f2f7fb; stroke: #b7cddf; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 44.8488 427.870296 
+L 675.1512 427.870296 
+Q 683.0136 427.870296 683.0136 421.472722 
+L 683.0136 368.007278 
+Q 683.0136 361.609704 675.1512 361.609704 
+L 44.8488 361.609704 
+Q 36.9864 361.609704 36.9864 368.007278 
+L 36.9864 421.472722 
+Q 36.9864 427.870296 44.8488 427.870296 
+z
+" clip-path="url(#pf62035c4bb)" style="fill: #f2f7fb; stroke: #b7cddf; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 44.8488 504.031896 
+L 675.1512 504.031896 
+Q 683.0136 504.031896 683.0136 497.634322 
+L 683.0136 444.168878 
+Q 683.0136 437.771304 675.1512 437.771304 
+L 44.8488 437.771304 
+Q 36.9864 437.771304 36.9864 444.168878 
+L 36.9864 497.634322 
+Q 36.9864 504.031896 44.8488 504.031896 
+z
+" clip-path="url(#pf62035c4bb)" style="fill: #f2f7fb; stroke: #b7cddf; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 44.8488 580.193496 
+L 675.1512 580.193496 
+Q 683.0136 580.193496 683.0136 573.795922 
+L 683.0136 520.330478 
+Q 683.0136 513.932904 675.1512 513.932904 
+L 44.8488 513.932904 
+Q 36.9864 513.932904 36.9864 520.330478 
+L 36.9864 573.795922 
+Q 36.9864 580.193496 44.8488 580.193496 
+z
+" clip-path="url(#pf62035c4bb)" style="fill: #f2f7fb; stroke: #b7cddf; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #19354d" x="54.6768" y="81.670717" transform="rotate(-0 54.6768 81.670717)">市场认知</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="54.6768" y="105.156444" transform="rotate(-0 54.6768 105.156444)">股票、股权、证券市场、交易规则</text>
+   </g>
+   <g id="patch_9">
+    <path d="M 360 122.55804 
+Q 360 123.415426 360 122.595762 
+" style="fill: none; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 362.8 116.995762 
+L 360 122.595762 
+L 357.2 116.995762 
+z
+" style="fill: #8294a5; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #19354d" x="54.6768" y="157.832317" transform="rotate(-0 54.6768 157.832317)">行情解读</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="54.6768" y="181.318044" transform="rotate(-0 54.6768 181.318044)">分时图、K线、盘口、成交量、价格指标</text>
+   </g>
+   <g id="patch_10">
+    <path d="M 360 198.71964 
+Q 360 199.577026 360 198.757362 
+" style="fill: none; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 362.8 193.157362 
+L 360 198.757362 
+L 357.2 193.157362 
+z
+" style="fill: #8294a5; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #19354d" x="54.6768" y="233.993917" transform="rotate(-0 54.6768 233.993917)">市场分析</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="54.6768" y="257.479644" transform="rotate(-0 54.6768 257.479644)">趋势、量价、技术指标、基本面、市场情绪</text>
+   </g>
+   <g id="patch_11">
+    <path d="M 360 274.88124 
+Q 360 275.738626 360 274.918962 
+" style="fill: none; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 362.8 269.318962 
+L 360 274.918962 
+L 357.2 269.318962 
+z
+" style="fill: #8294a5; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #19354d" x="54.6768" y="310.155517" transform="rotate(-0 54.6768 310.155517)">投资决策</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="54.6768" y="333.641244" transform="rotate(-0 54.6768 333.641244)">选股、估值、买卖条件、投资策略</text>
+   </g>
+   <g id="patch_12">
+    <path d="M 360 351.04284 
+Q 360 351.900226 360 351.080562 
+" style="fill: none; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 362.8 345.480562 
+L 360 351.080562 
+L 357.2 345.480562 
+z
+" style="fill: #8294a5; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #19354d" x="54.6768" y="386.317117" transform="rotate(-0 54.6768 386.317117)">交易与资金管理</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="54.6768" y="409.802844" transform="rotate(-0 54.6768 409.802844)">仓位、订单、止盈止损、风险预算</text>
+   </g>
+   <g id="patch_13">
+    <path d="M 360 427.20444 
+Q 360 428.061826 360 427.242162 
+" style="fill: none; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 362.8 421.642162 
+L 360 427.242162 
+L 357.2 421.642162 
+z
+" style="fill: #8294a5; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #19354d" x="54.6768" y="462.478717" transform="rotate(-0 54.6768 462.478717)">收益评价</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="54.6768" y="485.964444" transform="rotate(-0 54.6768 485.964444)">胜率、盈亏比、数学期望、回撤、交易成本</text>
+   </g>
+   <g id="patch_14">
+    <path d="M 360 503.36604 
+Q 360 504.223426 360 503.403762 
+" style="fill: none; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 362.8 497.803762 
+L 360 503.403762 
+L 357.2 497.803762 
+z
+" style="fill: #8294a5; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #19354d" x="54.6768" y="538.640317" transform="rotate(-0 54.6768 538.640317)">策略验证与改进</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="54.6768" y="562.126044" transform="rotate(-0 54.6768 562.126044)">历史回测、模拟交易、样本外检验、投资复盘</text>
+   </g>
+  </g>
+  <g id="text_15">
+   <text style="font-weight: 700; font-size: 20px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="360" y="31.799375" transform="rotate(-0 360 31.799375)">股票投资的完整逻辑</text>
+  </g>
+  <g id="text_16">
+   <text style="font-size: 11.5px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #8294a5" x="360" y="634.55616" transform="rotate(-0 360 634.55616)">持续反馈、检验与改进</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pf62035c4bb">
+   <rect x="32.4" y="52.0128" width="655.2" height="533.1312"/>
+  </clipPath>
+ </defs>
+</svg>

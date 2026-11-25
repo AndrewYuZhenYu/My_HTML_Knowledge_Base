@@ -1,0 +1,68 @@
+{
+  "selected": [
+    {
+      "archive": "社会科学_认知拓展/世界法学知识体系.zip",
+      "source": "sources/social-sciences/01 世界法学知识体系.md",
+      "archive_sha256": "b3733bd3a86d43bfbb9f37a1e1510d0abaa9ff25bfb457c2911c6c5f0178ce79",
+      "figures": 81,
+      "vectors": 81,
+      "raster_fallbacks": 0
+    },
+    {
+      "archive": "社会科学_认知拓展/政治学知识体系.zip",
+      "source": "sources/social-sciences/02 政治学知识体系.md",
+      "archive_sha256": "2964d429150ea9f8cf3de21785dae8e715abadb10182f0885adb668c0a197d4f",
+      "figures": 73,
+      "vectors": 73,
+      "raster_fallbacks": 0
+    },
+    {
+      "archive": "社会科学_认知拓展/经济学知识体系_V2.5_Obsidian.zip",
+      "source": "sources/social-sciences/03 经济学知识体系.md",
+      "archive_sha256": "8905985d10a9e424d1b9e01b66df05a5d420d5a9211b4a1329c53ac2b8a74cec",
+      "figures": 38,
+      "vectors": 38,
+      "raster_fallbacks": 0
+    },
+    {
+      "archive": "社会科学_认知拓展/金融学知识体系.zip",
+      "source": "sources/social-sciences/04 金融学知识体系.md",
+      "archive_sha256": "a986b59de3fbb3498b0468dc258f898130297def7f7acbd54d79d63cb9136ee5",
+      "figures": 66,
+      "vectors": 66,
+      "raster_fallbacks": 0
+    },
+    {
+      "archive": "社会科学_认知拓展/投资学特别专栏_股票投资与证券交易实战_Obsidian.zip",
+      "source": "sources/social-sciences/05 股票投资与证券交易.md",
+      "archive_sha256": "147f52c834fbda6a810bb38d43b56c2e487f40235e48bd5e91e99db7aea9c538",
+      "figures": 99,
+      "vectors": 97,
+      "raster_fallbacks": 2
+    },
+    {
+      "archive": "社会科学_认知拓展/会计学知识体系.zip",
+      "source": "sources/social-sciences/06 会计学知识体系.md",
+      "archive_sha256": "440c694f793141ba59ae382d46f12b9b8cf66419115e661647e6bc68a966cce6",
+      "figures": 83,
+      "vectors": 83,
+      "raster_fallbacks": 0
+    },
+    {
+      "archive": "社会科学_认知拓展/管理学知识体系.zip",
+      "source": "sources/social-sciences/07 管理学知识体系.md",
+      "archive_sha256": "334b5a57188f13b8cc4dbc1c85df3b8fb215f985cb3df68cfc5cc352121697cd",
+      "figures": 134,
+      "vectors": 134,
+      "raster_fallbacks": 0
+    },
+    {
+      "archive": "社会科学_认知拓展/心理学知识体系_Obsidian.zip",
+      "source": "sources/social-sciences/08 心理学知识体系.md",
+      "archive_sha256": "4058cc1c6e0aa81a6945feea24970083d3cef04540a8bfad3bb35ce574ab5f1d",
+      "figures": 108,
+      "vectors": 108,
+      "raster_fallbacks": 0
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="352.8pt" viewBox="0 0 720 352.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-25T04:36:21.851967</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 352.8 
+L 720 352.8 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 86.4 303.408 
+L 292.890566 303.408 
+L 292.890566 63.504 
+L 86.4 63.504 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2"/>
+   <g id="LineCollection_1">
+    <path d="M 189.645283 267.4224 
+L 189.645283 99.4896 
+" clip-path="url(#p0f89b08d42)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 171.577358 219.4416 
+L 207.713208 219.4416 
+L 207.713208 147.4704 
+L 171.577358 147.4704 
+z
+" clip-path="url(#p0f89b08d42)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 234.167219 99.4896 
+Q 212.904897 99.4896 191.642574 99.4896 
+" style="fill: none; stroke: #8294a5; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="238.170566" y="103.174288" transform="rotate(-0 238.170566 103.174288)">最高价 H</text>
+   </g>
+   <g id="patch_5">
+    <path d="M 234.169356 147.4704 
+Q 222.198424 147.4704 210.227492 147.4704 
+" style="fill: none; stroke: #8294a5; stroke-linecap: round"/>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="238.170566" y="151.155088" transform="rotate(-0 238.170566 151.155088)">收盘价 C</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 234.166078 219.4416 
+Q 222.196659 219.4416 210.227239 219.4416 
+" style="fill: none; stroke: #8294a5; stroke-linecap: round"/>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="238.170566" y="223.126288" transform="rotate(-0 238.170566 223.126288)">开盘价 O</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 234.170782 267.4224 
+Q 212.906758 267.4224 191.642734 267.4224 
+" style="fill: none; stroke: #8294a5; stroke-linecap: round"/>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="238.170566" y="271.107088" transform="rotate(-0 238.170566 271.107088)">最低价 L</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #19354d" x="161.769057" y="124.48221" transform="rotate(-0 161.769057 124.48221)">上影线</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #19354d" x="161.769057" y="186.85725" transform="rotate(-0 161.769057 186.85725)">实体</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #19354d" x="161.769057" y="246.83325" transform="rotate(-0 161.769057 246.83325)">下影线</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="189.645283" y="57.504" transform="rotate(-0 189.645283 57.504)">阳线：收盘高于开盘</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_8">
+    <path d="M 427.109434 303.408 
+L 633.6 303.408 
+L 633.6 63.504 
+L 427.109434 63.504 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_3"/>
+   <g id="matplotlib.axis_4"/>
+   <g id="LineCollection_2">
+    <path d="M 530.354717 267.4224 
+L 530.354717 99.4896 
+" clip-path="url(#p6167f379bf)" style="fill: none; stroke: #16816f; stroke-width: 2"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 512.286792 219.4416 
+L 548.422642 219.4416 
+L 548.422642 147.4704 
+L 512.286792 147.4704 
+z
+" clip-path="url(#p6167f379bf)" style="fill: #16816f; stroke: #16816f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 574.876653 99.4896 
+Q 553.614331 99.4896 532.352008 99.4896 
+" style="fill: none; stroke: #8294a5; stroke-linecap: round"/>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="578.88" y="103.174288" transform="rotate(-0 578.88 103.174288)">最高价 H</text>
+   </g>
+   <g id="patch_11">
+    <path d="M 574.875512 147.4704 
+Q 562.906093 147.4704 550.936673 147.4704 
+" style="fill: none; stroke: #8294a5; stroke-linecap: round"/>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="578.88" y="151.155088" transform="rotate(-0 578.88 151.155088)">开盘价 O</text>
+   </g>
+   <g id="patch_12">
+    <path d="M 574.87879 219.4416 
+Q 562.907858 219.4416 550.936926 219.4416 
+" style="fill: none; stroke: #8294a5; stroke-linecap: round"/>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="578.88" y="223.126288" transform="rotate(-0 578.88 223.126288)">收盘价 C</text>
+   </g>
+   <g id="patch_13">
+    <path d="M 574.880216 267.4224 
+Q 553.616192 267.4224 532.352168 267.4224 
+" style="fill: none; stroke: #8294a5; stroke-linecap: round"/>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="578.88" y="271.107088" transform="rotate(-0 578.88 271.107088)">最低价 L</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #19354d" x="502.478491" y="124.48221" transform="rotate(-0 502.478491 124.48221)">上影线</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #19354d" x="502.478491" y="186.85725" transform="rotate(-0 502.478491 186.85725)">实体</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #19354d" x="502.478491" y="246.83325" transform="rotate(-0 502.478491 246.83325)">下影线</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="530.354717" y="57.504" transform="rotate(-0 530.354717 57.504)">阴线：收盘低于开盘</text>
+   </g>
+  </g>
+  <g id="text_17">
+   <text style="font-weight: 700; font-size: 20px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="360" y="31.799375" transform="rotate(-0 360 31.799375)">K线的组成：开盘、最高、最低、收盘</text>
+  </g>
+  <g id="text_18">
+   <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="360" y="338.688" transform="rotate(-0 360 338.688)">中国内地常见配色：红涨绿跌；阳线、阴线比较的是收盘与开盘。</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p0f89b08d42">
+   <rect x="86.4" y="63.504" width="206.490566" height="239.904"/>
+  </clipPath>
+  <clipPath id="p6167f379bf">
+   <rect x="427.109434" y="63.504" width="206.490566" height="239.904"/>
+  </clipPath>
+ </defs>
+</svg>

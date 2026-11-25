@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="414pt" viewBox="0 0 720 414" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-25T04:36:21.456460</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 414 
+L 720 414 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="table_1">
+    <g id="patch_2">
+     <path d="M 32.4 101.23875 
+L 215.856 101.23875 
+L 215.856 63.36 
+L 32.4 63.36 
+z
+" style="fill: #19354d; stroke: #ffffff; stroke-width: 1.8; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_1">
+     <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #ffffff" x="124.128" y="86.088672" transform="rotate(-0 124.128 86.088672)">档位</text>
+    </g>
+    <g id="patch_3">
+     <path d="M 215.856 101.23875 
+L 399.312 101.23875 
+L 399.312 63.36 
+L 215.856 63.36 
+z
+" style="fill: #19354d; stroke: #ffffff; stroke-width: 1.8; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_2">
+     <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #ffffff" x="307.584" y="86.088672" transform="rotate(-0 307.584 86.088672)">价格（元）</text>
+    </g>
+    <g id="patch_4">
+     <path d="M 399.312 101.23875 
+L 687.6 101.23875 
+L 687.6 63.36 
+L 399.312 63.36 
+z
+" style="fill: #19354d; stroke: #ffffff; stroke-width: 1.8; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_3">
+     <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #ffffff" x="543.456" y="86.088672" transform="rotate(-0 543.456 86.088672)">挂单数量（原显示）</text>
+    </g>
+    <g id="patch_5">
+     <path d="M 32.4 139.1175 
+L 215.856 139.1175 
+L 215.856 101.23875 
+L 32.4 101.23875 
+z
+" style="fill: #f0f5fa; stroke: #ffffff; stroke-width: 1.8; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_4">
+     <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="124.128" y="123.862813" transform="rotate(-0 124.128 123.862813)">买1</text>
+    </g>
+    <g id="patch_6">
+     <path d="M 215.856 139.1175 
+L 399.312 139.1175 
+L 399.312 101.23875 
+L 215.856 101.23875 
+z
+" style="fill: #f0f5fa; stroke: #ffffff; stroke-width: 1.8; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="307.584" y="123.862813" transform="rotate(-0 307.584 123.862813)">38.56</text>
+    </g>
+    <g id="patch_7">
+     <path d="M 399.312 139.1175 
+L 687.6 139.1175 
+L 687.6 101.23875 
+L 399.312 101.23875 
+z
+" style="fill: #f0f5fa; stroke: #ffffff; stroke-width: 1.8; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="543.456" y="123.862813" transform="rotate(-0 543.456 123.862813)">5.30万</text>
+    </g>
+    <g id="patch_8">
+     <path d="M 32.4 176.99625 
+L 215.856 176.99625 
+L 215.856 139.1175 
+L 32.4 139.1175 
+z
+" style="fill: #e5eff7; stroke: #ffffff; stroke-width: 1.8; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="124.128" y="161.741562" transform="rotate(-0 124.128 161.741562)">买2</text>
+    </g>
+    <g id="patch_9">
+     <path d="M 215.856 176.99625 
+L 399.312 176.99625 
+L 399.312 139.1175 
+L 215.856 139.1175 
+z
+" style="fill: #e5eff7; stroke: #ffffff; stroke-width: 1.8; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="307.584" y="161.741562" transform="rotate(-0 307.584 161.741562)">38.55</text>
+    </g>
+    <g id="patch_10">
+     <path d="M 399.312 176.99625 
+L 687.6 176.99625 
+L 687.6 139.1175 
+L 399.312 139.1175 
+z
+" style="fill: #e5eff7; stroke: #ffffff; stroke-width: 1.8; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="543.456" y="161.741562" transform="rotate(-0 543.456 161.741562)">170</text>
+    </g>
+    <g id="patch_11">
+     <path d="M 32.4 214.875 
+L 215.856 214.875 
+L 215.856 176.99625 
+L 32.4 176.99625 
+z
+" style="fill: #f0f5fa; stroke: #ffffff; stroke-width: 1.8; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="124.128" y="199.620313" transform="rotate(-0 124.128 199.620313)">买3</text>
+    </g>
+    <g id="patch_12">
+     <path d="M 215.856 214.875 
+L 399.312 214.875 
+L 399.312 176.99625 
+L 215.856 176.99625 
+z
+" style="fill: #f0f5fa; stroke: #ffffff; stroke-width: 1.8; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_11">
+     <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="307.584" y="199.620313" transform="rotate(-0 307.584 199.620313)">38.54</text>
+    </g>
+    <g id="patch_13">
+     <path d="M 399.312 214.875 
+L 687.6 214.875 
+L 687.6 176.99625 
+L 399.312 176.99625 
+z
+" style="fill: #f0f5fa; stroke: #ffffff; stroke-width: 1.8; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_12">
+     <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="543.456" y="199.620313" transform="rotate(-0 543.456 199.620313)">254</text>
+    </g>
+    <g id="patch_14">
+     <path d="M 32.4 252.75375 
+L 215.856 252.75375 
+L 215.856 214.875 
+L 32.4 214.875 
+z
+" style="fill: #e5eff7; stroke: #ffffff; stroke-width: 1.8; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_13">
+     <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="124.128" y="237.499062" transform="rotate(-0 124.128 237.499062)">买4</text>
+    </g>
+    <g id="patch_15">
+     <path d="M 215.856 252.75375 
+L 399.312 252.75375 
+L 399.312 214.875 
+L 215.856 214.875 
+z
+" style="fill: #e5eff7; stroke: #ffffff; stroke-width: 1.8; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_14">
+     <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="307.584" y="237.499062" transform="rotate(-0 307.584 237.499062)">38.53</text>
+    </g>
+    <g id="patch_16">
+     <path d="M 399.312 252.75375 
+L 687.6 252.75375 
+L 687.6 214.875 
+L 399.312 214.875 
+z
+" style="fill: #e5eff7; stroke: #ffffff; stroke-width: 1.8; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_15">
+     <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="543.456" y="237.499062" transform="rotate(-0 543.456 237.499062)">83</text>
+    </g>
+    <g id="patch_17">
+     <path d="M 32.4 290.6325 
+L 215.856 290.6325 
+L 215.856 252.75375 
+L 32.4 252.75375 
+z
+" style="fill: #f0f5fa; stroke: #ffffff; stroke-width: 1.8; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_16">
+     <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="124.128" y="275.377813" transform="rotate(-0 124.128 275.377813)">买5</text>
+    </g>
+    <g id="patch_18">
+     <path d="M 215.856 290.6325 
+L 399.312 290.6325 
+L 399.312 252.75375 
+L 215.856 252.75375 
+z
+" style="fill: #f0f5fa; stroke: #ffffff; stroke-width: 1.8; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_17">
+     <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="307.584" y="275.377813" transform="rotate(-0 307.584 275.377813)">38.52</text>
+    </g>
+    <g id="patch_19">
+     <path d="M 399.312 290.6325 
+L 687.6 290.6325 
+L 687.6 252.75375 
+L 399.312 252.75375 
+z
+" style="fill: #f0f5fa; stroke: #ffffff; stroke-width: 1.8; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_18">
+     <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="543.456" y="275.377813" transform="rotate(-0 543.456 275.377813)">273</text>
+    </g>
+    <g id="patch_20">
+     <path d="M 32.4 328.51125 
+L 215.856 328.51125 
+L 215.856 290.6325 
+L 32.4 290.6325 
+z
+" style="fill: #e5eff7; stroke: #ffffff; stroke-width: 1.8; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_19">
+     <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="124.128" y="313.256562" transform="rotate(-0 124.128 313.256562)">最高封单额</text>
+    </g>
+    <g id="patch_21">
+     <path d="M 215.856 328.51125 
+L 399.312 328.51125 
+L 399.312 290.6325 
+L 215.856 290.6325 
+z
+" style="fill: #e5eff7; stroke: #ffffff; stroke-width: 1.8; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_20">
+     <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="307.584" y="313.256562" transform="rotate(-0 307.584 313.256562)">2.11亿元</text>
+    </g>
+    <g id="patch_22">
+     <path d="M 399.312 328.51125 
+L 687.6 328.51125 
+L 687.6 290.6325 
+L 399.312 290.6325 
+z
+" style="fill: #e5eff7; stroke: #ffffff; stroke-width: 1.8; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_21">
+     <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="543.456" y="313.256562" transform="rotate(-0 543.456 313.256562)">封单可撤销</text>
+    </g>
+    <g id="patch_23">
+     <path d="M 32.4 366.39 
+L 215.856 366.39 
+L 215.856 328.51125 
+L 32.4 328.51125 
+z
+" style="fill: #f0f5fa; stroke: #ffffff; stroke-width: 1.8; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_22">
+     <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="124.128" y="351.135312" transform="rotate(-0 124.128 351.135312)">涨停成交额</text>
+    </g>
+    <g id="patch_24">
+     <path d="M 215.856 366.39 
+L 399.312 366.39 
+L 399.312 328.51125 
+L 215.856 328.51125 
+z
+" style="fill: #f0f5fa; stroke: #ffffff; stroke-width: 1.8; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_23">
+     <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="307.584" y="351.135312" transform="rotate(-0 307.584 351.135312)">3.04亿元</text>
+    </g>
+    <g id="patch_25">
+     <path d="M 399.312 366.39 
+L 687.6 366.39 
+L 687.6 328.51125 
+L 399.312 328.51125 
+z
+" style="fill: #f0f5fa; stroke: #ffffff; stroke-width: 1.8; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_24">
+     <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="543.456" y="351.135312" transform="rotate(-0 543.456 351.135312)">已成交，不是挂单</text>
+    </g>
+   </g>
+  </g>
+  <g id="text_25">
+   <text style="font-weight: 700; font-size: 20px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="360" y="31.799375" transform="rotate(-0 360 31.799375)">涨停盘口 · 买单排队与实际成交</text>
+  </g>
+  <g id="text_26">
+   <text style="font-size: 11.5px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="360" y="399.51" transform="rotate(-0 360 399.51)">截图字段重绘；数量单位以行情软件设置为准。</text>
+  </g>
+ </g>
+</svg>

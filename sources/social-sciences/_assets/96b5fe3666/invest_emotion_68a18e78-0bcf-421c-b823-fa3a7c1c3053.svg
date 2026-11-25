@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="345.6pt" viewBox="0 0 720 345.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-25T04:36:32.933174</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 345.6 
+L 720 345.6 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 50.4 300.672 
+L 669.6 300.672 
+L 669.6 51.84 
+L 50.4 51.84 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="PathCollection_1">
+    <defs>
+     <path id="m384db16e06" d="M 0 3.354102 
+C 0.889518 3.354102 1.742724 3.000693 2.371708 2.371708 
+C 3.000693 1.742724 3.354102 0.889518 3.354102 0 
+C 3.354102 -0.889518 3.000693 -1.742724 2.371708 -2.371708 
+C 1.742724 -3.000693 0.889518 -3.354102 0 -3.354102 
+C -0.889518 -3.354102 -1.742724 -3.000693 -2.371708 -2.371708 
+C -3.000693 -1.742724 -3.354102 -0.889518 -3.354102 0 
+C -3.354102 0.889518 -3.000693 1.742724 -2.371708 2.371708 
+C -1.742724 3.000693 -0.889518 3.354102 0 3.354102 
+z
+" style="stroke: #b38332"/>
+    </defs>
+    <g clip-path="url(#p16c0844d76)">
+     <use xlink:href="#m384db16e06" x="78.545455" y="255.429818" style="fill: #b38332; stroke: #b38332"/>
+    </g>
+   </g>
+   <g id="PathCollection_2">
+    <g clip-path="url(#p16c0844d76)">
+     <use xlink:href="#m384db16e06" x="172.363636" y="232.808727" style="fill: #b38332; stroke: #b38332"/>
+    </g>
+   </g>
+   <g id="PathCollection_3">
+    <g clip-path="url(#p16c0844d76)">
+     <use xlink:href="#m384db16e06" x="266.181818" y="187.566545" style="fill: #b38332; stroke: #b38332"/>
+    </g>
+   </g>
+   <g id="PathCollection_4">
+    <g clip-path="url(#p16c0844d76)">
+     <use xlink:href="#m384db16e06" x="360" y="97.082182" style="fill: #b38332; stroke: #b38332"/>
+    </g>
+   </g>
+   <g id="PathCollection_5">
+    <g clip-path="url(#p16c0844d76)">
+     <use xlink:href="#m384db16e06" x="453.818182" y="187.566545" style="fill: #b38332; stroke: #b38332"/>
+    </g>
+   </g>
+   <g id="PathCollection_6">
+    <g clip-path="url(#p16c0844d76)">
+     <use xlink:href="#m384db16e06" x="547.636364" y="269.002473" style="fill: #b38332; stroke: #b38332"/>
+    </g>
+   </g>
+   <g id="PathCollection_7">
+    <g clip-path="url(#p16c0844d76)">
+     <use xlink:href="#m384db16e06" x="641.454545" y="244.119273" style="fill: #b38332; stroke: #b38332"/>
+    </g>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="text_1">
+     <text style="font-size: 14px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="360" y="315.815125" transform="rotate(-0 360 315.815125)">时间</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2"/>
+   <g id="line2d_1">
+    <path d="M 78.545455 255.429818 
+L 171.892188 232.922401 
+L 177.549566 230.307903 
+L 265.238922 188.021241 
+L 268.067611 185.747764 
+L 358.585656 98.446268 
+L 361.414344 98.446268 
+L 454.761078 188.384997 
+L 545.279123 266.956344 
+L 548.107812 268.877432 
+L 641.454545 244.119273 
+L 641.454545 244.119273 
+" clip-path="url(#p16c0844d76)" style="fill: none; stroke: #2866a4; stroke-width: 2.7; stroke-linecap: square"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 78.545455 244.433098 
+Q 78.545455 248.93139 78.545455 253.429682 
+" style="fill: none; stroke: #8294a5; stroke-linecap: round"/>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="78.545455" y="237.681068" transform="rotate(-0 78.545455 237.681068)">怀疑</text>
+   </g>
+   <g id="patch_4">
+    <path d="M 172.363636 221.812007 
+Q 172.363636 226.310299 172.363636 230.808591 
+" style="fill: none; stroke: #8294a5; stroke-linecap: round"/>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="172.363636" y="215.059977" transform="rotate(-0 172.363636 215.059977)">乐观</text>
+   </g>
+   <g id="patch_5">
+    <path d="M 266.181818 176.569825 
+Q 266.181818 181.068117 266.181818 185.566409 
+" style="fill: none; stroke: #8294a5; stroke-linecap: round"/>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="266.181818" y="169.817795" transform="rotate(-0 266.181818 169.817795)">兴奋</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 360 86.085461 
+Q 360 90.583753 360 95.082046 
+" style="fill: none; stroke: #8294a5; stroke-linecap: round"/>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="360" y="79.333432" transform="rotate(-0 360 79.333432)">狂热</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 453.818182 176.569825 
+Q 453.818182 181.068117 453.818182 185.566409 
+" style="fill: none; stroke: #8294a5; stroke-linecap: round"/>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="453.818182" y="169.817795" transform="rotate(-0 453.818182 169.817795)">焦虑</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 547.636364 287.007726 
+Q 547.636364 279.005147 547.636364 271.002568 
+" style="fill: none; stroke: #8294a5; stroke-linecap: round"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="547.636364" y="300.553723" transform="rotate(-0 547.636364 300.553723)">恐慌</text>
+   </g>
+   <g id="patch_9">
+    <path d="M 641.454545 233.122552 
+Q 641.454545 237.620844 641.454545 242.119137 
+" style="fill: none; stroke: #8294a5; stroke-linecap: round"/>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="641.454545" y="226.370523" transform="rotate(-0 641.454545 226.370523)">悲观</text>
+   </g>
+  </g>
+  <g id="text_9">
+   <text style="font-weight: 700; font-size: 20px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="360" y="31.799375" transform="rotate(-0 360 31.799375)">股市中的典型情绪循环（概念模型）</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p16c0844d76">
+   <rect x="50.4" y="51.84" width="619.2" height="248.832"/>
+  </clipPath>
+ </defs>
+</svg>

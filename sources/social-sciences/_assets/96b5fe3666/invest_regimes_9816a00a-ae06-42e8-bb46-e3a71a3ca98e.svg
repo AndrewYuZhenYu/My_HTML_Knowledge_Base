@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="306pt" viewBox="0 0 720 306" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-25T04:36:34.237900</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 306 
+L 720 306 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 44.8488 153.9486 
+L 347.5512 153.9486 
+Q 355.4136 153.9486 355.4136 150.93756 
+L 355.4136 54.08244 
+Q 355.4136 51.0714 347.5512 51.0714 
+L 44.8488 51.0714 
+Q 36.9864 51.0714 36.9864 54.08244 
+L 36.9864 150.93756 
+Q 36.9864 153.9486 44.8488 153.9486 
+z
+" clip-path="url(#p8ce3b52b96)" style="fill: #f2f7fb; stroke: #b7cddf; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 372.4488 153.9486 
+L 675.1512 153.9486 
+Q 683.0136 153.9486 683.0136 150.93756 
+L 683.0136 54.08244 
+Q 683.0136 51.0714 675.1512 51.0714 
+L 372.4488 51.0714 
+Q 364.5864 51.0714 364.5864 54.08244 
+L 364.5864 150.93756 
+Q 364.5864 153.9486 372.4488 153.9486 
+z
+" clip-path="url(#p8ce3b52b96)" style="fill: #f2f7fb; stroke: #b7cddf; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 44.8488 279.4086 
+L 347.5512 279.4086 
+Q 355.4136 279.4086 355.4136 276.39756 
+L 355.4136 179.54244 
+Q 355.4136 176.5314 347.5512 176.5314 
+L 44.8488 176.5314 
+Q 36.9864 176.5314 36.9864 179.54244 
+L 36.9864 276.39756 
+Q 36.9864 279.4086 44.8488 279.4086 
+z
+" clip-path="url(#p8ce3b52b96)" style="fill: #f2f7fb; stroke: #b7cddf; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 372.4488 279.4086 
+L 675.1512 279.4086 
+Q 683.0136 279.4086 683.0136 276.39756 
+L 683.0136 179.54244 
+Q 683.0136 176.5314 675.1512 176.5314 
+L 372.4488 176.5314 
+Q 364.5864 176.5314 364.5864 179.54244 
+L 364.5864 276.39756 
+Q 364.5864 279.4086 372.4488 279.4086 
+z
+" clip-path="url(#p8ce3b52b96)" style="fill: #f2f7fb; stroke: #b7cddf; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #19354d" x="54.6768" y="85.804986" transform="rotate(-0 54.6768 85.804986)">明确上涨趋势</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; fill: #263746" transform="translate(54.6768 117.538697)">更高高点、更高低点、中期趋势向上</text>
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; fill: #263746" transform="translate(54.6768 132.593705)">研究趋势跟踪、突破、上涨回调策略</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #19354d" x="382.2768" y="85.804986" transform="rotate(-0 382.2768 85.804986)">明确下跌趋势</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; fill: #263746" transform="translate(382.2768 117.538697)">更低高点、更低低点、中期趋势向下</text>
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; fill: #263746" transform="translate(382.2768 132.593705)">研究风险降低、观望、潜在反转条件</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #19354d" x="54.6768" y="211.264986" transform="rotate(-0 54.6768 211.264986)">横盘震荡市场</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; fill: #263746" transform="translate(54.6768 242.998697)">价格在相对稳定区间反复变化</text>
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; fill: #263746" transform="translate(54.6768 258.053705)">研究区间交易、均值回归及突破条件</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #19354d" x="382.2768" y="211.264986" transform="rotate(-0 382.2768 211.264986)">高波动不确定市场</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; fill: #263746" transform="translate(382.2768 242.998697)">价格剧烈变化、趋势频繁改变</text>
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; fill: #263746" transform="translate(382.2768 258.053705)">重点研究风险预算、流动性及策略适用性</text>
+   </g>
+  </g>
+  <g id="text_9">
+   <text style="font-weight: 700; font-size: 20px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="360" y="31.799375" transform="rotate(-0 360 31.799375)">不同市场状态下的策略研究框架</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p8ce3b52b96">
+   <rect x="32.4" y="39.78" width="655.2" height="250.92"/>
+  </clipPath>
+ </defs>
+</svg>

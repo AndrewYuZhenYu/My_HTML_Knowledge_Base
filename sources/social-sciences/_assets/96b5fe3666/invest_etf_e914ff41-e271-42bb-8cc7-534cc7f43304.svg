@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="367.2pt" viewBox="0 0 720 367.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-25T04:36:31.340187</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 367.2 
+L 720 367.2 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 201.6 127.7856 
+L 518.4 127.7856 
+Q 524.736 127.7856 524.736 124.848 
+L 524.736 66.096 
+Q 524.736 63.1584 518.4 63.1584 
+L 201.6 63.1584 
+Q 195.264 63.1584 195.264 66.096 
+L 195.264 124.848 
+Q 195.264 127.7856 201.6 127.7856 
+z
+" clip-path="url(#pb56251c7cf)" style="fill: #e8f0f8; stroke: #8294a5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 201.6 230.6016 
+L 518.4 230.6016 
+Q 524.736 230.6016 524.736 227.664 
+L 524.736 168.912 
+Q 524.736 165.9744 518.4 165.9744 
+L 201.6 165.9744 
+Q 195.264 165.9744 195.264 168.912 
+L 195.264 227.664 
+Q 195.264 230.6016 201.6 230.6016 
+z
+" clip-path="url(#pb56251c7cf)" style="fill: #e8f0f8; stroke: #8294a5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 81.216 333.4176 
+L 283.968 333.4176 
+Q 290.304 333.4176 290.304 330.48 
+L 290.304 274.6656 
+Q 290.304 271.728 283.968 271.728 
+L 81.216 271.728 
+Q 74.88 271.728 74.88 274.6656 
+L 74.88 330.48 
+Q 74.88 333.4176 81.216 333.4176 
+z
+" clip-path="url(#pb56251c7cf)" style="fill: #e8f0f8; stroke: #8294a5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 436.032 333.4176 
+L 638.784 333.4176 
+Q 645.12 333.4176 645.12 330.48 
+L 645.12 274.6656 
+Q 645.12 271.728 638.784 271.728 
+L 436.032 271.728 
+Q 429.696 271.728 429.696 274.6656 
+L 429.696 330.48 
+Q 429.696 333.4176 436.032 333.4176 
+z
+" clip-path="url(#pb56251c7cf)" style="fill: #e8f0f8; stroke: #8294a5; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="360" y="89.856426" transform="rotate(-0 360 89.856426)">ETF基金财产</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="360" y="110.62365" transform="rotate(-0 360 110.62365)">按照基金规则持有股票、债券等资产</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="360" y="192.672426" transform="rotate(-0 360 192.672426)">ETF基金份额</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="360" y="213.43965" transform="rotate(-0 360 213.43965)">申购创设与赎回</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 360 129.082332 
+Q 360 146.879095 360 164.675858 
+" style="fill: none; stroke: #2866a4; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 357.2 134.682332 
+L 360 129.082332 
+L 362.8 134.682332 
+" style="fill: none; stroke: #2866a4; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 362.8 159.075858 
+L 360 164.675858 
+L 357.2 159.075858 
+" style="fill: none; stroke: #2866a4; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="182.592" y="306.945066" transform="rotate(-0 182.592 306.945066)">投资者甲</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="537.408" y="306.945066" transform="rotate(-0 537.408 306.945066)">投资者乙</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 360 231.899587 
+Q 360 251.163384 360 270.427181 
+" style="fill: none; stroke: #2866a4; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 357.2 237.499587 
+L 360 231.899587 
+L 362.8 237.499587 
+" style="fill: none; stroke: #2866a4; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 362.8 264.827181 
+L 360 270.427181 
+L 357.2 264.827181 
+" style="fill: none; stroke: #2866a4; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 288.204177 304.0416 
+Q 359.999415 304.0416 431.794653 304.0416 
+" style="fill: none; stroke: #2866a4; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 293.804177 306.8416 
+L 288.204177 304.0416 
+L 293.804177 301.2416 
+" style="fill: none; stroke: #2866a4; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 426.194653 301.2416 
+L 431.794653 304.0416 
+L 426.194653 306.8416 
+" style="fill: none; stroke: #2866a4; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 11px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="360" y="324.547312" transform="rotate(-0 360 324.547312)">交易所交易</text>
+   </g>
+  </g>
+  <g id="text_8">
+   <text style="font-weight: 700; font-size: 20px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="360" y="31.799375" transform="rotate(-0 360 31.799375)">ETF：基金资产、份额与交易所</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pb56251c7cf">
+   <rect x="43.2" y="51.408" width="633.6" height="293.76"/>
+  </clipPath>
+ </defs>
+</svg>

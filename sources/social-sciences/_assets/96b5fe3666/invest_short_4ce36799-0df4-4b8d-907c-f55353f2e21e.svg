@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="396.72pt" viewBox="0 0 720 396.72" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-25T04:36:32.747475</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 396.72 
+L 720 396.72 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 44.8488 126.394992 
+L 675.1512 126.394992 
+Q 683.0136 126.394992 683.0136 122.491267 
+L 683.0136 61.983533 
+Q 683.0136 58.079808 675.1512 58.079808 
+L 44.8488 58.079808 
+Q 36.9864 58.079808 36.9864 61.983533 
+L 36.9864 122.491267 
+Q 36.9864 126.394992 44.8488 126.394992 
+z
+" clip-path="url(#p76225412d0)" style="fill: #f2f7fb; stroke: #b7cddf; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 44.8488 207.722592 
+L 675.1512 207.722592 
+Q 683.0136 207.722592 683.0136 203.818867 
+L 683.0136 143.311133 
+Q 683.0136 139.407408 675.1512 139.407408 
+L 44.8488 139.407408 
+Q 36.9864 139.407408 36.9864 143.311133 
+L 36.9864 203.818867 
+Q 36.9864 207.722592 44.8488 207.722592 
+z
+" clip-path="url(#p76225412d0)" style="fill: #f2f7fb; stroke: #b7cddf; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 44.8488 289.050192 
+L 675.1512 289.050192 
+Q 683.0136 289.050192 683.0136 285.146467 
+L 683.0136 224.638733 
+Q 683.0136 220.735008 675.1512 220.735008 
+L 44.8488 220.735008 
+Q 36.9864 220.735008 36.9864 224.638733 
+L 36.9864 285.146467 
+Q 36.9864 289.050192 44.8488 289.050192 
+z
+" clip-path="url(#p76225412d0)" style="fill: #f2f7fb; stroke: #b7cddf; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 44.8488 370.377792 
+L 675.1512 370.377792 
+Q 683.0136 370.377792 683.0136 366.474067 
+L 683.0136 305.966333 
+Q 683.0136 302.062608 675.1512 302.062608 
+L 44.8488 302.062608 
+Q 36.9864 302.062608 36.9864 305.966333 
+L 36.9864 366.474067 
+Q 36.9864 370.377792 44.8488 370.377792 
+z
+" clip-path="url(#p76225412d0)" style="fill: #f2f7fb; stroke: #b7cddf; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #19354d" x="54.6768" y="82.946629" transform="rotate(-0 54.6768 82.946629)">借入股票</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="54.6768" y="108.085476" transform="rotate(-0 54.6768 108.085476)">借入100股，市价10元</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 360 126.766883 
+Q 360 127.818197 360 127.192461 
+" style="fill: none; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 362.8 121.592461 
+L 360 127.192461 
+L 357.2 121.592461 
+z
+" style="fill: #8294a5; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #19354d" x="54.6768" y="164.274229" transform="rotate(-0 54.6768 164.274229)">卖出股票</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="54.6768" y="189.413076" transform="rotate(-0 54.6768 189.413076)">取得1000元交易金额</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 360 208.094483 
+Q 360 209.145797 360 208.520061 
+" style="fill: none; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 362.8 202.920061 
+L 360 208.520061 
+L 357.2 202.920061 
+z
+" style="fill: #8294a5; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #19354d" x="54.6768" y="245.601829" transform="rotate(-0 54.6768 245.601829)">股价下跌</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="54.6768" y="270.740676" transform="rotate(-0 54.6768 270.740676)">假设降至8元</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 360 289.422083 
+Q 360 290.473397 360 289.847661 
+" style="fill: none; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 362.8 284.247661 
+L 360 289.847661 
+L 357.2 284.247661 
+z
+" style="fill: #8294a5; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #19354d" x="54.6768" y="326.929429" transform="rotate(-0 54.6768 326.929429)">购回并归还股票</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="54.6768" y="352.068276" transform="rotate(-0 54.6768 352.068276)">购回成本800元，未计费用差额200元</text>
+   </g>
+  </g>
+  <g id="text_9">
+   <text style="font-weight: 700; font-size: 20px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="360" y="31.799375" transform="rotate(-0 360 31.799375)">融券卖出与做空</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p76225412d0">
+   <rect x="32.4" y="51.5736" width="655.2" height="325.3104"/>
+  </clipPath>
+ </defs>
+</svg>

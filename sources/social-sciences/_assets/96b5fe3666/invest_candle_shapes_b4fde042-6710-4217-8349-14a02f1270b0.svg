@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="615.6pt" viewBox="0 0 720 615.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-25T04:36:22.328994</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 615.6 
+L 720 615.6 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 36 204.066 
+L 224.372093 204.066 
+L 224.372093 79.2 
+L 36 79.2 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2"/>
+   <g id="LineCollection_1">
+    <path d="M 130.186047 182.83878 
+L 130.186047 100.42722 
+" clip-path="url(#p5b2bd89f9f)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 99.756708 182.83878 
+L 160.615385 182.83878 
+L 160.615385 100.42722 
+L 99.756708 100.42722 
+z
+" clip-path="url(#p5b2bd89f9f)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 11.3px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="130.186047" y="219.927724" transform="rotate(-0 130.186047 219.927724)">收盘接近最高</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="130.186047" y="74.2" transform="rotate(-0 130.186047 74.2)">光头光脚阳线</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_4">
+    <path d="M 265.813953 204.066 
+L 454.186047 204.066 
+L 454.186047 79.2 
+L 265.813953 79.2 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_3"/>
+   <g id="matplotlib.axis_4"/>
+   <g id="LineCollection_2">
+    <path d="M 360 182.83878 
+L 360 100.42722 
+" clip-path="url(#p75aa011d7c)" style="fill: none; stroke: #16816f; stroke-width: 2"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 329.570662 182.83878 
+L 390.429338 182.83878 
+L 390.429338 100.42722 
+L 329.570662 100.42722 
+z
+" clip-path="url(#p75aa011d7c)" style="fill: #16816f; stroke: #16816f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 11.3px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="360" y="219.927724" transform="rotate(-0 360 219.927724)">收盘接近最低</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="360" y="74.2" transform="rotate(-0 360 74.2)">光头光脚阴线</text>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g id="patch_6">
+    <path d="M 495.627907 204.066 
+L 684 204.066 
+L 684 79.2 
+L 495.627907 79.2 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_5"/>
+   <g id="matplotlib.axis_6"/>
+   <g id="LineCollection_3">
+    <path d="M 589.813953 182.83878 
+L 589.813953 89.18928 
+" clip-path="url(#pda45aa41b8)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 559.384615 175.34682 
+L 620.243292 175.34682 
+L 620.243292 151.62228 
+L 559.384615 151.62228 
+z
+" clip-path="url(#pda45aa41b8)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 11.3px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="589.813953" y="219.927724" transform="rotate(-0 589.813953 219.927724)">冲高后回落</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="589.813953" y="74.2" transform="rotate(-0 589.813953 74.2)">长上影线</text>
+   </g>
+  </g>
+  <g id="axes_4">
+   <g id="patch_8">
+    <path d="M 36 391.365 
+L 224.372093 391.365 
+L 224.372093 266.499 
+L 36 266.499 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_7"/>
+   <g id="matplotlib.axis_8"/>
+   <g id="LineCollection_4">
+    <path d="M 130.186047 383.87304 
+L 130.186047 287.72622 
+" clip-path="url(#p020cf8105d)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 99.756708 318.94272 
+L 160.615385 318.94272 
+L 160.615385 295.21818 
+L 99.756708 295.21818 
+z
+" clip-path="url(#p020cf8105d)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 11.3px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="130.186047" y="407.226724" transform="rotate(-0 130.186047 407.226724)">探低后恢复</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="130.186047" y="261.499" transform="rotate(-0 130.186047 261.499)">长下影线</text>
+   </g>
+  </g>
+  <g id="axes_5">
+   <g id="patch_10">
+    <path d="M 265.813953 391.365 
+L 454.186047 391.365 
+L 454.186047 266.499 
+L 265.813953 266.499 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_9"/>
+   <g id="matplotlib.axis_10"/>
+   <g id="LineCollection_5">
+    <path d="M 360 378.8784 
+L 360 278.9856 
+" clip-path="url(#pdf49848dfe)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 329.570662 335.1753 
+L 390.429338 335.1753 
+L 390.429338 321.44004 
+L 329.570662 321.44004 
+z
+" clip-path="url(#pdf49848dfe)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 11.3px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="360" y="407.226724" transform="rotate(-0 360 407.226724)">实体小、双影明显</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="360" y="261.499" transform="rotate(-0 360 261.499)">纺锤线</text>
+   </g>
+  </g>
+  <g id="axes_6">
+   <g id="patch_12">
+    <path d="M 495.627907 391.365 
+L 684 391.365 
+L 684 266.499 
+L 495.627907 266.499 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_11"/>
+   <g id="matplotlib.axis_12"/>
+   <g id="LineCollection_6">
+    <path d="M 589.813953 368.88912 
+L 589.813953 288.97488 
+" clip-path="url(#p2663d2ee72)" style="fill: none; stroke: #8294a5; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_7">
+    <path d="M 559.384615 328.932 
+L 620.243292 328.932 
+" clip-path="url(#p2663d2ee72)" style="fill: none; stroke: #8294a5; stroke-width: 2.2"/>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 11.3px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="589.813953" y="407.226724" transform="rotate(-0 589.813953 407.226724)">开收接近</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="589.813953" y="261.499" transform="rotate(-0 589.813953 261.499)">普通十字星</text>
+   </g>
+  </g>
+  <g id="axes_7">
+   <g id="patch_13">
+    <path d="M 36 578.664 
+L 224.372093 578.664 
+L 224.372093 453.798 
+L 36 453.798 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_13"/>
+   <g id="matplotlib.axis_14"/>
+   <g id="LineCollection_8">
+    <path d="M 130.186047 572.4207 
+L 130.186047 460.0413 
+" clip-path="url(#p22e8bf343d)" style="fill: none; stroke: #8294a5; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_9">
+    <path d="M 99.756708 516.231 
+L 160.615385 516.231 
+" clip-path="url(#p22e8bf343d)" style="fill: none; stroke: #8294a5; stroke-width: 2.2"/>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 11.3px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="130.186047" y="594.525724" transform="rotate(-0 130.186047 594.525724)">开收接近、波幅大</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="130.186047" y="448.798" transform="rotate(-0 130.186047 448.798)">长腿十字星</text>
+   </g>
+  </g>
+  <g id="axes_8">
+   <g id="patch_14">
+    <path d="M 265.813953 578.664 
+L 454.186047 578.664 
+L 454.186047 453.798 
+L 265.813953 453.798 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_15"/>
+   <g id="matplotlib.axis_16"/>
+   <g id="LineCollection_10">
+    <path d="M 360 571.17204 
+L 360 478.7712 
+" clip-path="url(#p901eae345d)" style="fill: none; stroke: #8294a5; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_11">
+    <path d="M 329.570662 478.7712 
+L 390.429338 478.7712 
+" clip-path="url(#p901eae345d)" style="fill: none; stroke: #8294a5; stroke-width: 2.2"/>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 11.3px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="360" y="594.525724" transform="rotate(-0 360 594.525724)">长下影</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="360" y="448.798" transform="rotate(-0 360 448.798)">蜻蜓十字星</text>
+   </g>
+  </g>
+  <g id="axes_9">
+   <g id="patch_15">
+    <path d="M 495.627907 578.664 
+L 684 578.664 
+L 684 453.798 
+L 495.627907 453.798 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_17"/>
+   <g id="matplotlib.axis_18"/>
+   <g id="LineCollection_12">
+    <path d="M 589.813953 553.6908 
+L 589.813953 461.28996 
+" clip-path="url(#pfb42017dee)" style="fill: none; stroke: #8294a5; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_13">
+    <path d="M 559.384615 553.6908 
+L 620.243292 553.6908 
+" clip-path="url(#pfb42017dee)" style="fill: none; stroke: #8294a5; stroke-width: 2.2"/>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 11.3px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="589.813953" y="594.525724" transform="rotate(-0 589.813953 594.525724)">长上影</text>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="589.813953" y="448.798" transform="rotate(-0 589.813953 448.798)">墓碑十字星</text>
+   </g>
+  </g>
+  <g id="text_19">
+   <text style="font-weight: 700; font-size: 20px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="360" y="31.799375" transform="rotate(-0 360 31.799375)">单根K线：按实体与影线结构</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p5b2bd89f9f">
+   <rect x="36" y="79.2" width="188.372093" height="124.866"/>
+  </clipPath>
+  <clipPath id="p75aa011d7c">
+   <rect x="265.813953" y="79.2" width="188.372093" height="124.866"/>
+  </clipPath>
+  <clipPath id="pda45aa41b8">
+   <rect x="495.627907" y="79.2" width="188.372093" height="124.866"/>
+  </clipPath>
+  <clipPath id="p020cf8105d">
+   <rect x="36" y="266.499" width="188.372093" height="124.866"/>
+  </clipPath>
+  <clipPath id="pdf49848dfe">
+   <rect x="265.813953" y="266.499" width="188.372093" height="124.866"/>
+  </clipPath>
+  <clipPath id="p2663d2ee72">
+   <rect x="495.627907" y="266.499" width="188.372093" height="124.866"/>
+  </clipPath>
+  <clipPath id="p22e8bf343d">
+   <rect x="36" y="453.798" width="188.372093" height="124.866"/>
+  </clipPath>
+  <clipPath id="p901eae345d">
+   <rect x="265.813953" y="453.798" width="188.372093" height="124.866"/>
+  </clipPath>
+  <clipPath id="pfb42017dee">
+   <rect x="495.627907" y="453.798" width="188.372093" height="124.866"/>
+  </clipPath>
+ </defs>
+</svg>

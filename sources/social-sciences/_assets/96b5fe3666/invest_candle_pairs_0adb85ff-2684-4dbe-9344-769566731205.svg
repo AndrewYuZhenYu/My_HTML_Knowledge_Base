@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="792pt" viewBox="0 0 720 792" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-25T04:36:22.763900</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 792 
+L 720 792 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 36 200.16 
+L 327.891892 200.16 
+L 327.891892 79.2 
+L 36 79.2 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2"/>
+   <g id="LineCollection_1">
+    <path d="M 118.491187 167.5008 
+L 118.491187 115.488 
+" clip-path="url(#p230928afd3)" style="fill: none; stroke: #16816f; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_2">
+    <path d="M 245.400705 179.5968 
+L 245.400705 99.7632 
+" clip-path="url(#p230928afd3)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 91.840188 157.824 
+L 145.142186 157.824 
+L 145.142186 127.584 
+L 91.840188 127.584 
+z
+" clip-path="url(#p230928afd3)" style="fill: #16816f; stroke: #16816f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 218.749706 169.92 
+L 272.051704 169.92 
+L 272.051704 109.44 
+L 218.749706 109.44 
+z
+" clip-path="url(#p230928afd3)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 11.3px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="181.945946" y="215.806894" transform="rotate(-0 181.945946 215.806894)">后阳线实体包围前阴线</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="181.945946" y="74.2" transform="rotate(-0 181.945946 74.2)">看涨吞没</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_5">
+    <path d="M 392.108108 200.16 
+L 684 200.16 
+L 684 79.2 
+L 392.108108 79.2 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_3"/>
+   <g id="matplotlib.axis_4"/>
+   <g id="LineCollection_3">
+    <path d="M 474.599295 169.92 
+L 474.599295 115.488 
+" clip-path="url(#p83cb8ffcdc)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_4">
+    <path d="M 601.508813 183.2256 
+L 601.508813 99.7632 
+" clip-path="url(#p83cb8ffcdc)" style="fill: none; stroke: #16816f; stroke-width: 2"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 447.948296 157.824 
+L 501.250294 157.824 
+L 501.250294 127.584 
+L 447.948296 127.584 
+z
+" clip-path="url(#p83cb8ffcdc)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 574.857814 173.5488 
+L 628.159812 173.5488 
+L 628.159812 109.44 
+L 574.857814 109.44 
+z
+" clip-path="url(#p83cb8ffcdc)" style="fill: #16816f; stroke: #16816f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 11.3px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="538.054054" y="215.806894" transform="rotate(-0 538.054054 215.806894)">后阴线实体包围前阳线</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="538.054054" y="74.2" transform="rotate(-0 538.054054 74.2)">看跌吞没</text>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g id="patch_8">
+    <path d="M 36 381.6 
+L 327.891892 381.6 
+L 327.891892 260.64 
+L 36 260.64 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_5"/>
+   <g id="matplotlib.axis_6"/>
+   <g id="LineCollection_5">
+    <path d="M 118.491187 359.8272 
+L 118.491187 275.1552 
+" clip-path="url(#p5bb33fefb4)" style="fill: none; stroke: #16816f; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_6">
+    <path d="M 245.400705 370.7136 
+L 245.400705 299.3472 
+" clip-path="url(#p5bb33fefb4)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 91.840188 351.36 
+L 145.142186 351.36 
+L 145.142186 284.832 
+L 91.840188 284.832 
+z
+" clip-path="url(#p5bb33fefb4)" style="fill: #16816f; stroke: #16816f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 218.749706 362.2464 
+L 272.051704 362.2464 
+L 272.051704 307.8144 
+L 218.749706 307.8144 
+z
+" clip-path="url(#p5bb33fefb4)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 11.3px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="181.945946" y="397.246894" transform="rotate(-0 181.945946 397.246894)">后阳收于前阴实体中点上方</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="181.945946" y="255.64" transform="rotate(-0 181.945946 255.64)">刺透形态</text>
+   </g>
+  </g>
+  <g id="axes_4">
+   <g id="patch_11">
+    <path d="M 392.108108 381.6 
+L 684 381.6 
+L 684 260.64 
+L 392.108108 260.64 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_7"/>
+   <g id="matplotlib.axis_8"/>
+   <g id="LineCollection_7">
+    <path d="M 474.599295 361.0368 
+L 474.599295 275.1552 
+" clip-path="url(#p4e06fe611b)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_8">
+    <path d="M 601.508813 342.8928 
+L 601.508813 265.4784 
+" clip-path="url(#p4e06fe611b)" style="fill: none; stroke: #16816f; stroke-width: 2"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 447.948296 351.36 
+L 501.250294 351.36 
+L 501.250294 284.832 
+L 447.948296 284.832 
+z
+" clip-path="url(#p4e06fe611b)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 574.857814 334.4256 
+L 628.159812 334.4256 
+L 628.159812 272.736 
+L 574.857814 272.736 
+z
+" clip-path="url(#p4e06fe611b)" style="fill: #16816f; stroke: #16816f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 11.3px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="538.054054" y="397.246894" transform="rotate(-0 538.054054 397.246894)">后阴收于前阳实体中点下方</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="538.054054" y="255.64" transform="rotate(-0 538.054054 255.64)">乌云盖顶</text>
+   </g>
+  </g>
+  <g id="axes_5">
+   <g id="patch_14">
+    <path d="M 36 563.04 
+L 327.891892 563.04 
+L 327.891892 442.08 
+L 36 442.08 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_9"/>
+   <g id="matplotlib.axis_10"/>
+   <g id="LineCollection_9">
+    <path d="M 118.491187 550.944 
+L 118.491187 456.5952 
+" clip-path="url(#pc62b99397b)" style="fill: none; stroke: #16816f; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_10">
+    <path d="M 245.400705 525.5424 
+L 245.400705 488.0448 
+" clip-path="url(#pc62b99397b)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 91.840188 538.848 
+L 145.142186 538.848 
+L 145.142186 466.272 
+L 91.840188 466.272 
+z
+" clip-path="url(#pc62b99397b)" style="fill: #16816f; stroke: #16816f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 218.749706 517.0752 
+L 272.051704 517.0752 
+L 272.051704 494.0928 
+L 218.749706 494.0928 
+z
+" clip-path="url(#pc62b99397b)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 11.3px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="181.945946" y="578.686894" transform="rotate(-0 181.945946 578.686894)">小实体位于此前大阴线内</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="181.945946" y="437.08" transform="rotate(-0 181.945946 437.08)">看涨孕线</text>
+   </g>
+  </g>
+  <g id="axes_6">
+   <g id="patch_17">
+    <path d="M 392.108108 563.04 
+L 684 563.04 
+L 684 442.08 
+L 392.108108 442.08 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_11"/>
+   <g id="matplotlib.axis_12"/>
+   <g id="LineCollection_11">
+    <path d="M 474.599295 550.944 
+L 474.599295 456.5952 
+" clip-path="url(#p3ffd3c1bd1)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_12">
+    <path d="M 601.508813 525.5424 
+L 601.508813 488.0448 
+" clip-path="url(#p3ffd3c1bd1)" style="fill: none; stroke: #16816f; stroke-width: 2"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 447.948296 538.848 
+L 501.250294 538.848 
+L 501.250294 466.272 
+L 447.948296 466.272 
+z
+" clip-path="url(#p3ffd3c1bd1)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 574.857814 517.0752 
+L 628.159812 517.0752 
+L 628.159812 494.0928 
+L 574.857814 494.0928 
+z
+" clip-path="url(#p3ffd3c1bd1)" style="fill: #16816f; stroke: #16816f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 11.3px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="538.054054" y="578.686894" transform="rotate(-0 538.054054 578.686894)">小实体位于此前大阳线内</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="538.054054" y="437.08" transform="rotate(-0 538.054054 437.08)">看跌孕线</text>
+   </g>
+  </g>
+  <g id="axes_7">
+   <g id="patch_20">
+    <path d="M 36 744.48 
+L 327.891892 744.48 
+L 327.891892 623.52 
+L 36 623.52 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_13"/>
+   <g id="matplotlib.axis_14"/>
+   <g id="LineCollection_13">
+    <path d="M 118.491187 732.384 
+L 118.491187 653.76 
+" clip-path="url(#pf3b311e4cc)" style="fill: none; stroke: #16816f; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_14">
+    <path d="M 245.400705 732.384 
+L 245.400705 647.712 
+" clip-path="url(#pf3b311e4cc)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 91.840188 705.7728 
+L 145.142186 705.7728 
+L 145.142186 664.6464 
+L 91.840188 664.6464 
+z
+" clip-path="url(#pf3b311e4cc)" style="fill: #16816f; stroke: #16816f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 218.749706 702.144 
+L 272.051704 702.144 
+L 272.051704 662.2272 
+L 218.749706 662.2272 
+z
+" clip-path="url(#pf3b311e4cc)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 11.3px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="181.945946" y="760.126894" transform="rotate(-0 181.945946 760.126894)">相邻最低价相近</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="181.945946" y="618.52" transform="rotate(-0 181.945946 618.52)">平底形态</text>
+   </g>
+  </g>
+  <g id="axes_8">
+   <g id="patch_23">
+    <path d="M 392.108108 744.48 
+L 684 744.48 
+L 684 623.52 
+L 392.108108 623.52 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_15"/>
+   <g id="matplotlib.axis_16"/>
+   <g id="LineCollection_15">
+    <path d="M 474.599295 721.4976 
+L 474.599295 635.616 
+" clip-path="url(#peda40315b9)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_16">
+    <path d="M 601.508813 726.336 
+L 601.508813 635.616 
+" clip-path="url(#peda40315b9)" style="fill: none; stroke: #16816f; stroke-width: 2"/>
+   </g>
+   <g id="patch_24">
+    <path d="M 447.948296 705.7728 
+L 501.250294 705.7728 
+L 501.250294 662.2272 
+L 447.948296 662.2272 
+z
+" clip-path="url(#peda40315b9)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_25">
+    <path d="M 574.857814 708.192 
+L 628.159812 708.192 
+L 628.159812 663.4368 
+L 574.857814 663.4368 
+z
+" clip-path="url(#peda40315b9)" style="fill: #16816f; stroke: #16816f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 11.3px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="538.054054" y="760.126894" transform="rotate(-0 538.054054 760.126894)">相邻最高价相近</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="538.054054" y="618.52" transform="rotate(-0 538.054054 618.52)">平顶形态</text>
+   </g>
+  </g>
+  <g id="text_17">
+   <text style="font-weight: 700; font-size: 20px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="360" y="31.799375" transform="rotate(-0 360 31.799375)">双根K线组合形态</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p230928afd3">
+   <rect x="36" y="79.2" width="291.891892" height="120.96"/>
+  </clipPath>
+  <clipPath id="p83cb8ffcdc">
+   <rect x="392.108108" y="79.2" width="291.891892" height="120.96"/>
+  </clipPath>
+  <clipPath id="p5bb33fefb4">
+   <rect x="36" y="260.64" width="291.891892" height="120.96"/>
+  </clipPath>
+  <clipPath id="p4e06fe611b">
+   <rect x="392.108108" y="260.64" width="291.891892" height="120.96"/>
+  </clipPath>
+  <clipPath id="pc62b99397b">
+   <rect x="36" y="442.08" width="291.891892" height="120.96"/>
+  </clipPath>
+  <clipPath id="p3ffd3c1bd1">
+   <rect x="392.108108" y="442.08" width="291.891892" height="120.96"/>
+  </clipPath>
+  <clipPath id="pf3b311e4cc">
+   <rect x="36" y="623.52" width="291.891892" height="120.96"/>
+  </clipPath>
+  <clipPath id="peda40315b9">
+   <rect x="392.108108" y="623.52" width="291.891892" height="120.96"/>
+  </clipPath>
+ </defs>
+</svg>

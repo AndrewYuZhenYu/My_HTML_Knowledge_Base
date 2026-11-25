@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="410.4pt" viewBox="0 0 720 410.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-25T04:36:28.543957</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 410.4 
+L 720 410.4 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 44.8488 155.99304 
+L 675.1512 155.99304 
+Q 683.0136 155.99304 683.0136 151.954704 
+L 683.0136 66.925296 
+Q 683.0136 62.88696 675.1512 62.88696 
+L 44.8488 62.88696 
+Q 36.9864 62.88696 36.9864 66.925296 
+L 36.9864 151.954704 
+Q 36.9864 155.99304 44.8488 155.99304 
+z
+" clip-path="url(#pb260fd720c)" style="fill: #f2f7fb; stroke: #b7cddf; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 44.8488 268.16904 
+L 675.1512 268.16904 
+Q 683.0136 268.16904 683.0136 264.130704 
+L 683.0136 179.101296 
+Q 683.0136 175.06296 675.1512 175.06296 
+L 44.8488 175.06296 
+Q 36.9864 175.06296 36.9864 179.101296 
+L 36.9864 264.130704 
+Q 36.9864 268.16904 44.8488 268.16904 
+z
+" clip-path="url(#pb260fd720c)" style="fill: #f2f7fb; stroke: #b7cddf; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 44.8488 380.34504 
+L 675.1512 380.34504 
+Q 683.0136 380.34504 683.0136 376.306704 
+L 683.0136 291.277296 
+Q 683.0136 287.23896 675.1512 287.23896 
+L 44.8488 287.23896 
+Q 36.9864 287.23896 36.9864 291.277296 
+L 36.9864 376.306704 
+Q 36.9864 380.34504 44.8488 380.34504 
+z
+" clip-path="url(#pb260fd720c)" style="fill: #f2f7fb; stroke: #b7cddf; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #19354d" x="54.6768" y="94.966698" transform="rotate(-0 54.6768 94.966698)">利润表：赚了多少钱</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; fill: #263746" transform="translate(54.6768 114.922025)">营业收入</text>
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; fill: #263746" transform="translate(54.6768 129.977033)">成本与费用</text>
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; fill: #263746" transform="translate(54.6768 145.032041)">净利润</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #19354d" x="54.6768" y="207.142698" transform="rotate(-0 54.6768 207.142698)">资产负债表：拥有多少、欠多少</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; fill: #263746" transform="translate(54.6768 227.098025)">资产</text>
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; fill: #263746" transform="translate(54.6768 242.153033)">负债</text>
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; fill: #263746" transform="translate(54.6768 257.208041)">所有者权益</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #19354d" x="54.6768" y="319.318698" transform="rotate(-0 54.6768 319.318698)">现金流量表：钱实际怎样流动</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; fill: #263746" transform="translate(54.6768 339.274025)">经营现金流</text>
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; fill: #263746" transform="translate(54.6768 354.329033)">投资现金流</text>
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; fill: #263746" transform="translate(54.6768 369.384041)">筹资现金流</text>
+   </g>
+  </g>
+  <g id="text_7">
+   <text style="font-weight: 700; font-size: 20px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="360" y="31.799375" transform="rotate(-0 360 31.799375)">三大财务报表的相互联系</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pb260fd720c">
+   <rect x="32.4" y="53.352" width="655.2" height="336.528"/>
+  </clipPath>
+ </defs>
+</svg>

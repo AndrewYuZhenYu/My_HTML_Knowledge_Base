@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="518.4pt" viewBox="0 0 720 518.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-25T04:36:24.495684</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 518.4 
+L 720 518.4 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 50.4 178.811019 
+L 332 178.811019 
+L 332 72.576 
+L 50.4 72.576 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2">
+    <g id="text_1">
+     <text style="font-size: 14px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="43.193125" y="125.69351" transform="rotate(-90 43.193125 125.69351)">价格</text>
+    </g>
+   </g>
+   <g id="line2d_1">
+    <path d="M 76.573134 173.982155 
+L 114.78209 149.837832 
+L 152.991045 157.081129 
+L 191.2 125.69351 
+L 229.408955 135.351239 
+L 267.61791 101.549187 
+L 305.826866 77.404865 
+" clip-path="url(#p1745917264)" style="fill: none; stroke: #2866a4; stroke-width: 2.7; stroke-linecap: square"/>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 17px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="191.2" y="66.576" transform="rotate(-0 191.2 66.576)">量增价涨</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_3">
+    <path d="M 50.4 262.20551 
+L 332 262.20551 
+L 332 209.088 
+L 50.4 209.088 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 63.2 262.20551 
+L 89.946269 262.20551 
+L 89.946269 246.396727 
+L 63.2 246.396727 
+z
+" clip-path="url(#pbca728eabf)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 101.408955 262.20551 
+L 128.155224 262.20551 
+L 128.155224 243.234971 
+L 101.408955 243.234971 
+z
+" clip-path="url(#pbca728eabf)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 139.61791 262.20551 
+L 166.364179 262.20551 
+L 166.364179 241.654092 
+L 139.61791 241.654092 
+z
+" clip-path="url(#pbca728eabf)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 177.826866 262.20551 
+L 204.573134 262.20551 
+L 204.573134 233.749701 
+L 177.826866 233.749701 
+z
+" clip-path="url(#pbca728eabf)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 216.035821 262.20551 
+L 242.78209 262.20551 
+L 242.78209 229.007066 
+L 216.035821 229.007066 
+z
+" clip-path="url(#pbca728eabf)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 254.244776 262.20551 
+L 280.991045 262.20551 
+L 280.991045 221.102675 
+L 254.244776 221.102675 
+z
+" clip-path="url(#pbca728eabf)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 292.453731 262.20551 
+L 319.2 262.20551 
+L 319.2 211.617405 
+L 292.453731 211.617405 
+z
+" clip-path="url(#pbca728eabf)" style="fill: #8294a5"/>
+   </g>
+   <g id="matplotlib.axis_3"/>
+   <g id="matplotlib.axis_4">
+    <g id="text_3">
+     <text style="font-size: 14px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="43.193125" y="235.646755" transform="rotate(-90 43.193125 235.646755)">成交量</text>
+    </g>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g id="patch_11">
+    <path d="M 402.4 178.811019 
+L 684 178.811019 
+L 684 72.576 
+L 402.4 72.576 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_5"/>
+   <g id="matplotlib.axis_6">
+    <g id="text_4">
+     <text style="font-size: 14px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="395.193125" y="125.69351" transform="rotate(-90 395.193125 125.69351)">价格</text>
+    </g>
+   </g>
+   <g id="line2d_2">
+    <path d="M 428.573134 173.982155 
+L 466.78209 149.837832 
+L 504.991045 157.081129 
+L 543.2 125.69351 
+L 581.408955 135.351239 
+L 619.61791 101.549187 
+L 657.826866 77.404865 
+" clip-path="url(#p40b1c20532)" style="fill: none; stroke: #2866a4; stroke-width: 2.7; stroke-linecap: square"/>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 17px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="543.2" y="66.576" transform="rotate(-0 543.2 66.576)">量缩价涨</text>
+   </g>
+  </g>
+  <g id="axes_4">
+   <g id="patch_12">
+    <path d="M 402.4 262.20551 
+L 684 262.20551 
+L 684 209.088 
+L 402.4 209.088 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 415.2 262.20551 
+L 441.946269 262.20551 
+L 441.946269 211.617405 
+L 415.2 211.617405 
+z
+" clip-path="url(#pf89a3c962d)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 453.408955 262.20551 
+L 480.155224 262.20551 
+L 480.155224 221.102675 
+L 453.408955 221.102675 
+z
+" clip-path="url(#pf89a3c962d)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 491.61791 262.20551 
+L 518.364179 262.20551 
+L 518.364179 225.84531 
+L 491.61791 225.84531 
+z
+" clip-path="url(#pf89a3c962d)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 529.826866 262.20551 
+L 556.573134 262.20551 
+L 556.573134 230.587944 
+L 529.826866 230.587944 
+z
+" clip-path="url(#pf89a3c962d)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 568.035821 262.20551 
+L 594.78209 262.20551 
+L 594.78209 236.911457 
+L 568.035821 236.911457 
+z
+" clip-path="url(#pf89a3c962d)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 606.244776 262.20551 
+L 632.991045 262.20551 
+L 632.991045 243.234971 
+L 606.244776 243.234971 
+z
+" clip-path="url(#pf89a3c962d)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 644.453731 262.20551 
+L 671.2 262.20551 
+L 671.2 247.977605 
+L 644.453731 247.977605 
+z
+" clip-path="url(#pf89a3c962d)" style="fill: #8294a5"/>
+   </g>
+   <g id="matplotlib.axis_7"/>
+   <g id="matplotlib.axis_8">
+    <g id="text_6">
+     <text style="font-size: 14px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="395.193125" y="235.646755" transform="rotate(-90 395.193125 235.646755)">成交量</text>
+    </g>
+   </g>
+  </g>
+  <g id="axes_5">
+   <g id="patch_20">
+    <path d="M 50.4 398.71751 
+L 332 398.71751 
+L 332 292.48249 
+L 50.4 292.48249 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_9"/>
+   <g id="matplotlib.axis_10">
+    <g id="text_7">
+     <text style="font-size: 14px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="43.193125" y="345.6" transform="rotate(-90 43.193125 345.6)">价格</text>
+    </g>
+   </g>
+   <g id="line2d_3">
+    <path d="M 76.573134 297.311355 
+L 114.78209 321.455677 
+L 152.991045 314.212381 
+L 191.2 345.6 
+L 229.408955 335.942271 
+L 267.61791 369.744323 
+L 305.826866 393.888645 
+" clip-path="url(#p1aabbe5222)" style="fill: none; stroke: #2866a4; stroke-width: 2.7; stroke-linecap: square"/>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 17px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="191.2" y="286.48249" transform="rotate(-0 191.2 286.48249)">量增价跌</text>
+   </g>
+  </g>
+  <g id="axes_6">
+   <g id="patch_21">
+    <path d="M 50.4 482.112 
+L 332 482.112 
+L 332 428.99449 
+L 50.4 428.99449 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 63.2 482.112 
+L 89.946269 482.112 
+L 89.946269 466.303217 
+L 63.2 466.303217 
+z
+" clip-path="url(#p80f5e8f658)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 101.408955 482.112 
+L 128.155224 482.112 
+L 128.155224 463.141461 
+L 101.408955 463.141461 
+z
+" clip-path="url(#p80f5e8f658)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_24">
+    <path d="M 139.61791 482.112 
+L 166.364179 482.112 
+L 166.364179 461.560583 
+L 139.61791 461.560583 
+z
+" clip-path="url(#p80f5e8f658)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_25">
+    <path d="M 177.826866 482.112 
+L 204.573134 482.112 
+L 204.573134 453.656191 
+L 177.826866 453.656191 
+z
+" clip-path="url(#p80f5e8f658)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_26">
+    <path d="M 216.035821 482.112 
+L 242.78209 482.112 
+L 242.78209 448.913556 
+L 216.035821 448.913556 
+z
+" clip-path="url(#p80f5e8f658)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_27">
+    <path d="M 254.244776 482.112 
+L 280.991045 482.112 
+L 280.991045 441.009165 
+L 254.244776 441.009165 
+z
+" clip-path="url(#p80f5e8f658)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_28">
+    <path d="M 292.453731 482.112 
+L 319.2 482.112 
+L 319.2 431.523895 
+L 292.453731 431.523895 
+z
+" clip-path="url(#p80f5e8f658)" style="fill: #8294a5"/>
+   </g>
+   <g id="matplotlib.axis_11"/>
+   <g id="matplotlib.axis_12">
+    <g id="text_9">
+     <text style="font-size: 14px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="43.193125" y="455.553245" transform="rotate(-90 43.193125 455.553245)">成交量</text>
+    </g>
+   </g>
+  </g>
+  <g id="axes_7">
+   <g id="patch_29">
+    <path d="M 402.4 398.71751 
+L 684 398.71751 
+L 684 292.48249 
+L 402.4 292.48249 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_13"/>
+   <g id="matplotlib.axis_14">
+    <g id="text_10">
+     <text style="font-size: 14px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="395.193125" y="345.6" transform="rotate(-90 395.193125 345.6)">价格</text>
+    </g>
+   </g>
+   <g id="line2d_4">
+    <path d="M 428.573134 297.311355 
+L 466.78209 321.455677 
+L 504.991045 314.212381 
+L 543.2 345.6 
+L 581.408955 335.942271 
+L 619.61791 369.744323 
+L 657.826866 393.888645 
+" clip-path="url(#p7c26c498dc)" style="fill: none; stroke: #2866a4; stroke-width: 2.7; stroke-linecap: square"/>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 17px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="543.2" y="286.48249" transform="rotate(-0 543.2 286.48249)">量缩价跌</text>
+   </g>
+  </g>
+  <g id="axes_8">
+   <g id="patch_30">
+    <path d="M 402.4 482.112 
+L 684 482.112 
+L 684 428.99449 
+L 402.4 428.99449 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_31">
+    <path d="M 415.2 482.112 
+L 441.946269 482.112 
+L 441.946269 431.523895 
+L 415.2 431.523895 
+z
+" clip-path="url(#p024e5a40f0)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_32">
+    <path d="M 453.408955 482.112 
+L 480.155224 482.112 
+L 480.155224 441.009165 
+L 453.408955 441.009165 
+z
+" clip-path="url(#p024e5a40f0)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_33">
+    <path d="M 491.61791 482.112 
+L 518.364179 482.112 
+L 518.364179 445.7518 
+L 491.61791 445.7518 
+z
+" clip-path="url(#p024e5a40f0)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_34">
+    <path d="M 529.826866 482.112 
+L 556.573134 482.112 
+L 556.573134 450.494435 
+L 529.826866 450.494435 
+z
+" clip-path="url(#p024e5a40f0)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_35">
+    <path d="M 568.035821 482.112 
+L 594.78209 482.112 
+L 594.78209 456.817948 
+L 568.035821 456.817948 
+z
+" clip-path="url(#p024e5a40f0)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_36">
+    <path d="M 606.244776 482.112 
+L 632.991045 482.112 
+L 632.991045 463.141461 
+L 606.244776 463.141461 
+z
+" clip-path="url(#p024e5a40f0)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_37">
+    <path d="M 644.453731 482.112 
+L 671.2 482.112 
+L 671.2 467.884096 
+L 644.453731 467.884096 
+z
+" clip-path="url(#p024e5a40f0)" style="fill: #8294a5"/>
+   </g>
+   <g id="matplotlib.axis_15"/>
+   <g id="matplotlib.axis_16">
+    <g id="text_12">
+     <text style="font-size: 14px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="395.193125" y="455.553245" transform="rotate(-90 395.193125 455.553245)">成交量</text>
+    </g>
+   </g>
+  </g>
+  <g id="text_13">
+   <text style="font-weight: 700; font-size: 20px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="360" y="31.799375" transform="rotate(-0 360 31.799375)">价格与成交量的四种基本组合</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p1745917264">
+   <rect x="50.4" y="72.576" width="281.6" height="106.235019"/>
+  </clipPath>
+  <clipPath id="pbca728eabf">
+   <rect x="50.4" y="209.088" width="281.6" height="53.11751"/>
+  </clipPath>
+  <clipPath id="p40b1c20532">
+   <rect x="402.4" y="72.576" width="281.6" height="106.235019"/>
+  </clipPath>
+  <clipPath id="pf89a3c962d">
+   <rect x="402.4" y="209.088" width="281.6" height="53.11751"/>
+  </clipPath>
+  <clipPath id="p1aabbe5222">
+   <rect x="50.4" y="292.48249" width="281.6" height="106.235019"/>
+  </clipPath>
+  <clipPath id="p80f5e8f658">
+   <rect x="50.4" y="428.99449" width="281.6" height="53.11751"/>
+  </clipPath>
+  <clipPath id="p7c26c498dc">
+   <rect x="402.4" y="292.48249" width="281.6" height="106.235019"/>
+  </clipPath>
+  <clipPath id="p024e5a40f0">
+   <rect x="402.4" y="428.99449" width="281.6" height="53.11751"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="266.4pt" viewBox="0 0 720 266.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-25T04:36:28.981054</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 266.4 
+L 720 266.4 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 172.8 231.768 
+L 633.6 231.768 
+L 633.6 39.96 
+L 172.8 39.96 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 172.8 48.678545 
+L 262.8 48.678545 
+L 262.8 77.740364 
+L 172.8 77.740364 
+z
+" clip-path="url(#p3d98aaeca8)" style="fill: #16816f"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 172.8 97.114909 
+L 352.8 97.114909 
+L 352.8 126.176727 
+L 172.8 126.176727 
+z
+" clip-path="url(#p3d98aaeca8)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 172.8 145.551273 
+L 412.8 145.551273 
+L 412.8 174.613091 
+L 172.8 174.613091 
+z
+" clip-path="url(#p3d98aaeca8)" style="fill: #2866a4"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 172.8 193.987636 
+L 532.8 193.987636 
+L 532.8 223.049455 
+L 172.8 223.049455 
+z
+" clip-path="url(#p3d98aaeca8)" style="fill: #c74540"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="ytick_1">
+     <g id="text_1">
+      <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #263746" x="165.8" y="67.98508" transform="rotate(-0 165.8 67.98508)">悲观情景</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="text_2">
+      <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #263746" x="165.8" y="116.421443" transform="rotate(-0 165.8 116.421443)">当前价格</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="text_3">
+      <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #263746" x="165.8" y="164.857807" transform="rotate(-0 165.8 164.857807)">基准情景</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="text_4">
+      <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #263746" x="165.8" y="213.29417" transform="rotate(-0 165.8 213.29417)">乐观情景</text>
+     </g>
+    </g>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="269.28" y="66.894142" transform="rotate(-0 269.28 66.894142)">15元</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="359.28" y="115.330506" transform="rotate(-0 359.28 115.330506)">30元</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="419.28" y="163.766869" transform="rotate(-0 419.28 163.766869)">40元</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="539.28" y="212.203233" transform="rotate(-0 539.28 212.203233)">60元</text>
+   </g>
+  </g>
+  <g id="text_9">
+   <text style="font-weight: 700; font-size: 20px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="360" y="31.799375" transform="rotate(-0 360 31.799375)">估值情景与当前价格</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p3d98aaeca8">
+   <rect x="172.8" y="39.96" width="460.8" height="191.808"/>
+  </clipPath>
+ </defs>
+</svg>

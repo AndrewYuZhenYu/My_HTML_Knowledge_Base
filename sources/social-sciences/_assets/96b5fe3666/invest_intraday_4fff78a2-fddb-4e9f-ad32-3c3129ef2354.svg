@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="403.2pt" viewBox="0 0 720 403.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-25T04:36:21.108069</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 403.2 
+L 720 403.2 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 46.8 194.520916 
+L 325.561062 194.520916 
+L 325.561062 80.64 
+L 46.8 80.64 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2"/>
+   <g id="line2d_1">
+    <path d="M 61.733628 137.580458 
+L 103.215929 133.513282 
+L 144.69823 123.345344 
+L 186.180531 131.479695 
+L 227.662832 113.177405 
+L 269.145133 115.210992 
+L 310.627434 96.908702 
+" clip-path="url(#p7cee1f2ffe)" style="fill: none; stroke: #2866a4; stroke-width: 2.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 46.8 178.252214 
+L 325.561062 178.252214 
+" clip-path="url(#p7cee1f2ffe)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #b38332; stroke-width: 1.3"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #b38332" x="319.985841" y="175.961589" transform="rotate(-0 319.985841 175.961589)">昨收</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 11px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="186.180531" y="214.66432" transform="rotate(-0 186.180531 214.66432)">早期高于昨收，随后整体上涨</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="186.180531" y="75.64" transform="rotate(-0 186.180531 75.64)">高开高走</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_3">
+    <path d="M 398.038938 194.520916 
+L 676.8 194.520916 
+L 676.8 80.64 
+L 398.038938 80.64 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_3"/>
+   <g id="matplotlib.axis_4"/>
+   <g id="line2d_3">
+    <path d="M 412.972566 96.908702 
+L 454.454867 109.110229 
+L 495.937168 107.076641 
+L 537.419469 133.513282 
+L 578.90177 127.412519 
+L 620.384071 161.983511 
+L 661.866372 178.252214 
+" clip-path="url(#pda88084e8f)" style="fill: none; stroke: #2866a4; stroke-width: 2.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 398.038938 170.117863 
+L 676.8 170.117863 
+" clip-path="url(#pda88084e8f)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #b38332; stroke-width: 1.3"/>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #b38332" x="671.224779" y="167.827238" transform="rotate(-0 671.224779 167.827238)">昨收</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 11px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="537.419469" y="214.66432" transform="rotate(-0 537.419469 214.66432)">早期强势，随后回落</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="537.419469" y="75.64" transform="rotate(-0 537.419469 75.64)">高开低走</text>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g id="patch_4">
+    <path d="M 46.8 379.008 
+L 325.561062 379.008 
+L 325.561062 265.127084 
+L 46.8 265.127084 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_5"/>
+   <g id="matplotlib.axis_6"/>
+   <g id="line2d_5">
+    <path d="M 61.733628 353.70113 
+L 103.215929 362.739298 
+L 144.69823 335.624794 
+L 186.180531 342.40342 
+L 227.662832 313.029374 
+L 269.145133 308.51029 
+L 310.627434 281.395786 
+" clip-path="url(#p2c3ef6c3ca)" style="fill: none; stroke: #2866a4; stroke-width: 2.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 46.8 326.586626 
+L 325.561062 326.586626 
+" clip-path="url(#p2c3ef6c3ca)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #b38332; stroke-width: 1.3"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #b38332" x="319.985841" y="324.296001" transform="rotate(-0 319.985841 324.296001)">昨收</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 11px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="186.180531" y="399.151404" transform="rotate(-0 186.180531 399.151404)">早期弱势，随后恢复</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="186.180531" y="260.127084" transform="rotate(-0 186.180531 260.127084)">低开高走</text>
+   </g>
+  </g>
+  <g id="axes_4">
+   <g id="patch_5">
+    <path d="M 398.038938 379.008 
+L 676.8 379.008 
+L 676.8 265.127084 
+L 398.038938 265.127084 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_7"/>
+   <g id="matplotlib.axis_8"/>
+   <g id="line2d_7">
+    <path d="M 412.972566 297.664489 
+L 454.454867 309.866015 
+L 495.937168 297.664489 
+L 537.419469 330.201893 
+L 578.90177 322.067542 
+L 620.384071 354.604947 
+L 661.866372 362.739298 
+" clip-path="url(#p982a779448)" style="fill: none; stroke: #2866a4; stroke-width: 2.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 398.038938 281.395786 
+L 676.8 281.395786 
+" clip-path="url(#p982a779448)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #b38332; stroke-width: 1.3"/>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #b38332" x="671.224779" y="279.105161" transform="rotate(-0 671.224779 279.105161)">昨收</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 11px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="537.419469" y="399.151404" transform="rotate(-0 537.419469 399.151404)">低于昨收开盘，后续承压</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="537.419469" y="260.127084" transform="rotate(-0 537.419469 260.127084)">低开低走</text>
+   </g>
+  </g>
+  <g id="text_13">
+   <text style="font-weight: 700; font-size: 20px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="360" y="31.799375" transform="rotate(-0 360 31.799375)">分时图四种基本路径</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p7cee1f2ffe">
+   <rect x="46.8" y="80.64" width="278.761062" height="113.880916"/>
+  </clipPath>
+  <clipPath id="pda88084e8f">
+   <rect x="398.038938" y="80.64" width="278.761062" height="113.880916"/>
+  </clipPath>
+  <clipPath id="p2c3ef6c3ca">
+   <rect x="46.8" y="265.127084" width="278.761062" height="113.880916"/>
+  </clipPath>
+  <clipPath id="p982a779448">
+   <rect x="398.038938" y="265.127084" width="278.761062" height="113.880916"/>
+  </clipPath>
+ </defs>
+</svg>

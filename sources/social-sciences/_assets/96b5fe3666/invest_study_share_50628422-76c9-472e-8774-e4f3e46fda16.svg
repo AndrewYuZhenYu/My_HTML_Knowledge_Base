@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="338.4pt" viewBox="0 0 720 338.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-25T04:36:34.604064</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 338.4 
+L 720 338.4 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 172.8 294.408 
+L 633.6 294.408 
+L 633.6 50.76 
+L 172.8 50.76 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 172.8 61.834909 
+L 296.228571 61.834909 
+L 296.228571 85.566857 
+L 172.8 85.566857 
+z
+" clip-path="url(#p99aae98c43)" style="fill: #8294a5"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 172.8 101.388156 
+L 532.8 101.388156 
+L 532.8 125.120104 
+L 172.8 125.120104 
+z
+" clip-path="url(#p99aae98c43)" style="fill: #2866a4"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 172.8 140.941403 
+L 306.514286 140.941403 
+L 306.514286 164.673351 
+L 172.8 164.673351 
+z
+" clip-path="url(#p99aae98c43)" style="fill: #b38332"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 172.8 180.494649 
+L 429.942857 180.494649 
+L 429.942857 204.226597 
+L 172.8 204.226597 
+z
+" clip-path="url(#p99aae98c43)" style="fill: #7660a8"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 172.8 220.047896 
+L 255.085714 220.047896 
+L 255.085714 243.779844 
+L 172.8 243.779844 
+z
+" clip-path="url(#p99aae98c43)" style="fill: #16816f"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 172.8 259.601143 
+L 244.8 259.601143 
+L 244.8 283.333091 
+L 172.8 283.333091 
+z
+" clip-path="url(#p99aae98c43)" style="fill: #476783"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="ytick_1">
+     <g id="text_1">
+      <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #263746" x="165.8" y="78.476508" transform="rotate(-0 165.8 78.476508)">股票投资基础</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="text_2">
+      <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #263746" x="165.8" y="118.029755" transform="rotate(-0 165.8 118.029755)">技术分析与市场行为</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="text_3">
+      <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #263746" x="165.8" y="157.583002" transform="rotate(-0 165.8 157.583002)">选股与价值分析</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="text_4">
+      <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #263746" x="165.8" y="197.136248" transform="rotate(-0 165.8 197.136248)">投资策略与盈利体系</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="text_5">
+      <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #263746" x="165.8" y="236.689495" transform="rotate(-0 165.8 236.689495)">其他证券工具</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="text_6">
+      <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #263746" x="165.8" y="276.242742" transform="rotate(-0 165.8 276.242742)">投资实践与技术</text>
+     </g>
+    </g>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="302.708571" y="77.385571" transform="rotate(-0 302.708571 77.385571)">12%</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="539.28" y="116.938817" transform="rotate(-0 539.28 116.938817)">35%</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="312.994286" y="156.492064" transform="rotate(-0 312.994286 156.492064)">13%</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="436.422857" y="196.045311" transform="rotate(-0 436.422857 196.045311)">25%</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="261.565714" y="235.598558" transform="rotate(-0 261.565714 235.598558)">8%</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="251.28" y="275.151804" transform="rotate(-0 251.28 275.151804)">7%</text>
+   </g>
+  </g>
+  <g id="text_13">
+   <text style="font-weight: 700; font-size: 20px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="360" y="31.799375" transform="rotate(-0 360 31.799375)">建议学习精力分配</text>
+  </g>
+  <g id="text_14">
+   <text style="font-size: 11.5px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #8294a5" x="360" y="326.556" transform="rotate(-0 360 326.556)">技术分析与投资策略、盈利体系合计60%；不是投资资金配置比例。</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p99aae98c43">
+   <rect x="172.8" y="50.76" width="460.8" height="243.648"/>
+  </clipPath>
+ </defs>
+</svg>

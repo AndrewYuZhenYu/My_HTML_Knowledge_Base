@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="471.6pt" viewBox="0 0 720 471.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-25T04:36:21.659184</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 471.6 
+L 720 471.6 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 44.8488 132.84972 
+L 675.1512 132.84972 
+Q 683.0136 132.84972 683.0136 128.209176 
+L 683.0136 71.749224 
+Q 683.0136 67.10868 675.1512 67.10868 
+L 44.8488 67.10868 
+Q 36.9864 67.10868 36.9864 71.749224 
+L 36.9864 128.209176 
+Q 36.9864 132.84972 44.8488 132.84972 
+z
+" clip-path="url(#p129dedd9ef)" style="fill: #f2f7fb; stroke: #b7cddf; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 44.8488 210.19212 
+L 675.1512 210.19212 
+Q 683.0136 210.19212 683.0136 205.551576 
+L 683.0136 149.091624 
+Q 683.0136 144.45108 675.1512 144.45108 
+L 44.8488 144.45108 
+Q 36.9864 144.45108 36.9864 149.091624 
+L 36.9864 205.551576 
+Q 36.9864 210.19212 44.8488 210.19212 
+z
+" clip-path="url(#p129dedd9ef)" style="fill: #f2f7fb; stroke: #b7cddf; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 44.8488 287.53452 
+L 675.1512 287.53452 
+Q 683.0136 287.53452 683.0136 282.893976 
+L 683.0136 226.434024 
+Q 683.0136 221.79348 675.1512 221.79348 
+L 44.8488 221.79348 
+Q 36.9864 221.79348 36.9864 226.434024 
+L 36.9864 282.893976 
+Q 36.9864 287.53452 44.8488 287.53452 
+z
+" clip-path="url(#p129dedd9ef)" style="fill: #f2f7fb; stroke: #b7cddf; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 44.8488 364.87692 
+L 675.1512 364.87692 
+Q 683.0136 364.87692 683.0136 360.236376 
+L 683.0136 303.776424 
+Q 683.0136 299.13588 675.1512 299.13588 
+L 44.8488 299.13588 
+Q 36.9864 299.13588 36.9864 303.776424 
+L 36.9864 360.236376 
+Q 36.9864 364.87692 44.8488 364.87692 
+z
+" clip-path="url(#p129dedd9ef)" style="fill: #f2f7fb; stroke: #b7cddf; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 44.8488 442.21932 
+L 675.1512 442.21932 
+Q 683.0136 442.21932 683.0136 437.578776 
+L 683.0136 381.118824 
+Q 683.0136 376.47828 675.1512 376.47828 
+L 44.8488 376.47828 
+Q 36.9864 376.47828 36.9864 381.118824 
+L 36.9864 437.578776 
+Q 36.9864 442.21932 44.8488 442.21932 
+z
+" clip-path="url(#p129dedd9ef)" style="fill: #f2f7fb; stroke: #b7cddf; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #19354d" x="54.6768" y="91.357942" transform="rotate(-0 54.6768 91.357942)">第一层：原始数据</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="54.6768" y="115.221526" transform="rotate(-0 54.6768 115.221526)">开盘价、最高价、最低价、收盘价、成交量</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 360 132.918641 
+Q 360 133.818117 360 133.040542 
+" style="fill: none; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 362.8 127.440542 
+L 360 133.040542 
+L 357.2 127.440542 
+z
+" style="fill: #8294a5; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #19354d" x="54.6768" y="168.700342" transform="rotate(-0 54.6768 168.700342)">第二层：价格结构</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="54.6768" y="192.563926" transform="rotate(-0 54.6768 192.563926)">K线、趋势、高低点、支撑与阻力</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 360 210.261041 
+Q 360 211.160517 360 210.382942 
+" style="fill: none; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 362.8 204.782942 
+L 360 210.382942 
+L 357.2 204.782942 
+z
+" style="fill: #8294a5; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #19354d" x="54.6768" y="246.042742" transform="rotate(-0 54.6768 246.042742)">第三层：衍生指标</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="54.6768" y="269.906326" transform="rotate(-0 54.6768 269.906326)">MA、MACD、RSI、KDJ、BOLL、ATR等</text>
+   </g>
+   <g id="patch_9">
+    <path d="M 360 287.603441 
+Q 360 288.502917 360 287.725342 
+" style="fill: none; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 362.8 282.125342 
+L 360 287.725342 
+L 357.2 282.125342 
+z
+" style="fill: #8294a5; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #19354d" x="54.6768" y="323.385142" transform="rotate(-0 54.6768 323.385142)">第四层：综合判断</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="54.6768" y="347.248726" transform="rotate(-0 54.6768 347.248726)">结合位置、趋势、成交量、市场环境形成假设</text>
+   </g>
+   <g id="patch_10">
+    <path d="M 360 364.945841 
+Q 360 365.845317 360 365.067742 
+" style="fill: none; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 362.8 359.467742 
+L 360 365.067742 
+L 357.2 359.467742 
+z
+" style="fill: #8294a5; stroke: #8294a5; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #19354d" x="54.6768" y="400.727542" transform="rotate(-0 54.6768 400.727542)">第五层：交易决策</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 12.3px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="54.6768" y="424.591126" transform="rotate(-0 54.6768 424.591126)">将假设转换成具有明确条件和风险边界的交易规则</text>
+   </g>
+  </g>
+  <g id="text_11">
+   <text style="font-weight: 700; font-size: 20px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="360" y="31.799375" transform="rotate(-0 360 31.799375)">技术分析的五个层次</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p129dedd9ef">
+   <rect x="32.4" y="61.308" width="655.2" height="386.712"/>
+  </clipPath>
+ </defs>
+</svg>

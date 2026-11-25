@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="374.4pt" viewBox="0 0 720 374.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-25T04:36:24.757758</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 374.4 
+L 720 374.4 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 172.8 325.728 
+L 633.6 325.728 
+L 633.6 56.16 
+L 172.8 56.16 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 172.8 68.413091 
+L 237.6 68.413091 
+L 237.6 90.691438 
+L 172.8 90.691438 
+z
+" clip-path="url(#p38dac8e29b)" style="fill: #2866a4"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 172.8 105.543669 
+L 280.8 105.543669 
+L 280.8 127.822017 
+L 172.8 127.822017 
+z
+" clip-path="url(#p38dac8e29b)" style="fill: #2866a4"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 172.8 142.674248 
+L 410.4 142.674248 
+L 410.4 164.952595 
+L 172.8 164.952595 
+z
+" clip-path="url(#p38dac8e29b)" style="fill: #2866a4"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 172.8 179.804826 
+L 532.8 179.804826 
+L 532.8 202.083174 
+L 172.8 202.083174 
+z
+" clip-path="url(#p38dac8e29b)" style="fill: #b38332"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 172.8 216.935405 
+L 468 216.935405 
+L 468 239.213752 
+L 172.8 239.213752 
+z
+" clip-path="url(#p38dac8e29b)" style="fill: #2866a4"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 172.8 254.065983 
+L 331.2 254.065983 
+L 331.2 276.344331 
+L 172.8 276.344331 
+z
+" clip-path="url(#p38dac8e29b)" style="fill: #2866a4"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 172.8 291.196562 
+L 252 291.196562 
+L 252 313.474909 
+L 172.8 313.474909 
+z
+" clip-path="url(#p38dac8e29b)" style="fill: #2866a4"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="ytick_1">
+     <g id="text_1">
+      <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #263746" x="165.8" y="84.327889" transform="rotate(-0 165.8 84.327889)">14元</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="text_2">
+      <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #263746" x="165.8" y="121.458468" transform="rotate(-0 165.8 121.458468)">13元</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="text_3">
+      <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #263746" x="165.8" y="158.589046" transform="rotate(-0 165.8 158.589046)">12元</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="text_4">
+      <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #263746" x="165.8" y="195.719625" transform="rotate(-0 165.8 195.719625)">11元</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="text_5">
+      <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #263746" x="165.8" y="232.850204" transform="rotate(-0 165.8 232.850204)">10元</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="text_6">
+      <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #263746" x="165.8" y="269.980782" transform="rotate(-0 165.8 269.980782)">9元</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="text_7">
+      <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: end; fill: #263746" x="165.8" y="307.111361" transform="rotate(-0 165.8 307.111361)">8元</text>
+     </g>
+    </g>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="244.08" y="83.236952" transform="rotate(-0 244.08 83.236952)">18</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="287.28" y="120.36753" transform="rotate(-0 287.28 120.36753)">30</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="416.88" y="157.498109" transform="rotate(-0 416.88 157.498109)">66</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="539.28" y="194.628688" transform="rotate(-0 539.28 194.628688)">100</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="474.48" y="231.759266" transform="rotate(-0 474.48 231.759266)">82</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="337.68" y="268.889845" transform="rotate(-0 337.68 268.889845)">44</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #263746" x="258.48" y="306.020423" transform="rotate(-0 258.48 306.020423)">22</text>
+   </g>
+  </g>
+  <g id="text_15">
+   <text style="font-weight: 700; font-size: 20px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="360" y="31.799375" transform="rotate(-0 360 31.799375)">价格区间成交量分布（Volume Profile）</text>
+  </g>
+  <g id="text_16">
+   <text style="font-size: 11.5px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #8294a5" x="360" y="361.296" transform="rotate(-0 360 361.296)">相对成交量（最大档标准化为100）；11元档为示例 POC。</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p38dac8e29b">
+   <rect x="172.8" y="56.16" width="460.8" height="269.568"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="396pt" viewBox="0 0 720 396" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-25T04:36:26.720779</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 396 
+L 720 396 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 44.3664 195.07356 
+L 178.8336 195.07356 
+Q 192.0816 195.07356 192.0816 188.81676 
+L 192.0816 79.94844 
+Q 192.0816 73.69164 178.8336 73.69164 
+L 44.3664 73.69164 
+Q 31.1184 73.69164 31.1184 79.94844 
+L 31.1184 188.81676 
+Q 31.1184 195.07356 44.3664 195.07356 
+z
+" clip-path="url(#p623a3a1e3f)" style="fill: #e8f0f8; stroke: #a9bfd3; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 209.9664 195.07356 
+L 344.4336 195.07356 
+Q 357.6816 195.07356 357.6816 188.81676 
+L 357.6816 79.94844 
+Q 357.6816 73.69164 344.4336 73.69164 
+L 209.9664 73.69164 
+Q 196.7184 73.69164 196.7184 79.94844 
+L 196.7184 188.81676 
+Q 196.7184 195.07356 209.9664 195.07356 
+z
+" clip-path="url(#p623a3a1e3f)" style="fill: #e8f0f8; stroke: #a9bfd3; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 375.5664 195.07356 
+L 510.0336 195.07356 
+Q 523.2816 195.07356 523.2816 188.81676 
+L 523.2816 79.94844 
+Q 523.2816 73.69164 510.0336 73.69164 
+L 375.5664 73.69164 
+Q 362.3184 73.69164 362.3184 79.94844 
+L 362.3184 188.81676 
+Q 362.3184 195.07356 375.5664 195.07356 
+z
+" clip-path="url(#p623a3a1e3f)" style="fill: #e8f0f8; stroke: #a9bfd3; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 541.1664 195.07356 
+L 675.6336 195.07356 
+Q 688.8816 195.07356 688.8816 188.81676 
+L 688.8816 79.94844 
+Q 688.8816 73.69164 675.6336 73.69164 
+L 541.1664 73.69164 
+Q 527.9184 73.69164 527.9184 79.94844 
+L 527.9184 188.81676 
+Q 527.9184 195.07356 541.1664 195.07356 
+z
+" clip-path="url(#p623a3a1e3f)" style="fill: #e8f0f8; stroke: #a9bfd3; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 168.5664 348.36516 
+L 551.4336 348.36516 
+Q 564.6816 348.36516 564.6816 342.10836 
+L 564.6816 280.16604 
+Q 564.6816 273.90924 551.4336 273.90924 
+L 168.5664 273.90924 
+Q 155.3184 273.90924 155.3184 280.16604 
+L 155.3184 342.10836 
+Q 155.3184 348.36516 168.5664 348.36516 
+z
+" clip-path="url(#p623a3a1e3f)" style="fill: #e8f0f8; stroke: #a9bfd3; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="111.6" y="120.234738" transform="rotate(-0 111.6 120.234738)">趋势方向</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; fill: #263746" transform="translate(92.723438 153.828885)">MA20 /</text>
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; fill: #263746" transform="translate(96.42 168.039135)">MA60</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 113.491351 192.901142 
+Q 235.799678 234.49129 356.62609 275.577524 
+" style="fill: none; stroke: #8294a5; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 352.225664 271.123733 
+L 356.62609 275.577524 
+L 350.422802 276.42559 
+z
+" style="fill: #8294a5; stroke: #8294a5; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="277.2" y="120.234738" transform="rotate(-0 277.2 120.234738)">动量变化</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="277.2" y="160.93401" transform="rotate(-0 277.2 160.93401)">MACD / RSI</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 278.602405 193.688636 
+Q 318.60194 234.493379 357.505762 274.180352 
+" style="fill: none; stroke: #8294a5; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 355.585147 268.221221 
+L 357.505762 274.180352 
+L 351.586088 272.141366 
+z
+" style="fill: #8294a5; stroke: #8294a5; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="442.8" y="120.234738" transform="rotate(-0 442.8 120.234738)">交易活跃度</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="442.8" y="160.93401" transform="rotate(-0 442.8 160.93401)">VOL / RVOL</text>
+   </g>
+   <g id="patch_9">
+    <path d="M 441.397595 193.688636 
+Q 401.39806 234.493379 362.494238 274.180352 
+" style="fill: none; stroke: #8294a5; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 368.413912 272.141366 
+L 362.494238 274.180352 
+L 364.414853 268.221221 
+z
+" style="fill: #8294a5; stroke: #8294a5; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="608.4" y="120.234738" transform="rotate(-0 608.4 120.234738)">波动与风险</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="608.4" y="160.93401" transform="rotate(-0 608.4 160.93401)">ATR / BOLL</text>
+   </g>
+   <g id="patch_10">
+    <path d="M 606.508649 192.901142 
+Q 484.200322 234.49129 363.37391 275.577524 
+" style="fill: none; stroke: #8294a5; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 369.577198 276.42559 
+L 363.37391 275.577524 
+L 367.774336 271.123733 
+z
+" style="fill: #8294a5; stroke: #8294a5; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="360" y="304.497498" transform="rotate(-0 360 304.497498)">结合价格结构与市场环境综合判断</text>
+   </g>
+  </g>
+  <g id="text_10">
+   <text style="font-weight: 700; font-size: 20px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="360" y="31.799375" transform="rotate(-0 360 31.799375)">技术指标的联合使用</text>
+  </g>
+  <g id="text_11">
+   <text style="font-size: 11.5px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="360" y="386.892" transform="rotate(-0 360 386.892)">多项同源指标不等于多份独立证据。</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p623a3a1e3f">
+   <rect x="28.8" y="51.48" width="662.4" height="312.84"/>
+  </clipPath>
+ </defs>
+</svg>

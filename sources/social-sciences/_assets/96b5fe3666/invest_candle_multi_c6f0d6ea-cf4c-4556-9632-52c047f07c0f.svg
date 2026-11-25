@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="615.6pt" viewBox="0 0 720 615.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-25T04:36:22.987628</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 615.6 
+L 720 615.6 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 36 204.066 
+L 327.891892 204.066 
+L 327.891892 79.2 
+L 36 79.2 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2"/>
+   <g id="LineCollection_1">
+    <path d="M 93.493857 166.6062 
+L 93.493857 89.18928 
+" clip-path="url(#p4c0eee91af)" style="fill: none; stroke: #16816f; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_2">
+    <path d="M 181.945946 194.07672 
+L 181.945946 169.10352 
+" clip-path="url(#p4c0eee91af)" style="fill: none; stroke: #16816f; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_3">
+    <path d="M 270.398034 172.8495 
+L 270.398034 109.16784 
+" clip-path="url(#p4c0eee91af)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 74.918919 160.3629 
+L 112.068796 160.3629 
+L 112.068796 97.9299 
+L 74.918919 97.9299 
+z
+" clip-path="url(#p4c0eee91af)" style="fill: #16816f; stroke: #16816f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 163.371007 181.59012 
+L 200.520885 181.59012 
+L 200.520885 176.59548 
+L 163.371007 176.59548 
+z
+" clip-path="url(#p4c0eee91af)" style="fill: #16816f; stroke: #16816f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 251.823096 162.86022 
+L 288.972973 162.86022 
+L 288.972973 116.6598 
+L 251.823096 116.6598 
+z
+" clip-path="url(#p4c0eee91af)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 11.3px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="181.945946" y="219.927724" transform="rotate(-0 181.945946 219.927724)">下跌、停顿、向上恢复</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="181.945946" y="74.2" transform="rotate(-0 181.945946 74.2)">早晨之星</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_6">
+    <path d="M 392.108108 204.066 
+L 684 204.066 
+L 684 79.2 
+L 392.108108 79.2 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_3"/>
+   <g id="matplotlib.axis_4"/>
+   <g id="LineCollection_4">
+    <path d="M 449.601966 187.83342 
+L 449.601966 110.4165 
+" clip-path="url(#peb90911b23)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_5">
+    <path d="M 538.054054 106.67052 
+L 538.054054 86.69196 
+" clip-path="url(#peb90911b23)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_6">
+    <path d="M 626.506143 171.60084 
+L 626.506143 104.1732 
+" clip-path="url(#peb90911b23)" style="fill: none; stroke: #16816f; stroke-width: 2"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 431.027027 179.0928 
+L 468.176904 179.0928 
+L 468.176904 119.15712 
+L 431.027027 119.15712 
+z
+" clip-path="url(#peb90911b23)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 519.479115 101.67588 
+L 556.628993 101.67588 
+L 556.628993 97.9299 
+L 519.479115 97.9299 
+z
+" clip-path="url(#peb90911b23)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 607.931204 160.3629 
+L 645.081081 160.3629 
+L 645.081081 114.16248 
+L 607.931204 114.16248 
+z
+" clip-path="url(#peb90911b23)" style="fill: #16816f; stroke: #16816f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 11.3px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="538.054054" y="219.927724" transform="rotate(-0 538.054054 219.927724)">上涨、停顿、向下回落</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="538.054054" y="74.2" transform="rotate(-0 538.054054 74.2)">黄昏之星</text>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g id="patch_10">
+    <path d="M 36 391.365 
+L 327.891892 391.365 
+L 327.891892 266.499 
+L 36 266.499 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_5"/>
+   <g id="matplotlib.axis_6"/>
+   <g id="LineCollection_7">
+    <path d="M 93.493857 382.62438 
+L 93.493857 333.92664 
+" clip-path="url(#p1acee8e4af)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_8">
+    <path d="M 181.945946 356.40252 
+L 181.945946 307.70478 
+" clip-path="url(#p1acee8e4af)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_9">
+    <path d="M 270.398034 331.42932 
+L 270.398034 277.73694 
+" clip-path="url(#p1acee8e4af)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 74.918919 375.13242 
+L 112.068796 375.13242 
+L 112.068796 341.4186 
+L 74.918919 341.4186 
+z
+" clip-path="url(#p1acee8e4af)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 163.371007 350.15922 
+L 200.520885 350.15922 
+L 200.520885 315.19674 
+L 163.371007 315.19674 
+z
+" clip-path="url(#p1acee8e4af)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 251.823096 325.18602 
+L 288.972973 325.18602 
+L 288.972973 285.2289 
+L 251.823096 285.2289 
+z
+" clip-path="url(#p1acee8e4af)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 11.3px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="181.945946" y="407.226724" transform="rotate(-0 181.945946 407.226724)">连续三根相对强势阳线</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="181.945946" y="261.499" transform="rotate(-0 181.945946 261.499)">红三兵</text>
+   </g>
+  </g>
+  <g id="axes_4">
+   <g id="patch_14">
+    <path d="M 392.108108 391.365 
+L 684 391.365 
+L 684 266.499 
+L 392.108108 266.499 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_7"/>
+   <g id="matplotlib.axis_8"/>
+   <g id="LineCollection_10">
+    <path d="M 449.601966 321.44004 
+L 449.601966 273.99096 
+" clip-path="url(#p7767f341d0)" style="fill: none; stroke: #16816f; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_11">
+    <path d="M 538.054054 348.91056 
+L 538.054054 298.96416 
+" clip-path="url(#p7767f341d0)" style="fill: none; stroke: #16816f; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_12">
+    <path d="M 626.506143 381.37572 
+L 626.506143 325.18602 
+" clip-path="url(#p7767f341d0)" style="fill: none; stroke: #16816f; stroke-width: 2"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 431.027027 315.19674 
+L 468.176904 315.19674 
+L 468.176904 281.48292 
+L 431.027027 281.48292 
+z
+" clip-path="url(#p7767f341d0)" style="fill: #16816f; stroke: #16816f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 519.479115 342.66726 
+L 556.628993 342.66726 
+L 556.628993 306.45612 
+L 519.479115 306.45612 
+z
+" clip-path="url(#p7767f341d0)" style="fill: #16816f; stroke: #16816f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 607.931204 373.88376 
+L 645.081081 373.88376 
+L 645.081081 332.67798 
+L 607.931204 332.67798 
+z
+" clip-path="url(#p7767f341d0)" style="fill: #16816f; stroke: #16816f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 11.3px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="538.054054" y="407.226724" transform="rotate(-0 538.054054 407.226724)">连续三根相对弱势阴线</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="538.054054" y="261.499" transform="rotate(-0 538.054054 261.499)">三只乌鸦</text>
+   </g>
+  </g>
+  <g id="axes_5">
+   <g id="patch_18">
+    <path d="M 36 578.664 
+L 327.891892 578.664 
+L 327.891892 453.798 
+L 36 453.798 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_9"/>
+   <g id="matplotlib.axis_10"/>
+   <g id="LineCollection_13">
+    <path d="M 71.798062 568.67472 
+L 71.798062 506.24172 
+" clip-path="url(#p96bd997c66)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_14">
+    <path d="M 126.872004 532.46358 
+L 126.872004 514.98234 
+" clip-path="url(#p96bd997c66)" style="fill: none; stroke: #16816f; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_15">
+    <path d="M 181.945946 541.2042 
+L 181.945946 522.4743 
+" clip-path="url(#p96bd997c66)" style="fill: none; stroke: #16816f; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_16">
+    <path d="M 237.019888 544.95018 
+L 237.019888 526.22028 
+" clip-path="url(#p96bd997c66)" style="fill: none; stroke: #16816f; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_17">
+    <path d="M 292.09383 541.2042 
+L 292.09383 471.27924 
+" clip-path="url(#p96bd997c66)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 60.232534 563.68008 
+L 83.36359 563.68008 
+L 83.36359 513.73368 
+L 60.232534 513.73368 
+z
+" clip-path="url(#p96bd997c66)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 115.306476 527.46894 
+L 138.437532 527.46894 
+L 138.437532 517.47966 
+L 115.306476 517.47966 
+z
+" clip-path="url(#p96bd997c66)" style="fill: #16816f; stroke: #16816f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 170.380418 534.9609 
+L 193.511474 534.9609 
+L 193.511474 526.22028 
+L 170.380418 526.22028 
+z
+" clip-path="url(#p96bd997c66)" style="fill: #16816f; stroke: #16816f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 225.45436 539.95554 
+L 248.585416 539.95554 
+L 248.585416 531.21492 
+L 225.45436 531.21492 
+z
+" clip-path="url(#p96bd997c66)" style="fill: #16816f; stroke: #16816f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 280.528302 536.20956 
+L 303.659357 536.20956 
+L 303.659357 478.7712 
+L 280.528302 478.7712 
+z
+" clip-path="url(#p96bd997c66)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 11.3px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="181.945946" y="594.525724" transform="rotate(-0 181.945946 594.525724)">上涨、整理、再次上涨</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="181.945946" y="448.798" transform="rotate(-0 181.945946 448.798)">上涨三法</text>
+   </g>
+  </g>
+  <g id="axes_6">
+   <g id="patch_24">
+    <path d="M 392.108108 578.664 
+L 684 578.664 
+L 684 453.798 
+L 392.108108 453.798 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_11"/>
+   <g id="matplotlib.axis_12"/>
+   <g id="LineCollection_18">
+    <path d="M 427.90617 528.7176 
+L 427.90617 465.03594 
+" clip-path="url(#pb951891118)" style="fill: none; stroke: #16816f; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_19">
+    <path d="M 482.980112 524.97162 
+L 482.980112 503.7444 
+" clip-path="url(#pb951891118)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_20">
+    <path d="M 538.054054 516.231 
+L 538.054054 496.25244 
+" clip-path="url(#pb951891118)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_21">
+    <path d="M 593.127996 508.73904 
+L 593.127996 488.76048 
+" clip-path="url(#pb951891118)" style="fill: none; stroke: #c74540; stroke-width: 2"/>
+   </g>
+   <g id="LineCollection_22">
+    <path d="M 648.201938 564.92874 
+L 648.201938 491.2578 
+" clip-path="url(#pb951891118)" style="fill: none; stroke: #16816f; stroke-width: 2"/>
+   </g>
+   <g id="patch_25">
+    <path d="M 416.340643 522.4743 
+L 439.471698 522.4743 
+L 439.471698 470.03058 
+L 416.340643 470.03058 
+z
+" clip-path="url(#pb951891118)" style="fill: #16816f; stroke: #16816f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_26">
+    <path d="M 471.414584 518.72832 
+L 494.54564 518.72832 
+L 494.54564 509.9877 
+L 471.414584 509.9877 
+z
+" clip-path="url(#pb951891118)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_27">
+    <path d="M 526.488526 511.23636 
+L 549.619582 511.23636 
+L 549.619582 501.24708 
+L 526.488526 501.24708 
+z
+" clip-path="url(#pb951891118)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_28">
+    <path d="M 581.562468 503.7444 
+L 604.693524 503.7444 
+L 604.693524 493.75512 
+L 581.562468 493.75512 
+z
+" clip-path="url(#pb951891118)" style="fill: #c74540; stroke: #c74540; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_29">
+    <path d="M 636.63641 557.43678 
+L 659.767466 557.43678 
+L 659.767466 496.25244 
+L 636.63641 496.25244 
+z
+" clip-path="url(#pb951891118)" style="fill: #16816f; stroke: #16816f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 11.3px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #263746" x="538.054054" y="594.525724" transform="rotate(-0 538.054054 594.525724)">下跌、整理、再次下跌</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="538.054054" y="448.798" transform="rotate(-0 538.054054 448.798)">下跌三法</text>
+   </g>
+  </g>
+  <g id="text_13">
+   <text style="font-weight: 700; font-size: 20px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #19354d" x="360" y="31.799375" transform="rotate(-0 360 31.799375)">三根及多根K线组合形态</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p4c0eee91af">
+   <rect x="36" y="79.2" width="291.891892" height="124.866"/>
+  </clipPath>
+  <clipPath id="peb90911b23">
+   <rect x="392.108108" y="79.2" width="291.891892" height="124.866"/>
+  </clipPath>
+  <clipPath id="p1acee8e4af">
+   <rect x="36" y="266.499" width="291.891892" height="124.866"/>
+  </clipPath>
+  <clipPath id="p7767f341d0">
+   <rect x="392.108108" y="266.499" width="291.891892" height="124.866"/>
+  </clipPath>
+  <clipPath id="p96bd997c66">
+   <rect x="36" y="453.798" width="291.891892" height="124.866"/>
+  </clipPath>
+  <clipPath id="pb951891118">
+   <rect x="392.108108" y="453.798" width="291.891892" height="124.866"/>
+  </clipPath>
+ </defs>
+</svg>
